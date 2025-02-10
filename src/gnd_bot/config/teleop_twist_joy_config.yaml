@@ -1,0 +1,37 @@
+teleop_twist_joy:
+  require_enable_button: true
+  enable_button: 4
+  enable_turbo_button: 5
+
+  axis_linear:
+    x: 3
+    y: 0
+    z: -1
+
+  scale_linear:
+    x: 0.5
+    y: 0.5
+    z: 0.0
+
+  scale_linear_turbo:
+    x: 1.0
+    y: 1.0
+    z: 0.0
+
+  axis_angular:
+    yaw: 3
+    pitch: -1
+    roll: -1
+
+  scale_angular:
+    yaw: 0.5
+    pitch: 0.0
+    roll: 0.0
+
+  scale_angular_turbo:
+    yaw: 1.0
+    pitch: 0.0
+    roll: 0.0
+
+  publish_stamped_twist: false
+  frame: 'teleop_twist_joy'

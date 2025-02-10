@@ -1,0 +1,7 @@
+image: /home/naor/Desktop/naor/study/hamama/src/camera_nav/maps/map.pgm  # Path to your map image
+resolution: 0.05  # Resolution of the map in meters per pixel
+origin: [0.0, 0.0, 0.0]  # [x, y, theta] of the bottom-left corner of the map
+negate: 0  # 0 = black pixels are occupied, 1 = white pixels are occupied
+occupied_thresh: 0.65  # Threshold for considering pixels as occupied
+free_thresh: 0.196  # Threshold for considering pixels as free
+mode: trinary  # Mode of the map: trinary, scale, raw

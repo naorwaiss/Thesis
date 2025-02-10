@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot name="sim_drone" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+    <!-- Include the robot and gazebo configurations -->
+    <xacro:include filename="$(find sim_drone)/config/my_robot.urdf.xacro"/>
+
+    <!-- Main properties can be defined here if needed -->
+    <xacro:property name="mesh_scale" value="0.008" />
+    <xacro:property name="propeller_mass" value="0.05" />
+    <xacro:property name="base_mass" value="0.15" />
+    
+    <!-- Ensure correct collision shape -->
+    <xacro:property name="collision_mesh" value="package://urdf/WholeDrone_collision.STL" />
+</robot>
