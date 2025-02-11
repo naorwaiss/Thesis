@@ -21,7 +21,7 @@
 #define ARRIVE_DATA 27
 #define EdgeTX "E"
 #define JOYSTICK "J"
-#define PLAYSTATION "J"
+#define PLAYSTATION "P"
 
 #define INCOMEING_AXIS 8
 

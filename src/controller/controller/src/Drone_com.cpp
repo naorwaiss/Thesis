@@ -31,6 +31,7 @@ void onConnection(RTComSession& session) {
         memcpy(data, bytes, size);
         Serial.println(data);
 
+    });
 
     // session.onReceive([](const uint8_t* bytes, size_t size) {
         // char data[size + 1] = {0};

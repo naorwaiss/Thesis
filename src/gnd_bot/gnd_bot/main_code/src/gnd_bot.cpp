@@ -13,7 +13,6 @@ long encoder_position_left;
 long encoder_position_right;
 double delta_t = 0;
 unsigned long curent_timer = 0;
-
 unsigned long global_time = 0;
 
 Motor_Data right_motor = {
