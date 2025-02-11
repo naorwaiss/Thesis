@@ -1,0 +1,233 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-eeca917e7ba620870c1a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				},
+				{
+					"build" : "ground_bot__py",
+					"jsonFile" : "directory-ground_bot__py-cca7d06e14cc5f41cb0b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/ground_bot__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "ground_bot",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_ground_bot_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_ground_bot_egg-06ffe05a73f26e3fe313.json",
+					"name" : "ament_cmake_python_build_ground_bot_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_ground_bot::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_ground_bot-b8f4034f9043e216f183.json",
+					"name" : "ament_cmake_python_copy_ground_bot",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ground_bot::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ground_bot-7807ccfa9cf0d9cd461d.json",
+					"name" : "ground_bot",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ground_bot__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ground_bot__cpp-b44aa001a59877b4ad62.json",
+					"name" : "ground_bot__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ground_bot__py::@a962e7838936529f8b7f",
+					"jsonFile" : "target-ground_bot__py-dde6c2739b4b2a4df418.json",
+					"name" : "ground_bot__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ground_bot__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ground_bot__rosidl_generator_c-629bdfd9d80dfaa7495a.json",
+					"name" : "ground_bot__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ground_bot__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ground_bot__rosidl_generator_py-c6d9c6f1a5be0958b761.json",
+					"name" : "ground_bot__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ground_bot__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ground_bot__rosidl_typesupport_c-9b98ff7570ced85bace4.json",
+					"name" : "ground_bot__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ground_bot__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ground_bot__rosidl_typesupport_c__pyext-6765724ef969c71db93f.json",
+					"name" : "ground_bot__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ground_bot__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ground_bot__rosidl_typesupport_cpp-3600317d6d2abe523535.json",
+					"name" : "ground_bot__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ground_bot__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ground_bot__rosidl_typesupport_fastrtps_c-fc14c44c1be21f3d2414.json",
+					"name" : "ground_bot__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ground_bot__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ground_bot__rosidl_typesupport_fastrtps_c__pyext-a93f6b401b49f9b36a0d.json",
+					"name" : "ground_bot__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ground_bot__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ground_bot__rosidl_typesupport_fastrtps_cpp-0dbc9a5feae5db15c9d7.json",
+					"name" : "ground_bot__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ground_bot__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ground_bot__rosidl_typesupport_introspection_c-efb6f9d4ac65e28a4331.json",
+					"name" : "ground_bot__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ground_bot__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ground_bot__rosidl_typesupport_introspection_c__pyext-81bf1df528be2022fbb2.json",
+					"name" : "ground_bot__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ground_bot__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ground_bot__rosidl_typesupport_introspection_cpp-c2c1340529c45a8ad758.json",
+					"name" : "ground_bot__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ground_bot_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ground_bot_uninstall-4dd1610cd4cb0bd1d447.json",
+					"name" : "ground_bot_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-6a36c6ae9c2a57f5db4e.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/naor/Desktop/naor/study/Thesis/build/ground_bot",
+		"source" : "/home/naor/Desktop/naor/study/Thesis/src/ground_bot"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

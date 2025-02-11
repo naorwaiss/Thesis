@@ -1,0 +1,323 @@
+[0.000000] (-) TimerEvent: {}
+[0.000804] (-) JobUnselected: {'identifier': 'camera_nav'}
+[0.000883] (-) JobUnselected: {'identifier': 'controller'}
+[0.000909] (-) JobUnselected: {'identifier': 'drone_c'}
+[0.000931] (-) JobUnselected: {'identifier': 'pointcloud_to_laserscan'}
+[0.000952] (-) JobUnselected: {'identifier': 'roller'}
+[0.000972] (-) JobUnselected: {'identifier': 'sim_drone'}
+[0.000995] (ground_bot) JobQueued: {'identifier': 'ground_bot', 'dependencies': OrderedDict()}
+[0.001019] (ground_bot) JobStarted: {'identifier': 'ground_bot'}
+[0.005642] (ground_bot) JobProgress: {'identifier': 'ground_bot', 'progress': 'cmake'}
+[0.005848] (ground_bot) Command: {'cmd': ['/usr/bin/cmake', '/home/naor/Desktop/naor/study/Thesis/src/ground_bot', '-DCMAKE_INSTALL_PREFIX=/home/naor/Desktop/naor/study/Thesis/install/ground_bot'], 'cwd': '/home/naor/Desktop/naor/study/Thesis/build/ground_bot', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('PROFILEHOME', ''), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IL:en'), ('USER', 'naor'), ('GIT_EDITOR', 'nvim'), ('XDG_SESSION_TYPE', 'x11'), ('KONSOLE_VERSION', '211203'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/opt/openvdb_vendor/lib:/opt/ros/humble/lib'), ('HOME', '/home/naor'), ('OLDPWD', '/home/naor/Desktop/naor/study/Thesis/src'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/org.kde.konsole.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('SHELL_SESSION_ID', 'e4d453c5a9ce4199abad32377391d0de'), ('GTK_MODULES', 'gail:atk-bridge'), ('KONSOLE_DBUS_SESSION', '/Sessions/2'), ('MANAGERPID', '2213'), ('SYSTEMD_EXEC_PID', '2638'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '44939'), ('KONSOLE_DBUS_WINDOW', '/Windows/1'), ('COLCON_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'naor'), ('WINDOWID', '41943047'), ('JOURNAL_STREAM', '8:2863'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('COLORFGBG', '15;0'), ('USERNAME', 'naor'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/opt/ros/humble/share/turtlebot3_gazebo/models'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-eabi-10-2020-q4-major/bin:/home/naor/.local/bin:/opt/ros/humble/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-:/snap/bin:/usr/local/go/bin:/opt/nvim-linux64/bin'), ('SESSION_MANAGER', 'local/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:@/tmp/.ICE-unix/2611,unix/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:/tmp/.ICE-unix/2611'), ('INVOCATION_ID', '9ccb878bcba14c618a3ca260bb49f4cb'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('KONSOLE_DBUS_SERVICE', ':1.403'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/naor/Desktop/naor/study/Thesis/build/ground_bot'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers/lib/python3.10/site-packages:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble')]), 'shell': False}
+[0.099704] (-) TimerEvent: {}
+[0.106978] (ground_bot) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.190235] (ground_bot) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.197759] (ground_bot) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.199761] (-) TimerEvent: {}
+[0.279186] (ground_bot) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.286075] (ground_bot) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.287369] (ground_bot) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.287993] (ground_bot) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.291917] (ground_bot) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.299857] (-) TimerEvent: {}
+[0.381674] (ground_bot) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.386613] (ground_bot) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.386874] (ground_bot) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.387056] (ground_bot) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.389824] (ground_bot) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.400025] (-) TimerEvent: {}
+[0.500298] (-) TimerEvent: {}
+[0.600615] (-) TimerEvent: {}
+[0.632307] (ground_bot) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[0.696350] (ground_bot) StdoutLine: {'line': b'-- Found rclcpp: 16.0.11 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.700785] (-) TimerEvent: {}
+[0.725061] (ground_bot) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.729142] (ground_bot) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.734466] (ground_bot) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.742918] (ground_bot) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.753313] (ground_bot) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.782868] (ground_bot) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.784463] (ground_bot) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.800962] (-) TimerEvent: {}
+[0.866634] (ground_bot) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[0.899224] (ground_bot) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[0.901039] (-) TimerEvent: {}
+[0.932031] (ground_bot) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.940396] (ground_bot) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[1.001268] (-) TimerEvent: {}
+[1.022262] (ground_bot) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.022694] (ground_bot) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.101473] (-) TimerEvent: {}
+[1.109246] (ground_bot) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[1.110280] (ground_bot) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.148369] (ground_bot) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[1.201661] (-) TimerEvent: {}
+[1.301975] (-) TimerEvent: {}
+[1.357624] (ground_bot) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[1.402171] (-) TimerEvent: {}
+[1.502504] (-) TimerEvent: {}
+[1.602827] (-) TimerEvent: {}
+[1.619875] (ground_bot) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.703020] (-) TimerEvent: {}
+[1.737809] (ground_bot) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.753884] (ground_bot) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") \n'}
+[1.756184] (ground_bot) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[1.783721] (ground_bot) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") \n'}
+[1.783871] (ground_bot) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[1.783938] (ground_bot) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[1.783993] (ground_bot) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so\n'}
+[1.803213] (-) TimerEvent: {}
+[1.804369] (ground_bot) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[1.853389] (ground_bot) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[1.870078] (ground_bot) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[1.870576] (ground_bot) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.871144] (ground_bot) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.871650] (ground_bot) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[1.872914] (ground_bot) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.872953] (ground_bot) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[1.873434] (ground_bot) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.874719] (ground_bot) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.893681] (ground_bot) StdoutLine: {'line': b'-- Generating done\n'}
+[1.900704] (ground_bot) StdoutLine: {'line': b'-- Build files have been written to: /home/naor/Desktop/naor/study/Thesis/build/ground_bot\n'}
+[1.903279] (-) TimerEvent: {}
+[1.908541] (ground_bot) CommandEnded: {'returncode': 0}
+[1.909084] (ground_bot) JobProgress: {'identifier': 'ground_bot', 'progress': 'build'}
+[1.909102] (ground_bot) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/naor/Desktop/naor/study/Thesis/build/ground_bot', '--', '-j16', '-l16'], 'cwd': '/home/naor/Desktop/naor/study/Thesis/build/ground_bot', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('PROFILEHOME', ''), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IL:en'), ('USER', 'naor'), ('GIT_EDITOR', 'nvim'), ('XDG_SESSION_TYPE', 'x11'), ('KONSOLE_VERSION', '211203'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/opt/openvdb_vendor/lib:/opt/ros/humble/lib'), ('HOME', '/home/naor'), ('OLDPWD', '/home/naor/Desktop/naor/study/Thesis/src'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/org.kde.konsole.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('SHELL_SESSION_ID', 'e4d453c5a9ce4199abad32377391d0de'), ('GTK_MODULES', 'gail:atk-bridge'), ('KONSOLE_DBUS_SESSION', '/Sessions/2'), ('MANAGERPID', '2213'), ('SYSTEMD_EXEC_PID', '2638'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '44939'), ('KONSOLE_DBUS_WINDOW', '/Windows/1'), ('COLCON_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'naor'), ('WINDOWID', '41943047'), ('JOURNAL_STREAM', '8:2863'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('COLORFGBG', '15;0'), ('USERNAME', 'naor'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/opt/ros/humble/share/turtlebot3_gazebo/models'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-eabi-10-2020-q4-major/bin:/home/naor/.local/bin:/opt/ros/humble/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-:/snap/bin:/usr/local/go/bin:/opt/nvim-linux64/bin'), ('SESSION_MANAGER', 'local/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:@/tmp/.ICE-unix/2611,unix/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:/tmp/.ICE-unix/2611'), ('INVOCATION_ID', '9ccb878bcba14c618a3ca260bb49f4cb'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('KONSOLE_DBUS_SERVICE', ':1.403'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/naor/Desktop/naor/study/Thesis/build/ground_bot'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers/lib/python3.10/site-packages:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble')]), 'shell': False}
+[1.956335] (ground_bot) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[1.963675] (ground_bot) StdoutLine: {'line': b'[  5%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[1.973838] (ground_bot) StdoutLine: {'line': b'[  5%] Built target ament_cmake_python_copy_ground_bot\n'}
+[2.003346] (-) TimerEvent: {}
+[2.103617] (-) TimerEvent: {}
+[2.123667] (ground_bot) StdoutLine: {'line': b'running egg_info\n'}
+[2.138622] (ground_bot) StdoutLine: {'line': b'creating ground_bot.egg-info\n'}
+[2.138809] (ground_bot) StdoutLine: {'line': b'writing ground_bot.egg-info/PKG-INFO\n'}
+[2.138883] (ground_bot) StdoutLine: {'line': b'writing dependency_links to ground_bot.egg-info/dependency_links.txt\n'}
+[2.138942] (ground_bot) StdoutLine: {'line': b'writing top-level names to ground_bot.egg-info/top_level.txt\n'}
+[2.139001] (ground_bot) StdoutLine: {'line': b"writing manifest file 'ground_bot.egg-info/SOURCES.txt'\n"}
+[2.150764] (ground_bot) StdoutLine: {'line': b'[  5%] Built target ground_bot__cpp\n'}
+[2.158398] (ground_bot) StdoutLine: {'line': b'[  7%] \x1b[32mBuilding C object CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/pwm__functions.c.o\x1b[0m\n'}
+[2.158623] (ground_bot) StdoutLine: {'line': b'[ 10%] \x1b[32mBuilding C object CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.c.o\x1b[0m\n'}
+[2.158766] (ground_bot) StdoutLine: {'line': b'[ 12%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[2.160758] (ground_bot) StdoutLine: {'line': b'[ 15%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[2.161010] (ground_bot) StdoutLine: {'line': b'[ 17%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[2.179532] (ground_bot) StdoutLine: {'line': b"reading manifest file 'ground_bot.egg-info/SOURCES.txt'\n"}
+[2.180262] (ground_bot) StdoutLine: {'line': b"writing manifest file 'ground_bot.egg-info/SOURCES.txt'\n"}
+[2.196330] (ground_bot) StdoutLine: {'line': b'[ 20%] \x1b[32m\x1b[1mLinking C shared library libground_bot__rosidl_generator_c.so\x1b[0m\n'}
+[2.202248] (ground_bot) StdoutLine: {'line': b'[ 20%] Built target ament_cmake_python_build_ground_bot_egg\n'}
+[2.203717] (-) TimerEvent: {}
+[2.226281] (ground_bot) StdoutLine: {'line': b'[ 20%] Built target ground_bot__rosidl_generator_c\n'}
+[2.233702] (ground_bot) StdoutLine: {'line': b'[ 23%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[2.235793] (ground_bot) StdoutLine: {'line': b'[ 25%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[2.236592] (ground_bot) StdoutLine: {'line': b'[ 28%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[2.303998] (-) TimerEvent: {}
+[2.332824] (ground_bot) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ground_bot/msg/motor_data__type_support.cpp.o\x1b[0m\n'}
+[2.334911] (ground_bot) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ground_bot/msg/pwm__type_support.cpp.o\x1b[0m\n'}
+[2.343442] (ground_bot) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ground_bot/msg/detail/pwm__type_support.cpp.o\x1b[0m\n'}
+[2.345558] (ground_bot) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ground_bot/msg/detail/motor_data__type_support.cpp.o\x1b[0m\n'}
+[2.358191] (ground_bot) StdoutLine: {'line': b'[ 43%] \x1b[32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ground_bot/msg/detail/dds_fastrtps/pwm__type_support.cpp.o\x1b[0m\n'}
+[2.358372] (ground_bot) StdoutLine: {'line': b'[ 43%] \x1b[32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ground_bot/msg/detail/dds_fastrtps/motor_data__type_support.cpp.o\x1b[0m\n'}
+[2.404101] (-) TimerEvent: {}
+[2.414094] (ground_bot) StdoutLine: {'line': b'[ 46%] \x1b[32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_c.dir/rosidl_typesupport_c/ground_bot/msg/pwm__type_support.cpp.o\x1b[0m\n'}
+[2.417089] (ground_bot) StdoutLine: {'line': b'[ 48%] \x1b[32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_c.dir/rosidl_typesupport_c/ground_bot/msg/motor_data__type_support.cpp.o\x1b[0m\n'}
+[2.444040] (ground_bot) StdoutLine: {'line': b'[ 51%] \x1b[32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__type_support_c.cpp.o\x1b[0m\n'}
+[2.445381] (ground_bot) StdoutLine: {'line': b'[ 53%] \x1b[32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/motor_data__type_support_c.cpp.o\x1b[0m\n'}
+[2.446857] (ground_bot) StdoutLine: {'line': b'[ 56%] \x1b[32m\x1b[1mLinking CXX shared library libground_bot__rosidl_typesupport_c.so\x1b[0m\n'}
+[2.487088] (ground_bot) StdoutLine: {'line': b'[ 56%] Built target ground_bot__rosidl_typesupport_c\n'}
+[2.493731] (ground_bot) StdoutLine: {'line': b'[ 58%] \x1b[32mBuilding C object CMakeFiles/ground_bot__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ground_bot/msg/detail/pwm__type_support.c.o\x1b[0m\n'}
+[2.493990] (ground_bot) StdoutLine: {'line': b'[ 61%] \x1b[32mBuilding C object CMakeFiles/ground_bot__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ground_bot/msg/detail/motor_data__type_support.c.o\x1b[0m\n'}
+[2.504234] (-) TimerEvent: {}
+[2.539102] (ground_bot) StdoutLine: {'line': b'[ 64%] \x1b[32m\x1b[1mLinking C shared library libground_bot__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[2.581090] (ground_bot) StdoutLine: {'line': b'[ 64%] Built target ground_bot__rosidl_typesupport_introspection_c\n'}
+[2.604343] (-) TimerEvent: {}
+[2.639495] (ground_bot) StdoutLine: {'line': b'[ 66%] \x1b[32m\x1b[1mLinking CXX shared library libground_bot__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[2.653979] (ground_bot) StdoutLine: {'line': b'[ 69%] \x1b[32m\x1b[1mLinking CXX shared library libground_bot__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[2.680069] (ground_bot) StdoutLine: {'line': b'[ 69%] Built target ground_bot__rosidl_typesupport_cpp\n'}
+[2.700521] (ground_bot) StdoutLine: {'line': b'[ 69%] Built target ground_bot__rosidl_typesupport_introspection_cpp\n'}
+[2.704393] (-) TimerEvent: {}
+[2.707961] (ground_bot) StdoutLine: {'line': b'[ 71%] \x1b[32m\x1b[1mLinking CXX shared library libground_bot__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[2.748130] (ground_bot) StdoutLine: {'line': b'[ 74%] \x1b[32m\x1b[1mLinking CXX shared library libground_bot__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[2.761454] (ground_bot) StdoutLine: {'line': b'[ 74%] Built target ground_bot__rosidl_typesupport_fastrtps_c\n'}
+[2.801730] (ground_bot) StdoutLine: {'line': b'[ 74%] Built target ground_bot__rosidl_typesupport_fastrtps_cpp\n'}
+[2.804456] (-) TimerEvent: {}
+[2.824238] (ground_bot) StdoutLine: {'line': b'[ 74%] Built target ground_bot\n'}
+[2.852231] (ground_bot) StdoutLine: {'line': b'[ 76%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[2.904569] (-) TimerEvent: {}
+[3.004760] (-) TimerEvent: {}
+[3.082005] (ground_bot) StdoutLine: {'line': b'[ 76%] Built target ground_bot__py\n'}
+[3.102280] (ground_bot) StdoutLine: {'line': b'[ 79%] \x1b[32mBuilding C object CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_pwm_s.c.o\x1b[0m\n'}
+[3.102466] (ground_bot) StdoutLine: {'line': b'[ 82%] \x1b[32mBuilding C object CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_motor_data_s.c.o\x1b[0m\n'}
+[3.104947] (-) TimerEvent: {}
+[3.184349] (ground_bot) StdoutLine: {'line': b'[ 84%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/ground_bot/libground_bot__rosidl_generator_py.so\x1b[0m\n'}
+[3.205151] (-) TimerEvent: {}
+[3.231333] (ground_bot) StdoutLine: {'line': b'[ 84%] Built target ground_bot__rosidl_generator_py\n'}
+[3.250331] (ground_bot) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/ground_bot__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[3.251350] (ground_bot) StdoutLine: {'line': b'[ 89%] \x1b[32mBuilding C object CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[3.253842] (ground_bot) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding C object CMakeFiles/ground_bot__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[3.305288] (-) TimerEvent: {}
+[3.319096] (ground_bot) StdoutLine: {'line': b'[ 94%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/ground_bot/ground_bot_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[3.321363] (ground_bot) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/ground_bot/ground_bot_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[3.323849] (ground_bot) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/ground_bot/ground_bot_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[3.345693] (ground_bot) StdoutLine: {'line': b'[100%] Built target ground_bot__rosidl_typesupport_c__pyext\n'}
+[3.348070] (ground_bot) StdoutLine: {'line': b'[100%] Built target ground_bot__rosidl_typesupport_introspection_c__pyext\n'}
+[3.354143] (ground_bot) StdoutLine: {'line': b'[100%] Built target ground_bot__rosidl_typesupport_fastrtps_c__pyext\n'}
+[3.362314] (ground_bot) CommandEnded: {'returncode': 0}
+[3.362879] (ground_bot) JobProgress: {'identifier': 'ground_bot', 'progress': 'install'}
+[3.368111] (ground_bot) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/naor/Desktop/naor/study/Thesis/build/ground_bot'], 'cwd': '/home/naor/Desktop/naor/study/Thesis/build/ground_bot', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('PROFILEHOME', ''), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IL:en'), ('USER', 'naor'), ('GIT_EDITOR', 'nvim'), ('XDG_SESSION_TYPE', 'x11'), ('KONSOLE_VERSION', '211203'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/opt/openvdb_vendor/lib:/opt/ros/humble/lib'), ('HOME', '/home/naor'), ('OLDPWD', '/home/naor/Desktop/naor/study/Thesis/src'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/org.kde.konsole.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('SHELL_SESSION_ID', 'e4d453c5a9ce4199abad32377391d0de'), ('GTK_MODULES', 'gail:atk-bridge'), ('KONSOLE_DBUS_SESSION', '/Sessions/2'), ('MANAGERPID', '2213'), ('SYSTEMD_EXEC_PID', '2638'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '44939'), ('KONSOLE_DBUS_WINDOW', '/Windows/1'), ('COLCON_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'naor'), ('WINDOWID', '41943047'), ('JOURNAL_STREAM', '8:2863'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('COLORFGBG', '15;0'), ('USERNAME', 'naor'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/opt/ros/humble/share/turtlebot3_gazebo/models'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-eabi-10-2020-q4-major/bin:/home/naor/.local/bin:/opt/ros/humble/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-:/snap/bin:/usr/local/go/bin:/opt/nvim-linux64/bin'), ('SESSION_MANAGER', 'local/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:@/tmp/.ICE-unix/2611,unix/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:/tmp/.ICE-unix/2611'), ('INVOCATION_ID', '9ccb878bcba14c618a3ca260bb49f4cb'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('KONSOLE_DBUS_SERVICE', ':1.403'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/naor/Desktop/naor/study/Thesis/build/ground_bot'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers/lib/python3.10/site-packages:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble')]), 'shell': False}
+[3.373786] (ground_bot) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[3.373863] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ament_index/resource_index/rosidl_interfaces/ground_bot\n'}
+[3.373909] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot\n'}
+[3.373957] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg\n'}
+[3.374000] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/motor_data.h\n'}
+[3.374047] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/pwm.h\n'}
+[3.374087] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/rosidl_generator_c__visibility_control.h\n'}
+[3.374131] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail\n'}
+[3.374186] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__functions.c\n'}
+[3.374232] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__type_support.h\n'}
+[3.374275] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__functions.c\n'}
+[3.374318] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__type_support.h\n'}
+[3.374361] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__functions.h\n'}
+[3.374408] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__struct.h\n'}
+[3.374450] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__functions.h\n'}
+[3.374497] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__struct.h\n'}
+[3.374585] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/environment/library_path.sh\n'}
+[3.374641] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/environment/library_path.dsv\n'}
+[3.374717] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_generator_c.so\n'}
+[3.374864] (ground_bot) StdoutLine: {'line': b'-- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_generator_c.so" to ""\n'}
+[3.374903] (ground_bot) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot\n'}
+[3.374956] (ground_bot) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg\n'}
+[3.374993] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[3.375043] (ground_bot) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail\n'}
+[3.375077] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__rosidl_typesupport_fastrtps_c.h\n'}
+[3.375129] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__rosidl_typesupport_fastrtps_c.h\n'}
+[3.375167] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_fastrtps_c.so\n'}
+[3.375281] (ground_bot) StdoutLine: {'line': b'-- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[3.375334] (ground_bot) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot\n'}
+[3.375370] (ground_bot) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg\n'}
+[3.375422] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[3.375467] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/motor_data.hpp\n'}
+[3.375501] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/pwm.hpp\n'}
+[3.375553] (ground_bot) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail\n'}
+[3.375586] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__builder.hpp\n'}
+[3.375619] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__struct.hpp\n'}
+[3.375670] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__builder.hpp\n'}
+[3.375706] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__struct.hpp\n'}
+[3.375758] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__traits.hpp\n'}
+[3.375795] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__traits.hpp\n'}
+[3.375847] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__type_support.hpp\n'}
+[3.375879] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__type_support.hpp\n'}
+[3.375935] (ground_bot) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot\n'}
+[3.375969] (ground_bot) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg\n'}
+[3.376004] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[3.376057] (ground_bot) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail\n'}
+[3.376092] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.376125] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/dds_fastrtps\n'}
+[3.376182] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[3.376216] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_fastrtps_cpp.so\n'}
+[3.376307] (ground_bot) StdoutLine: {'line': b'-- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[3.376352] (ground_bot) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot\n'}
+[3.376406] (ground_bot) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg\n'}
+[3.376445] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[3.376496] (ground_bot) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail\n'}
+[3.376557] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__type_support.c\n'}
+[3.376595] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__rosidl_typesupport_introspection_c.h\n'}
+[3.376632] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__rosidl_typesupport_introspection_c.h\n'}
+[3.376689] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__type_support.c\n'}
+[3.376725] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_introspection_c.so\n'}
+[3.376833] (ground_bot) StdoutLine: {'line': b'-- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_introspection_c.so" to ""\n'}
+[3.376885] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_c.so\n'}
+[3.377016] (ground_bot) StdoutLine: {'line': b'-- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_c.so" to ""\n'}
+[3.377075] (ground_bot) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot\n'}
+[3.377114] (ground_bot) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg\n'}
+[3.377155] (ground_bot) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail\n'}
+[3.377209] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.377271] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__rosidl_typesupport_introspection_cpp.hpp\n'}
+[3.377308] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__type_support.cpp\n'}
+[3.377343] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__type_support.cpp\n'}
+[3.377431] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_introspection_cpp.so\n'}
+[3.377530] (ground_bot) StdoutLine: {'line': b'-- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[3.377600] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_cpp.so\n'}
+[3.377710] (ground_bot) StdoutLine: {'line': b'-- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_cpp.so" to ""\n'}
+[3.377773] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/environment/pythonpath.sh\n'}
+[3.377834] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/environment/pythonpath.dsv\n'}
+[3.377894] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot-0.0.1-py3.10.egg-info\n'}
+[3.377963] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot-0.0.1-py3.10.egg-info/SOURCES.txt\n'}
+[3.378021] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot-0.0.1-py3.10.egg-info/PKG-INFO\n'}
+[3.378080] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot-0.0.1-py3.10.egg-info/dependency_links.txt\n'}
+[3.378148] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot-0.0.1-py3.10.egg-info/top_level.txt\n'}
+[3.378228] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot\n'}
+[3.378289] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/ground_bot_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[3.378356] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/__init__.py\n'}
+[3.378419] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg\n'}
+[3.378480] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg/__init__.py\n'}
+[3.378542] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg/_motor_data_s.c\n'}
+[3.378603] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg/_pwm_s.c\n'}
+[3.378667] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg/_pwm.py\n'}
+[3.378727] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg/_motor_data.py\n'}
+[3.378791] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[3.378855] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/ground_bot_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[3.378919] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/_ground_bot_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[3.378981] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/libground_bot__rosidl_generator_py.so\n'}
+[3.379043] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/ground_bot_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[3.379103] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/_ground_bot_s.ep.rosidl_typesupport_c.c\n'}
+[3.405372] (-) TimerEvent: {}
+[3.409555] (ground_bot) StdoutLine: {'line': b"Listing '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot'...\n"}
+[3.409605] (ground_bot) StdoutLine: {'line': b"Compiling '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/__init__.py'...\n"}
+[3.409634] (ground_bot) StdoutLine: {'line': b"Listing '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg'...\n"}
+[3.409661] (ground_bot) StdoutLine: {'line': b"Compiling '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg/__init__.py'...\n"}
+[3.409687] (ground_bot) StdoutLine: {'line': b"Compiling '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg/_motor_data.py'...\n"}
+[3.409714] (ground_bot) StdoutLine: {'line': b"Compiling '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg/_pwm.py'...\n"}
+[3.412512] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/ground_bot_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[3.412569] (ground_bot) StdoutLine: {'line': b'-- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/ground_bot_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[3.412645] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/ground_bot_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[3.412763] (ground_bot) StdoutLine: {'line': b'-- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/ground_bot_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[3.412845] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/ground_bot_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[3.412928] (ground_bot) StdoutLine: {'line': b'-- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/ground_bot_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[3.412964] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_generator_py.so\n'}
+[3.413089] (ground_bot) StdoutLine: {'line': b'-- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_generator_py.so" to ""\n'}
+[3.413139] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/msg/Pwm.idl\n'}
+[3.413193] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/msg/MotorData.idl\n'}
+[3.413244] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/msg/Pwm.msg\n'}
+[3.413291] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/msg/MotorData.msg\n'}
+[3.413354] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/ground_bot/rtcom_teensy_ros.py\n'}
+[3.413424] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ament_index/resource_index/package_run_dependencies/ground_bot\n'}
+[3.413488] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ament_index/resource_index/parent_prefix_path/ground_bot\n'}
+[3.413537] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/environment/ament_prefix_path.sh\n'}
+[3.413586] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/environment/ament_prefix_path.dsv\n'}
+[3.413632] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/environment/path.sh\n'}
+[3.413680] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/environment/path.dsv\n'}
+[3.413728] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/local_setup.bash\n'}
+[3.413775] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/local_setup.sh\n'}
+[3.413824] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/local_setup.zsh\n'}
+[3.413872] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/local_setup.dsv\n'}
+[3.413917] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/package.dsv\n'}
+[3.413981] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ament_index/resource_index/packages/ground_bot\n'}
+[3.414060] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/export_ground_bot__rosidl_generator_cExport.cmake\n'}
+[3.414106] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/export_ground_bot__rosidl_generator_cExport-noconfig.cmake\n'}
+[3.414168] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/export_ground_bot__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[3.414221] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/export_ground_bot__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[3.414277] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/export_ground_bot__rosidl_generator_cppExport.cmake\n'}
+[3.414330] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/export_ground_bot__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[3.414381] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/export_ground_bot__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[3.414435] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_bot__rosidl_typesupport_introspection_cExport.cmake\n'}
+[3.414487] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_bot__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[3.414544] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_bot__rosidl_typesupport_cExport.cmake\n'}
+[3.414593] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_bot__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[3.414647] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_bot__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[3.414698] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_bot__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[3.414754] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_bot__rosidl_typesupport_cppExport.cmake\n'}
+[3.414804] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_bot__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[3.414857] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/export_ground_bot__rosidl_generator_pyExport.cmake\n'}
+[3.414908] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/export_ground_bot__rosidl_generator_pyExport-noconfig.cmake\n'}
+[3.414955] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/rosidl_cmake-extras.cmake\n'}
+[3.415003] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[3.415055] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[3.415102] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[3.415157] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[3.415205] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[3.415254] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[3.415303] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_botConfig.cmake\n'}
+[3.415342] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_botConfig-version.cmake\n'}
+[3.415389] (ground_bot) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/package.xml\n'}
+[3.416963] (ground_bot) CommandEnded: {'returncode': 0}
+[3.427995] (ground_bot) JobEnded: {'identifier': 'ground_bot', 'rc': 0}
+[3.428367] (-) EventReactorShutdown: {}
