@@ -1,0 +1,116 @@
+[0.000000] (-) TimerEvent: {}
+[0.000367] (-) JobUnselected: {'identifier': 'camera_nav'}
+[0.000385] (-) JobUnselected: {'identifier': 'controller'}
+[0.000396] (-) JobUnselected: {'identifier': 'drone_c'}
+[0.000405] (-) JobUnselected: {'identifier': 'ground_bot'}
+[0.000413] (-) JobUnselected: {'identifier': 'pointcloud_to_laserscan'}
+[0.000422] (-) JobUnselected: {'identifier': 'roller'}
+[0.000432] (sim_drone) JobQueued: {'identifier': 'sim_drone', 'dependencies': OrderedDict()}
+[0.000443] (sim_drone) JobStarted: {'identifier': 'sim_drone'}
+[0.006297] (sim_drone) JobProgress: {'identifier': 'sim_drone', 'progress': 'cmake'}
+[0.006774] (sim_drone) JobProgress: {'identifier': 'sim_drone', 'progress': 'build'}
+[0.007257] (sim_drone) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/naor/Desktop/naor/study/Thesis/build/sim_drone', '--', '-j16', '-l16'], 'cwd': '/home/naor/Desktop/naor/study/Thesis/build/sim_drone', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('PROFILEHOME', ''), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IL:en'), ('USER', 'naor'), ('GIT_EDITOR', 'nvim'), ('XDG_SESSION_TYPE', 'x11'), ('KONSOLE_VERSION', '211203'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/opt/openvdb_vendor/lib:/opt/ros/humble/lib'), ('HOME', '/home/naor'), ('OLDPWD', '/home/naor/Desktop/naor/study/Thesis/src'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/org.kde.konsole.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('SHELL_SESSION_ID', 'aa20a85f28cc4561a1436a4e4a5dece0'), ('GTK_MODULES', 'gail:atk-bridge'), ('KONSOLE_DBUS_SESSION', '/Sessions/3'), ('MANAGERPID', '2213'), ('SYSTEMD_EXEC_PID', '2638'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '124559'), ('KONSOLE_DBUS_WINDOW', '/Windows/1'), ('COLCON_PREFIX_PATH', '/home/naor/Desktop/naor/study/Thesis/install:/home/naor/Desktop/naor/work/capsule_repo/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'naor'), ('WINDOWID', '41943047'), ('JOURNAL_STREAM', '8:2863'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('COLORFGBG', '15;0'), ('USERNAME', 'naor'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/opt/ros/humble/share/turtlebot3_gazebo/models'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-eabi-10-2020-q4-major/bin:/home/naor/.local/bin:/opt/ros/humble/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-:/snap/bin:/usr/local/go/bin:/opt/nvim-linux64/bin'), ('SESSION_MANAGER', 'local/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:@/tmp/.ICE-unix/2611,unix/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:/tmp/.ICE-unix/2611'), ('INVOCATION_ID', '9ccb878bcba14c618a3ca260bb49f4cb'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/naor/Desktop/naor/study/Thesis/install/sim_drone:/home/naor/Desktop/naor/study/Thesis/install/ground_bot:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('KONSOLE_DBUS_SERVICE', ':1.1117'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/naor/Desktop/naor/study/Thesis/build/sim_drone'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers/lib/python3.10/site-packages:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/naor/Desktop/naor/study/Thesis/install/sim_drone:/home/naor/Desktop/naor/study/Thesis/install/ground_bot')]), 'shell': False}
+[0.038951] (sim_drone) StdoutLine: {'line': b'-- Found rclcpp: 16.0.11 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.099923] (-) TimerEvent: {}
+[0.149717] (sim_drone) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.151254] (sim_drone) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.155069] (sim_drone) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.161227] (sim_drone) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.169085] (sim_drone) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.190122] (sim_drone) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.191007] (sim_drone) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.200025] (-) TimerEvent: {}
+[0.296724] (sim_drone) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.300158] (-) TimerEvent: {}
+[0.345814] (sim_drone) StdoutLine: {'line': b'-- Found gazebo_ros: 3.7.0 (/opt/ros/humble/share/gazebo_ros/cmake)\n'}
+[0.372129] (sim_drone) StdoutLine: {'line': b'-- Found DART: /usr/include (Required is at least version "6.6") found components: dart \n'}
+[0.397721] (sim_drone) StdoutLine: {'line': b'-- Found Protobuf: /usr/lib/x86_64-linux-gnu/libprotobuf.so (found version "3.12.4") \n'}
+[0.399702] (sim_drone) StdoutLine: {'line': b'-- Looking for ignition-math6 -- found version 6.15.1\n'}
+[0.400248] (-) TimerEvent: {}
+[0.404848] (sim_drone) StdoutLine: {'line': b'-- Searching for dependencies of ignition-math6\n'}
+[0.406268] (sim_drone) StdoutLine: {'line': b'-- Looking for OGRE...\n'}
+[0.412832] (sim_drone) StdoutLine: {'line': b'-- Found Ogre Ghadamon (1.9.0)\n'}
+[0.413180] (sim_drone) StdoutLine: {'line': b'-- Found OGRE: optimized;/usr/lib/x86_64-linux-gnu/libOgreMain.so;debug;/usr/lib/x86_64-linux-gnu/libOgreMain.so\n'}
+[0.426335] (sim_drone) StdoutLine: {'line': b'-- Looking for OGRE_Paging...\n'}
+[0.426474] (sim_drone) StdoutLine: {'line': b'-- Found OGRE_Paging: optimized;/usr/lib/x86_64-linux-gnu/libOgrePaging.so;debug;/usr/lib/x86_64-linux-gnu/libOgrePaging.so\n'}
+[0.426595] (sim_drone) StdoutLine: {'line': b'-- Looking for OGRE_Terrain...\n'}
+[0.426658] (sim_drone) StdoutLine: {'line': b'-- Found OGRE_Terrain: optimized;/usr/lib/x86_64-linux-gnu/libOgreTerrain.so;debug;/usr/lib/x86_64-linux-gnu/libOgreTerrain.so\n'}
+[0.426719] (sim_drone) StdoutLine: {'line': b'-- Looking for OGRE_Property...\n'}
+[0.426810] (sim_drone) StdoutLine: {'line': b'-- Found OGRE_Property: optimized;/usr/lib/x86_64-linux-gnu/libOgreProperty.so;debug;/usr/lib/x86_64-linux-gnu/libOgreProperty.so\n'}
+[0.426875] (sim_drone) StdoutLine: {'line': b'-- Looking for OGRE_RTShaderSystem...\n'}
+[0.426969] (sim_drone) StdoutLine: {'line': b'-- Found OGRE_RTShaderSystem: optimized;/usr/lib/x86_64-linux-gnu/libOgreRTShaderSystem.so;debug;/usr/lib/x86_64-linux-gnu/libOgreRTShaderSystem.so\n'}
+[0.427037] (sim_drone) StdoutLine: {'line': b'-- Looking for OGRE_Volume...\n'}
+[0.427095] (sim_drone) StdoutLine: {'line': b'-- Found OGRE_Volume: optimized;/usr/lib/x86_64-linux-gnu/libOgreVolume.so;debug;/usr/lib/x86_64-linux-gnu/libOgreVolume.so\n'}
+[0.427184] (sim_drone) StdoutLine: {'line': b'-- Looking for OGRE_Overlay...\n'}
+[0.427241] (sim_drone) StdoutLine: {'line': b'-- Found OGRE_Overlay: optimized;/usr/lib/x86_64-linux-gnu/libOgreOverlay.so;debug;/usr/lib/x86_64-linux-gnu/libOgreOverlay.so\n'}
+[0.500354] (-) TimerEvent: {}
+[0.524803] (sim_drone) StdoutLine: {'line': b'-- Looking for ignition-math6 -- found version 6.15.1\n'}
+[0.525041] (sim_drone) StdoutLine: {'line': b'-- Looking for ignition-transport8 -- found version 8.2.1\n'}
+[0.525275] (sim_drone) StdoutLine: {'line': b'-- Searching for dependencies of ignition-transport8\n'}
+[0.539383] (sim_drone) StdoutLine: {'line': b'-- Found Protobuf: /usr/lib/x86_64-linux-gnu/libprotobuf.so (found suitable version "3.12.4", minimum required is "3") \n'}
+[0.554462] (sim_drone) StdoutLine: {'line': b'-- Config-file not installed for ZeroMQ -- checking for pkg-config\n'}
+[0.561132] (sim_drone) StdoutLine: {'line': b"-- Checking for module 'libzmq >= 4'\n"}
+[0.577573] (sim_drone) StdoutLine: {'line': b'--   Found libzmq , version 4.3.4\n'}
+[0.600483] (-) TimerEvent: {}
+[0.628496] (sim_drone) StdoutLine: {'line': b"-- Checking for module 'uuid'\n"}
+[0.644629] (sim_drone) StdoutLine: {'line': b'--   Found uuid, version 2.37.2\n'}
+[0.684895] (sim_drone) StdoutLine: {'line': b'-- Looking for ignition-msgs5 -- found version 5.8.1\n'}
+[0.685571] (sim_drone) StdoutLine: {'line': b'-- Searching for dependencies of ignition-msgs5\n'}
+[0.700666] (-) TimerEvent: {}
+[0.704949] (sim_drone) StdoutLine: {'line': b'-- Looking for ignition-math6 -- found version 6.15.1\n'}
+[0.708573] (sim_drone) StdoutLine: {'line': b"-- Checking for module 'tinyxml2'\n"}
+[0.724758] (sim_drone) StdoutLine: {'line': b'--   Found tinyxml2, version 9.0.0\n'}
+[0.766555] (sim_drone) StdoutLine: {'line': b'-- Looking for ignition-msgs5 -- found version 5.8.1\n'}
+[0.767041] (sim_drone) StdoutLine: {'line': b'-- Looking for ignition-common3 -- found version 3.14.0\n'}
+[0.767550] (sim_drone) StdoutLine: {'line': b'-- Searching for dependencies of ignition-common3\n'}
+[0.767772] (sim_drone) StdoutLine: {'line': b'-- Looking for dlfcn.h - found\n'}
+[0.767921] (sim_drone) StdoutLine: {'line': b'-- Looking for libdl - found\n'}
+[0.783023] (sim_drone) StdoutLine: {'line': b'-- Searching for <ignition-common3> component [graphics]\n'}
+[0.783470] (sim_drone) StdoutLine: {'line': b'-- Looking for ignition-common3-graphics -- found version 3.14.0\n'}
+[0.784073] (sim_drone) StdoutLine: {'line': b'-- Searching for dependencies of ignition-common3-graphics\n'}
+[0.784441] (sim_drone) StdoutLine: {'line': b'-- Looking for ignition-math6 -- found version 6.15.1\n'}
+[0.786214] (sim_drone) StdoutLine: {'line': b'-- Looking for ignition-fuel_tools4 -- found version 4.4.0\n'}
+[0.787116] (sim_drone) StdoutLine: {'line': b'-- Searching for dependencies of ignition-fuel_tools4\n'}
+[0.800761] (-) TimerEvent: {}
+[0.828562] (sim_drone) StdoutLine: {'line': b"-- Checking for module 'jsoncpp'\n"}
+[0.844346] (sim_drone) StdoutLine: {'line': b'--   Found jsoncpp, version 1.9.5\n'}
+[0.890072] (sim_drone) StdoutLine: {'line': b"-- Checking for module 'libzip'\n"}
+[0.900882] (-) TimerEvent: {}
+[0.904739] (sim_drone) StdoutLine: {'line': b'--   Found libzip, version 1.7.3\n'}
+[0.946831] (sim_drone) StdoutLine: {'line': b'-- Looking for ignition-common3 -- found version 3.14.0\n'}
+[0.947328] (sim_drone) StdoutLine: {'line': b'-- Looking for ignition-math6 -- found version 6.15.1\n'}
+[0.947821] (sim_drone) StdoutLine: {'line': b'-- Looking for ignition-msgs5 -- found version 5.8.1\n'}
+[0.950143] (sim_drone) StdoutLine: {'line': b'-- Gazebo version: 11.10\n'}
+[0.951844] (sim_drone) StdoutLine: {'line': b'-- Found sensor_msgs: 4.2.4 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[1.001090] (-) TimerEvent: {}
+[1.012348] (sim_drone) StderrLine: {'line': b"Error parsing '/home/naor/Desktop/naor/study/Thesis/src/sim_drone/package.xml':\n"}
+[1.045394] (sim_drone) StderrLine: {'line': b'Traceback (most recent call last):\n'}
+[1.045591] (sim_drone) StderrLine: {'line': b'  File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 150, in <module>\n'}
+[1.045700] (sim_drone) StderrLine: {'line': b'    main()\n'}
+[1.045777] (sim_drone) StderrLine: {'line': b'  File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 53, in main\n'}
+[1.045854] (sim_drone) StderrLine: {'line': b'    raise e\n'}
+[1.045925] (sim_drone) StderrLine: {'line': b'  File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 49, in main\n'}
+[1.046120] (sim_drone) StderrLine: {'line': b'    package = parse_package_string(\n'}
+[1.046204] (sim_drone) StderrLine: {'line': b'  File "/usr/lib/python3/dist-packages/catkin_pkg/package.py", line 786, in parse_package_string\n'}
+[1.046280] (sim_drone) StderrLine: {'line': b"    raise InvalidPackage('Error(s):%s' % (''.join(['\\n- %s' % e for e in errors])), filename)\n"}
+[1.046352] (sim_drone) StderrLine: {'line': b"catkin_pkg.package.InvalidPackage: Error(s) in package '/home/naor/Desktop/naor/study/Thesis/src/sim_drone/package.xml':\n"}
+[1.046423] (sim_drone) StderrLine: {'line': b'Error(s):\n'}
+[1.046493] (sim_drone) StderrLine: {'line': b"- The generic dependency on 'gazebo_ros2_control' is redundant with: build_depend, build_export_depend, exec_depend\n"}
+[1.054779] (sim_drone) StderrLine: {'line': b'\x1b[31mCMake Error at /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:95 (message):\n'}
+[1.054951] (sim_drone) StderrLine: {'line': b'  execute_process(/usr/bin/python3\n'}
+[1.055029] (sim_drone) StderrLine: {'line': b'  /opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py\n'}
+[1.055104] (sim_drone) StderrLine: {'line': b'  /home/naor/Desktop/naor/study/Thesis/src/sim_drone/package.xml\n'}
+[1.055172] (sim_drone) StderrLine: {'line': b'  /home/naor/Desktop/naor/study/Thesis/build/sim_drone/ament_cmake_core/package.cmake)\n'}
+[1.055242] (sim_drone) StderrLine: {'line': b'  returned error code 1\n'}
+[1.055312] (sim_drone) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.055382] (sim_drone) StderrLine: {'line': b'  /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:49 (_ament_package_xml)\n'}
+[1.055487] (sim_drone) StderrLine: {'line': b'  /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package.cmake:63 (ament_package_xml)\n'}
+[1.055553] (sim_drone) StderrLine: {'line': b'  CMakeLists.txt:24 (ament_package)\n'}
+[1.055639] (sim_drone) StderrLine: {'line': b'\n'}
+[1.055704] (sim_drone) StderrLine: {'line': b'\x1b[0m\n'}
+[1.055769] (sim_drone) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[1.055842] (sim_drone) StdoutLine: {'line': b'See also "/home/naor/Desktop/naor/study/Thesis/build/sim_drone/CMakeFiles/CMakeOutput.log".\n'}
+[1.062711] (sim_drone) StderrLine: {'line': b'gmake: *** [Makefile:226: cmake_check_build_system] Error 1\n'}
+[1.064269] (sim_drone) CommandEnded: {'returncode': 2}
+[1.064612] (sim_drone) JobEnded: {'identifier': 'sim_drone', 'rc': 2}
+[1.074761] (-) EventReactorShutdown: {}

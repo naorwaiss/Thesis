@@ -1,0 +1,2 @@
+Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/sim_drone': /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/sim_drone -- -j16 -l16
+Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/sim_drone' returned '2': /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/sim_drone -- -j16 -l16

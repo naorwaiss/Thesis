@@ -1,0 +1,99 @@
+[0.007s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/sim_drone': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/sim_drone -- -j16 -l16
+[0.030s] -- Found rclcpp: 16.0.11 (/opt/ros/humble/share/rclcpp/cmake)
+[0.144s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.146s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.150s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.155s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.163s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.184s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.185s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.272s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.309s] -- Found gazebo_ros: 3.7.0 (/opt/ros/humble/share/gazebo_ros/cmake)
+[0.340s] -- Found DART: /usr/include (Required is at least version "6.6") found components: dart 
+[0.362s] -- Found Protobuf: /usr/lib/x86_64-linux-gnu/libprotobuf.so (found version "3.12.4") 
+[0.363s] -- Looking for ignition-math6 -- found version 6.15.1
+[0.367s] -- Searching for dependencies of ignition-math6
+[0.368s] -- Looking for OGRE...
+[0.374s] -- Found Ogre Ghadamon (1.9.0)
+[0.375s] -- Found OGRE: optimized;/usr/lib/x86_64-linux-gnu/libOgreMain.so;debug;/usr/lib/x86_64-linux-gnu/libOgreMain.so
+[0.388s] -- Looking for OGRE_Paging...
+[0.388s] -- Found OGRE_Paging: optimized;/usr/lib/x86_64-linux-gnu/libOgrePaging.so;debug;/usr/lib/x86_64-linux-gnu/libOgrePaging.so
+[0.388s] -- Looking for OGRE_Terrain...
+[0.388s] -- Found OGRE_Terrain: optimized;/usr/lib/x86_64-linux-gnu/libOgreTerrain.so;debug;/usr/lib/x86_64-linux-gnu/libOgreTerrain.so
+[0.388s] -- Looking for OGRE_Property...
+[0.388s] -- Found OGRE_Property: optimized;/usr/lib/x86_64-linux-gnu/libOgreProperty.so;debug;/usr/lib/x86_64-linux-gnu/libOgreProperty.so
+[0.389s] -- Looking for OGRE_RTShaderSystem...
+[0.389s] -- Found OGRE_RTShaderSystem: optimized;/usr/lib/x86_64-linux-gnu/libOgreRTShaderSystem.so;debug;/usr/lib/x86_64-linux-gnu/libOgreRTShaderSystem.so
+[0.389s] -- Looking for OGRE_Volume...
+[0.389s] -- Found OGRE_Volume: optimized;/usr/lib/x86_64-linux-gnu/libOgreVolume.so;debug;/usr/lib/x86_64-linux-gnu/libOgreVolume.so
+[0.389s] -- Looking for OGRE_Overlay...
+[0.389s] -- Found OGRE_Overlay: optimized;/usr/lib/x86_64-linux-gnu/libOgreOverlay.so;debug;/usr/lib/x86_64-linux-gnu/libOgreOverlay.so
+[0.471s] -- Looking for ignition-math6 -- found version 6.15.1
+[0.471s] -- Looking for ignition-transport8 -- found version 8.2.1
+[0.472s] -- Searching for dependencies of ignition-transport8
+[0.485s] -- Found Protobuf: /usr/lib/x86_64-linux-gnu/libprotobuf.so (found suitable version "3.12.4", minimum required is "3") 
+[0.493s] -- Config-file not installed for ZeroMQ -- checking for pkg-config
+[0.498s] -- Checking for module 'libzmq >= 4'
+[0.512s] --   Found libzmq , version 4.3.4
+[0.565s] -- Checking for module 'uuid'
+[0.581s] --   Found uuid, version 2.37.2
+[0.622s] -- Looking for ignition-msgs5 -- found version 5.8.1
+[0.622s] -- Searching for dependencies of ignition-msgs5
+[0.642s] -- Looking for ignition-math6 -- found version 6.15.1
+[0.647s] -- Checking for module 'tinyxml2'
+[0.663s] --   Found tinyxml2, version 9.0.0
+[0.702s] -- Looking for ignition-msgs5 -- found version 5.8.1
+[0.702s] -- Looking for ignition-common3 -- found version 3.14.0
+[0.703s] -- Searching for dependencies of ignition-common3
+[0.703s] -- Looking for dlfcn.h - found
+[0.703s] -- Looking for libdl - found
+[0.717s] -- Searching for <ignition-common3> component [graphics]
+[0.718s] -- Looking for ignition-common3-graphics -- found version 3.14.0
+[0.718s] -- Searching for dependencies of ignition-common3-graphics
+[0.719s] -- Looking for ignition-math6 -- found version 6.15.1
+[0.720s] -- Looking for ignition-fuel_tools4 -- found version 4.4.0
+[0.721s] -- Searching for dependencies of ignition-fuel_tools4
+[0.761s] -- Checking for module 'jsoncpp'
+[0.779s] --   Found jsoncpp, version 1.9.5
+[0.830s] -- Checking for module 'libzip'
+[0.847s] --   Found libzip, version 1.7.3
+[0.887s] -- Looking for ignition-common3 -- found version 3.14.0
+[0.888s] -- Looking for ignition-math6 -- found version 6.15.1
+[0.888s] -- Looking for ignition-msgs5 -- found version 5.8.1
+[0.890s] -- Gazebo version: 11.10
+[0.891s] -- Found sensor_msgs: 4.2.4 (/opt/ros/humble/share/sensor_msgs/cmake)
+[0.960s] -- Configuring done
+[0.962s] -- Generating done
+[0.964s] -- Build files have been written to: /home/naor/Desktop/naor/study/Thesis/build/sim_drone
+[0.992s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/sim_drone' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/sim_drone -- -j16 -l16
+[1.002s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/sim_drone': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/sim_drone
+[1.012s] -- Install configuration: ""
+[1.012s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/launch
+[1.012s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/launch/gazebo_bot.launch.py
+[1.013s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/launch/rviz_launcher.launch.py
+[1.013s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/config
+[1.013s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/config/motor.ros2_control.xacro
+[1.013s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/config/my_robot.urdf.xacro
+[1.013s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/config/controller_config.yaml
+[1.013s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/config/main.urdf.xacro
+[1.013s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/worlds
+[1.013s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/worlds/empty.world
+[1.013s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/meshes
+[1.013s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/meshes/WholeDrone.STL
+[1.013s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/meshes/PropellerForRos.STL
+[1.013s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/ament_index/resource_index/package_run_dependencies/sim_drone
+[1.014s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/ament_index/resource_index/parent_prefix_path/sim_drone
+[1.014s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/environment/ament_prefix_path.sh
+[1.014s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/environment/ament_prefix_path.dsv
+[1.014s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/environment/path.sh
+[1.014s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/environment/path.dsv
+[1.014s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/local_setup.bash
+[1.014s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/local_setup.sh
+[1.014s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/local_setup.zsh
+[1.014s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/local_setup.dsv
+[1.014s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/package.dsv
+[1.014s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/ament_index/resource_index/packages/sim_drone
+[1.014s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/cmake/sim_droneConfig.cmake
+[1.014s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/cmake/sim_droneConfig-version.cmake
+[1.014s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/sim_drone/share/sim_drone/package.xml
+[1.016s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/sim_drone' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/sim_drone

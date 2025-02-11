@@ -1,0 +1,1 @@
+rclcpp;std_msgs;geometry_msgs;sensor_msgs;gazebo_ros;gazebo_ros2_control;gazebo_plugins;joint_effort_controllers;imu_sensor_broadcaster;controller_manager;tf2_ros;joint_state_publisher;joint_state_publisher_gui;robot_state_publisher;rviz2;xacro;ros2_controllers;warehouse_ros_mongo

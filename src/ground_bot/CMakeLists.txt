@@ -33,7 +33,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 
 # Install Python scripts (if any are executable scripts)
 install(PROGRAMS
-  scripts/rtcom_teensy_ros.py  # Add your Python script here
+  scripts/ground_bot_rtcom.py  # Add your Python script here
   DESTINATION lib/${PROJECT_NAME}
 )
 

@@ -7,14 +7,12 @@ RTComSession *socketSession = nullptr;
 
 AlfredoCRSF crsf;
 
-
-float* linera_velo_data_raw = (float*)calloc(2, sizeof(float));
+float *linera_velo_data_raw = (float *)calloc(2, sizeof(float));
 uint8_t linera_velo_byte_raw[sizeof(float) * 2];
-float* omega_data_raw = (float*)calloc(2, sizeof(float));
+float *omega_data_raw = (float *)calloc(2, sizeof(float));
 uint8_t omega_byte_raw[sizeof(float) * 2];
-int* pwm_data = (int*)calloc(2, sizeof(int));
+int *pwm_data = (int *)calloc(2, sizeof(int));
 uint8_t pwm_byte[sizeof(int) * 2];
-
 
 ////// global varible//////
 uint16_t channels[NUM_CHANNELS];  // RC channel values
@@ -128,15 +126,9 @@ void emit_data() {
     pwm_data[1] = right_motor.pwm_value;
     memcpy(pwm_byte, pwm_data, sizeof(pwm_byte));
 
-
     socketSession->emitTyped(linera_velo_byte_raw, sizeof(linera_velo_byte_raw), LINEAR_VELO);
     socketSession->emitTyped(omega_byte_raw, sizeof(omega_byte_raw), OMEGA);
     socketSession->emitTyped(pwm_byte, sizeof(pwm_byte), PWM_LATER);
-
-
-
-
-    
 }
 
 void executed_ch() {

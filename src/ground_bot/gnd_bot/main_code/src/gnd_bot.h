@@ -17,9 +17,6 @@
 #define LINEAR_VELO "L"
 #define OMEGA "O"
 
-
-
-
 struct Motor_Data {
     const int pwmh_pin;
     const int dir_pin;
@@ -51,7 +48,7 @@ extern RTCom rtcomSocket;
 extern RTComSession *socketSession;
 
 void open_loop_pwm(uint16_t axis_data, Motor_Data &motor);
-void get_velocity_prediction(Motor_Data &motor, Encoder &encoder, double dt,uint16_t axis_data);
+void get_velocity_prediction(Motor_Data &motor, Encoder &encoder, double dt, uint16_t axis_data);
 int motor_pid(Motor_Data &motor, Encoder &encoder, double dt);
 void emit_data();
 void executed_ch();

@@ -1,0 +1,17 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    propeller_controllers:
+      type: joint_effort_controllers/JointGroupEffortController
+      joints:
+        - base_front_right_propeller_joint
+        - base_front_left_propeller_joint
+        - base_back_right_propeller_joint
+        - base_back_left_propeller_joint
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    imu_broadcaster:
+      type: imu_sensor_broadcaster/IMUSensorBroadcaster

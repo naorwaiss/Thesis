@@ -1,0 +1,1 @@
+controller_manager:gazebo_plugins:gazebo_ros:gazebo_ros2_control:geometry_msgs:imu_sensor_broadcaster:joint_effort_controllers:joint_state_publisher:joint_state_publisher_gui:rclcpp:robot_state_publisher:ros2_controllers:rviz2:sensor_msgs:std_msgs:tf2_ros:warehouse_ros_mongo:xacro
