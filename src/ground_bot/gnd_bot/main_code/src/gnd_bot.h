@@ -12,10 +12,12 @@
 #define crsfSerial Serial1  // Use Serial1 for the CRSF communication
 #define RADIOUS_MM 0.065
 #define PPR 100
+#define max_omga 20
+#define max_linear 20 * RADIOUS_MM
 
-#define PWM_LATER "P"
-#define LINEAR_VELO "L"
-#define OMEGA "O"
+#define PWM_LATER 'P'
+#define LINEAR_VELO 'L'
+#define OMEGA 'O'
 
 struct Motor_Data {
     const int pwmh_pin;
@@ -25,10 +27,16 @@ struct Motor_Data {
     const int encoderA_pin;
     const int encoderB_pin;
     long encoder_read;
-    float velcoity;
+    float omega_dot;
     float xk_1 = 0, vk_1 = 0, xk = 0, vk = 0, rk = 0;
     float a = 0.85, b = 0.005;
     float wheel_linera_speed;
+    float prev_error = 0.0;
+    float integral = 0.0;
+    float pid_out = 0.0;
+    float Kp;
+    float Ki;
+    float Kd;
 };
 
 #ifndef GND_BOT_H
@@ -48,8 +56,8 @@ extern RTCom rtcomSocket;
 extern RTComSession *socketSession;
 
 void open_loop_pwm(uint16_t axis_data, Motor_Data &motor);
-void get_velocity_prediction(Motor_Data &motor, Encoder &encoder, double dt, uint16_t axis_data);
-int motor_pid(Motor_Data &motor, Encoder &encoder, double dt);
+void get_velocity_prediction(Motor_Data &motor, Encoder &encoder, double dt);
+int motor_pid_omega(double dt, uint16_t axis_data);
 void emit_data();
 void executed_ch();
 void onConnection(RTComSession &session);

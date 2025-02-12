@@ -33,19 +33,29 @@ void onConnection(RTComSession& session) {
 
     });
 
-    // session.onReceive([](const uint8_t* bytes, size_t size) {
-        // char data[size + 1] = {0};
-        // memcpy(data, bytes, size);
-        // Serial.println(data);
-    // });
+    session.onReceive([](const uint8_t* bytes, size_t size) {
+        char data[size + 1] = {0};
+        memcpy(data, bytes, size);
+        Serial.println(data);
+    });
 }
 
+
+
+
 void init_com() {
+    Serial.print("what the problem");
     ELRS_REMOTE::rtcomSocket.begin();
-    ELRS_REMOTE::rtcomSocket.onConnection(onConnection);
+    ELRS_REMOTE::rtcomSocket.onConnection(ELRS_REMOTE::onConnection);
+    Serial.print("what the problem2");
+
 }
 
 void init_elers() {
+    rtcomSocket.process();
+    if (rtcomSocket.isSessionConnected(socketSession)) {
+        Serial.println("connect");
+    };
 }
 
 // CRSF Implementation - making the packet

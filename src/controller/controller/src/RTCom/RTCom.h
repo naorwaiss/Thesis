@@ -14,8 +14,6 @@
 #include "core/RTComSession.h"
 #include "core/RTComDebug.h"
 
-// Library version
-#define RTCOM_VERSION "1.2.2"
 
 #define RTCOM_UDP_TX_PACKET_MAX_SIZE 4096  // 4 KB buffer size
 #define RTCOM_UDP_PACKETS_QUEUE_SIZE 100   // 100 packets on queue before reading them

@@ -3,15 +3,22 @@ controller_manager:
     update_rate: 100  # Hz
 
     propeller_controllers:
-      type: joint_effort_controllers/JointGroupEffortController
+      type: effort_controllers/JointGroupEffortController
       joints:
         - base_front_right_propeller_joint
         - base_front_left_propeller_joint
         - base_back_right_propeller_joint
         - base_back_left_propeller_joint
+      command_interfaces:
+        - effort
+      state_interfaces:
+        - position
+        - velocity
+        - effort
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
     imu_broadcaster:
       type: imu_sensor_broadcaster/IMUSensorBroadcaster
+      sensor_name: imu_sensor

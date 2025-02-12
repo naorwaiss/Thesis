@@ -2,10 +2,6 @@
 #ifndef RTCOM_DEBUG_H
 #define RTCOM_DEBUG_H
 
-//! #define RTCOM_DEBUG_MODE
-
-// Enable debugging by defining RTCOM_DEBUG_MODE before including this header.
-// For example: #define RTCOM_DEBUG_MODE in your main file or build configuration
 #ifdef RTCOM_DEBUG_MODE
   // If debug mode is enabled, define RTCOM_DEBUG_PRINT to print formatted messages.
   #define RTCOM_DEBUG_PRINT(msg, ...) Serial.printf("[RTCom] " msg, ##__VA_ARGS__)

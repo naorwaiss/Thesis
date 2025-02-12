@@ -27,6 +27,10 @@ Motor_Data right_motor = {
     .dir_pin = 2,
     .encoderA_pin = 7,
     .encoderB_pin = 6,
+    .Kp = 2.0,
+    .Ki = 0.0,
+    .Kd = 0.0
+
 };
 
 Motor_Data left_motor = {
@@ -34,7 +38,9 @@ Motor_Data left_motor = {
     .dir_pin = 4,
     .encoderA_pin = 8,
     .encoderB_pin = 9,
-};
+    .Kp = 2.0,
+    .Ki = 0.0,
+    .Kd = 0.0};
 
 Encoder Enc_right(right_motor.encoderA_pin, right_motor.encoderB_pin);  // Channel A -> pin 7, Channel B -> pin 8
 Encoder Enc_left(left_motor.encoderA_pin, left_motor.encoderB_pin);
@@ -63,14 +69,10 @@ void main() {
     open_loop_pwm(channels[1], left_motor);
     curent_timer = micros();
     delta_t = (curent_timer - global_time) / 1000000.0f;
-
     get_velocity_prediction(right_motor, Enc_right, delta_t);
     get_velocity_prediction(left_motor, Enc_left, delta_t);
-
     Serial.println(delta_t);
-
     global_time = micros();
-
     rtcomSocket.process();
     if (rtcomSocket.isSessionConnected(socketSession)) {
         Serial.print("sending the data here");
@@ -109,8 +111,20 @@ void get_velocity_prediction(Motor_Data &motor, Encoder &encoder, double dt) {
     motor.wheel_linera_speed = motor.vk_1 * RADIOUS_MM;
 }
 
-int motor_pid(Motor_Data &motor, Encoder &encoder, double dt, uint16_t axis_data) {
+int motor_pid_omega(Motor_Data &motor, Encoder &encoder, double dt, uint16_t axis_data) {
+    /// motor pid that work on the omega (not finish yet)
+    // need to check the max speed from the encoder
+    int pwm_out = 0;
+    float goal = 0.0, error = 0.0, derivative = 0.0;
+
+    goal = map(axis_data, 1000, 2000, 0, max_omga);  /// need to fix it with the direction
+
     get_velocity_prediction(motor, encoder, dt);
+    error = goal - motor.omega_dot;
+    motor.integral += error * dt;
+    derivative = (error - motor.prev_error) / dt;  // Compute derivative
+    motor.pid_out = (motor.Kp * error) + (motor.Ki * motor.integral) + (motor.Kd + derivative);
+    motor.prev_error = error;
 }
 
 void emit_data() {
@@ -118,8 +132,8 @@ void emit_data() {
     linera_velo_data_raw[1] = right_motor.wheel_linera_speed;
     memcpy(linera_velo_byte_raw, linera_velo_data_raw, sizeof(linera_velo_byte_raw));
 
-    omega_data_raw[0] = left_motor.velcoity;
-    omega_data_raw[1] = right_motor.velcoity;
+    omega_data_raw[0] = left_motor.omega_dot;
+    omega_data_raw[1] = right_motor.omega_dot;
     memcpy(omega_byte_raw, omega_data_raw, sizeof(omega_byte_raw));
 
     pwm_data[0] = left_motor.pwm_value;

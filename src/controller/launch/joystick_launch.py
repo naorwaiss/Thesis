@@ -3,60 +3,76 @@ from evdev import InputDevice, list_devices
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
-def find_all_joysticks():
-    """Find all joysticks using event devices."""
+# Define the specific joysticks to detect by their exact names and topic names
+VALID_JOYSTICKS = {
+    "Logitech Extreme 3D Pro": "joy_logitech_extreme_3d_pro",
+    "EdgeTX RadioMaster Pocket Joystick": "joy_edgetx_radiomaster_pocket",
+    "Logitech Gamepad F710": "joy_logitech_gamepad_f710",
+}
+
+def find_unique_joysticks():
+    """Find and register each specific joystick type once, ensuring no duplicate assignment."""
     devices = [InputDevice(dev) for dev in list_devices()]
-    print("[DEBUG] Detected input devices:")
-    joysticks = {}
-    
+    detected_joysticks = {}  # Store detected joysticks with their paths
+    used_physical_devices = set()  # Track physical device paths that have been assigned
+
     for dev in devices:
-        print(f"  - Path: {dev.path}, Name: {dev.name}")
-        # Look for joystick-like devices
-        if any(keyword in dev.name.lower() for keyword in ["joystick", "gamepad", "extreme"]):
-            # Use the event device directly
-            joysticks[dev.path] = dev.name
-            print(f"[DEBUG] Adding joystick: {dev.name} at {dev.path}")
-    
-    return joysticks
+        print(f"[DEBUG] Checking device: {dev.name} ({dev.path})")
+        
+        # Get unique physical identifier (combination of vendor ID and product ID)
+        physical_id = f"{dev.info.vendor:04x}:{dev.info.product:04x}"
+        
+        # Ensure exact match for joystick name and not already used
+        if dev.name.strip() in VALID_JOYSTICKS and physical_id not in used_physical_devices:
+            topic_name = VALID_JOYSTICKS[dev.name.strip()]
+            
+            # Store both the device path and mark this physical device as used
+            detected_joysticks[topic_name] = {
+                'path': dev.path,
+                'physical_id': physical_id,
+                'name': dev.name.strip()
+            }
+            used_physical_devices.add(physical_id)
+            print(f"[INFO] Matched {dev.name} → {topic_name} at {dev.path} (ID: {physical_id})")
+        else:
+            if physical_id in used_physical_devices:
+                print(f"[INFO] Skipping duplicate device: {dev.name} ({physical_id})")
+
+    return detected_joysticks
 
 def generate_launch_description():
-    """Generate a launch description that creates a joy_node for each detected joystick."""
-    # Detect all connected joysticks
-    joysticks = find_all_joysticks()
-    
+    """Generate a launch description for only detected joysticks."""
+    joysticks = find_unique_joysticks()
+
     if not joysticks:
-        print("[WARNING] No joysticks detected. Please connect a joystick.")
-    else:
-        print("[INFO] Detected Joysticks:")
-        for path, name in joysticks.items():
-            print(f"  - {name} ({path})")
-    
-    # Create a joy_node for each detected joystick
+        print("[WARNING] No valid joysticks detected. No joy_node will be launched.")
+        return LaunchDescription([])
+
     joy_nodes = []
-    for path, name in joysticks.items():
-        # Generate a unique topic name and node name based on device name
-        base_name = name.replace(" ", "_").replace("-", "_").lower()
-        device_id = os.path.basename(path).replace("event", "")
-        topic_name = f"{base_name}_{device_id}"
-        node_name = f"{topic_name}_node"
-        
-        print(f"[INFO] Creating joy_node for {name} on topic /{topic_name}")
-        
-        # Create a joy_node with appropriate parameters
+    for topic_name, device_info in joysticks.items():
+        node_name = topic_name.replace("/", "")  # ROS node names cannot have '/'
+
+        print(f"[INFO] Creating joy_node for {device_info['name']} on topic /{topic_name}")
+        print(f"       Device path: {device_info['path']}")
+        print(f"       Physical ID: {device_info['physical_id']}")
+
         joy_nodes.append(
             Node(
                 package='joy',
                 executable='joy_node',
                 name=node_name,
-                remappings=[('/joy', f"/{topic_name}")],
+                namespace=node_name,
+                remappings=[('/joy', f"/{topic_name}/joy")],
                 parameters=[{
-                    'dev': path,
+                    'dev': device_info['path'],
                     'deadzone': 0.05,
                     'autorepeat_rate': 20.0,
+                    'use_sim_time': False,
                 }],
+                output='screen'
             )
         )
-    
+
     return LaunchDescription(joy_nodes)
 
 if __name__ == '__main__':

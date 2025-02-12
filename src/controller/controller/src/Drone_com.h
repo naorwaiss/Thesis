@@ -1,3 +1,6 @@
+#ifndef ELRS_REMOTE_H
+#define ELRS_REMOTE_H
+
 #include "RTCom/RTCom.h"
 
 #include <Arduino.h>
@@ -27,8 +30,7 @@
 
 ////////////////////////////////////////////////////////////////////
 
-#ifndef ELRS_REMOTE_H
-#define ELRS_REMOTE_H
+
 
 constexpr uint8_t SOCKET_IP_ADDRESS[] = {192, 168, 1, 199};
 constexpr uint16_t SOCKET_PORT_NUMBER = 8888;
@@ -42,6 +44,7 @@ extern RTComSession *socketSession;
 
 void onConnection(RTComSession &session);
 void init_com();
+void init_elers();
 uint8_t crsf_crc8(const uint8_t *ptr, uint8_t len);
 void crsfPrepareDataPacket(uint8_t packet[], int16_t channels[]);
 void crsfPrepareCmdPacket(uint8_t packetCmd[], uint8_t command, uint8_t value);
