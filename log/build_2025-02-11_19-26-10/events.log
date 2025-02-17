@@ -1,9 +1,0 @@
-[0.000000] (-) TimerEvent: {}
-[0.000391] (-) JobUnselected: {'identifier': 'camera_nav'}
-[0.000515] (-) JobUnselected: {'identifier': 'controller'}
-[0.000544] (-) JobUnselected: {'identifier': 'drone_c'}
-[0.000566] (-) JobUnselected: {'identifier': 'drone_c'}
-[0.000588] (-) JobUnselected: {'identifier': 'pointcloud_to_laserscan'}
-[0.000609] (-) JobUnselected: {'identifier': 'roller'}
-[0.000630] (-) JobUnselected: {'identifier': 'sim_drone'}
-[0.000735] (-) EventReactorShutdown: {}

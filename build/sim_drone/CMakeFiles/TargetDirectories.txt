@@ -1,9 +1,0 @@
-/home/naor/Desktop/naor/study/Thesis/build/sim_drone/CMakeFiles/uninstall.dir
-/home/naor/Desktop/naor/study/Thesis/build/sim_drone/CMakeFiles/sim_drone_uninstall.dir
-/home/naor/Desktop/naor/study/Thesis/build/sim_drone/CMakeFiles/test.dir
-/home/naor/Desktop/naor/study/Thesis/build/sim_drone/CMakeFiles/edit_cache.dir
-/home/naor/Desktop/naor/study/Thesis/build/sim_drone/CMakeFiles/rebuild_cache.dir
-/home/naor/Desktop/naor/study/Thesis/build/sim_drone/CMakeFiles/list_install_components.dir
-/home/naor/Desktop/naor/study/Thesis/build/sim_drone/CMakeFiles/install.dir
-/home/naor/Desktop/naor/study/Thesis/build/sim_drone/CMakeFiles/install/local.dir
-/home/naor/Desktop/naor/study/Thesis/build/sim_drone/CMakeFiles/install/strip.dir
