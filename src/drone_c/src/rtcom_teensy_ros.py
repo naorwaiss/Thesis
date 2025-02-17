@@ -6,6 +6,7 @@ from std_msgs.msg import Float32MultiArray, Int32MultiArray
 from geometry_msgs.msg import Quaternion
 from drone_c.msg import Pid, Motors, EulerAngles, ImuFilter
 from rtcom import *
+import time 
 
 FLOAT_SIZE = struct.calcsize('f')
 INT_SIZE = struct.calcsize('i')
@@ -14,8 +15,10 @@ class UDPSocketClient(Node):
     def __init__(self):
         super().__init__('udp_socket_client')
         self.client = RTComClient()
+        time.sleep(0.05)  # Add small delay before connection
         self.client.connect(address=('192.168.1.199', 8888), reconnect=True, block=True)
 
+        
         # Define ROS 2 Publishers
         self.mag_pub = self.create_publisher(MagneticField, 'magnetometer_data', 10)
         self.quaternion_pub = self.create_publisher(Quaternion, 'quaternion_data', 10)
@@ -55,6 +58,8 @@ class UDPSocketClient(Node):
         mag_msg.magnetic_field.y = messages_struct_float[1]
         mag_msg.magnetic_field.z = messages_struct_float[2]
         self.mag_pub.publish(mag_msg)
+        
+
 
     def handle_quaternion(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
@@ -64,6 +69,7 @@ class UDPSocketClient(Node):
         quaternion_msg.z = messages_struct_float[2]
         quaternion_msg.w = messages_struct_float[3]
         self.quaternion_pub.publish(quaternion_msg)
+        
 
     def handle_euler(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
@@ -72,6 +78,7 @@ class UDPSocketClient(Node):
         euler_msg.roll = messages_struct_float[1]
         euler_msg.yaw = messages_struct_float[2]
         self.euler_pub.publish(euler_msg)
+        
 
     def handle_imu(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
@@ -83,24 +90,28 @@ class UDPSocketClient(Node):
         imu_msg.angular_velocity.y = messages_struct_float[4]
         imu_msg.angular_velocity.z = messages_struct_float[5]
         self.imu_pub_pololu.publish(imu_msg)
+        
 
     def handle_rc(self, message: bytes):
         message_struct_int = struct.unpack("i" * (len(message) // INT_SIZE), message)
         rc_msg = Int32MultiArray()
         rc_msg.data = message_struct_int[:16]
         self.rc_pub.publish(rc_msg)
+        
 
     def handle_desire_rate(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
         desire_rate_msg = Float32MultiArray()
         desire_rate_msg.data = messages_struct_float[:3]
         self.desire_rate_pub.publish(desire_rate_msg)
+        
 
     def handle_desire_stab(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
         desire_stab_msg = Float32MultiArray()
         desire_stab_msg.data = messages_struct_float[:3]
         self.desire_stab_pub.publish(desire_stab_msg)
+        
 
     def handle_motor_pwm(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
@@ -110,12 +121,14 @@ class UDPSocketClient(Node):
         motor_pwm_msg.back_left = messages_struct_float[2]
         motor_pwm_msg.front_left = messages_struct_float[3]
         self.motor_pwm_pub.publish(motor_pwm_msg)
+        
 
     def handle_estimated_rate(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
         estimated_rate_msg = Float32MultiArray()
         estimated_rate_msg.data = messages_struct_float[:3]
         self.estimated_rate_pub.publish(estimated_rate_msg)
+        
 
     def handle_pid_stab(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
@@ -133,6 +146,7 @@ class UDPSocketClient(Node):
         pid_msg.sum_roll = messages_struct_float[10]
         pid_msg.sum_yaw = messages_struct_float[11]
         self.PID_stab_pub_modifide.publish(pid_msg)
+        
 
     def handle_pid_rate(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
@@ -150,6 +164,7 @@ class UDPSocketClient(Node):
         pid_msg.sum_roll = messages_struct_float[10]
         pid_msg.sum_yaw = messages_struct_float[11]
         self.PID_rate_pub_modifide.publish(pid_msg)
+        
     
     def handel_imu_filter(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
@@ -167,6 +182,7 @@ class UDPSocketClient(Node):
         imu_filter_msg.mag_lpf_y = messages_struct_float[10]
         imu_filter_msg.mag_lpf_z = messages_struct_float[11]
         self.Imu_Filter_Pub.publish(imu_filter_msg)
+        
 
 
 

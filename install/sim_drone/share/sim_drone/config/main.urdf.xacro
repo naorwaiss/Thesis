@@ -20,6 +20,7 @@
     <gazebo>
         <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
             <parameters>$(find sim_drone)/config/controller_config.yaml</parameters>
+              <controlPeriod>0.01</controlPeriod>
             <robot_sim_type>gazebo_ros2_control/GazeboSystem</robot_sim_type>
         </plugin>
     </gazebo>

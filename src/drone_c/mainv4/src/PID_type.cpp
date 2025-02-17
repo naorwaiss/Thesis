@@ -25,8 +25,8 @@ void initializePIDParams(float RrollPID[3] = nullptr, float RpitchPID[3] = nullp
     ////////// Default parameter values//////////
     //Acro mode control param 
 
-    const float defaultRrollPID[3] = {0.8f, 0.0f, 0.0f};
-    const float defaultRpitchPID[3] = {0.8f, 0.0f, 0.0f};
+    const float defaultRrollPID[3] = {0.8f, 0.001f, 0.0f};
+    const float defaultRpitchPID[3] = {0.8f, 0.001f, 0.0f};
     const float defaultRyawPID[3] = {2.0f, 0.0f, 0.01f};
     const float defaultImax_rate[2] = {100.0f, 100.0f};
 

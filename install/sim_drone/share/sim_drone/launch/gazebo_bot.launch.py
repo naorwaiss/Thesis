@@ -206,7 +206,11 @@ def generate_launch_description():
             {"robot_description": robot_description},
             str(controller_config)
         ],
-        output="screen"
+        output="both",
+        emulate_tty=True,
+        prefix=['xterm -e gdb -ex run --args']  # or prefix=['gdbserver localhost:3000']
+
+
     )
 
     # Define controller spawner nodes
