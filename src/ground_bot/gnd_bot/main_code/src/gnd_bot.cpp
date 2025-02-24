@@ -4,7 +4,7 @@ namespace G_BOT {
 
 RTCom rtcomSocket(SOCKET_ADDRESS, SOCKET_CONFIG);
 RTComSession *socketSession = nullptr;
-
+gnd_bot myBot;
 AlfredoCRSF crsf;
 
 float *linera_velo_data_raw = (float *)calloc(2, sizeof(float));
@@ -13,6 +13,8 @@ float *omega_data_raw = (float *)calloc(2, sizeof(float));
 uint8_t omega_byte_raw[sizeof(float) * 2];
 int *pwm_data = (int *)calloc(2, sizeof(int));
 uint8_t pwm_byte[sizeof(int) * 2];
+float *twist_data = (float *)calloc(2, sizeof(float));
+uint8_t twist_byte_raw[sizeof(float) * 2];
 
 ////// global varible//////
 uint16_t channels[NUM_CHANNELS];  // RC channel values
@@ -72,6 +74,7 @@ void main() {
     get_velocity_prediction(right_motor, Enc_right, delta_t);
     get_velocity_prediction(left_motor, Enc_left, delta_t);
     Serial.println(delta_t);
+    get_twist_msg();
     global_time = micros();
     rtcomSocket.process();
     if (rtcomSocket.isSessionConnected(socketSession)) {
@@ -80,6 +83,11 @@ void main() {
     };
 
     delay(10);
+}
+
+void get_twist_msg() {
+    myBot.twist_linear = (left_motor.wheel_linera_speed + right_motor.wheel_linera_speed) / 2;
+    myBot.twist_angular = (right_motor.wheel_linera_speed - left_motor.wheel_linera_speed) / DISTANCE_BETWEEN_WHEELS;
 }
 
 void open_loop_pwm(uint16_t axis_data, Motor_Data &motor) {
@@ -140,9 +148,14 @@ void emit_data() {
     pwm_data[1] = right_motor.pwm_value;
     memcpy(pwm_byte, pwm_data, sizeof(pwm_byte));
 
+    twist_data[0] = myBot.twist_linear;
+    twist_data[1] = myBot.twist_angular;
+    memcpy(twist_byte_raw, twist_data, sizeof(twist_byte_raw));
+
     socketSession->emitTyped(linera_velo_byte_raw, sizeof(linera_velo_byte_raw), LINEAR_VELO);
     socketSession->emitTyped(omega_byte_raw, sizeof(omega_byte_raw), OMEGA);
     socketSession->emitTyped(pwm_byte, sizeof(pwm_byte), PWM_LATER);
+    socketSession->emitTyped(twist_byte_raw, sizeof(twist_byte_raw), TWIST);
 }
 
 void executed_ch() {

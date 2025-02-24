@@ -22,6 +22,8 @@
     2) send the data about the gnd_bot  
     3) kynamatics and etc - > need to ask shay 
     4) connect the single eye lidar -> need to rhink how mach single eye lidar i need 
+    5) need to add some quart ??
+    6) need to add and check the rtcom here 
 
 
 

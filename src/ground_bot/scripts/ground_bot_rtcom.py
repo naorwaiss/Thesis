@@ -3,7 +3,8 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Imu, MagneticField
 from std_msgs.msg import Float32MultiArray, Int32MultiArray
-from geometry_msgs.msg import Quaternion
+from geometry_msgs.msg import Quaternion, Twist  # Import Twist message
+
 from ground_bot.msg import Pwm,MotorData
 from rtcom import *
 
@@ -18,14 +19,17 @@ class UDPSocketClient(Node):
 
         # Define ROS 2 Publishers
         self.linear_dot_pub = self.create_publisher(MotorData, 'linear_velo', 10)
-        self.omega_dot_pwm = self.create_publisher(MotorData, 'imu_filter', 10)
+        self.wheel_rotation_speed_pwm = self.create_publisher(MotorData, 'imu_filter', 10)
         self.motor_pwm_pub = self.create_publisher(Pwm, 'gnd_bot_pwm', 10)
+        self.odom_twist_pub = self.create_publisher(Twist, 'odom_twist', 10)
+
 
 
         # Register callbacks for each message type using RTComClient's `on` method
         self.client.on('L', self.linear_dot)
-        self.client.on('O', self.omega_dot)
+        self.client.on('O', self.wheel_rotation_speed)
         self.client.on('P', self.motor_pwm)
+        self.client.on('T', self.twist_msg)
 
 
     def linear_dot(self, message: bytes):
@@ -45,12 +49,19 @@ class UDPSocketClient(Node):
         self.motor_pwm_pub.publish(pwm_data)
 
   
-    def omega_dot(self, message: bytes):
+    def wheel_rotation_speed(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
         omega_speed = MotorData()
         omega_speed.left_motor = messages_struct_float[0]
         omega_speed.right_motor = messages_struct_float[1]
-        self.omega_dot_pwm.publish(omega_speed)
+        self.wheel_rotation_speed_pwm.publish(omega_speed)
+    
+    def twist_msg(self, message: bytes):
+        messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
+        twist = Twist()
+        twist.linear.x = messages_struct_float[0]
+        twist.angular.z = messages_struct_float[1]
+        self.odom_twist_pub.publish(twist)
 
 
 def main(args=None):
