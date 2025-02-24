@@ -28,6 +28,20 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   DEPENDENCIES std_msgs
 )
 
+
+install(
+  DIRECTORY urdf launch rviz meshes
+  DESTINATION share/${PROJECT_NAME}
+)
+
+install(
+  DIRECTORY launch config
+  DESTINATION share/${PROJECT_NAME}
+)
+
+
+
+
 # Install Python modules
 # ament_python_install_package(${PROJECT_NAME})
 
@@ -36,6 +50,9 @@ install(PROGRAMS
   scripts/ground_bot_rtcom.py  # Add your Python script here
   DESTINATION lib/${PROJECT_NAME}
 )
+
+
+
 
 # If building for testing
 if(BUILD_TESTING)
