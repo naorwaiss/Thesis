@@ -16,8 +16,8 @@
 // #define HIGH_BETA 0.2f
 // #define LOW_BETA 0.03f
 #define HIGH_BETA 0.1f
-#define LOW_BETA 0.02f
-#define DEFAULT_BETA 0.05f
+#define LOW_BETA 0.015f
+#define DEFAULT_BETA 0.04f
 
 // Filter Frequencies:
 #define ACC_LPF_FREQ 10.0f   // 10 Hz cutoff for accelerometer

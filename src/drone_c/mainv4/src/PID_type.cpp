@@ -25,16 +25,27 @@ void initializePIDParams(float RrollPID[3] = nullptr, float RpitchPID[3] = nullp
     ////////// Default parameter values//////////
     //Acro mode control param 
 
-    const float defaultRrollPID[3] = {0.8f, 0.001f, 0.0f};
-    const float defaultRpitchPID[3] = {0.8f, 0.001f, 0.0f};
+    const float defaultRrollPID[3] = {0.8f, 0.001f, 0.01f};
+    const float defaultRpitchPID[3] = {0.9f, 0.0f, 0.0f};
     const float defaultRyawPID[3] = {2.0f, 0.0f, 0.01f};
     const float defaultImax_rate[2] = {100.0f, 100.0f};
 
+
+/*
+                        rate mode value to save !!!!
+    const float defaultRrollPID[3] = {0.8f, 0.001f, 0.01f};
+    const float defaultRpitchPID[3] = {0.8f, 0.001f, 0.01f};
+    const float defaultRyawPID[3] = {2.0f, 0.0f, 0.01f};
+    const float defaultImax_rate[2] = {100.0f, 100.0f};
+
+*/
+
+
     //we dont toch the stablize 
     //stablize mode control param 
-    const float defaultSrollPID[3] = {4.0f, 0.0f, 0.0f};
-    const float defaultSpitchPID[3] = {4.0f, 0.0f, 0.0f};
-    const float defaultSyawPID[3] = {1.0f, 0.0f, 0.01f};
+    const float defaultSrollPID[3] = {5.0f, 0.0f, 0.0f};
+    const float defaultSpitchPID[3] = {5.0f, 0.0f, 0.0f};
+    const float defaultSyawPID[3] = {4.0f, 0.0f, 0.0f};
     const float defaultImax_stab[2] = {100.0f, 100.0f};
 
     // Assign default values if nullptr is passed
@@ -157,8 +168,8 @@ PID_out_t PID_stab(attitude_t des_angle, attitude_t angle, float DT) {
     stab_out.PID_ret = stab_out.P_term + stab_out.I_term + stab_out.D_term;
     
     stab_out = stab_out;
-    stab_out.P_term.pitch = -stab_out.P_term.pitch ;// add this 
-    stab_out.I_term.pitch = -stab_out.I_term.pitch ; // add this 
+    // stab_out.P_term.pitch = -stab_out.P_term.pitch ;// add this 
+    // stab_out.I_term.pitch = -stab_out.I_term.pitch ; // add this 
 
 
     return stab_out; // This output is the desired rate. now we can use the PID_rate function to get the motor input values

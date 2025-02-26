@@ -28,18 +28,17 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   DEPENDENCIES std_msgs
 )
 
-
-install(
-  DIRECTORY urdf launch rviz meshes
-  DESTINATION share/${PROJECT_NAME}
-)
-
-install(
-  DIRECTORY launch config
-  DESTINATION share/${PROJECT_NAME}
-)
+# install(
+#   DIRECTORY ground_bot/
+#   DESTINATION lib/${PROJECT_NAME}
+# )
 
 
+# install(
+#   DIRECTORY ground_bot
+#   DESTINATION lib/${PROJECT_NAME}
+#   USE_SOURCE_PERMISSIONS
+# )
 
 
 # Install Python modules
@@ -47,7 +46,7 @@ install(
 
 # Install Python scripts (if any are executable scripts)
 install(PROGRAMS
-  scripts/ground_bot_rtcom.py  # Add your Python script here
+  ground_bot/ground_bot_rtcom.py  # Add your Python script here
   DESTINATION lib/${PROJECT_NAME}
 )
 
