@@ -171,15 +171,18 @@ void loop() {
                                          PID_stab_out, PID_rate_out, controller_data);
 
     DRON_COM::send_data();
+
+    Serial.print("roll ");
+    Serial.println(estimated_attitude.roll);
+    Serial.print("pitch ");
+    Serial.println(estimated_attitude.pitch);
+
 }
 
 void Update_measurement() {
     // Read IMU data
     IMU.read();
     mag.read();
-    meas.acc.x = IMU.a.x * POL_ACC_SENS - meas.acc_bias.x;
-    meas.acc.y = IMU.a.y * POL_ACC_SENS - meas.acc_bias.y;
-    meas.acc.z = IMU.a.z * POL_ACC_SENS - meas.acc_bias.z;
     meas.acc.x = IMU.a.x * POL_ACC_SENS;
     meas.acc.y = IMU.a.y * POL_ACC_SENS;
     meas.acc.z = IMU.a.z * POL_ACC_SENS;
@@ -208,15 +211,15 @@ void Update_measurement() {
     meas.mag.x = mag.m.x * POL_MAG_SENS - meas.mag_bias.x;
     meas.mag.y = mag.m.y * POL_MAG_SENS - meas.mag_bias.y;
     meas.mag.z = mag.m.z * POL_MAG_SENS - meas.mag_bias.z;
-    if (abs(meas.mag.x < IMU_TRASHOLD)) {
-        meas.mag.x = 0;
-    }
-    if (abs(meas.mag.y < IMU_TRASHOLD)) {
-        meas.mag.y = 0;
-    }
-    if (abs(meas.mag.z < IMU_TRASHOLD)) {
-        meas.mag.z = 0;
-    }
+    // if (abs(meas.mag.x < IMU_TRASHOLD)) {
+    //     meas.mag.x = 0;
+    // }
+    // if (abs(meas.mag.y < IMU_TRASHOLD)) {
+    //     meas.mag.y = 0;
+    // }
+    // if (abs(meas.mag.z < IMU_TRASHOLD)) {
+    //     meas.mag.z = 0;
+    // }
 }
 
 void GyroMagCalibration() {

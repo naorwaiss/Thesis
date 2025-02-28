@@ -1,0 +1,8 @@
+msg/EulerAngles.idl
+msg/EulerAngles.msg
+msg/ImuFilter.idl
+msg/ImuFilter.msg
+msg/Motors.idl
+msg/Motors.msg
+msg/Pid.idl
+msg/Pid.msg

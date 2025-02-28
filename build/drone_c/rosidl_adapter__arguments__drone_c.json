@@ -1,0 +1,9 @@
+{
+  "package_name": "drone_c",
+  "non_idl_tuples": [
+    "/home/naor/Desktop/naor/study/Thesis/src/drone_c:msg/Pid.msg",
+    "/home/naor/Desktop/naor/study/Thesis/src/drone_c:msg/EulerAngles.msg",
+    "/home/naor/Desktop/naor/study/Thesis/src/drone_c:msg/Motors.msg",
+    "/home/naor/Desktop/naor/study/Thesis/src/drone_c:msg/ImuFilter.msg"
+  ]
+}

@@ -1,0 +1,15 @@
+LICENSE
+package.xml
+setup.cfg
+setup.py
+../../build/roller/roller.egg-info/PKG-INFO
+../../build/roller/roller.egg-info/SOURCES.txt
+../../build/roller/roller.egg-info/dependency_links.txt
+../../build/roller/roller.egg-info/requires.txt
+../../build/roller/roller.egg-info/top_level.txt
+../../build/roller/roller.egg-info/zip-safe
+resource/roller
+roller/__init__.py
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py

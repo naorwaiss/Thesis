@@ -1,0 +1,36 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from drone_c/msg/Pid.msg
+// generated code does not contain a copyright notice
+
+
+module drone_c {
+  module msg {
+    @verbatim (language="comment", text=
+      "Definition of the pid_msg")
+    struct Pid {
+      float p_pitch;
+
+      float p_roll;
+
+      float p_yaw;
+
+      float i_pitch;
+
+      float i_roll;
+
+      float i_yaw;
+
+      float d_pitch;
+
+      float d_roll;
+
+      float d_yaw;
+
+      float sum_pitch;
+
+      float sum_roll;
+
+      float sum_yaw;
+    };
+  };
+};
