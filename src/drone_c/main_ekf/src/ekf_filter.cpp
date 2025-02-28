@@ -130,14 +130,14 @@ attitude_s EKF::single_process_imu(long time) {
     predict(dt);
     update_measerment();
     ati.roll = state_vector[0];
-    ati.pitch = state_vector[1];
+    ati.pitch = -1*state_vector[1];
     ati.yaw = state_vector[2];
     return ati;
 }
 
 
 quat_t EKF::eulerToQuaternion(attitude_s *euiler)  {
-    // Convert degrees to radians
+    // Convert degrees to radians from the ekf 
 
     attitude_s  euiler_modifide;
     quat_t quartirion;

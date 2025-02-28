@@ -39,9 +39,13 @@ extern RTComSession *socketSession;
 extern Measurement_t meas;
 extern quat_t q_est;
 extern attitude_t desired_attitude;
+extern motor_t motor_pwm;  // Currently not in use. replaced by PID_rate_out.PID_ret
 extern attitude_t desired_rate;
 extern attitude_t estimated_attitude;
 extern attitude_t estimated_rate;
+extern PID_out_t PID_stab_out;
+extern PID_out_t PID_rate_out;
+extern Controller_s controller_data;
 
 
 
@@ -51,7 +55,10 @@ void onConnection(RTComSession& session);
 void init_com();
 void emit_data();
 void convert_Measurment_to_byte(Measurement_t meas,
-                                quat_t q_est, attitude_t euiler);
+                                quat_t q_est, attitude_t desired_attitude,
+                                motor_t motor_pwm, attitude_t desired_rate,
+                                attitude_t estimated_attitude, attitude_t estimated_rate,
+                                PID_out_t PID_stab_out, PID_out_t PID_rate_out, Controller_s controller_data);
 void send_data();
 
 }
