@@ -11,7 +11,7 @@
 #include "src/PID_type.h"
 
 // IMU Data Conversion
-#define POL_GYRO_SENS 4.375 / 1000.0f  // FS = 125
+#define POL_GYRO_SENS 8.75 / 1000.0f  // FS = 125
 #define POL_ACC_SENS 0.061 / 1000.0f   // FS = 2g, 0.061 mg/LSB
 #define POL_MAG_SENS 1 / 6842.0f
 
@@ -58,7 +58,7 @@ LPS baro;
 
 // Filter Object:
 CompFilter Pololu_filter(true);  // True for enabling the magnetometer
-float dt = 1 / 750.0f;           // 1kHz sample rate in seconds
+float dt = 1 / 1100.0f;           // 1kHz sample rate in seconds
 
 // Desired Attitude - From the controller:
 
@@ -289,15 +289,18 @@ void IMU_init() {
     // mag.writeReg(LIS3MDL::CTRL_REG2, 0x10);        // +- 4 gauss
     // Serial.println("calibarte the imu for high speed -");
 
-    // calibrate the imu for low data
 
-    IMU.enableDefault();  // Initializes LSM6DS33 (IMU)
-    IMU.writeReg(LSM6::CTRL2_G, 0b10000000);
-    IMU.writeReg(LSM6::CTRL1_XL, 0b10000000);
-    mag.enableDefault();  // Initializes LIS3MDL (Magnetometer)
-    mag.writeReg(LIS3MDL::CTRL_REG1, 0b00001100);
-    mag.writeReg(LIS3MDL::CTRL_REG2, 0x10);
-    Serial.println("calibarte the imu for low speed -");
+
+    IMU.enableDefault();                       
+    IMU.writeReg(LSM6::CTRL2_G,  0b01110000);  // ODR = 1040 Hz, FS = ±2000 dps
+    IMU.writeReg(LSM6::CTRL1_XL, 0b01110000);  // ODR = 1040 Hz, FS = ±16g
+    mag.enableDefault();
+    mag.writeReg(LIS3MDL::CTRL_REG1, 0b11100110);  // ODR = 1000 Hz, high performance mode
+    mag.writeReg(LIS3MDL::CTRL_REG2, 0x60);        // Full Scale = ±16 gauss
+    baro.writeReg(0x20, 0b11000000);  // ODR = 1000 Hz, active mode
+    Serial.println("calibarte the imu for high speed -");
+
+
 }
 
 void mapping_controller(char state) {

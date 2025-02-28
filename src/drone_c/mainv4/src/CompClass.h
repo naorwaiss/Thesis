@@ -16,8 +16,8 @@
 // #define HIGH_BETA 0.2f
 // #define LOW_BETA 0.03f
 #define HIGH_BETA 0.1f
-#define LOW_BETA 0.015f
-#define DEFAULT_BETA 0.04f
+#define LOW_BETA 0.02f
+#define DEFAULT_BETA 0.05f
 
 // Filter Frequencies:
 #define ACC_LPF_FREQ 10.0f   // 10 Hz cutoff for accelerometer
@@ -26,7 +26,7 @@
 #define MAG_LPF_FREQ 10.0f   // 10 Hz cutoff for magnetometer
 
 // Calculate filter coefficients based on cutoff frequencies
-static const float SAMPLE_RATE = 1100.0f;
+static const float SAMPLE_RATE = 600.0f;
 static const float DT = 1.0f/SAMPLE_RATE;
 static const float ALPHA_ACC_LPF = (2.0f * PI * ACC_LPF_FREQ * DT / (2.0f * PI * ACC_LPF_FREQ * DT + 1.0f));
 static const float ALPHA_GYRO_LPF = (2.0f * PI * GYRO_LPF_FREQ * DT / (2.0f * PI * GYRO_LPF_FREQ * DT + 1.0f));
