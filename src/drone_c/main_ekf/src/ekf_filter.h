@@ -19,8 +19,9 @@ class EKF {
     void update_measerment();
     attitude_s single_process_imu(long time);
     quat_t eulerToQuaternion(attitude_s *euiler);
-
-
+    attitude_s lowPassFilter(attitude_s& input , attitude_s& filter_in);
+    attitude_s highPassFilter(attitude_s& input, attitude_s& filter_in);
+    void InitialFiltering(float DT);
    private:
     Measurement_t* measurement;  // Store the pointer to measurement
 };

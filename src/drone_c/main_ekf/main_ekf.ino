@@ -32,30 +32,32 @@
 // new drone
 
 #define MAX_ANGLE 15.0f
-#define MAX_RATE 200.0f
+#define MAX_RATE 170.0f
 #define CONTROLLER_MIN 988
 #define CONTROLLER_MAX 2012
-#define IMU_TRASHOLD 0.04
+#define IMU_TRASHOLD 0.06
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
 
 // Struct Definitions
 AlfredoCRSF crsf;
 Controller_s controller_data;
 Measurement_t meas;
-EKF ekf(&meas); /// new ekf filter for the drone 
+EKF ekf(&meas);  /// new ekf filter for the drone
 LSM6 IMU;
 LIS3MDL mag;
 LPS baro;
 attitude_t estimated_attitude;
+attitude_t estimated_attitude_nofilter;
+
 quat_t q_est;
 Motors motors(MOTOR1_PIN, MOTOR2_PIN, MOTOR3_PIN, MOTOR4_PIN);
 bool is_armed = false;
 bool is_armed_amit_flag = false;
 attitude_t desired_attitude;
+
 motor_t motor_pwm;
 attitude_t desired_rate;
 attitude_t estimated_rate;
@@ -70,7 +72,6 @@ const unsigned long PWM_PERIOD_1 = 1000000 / ESC_FREQUENCY;       // 1,000,000 u
 float t_PID_s = 0.0f;
 float t_PID_r = 0.0f;
 unsigned long dt;
-
 
 void setup() {
     Serial.begin(115200);
@@ -89,24 +90,30 @@ void setup() {
     GyroMagCalibration();
     ekf.init_EKF();
     motors.Motors_init();
-
-
-
 }
 
 void loop() {
     unsigned long start_time = micros();
+    update_controller();
+    check_arming_state();
     Update_measurement();
-    estimated_attitude = ekf.single_process_imu(dt);
+    estimated_attitude_nofilter = ekf.single_process_imu(dt);
+    estimated_attitude = ekf.lowPassFilter(estimated_attitude_nofilter, estimated_attitude);
     q_est = ekf.eulerToQuaternion(&estimated_attitude);
+
+    estimated_rate.roll = meas.gyro_LPF.x; 
+    estimated_rate.pitch = meas.gyro_LPF.y;
+    estimated_rate.yaw = meas.gyro_LPF.z;
+
+
+    Serial.println("gyro check");
+    Serial.println(meas.gyro_LPF.x - meas.gyro.x);Serial.print("   ");
+    Serial.println(meas.gyro_LPF.y- meas.gyro.y);Serial.print("   ");
 
 
 
     if (is_armed) {
         // Get Actual rates:
-        estimated_rate.roll = meas.gyro_LPF.x * rad2deg;
-        estimated_rate.pitch = meas.gyro_LPF.y * rad2deg;
-        estimated_rate.yaw = meas.gyro_LPF.z * rad2deg;
 
         if ((controller_data.aux1 > 1500) && (stab_timer >= STAB_PERIOD)) {  // Stabilize mode:
             // Calculating dt for the PID- in seconds:
@@ -143,36 +150,17 @@ void loop() {
 
     DRON_COM::send_data();
 
-
-
-    Serial.print("EKF Roll: ");
-    Serial.println(estimated_attitude.roll);
-    Serial.print("EKF Pitch: ");
-    Serial.println(estimated_attitude.pitch);
-    Serial.print("EKF Yaw: ");
-    Serial.println(estimated_attitude.yaw);
-    Serial.print("quart w : ");
-    Serial.println(q_est.w);
-    Serial.print("quat x : ");
-    Serial.println(q_est.x);
-    Serial.print("quat y : ");
-    Serial.println(q_est.y);
-    Serial.print("quat z : ");
-    Serial.println(q_est.z);
-
-
-    unsigned long end_time = micros();       // End time
-    dt = end_time - start_time;  // Compute execution time
-
+    unsigned long end_time = micros();  // End time
+    dt = end_time - start_time;         // Compute execution time
 }
 
 void Update_measurement() {
     IMU.read();
     mag.read();
-    meas.acc.x = IMU.a.x * POL_ACC_SENS ;
-    meas.acc.y = IMU.a.y * POL_ACC_SENS ;
-    meas.acc.z = IMU.a.z * POL_ACC_SENS ;
- 
+    meas.acc.x = IMU.a.x * POL_ACC_SENS;
+    meas.acc.y = IMU.a.y * POL_ACC_SENS;
+    meas.acc.z = IMU.a.z * POL_ACC_SENS;
+
     if (abs(meas.acc.x) < IMU_TRASHOLD) {
         meas.acc.x = 0;
     }
@@ -183,7 +171,7 @@ void Update_measurement() {
         meas.acc.z = 0;
     }
 
-    meas.gyro.x = IMU.g.x * POL_GYRO_SENS; 
+    meas.gyro.x = IMU.g.x * POL_GYRO_SENS;
     meas.gyro.y = IMU.g.y * POL_GYRO_SENS;
     meas.gyro.z = IMU.g.z * POL_GYRO_SENS;
     if (abs(meas.gyro.x) < IMU_TRASHOLD) {
@@ -207,9 +195,7 @@ void Update_measurement() {
     // if (abs(meas.mag.z < IMU_TRASHOLD)) {
     //     meas.mag.z = 0;
     // }
-
 }
-
 
 void GyroMagCalibration() {
     Serial.println("Starting Gyro calibration");
@@ -266,6 +252,20 @@ void IMU_init() {
     Serial.println("calibarte the imu for high speed -");
 }
 
+void update_controller() {
+    // Update the controller data:
+    crsf.update();
+    controller_data.throttle = crsf.getChannel(3);
+    controller_data.throttle = map(controller_data.throttle, 988, 2012, 1000, 2000);
+    controller_data.roll = crsf.getChannel(1);
+    controller_data.pitch = crsf.getChannel(2);
+    controller_data.yaw = crsf.getChannel(4);
+    controller_data.aux1 = crsf.getChannel(5);
+    controller_data.aux2 = crsf.getChannel(6);
+    controller_data.aux3 = crsf.getChannel(7);
+    controller_data.aux4 = crsf.getChannel(8);
+}
+
 void mapping_controller(char state) {
     if (state == 's') {  // Mapping the controller input into desired angle:
         desired_attitude.roll = map(controller_data.roll, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_ANGLE, MAX_ANGLE);
@@ -288,7 +288,7 @@ void resetMicrocontroller() {
 }
 
 void check_arming_state() {
-    /// need to check it 
+    /// need to check it
     // Using aux2 (channel 6) as the arming switch
     // You can change this to any aux channel you prefer
     if (controller_data.aux2 > 1500) {  // Switch is in high position
