@@ -5,6 +5,10 @@
 
 #define ESC_FREQUENCY 500  // Frequency of the ESCs
 
+
+static const float SAMPLE_RATE = 833.0f;
+static const float DT = 1.0f/SAMPLE_RATE;
+
 // Frequencies to be used with the RATE_DO_EXECUTE_HZ macro. Do NOT use an arbitrary number.
 #define RATE_1000_HZ 1000
 #define RATE_500_HZ 500

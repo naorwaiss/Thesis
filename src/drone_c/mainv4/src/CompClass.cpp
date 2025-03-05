@@ -11,7 +11,7 @@ void CompFilter::UpdateQ(Measurement_t* meas, float dt){
     float _2qwmx, _2qwmy, _2qwmz, _2qxmx, _2q0, _2q1, _2q2, _2q3, _2q0q2, _2q2q3, q0q0, q0q1, q0q2, q0q3, q1q1, q1q2, q1q3, q2q2, q2q3, q3q3, _2q0q1, _2q0q3;
     float hx, hy, _2bx, _2bz, _4bx, _4bz;
 
-    // Initial Filtering - Not a must nut it helps.
+    // Initial Filtering - Not a must nut it helps. 
     InitialFiltering(meas);
 
 
@@ -67,8 +67,9 @@ void CompFilter::UpdateQ(Measurement_t* meas, float dt){
 
 
     }
-    if(USE_MAG &&( meas->mag_LPF.x != 0.0 && meas->mag_LPF.y != 0.0 && meas->mag_LPF.z != 0.0) && (gyroNorm > HIGH_MOTION)){
-    //if(USE_MAG &&( meas->mag.x != 0.0 && meas->mag.y != 0.0 && meas->mag.z != 0.0)){
+    // if(USE_MAG &&( meas->mag_LPF.x != 0.0 && meas->mag_LPF.y != 0.0 && meas->mag_LPF.z != 0.0) && (gyroNorm < HIGH_MOTION)){ // Try to check if it works better only when gyro norm is low
+    if(USE_MAG &&( meas->mag_LPF.x != 0.0 && meas->mag_LPF.y != 0.0 && meas->mag_LPF.z != 0.0) && (gyroNorm < HIGH_MOTION)){
+    // if(USE_MAG &&( meas->mag_LPF.x != 0.0 && meas->mag_LPF.y != 0.0 && meas->mag_LPF.z != 0.0)){
 
         // Normalise magnetometer measurement
         recipNorm = invSqrt(meas->mag_LPF.x * meas->mag_LPF.x + meas->mag_LPF.y * meas->mag_LPF.y + meas->mag_LPF.z * meas->mag_LPF.z);
@@ -118,12 +119,18 @@ void CompFilter::UpdateQ(Measurement_t* meas, float dt){
         s2 *= recipNorm;
         s3 *= recipNorm;
 
+        float magTrust = 0.3f;
+        // if (gyroNorm > HIGH_MOTION) {
+        //     magTrust = 0.0f; // Less influence during high motion
+        // } else if (gyroNorm < LOW_MOTION) {
+        //     magTrust = 0.3f; // More influence during low motion
+        // }
 
         // Apply feedback step
-        qDot1 -= BETA * s0;
-        qDot2 -= BETA * s1;
-        qDot3 -= BETA * s2;
-        qDot4 -= BETA * s3;
+        qDot1 -= magTrust * BETA * s0;
+        qDot2 -= magTrust * BETA * s1;
+        qDot3 -= magTrust * BETA * s2;
+        qDot4 -= magTrust * BETA * s3;
 
     }
 
@@ -167,7 +174,7 @@ void CompFilter::GetEulerRPYrad(attitude_s* rpy, float initial_heading){
     // Currently returend in radians, can be converted to degrees by multiplying by rad2deg
     rpy->yaw = atan2f(2*(q.w*q.z + q.x*q.y), q.w*q.w + q.x*q.x - q.y*q.y - q.z*q.z);
     rpy->pitch = asinf(gx);
-    // rpy->y = atan2f(2 * (q.w * q.y - q.x * q.z), 1 - 2 * (q.y * q.y + q.z * q.z))
+    // rpy->pitch = atan2f(2 * (q.w * q.y - q.x * q.z), 1 - 2 * (q.y * q.y + q.z * q.z));
     rpy->roll = atan2f(gy, gz);
 }
 
@@ -183,8 +190,9 @@ void CompFilter::GetEulerRPYdeg(attitude_s* rpy, float initial_heading){
     //     rpy->z += 360.0f;
     // }
     rpy->pitch = asinf(gx) * rad2deg;
-    // rpy->y = atan2f(2 * (q.w * q.y - q.x * q.z), 1 - 2 * (q.y * q.y + q.z * q.z)) * rad2deg;
-    rpy->roll = atan2f(gy, gz) * rad2deg;
+    // rpy->pitch = atan2f(2 * (q.w * q.y - q.x * q.z), 1 - 2 * (q.y * q.y + q.z * q.z)) * rad2deg;
+    rpy->roll = atan2f(2 * (q.w * q.x + q.y * q.z), 1 - 2 * (q.x * q.x + q.y * q.y)) * rad2deg;
+    // rpy->roll = atan2f(gy, gz) * rad2deg;
 }
 
 //---------------------------------------------------------------------------------------------------
@@ -228,9 +236,27 @@ float CompFilter::calculateDynamicBeta(Measurement_t meas) {
         // Serial.println("Default Motion");
         return DEFAULT_BETA;
     }
+
 }
 
-
+// float CompFilter::calculateDynamicBeta(Measurement_t meas) {
+//     gyroNorm = sqrtf(meas.gyro_HPF.x * meas.gyro_HPF.x + 
+//                    meas.gyro_HPF.y * meas.gyro_HPF.y + 
+//                    meas.gyro_HPF.z * meas.gyro_HPF.z);
+    
+//     // More consistent beta values with hysteresis
+//     static float lastBeta = DEFAULT_BETA;
+//     static const float HYSTERESIS = 0.05f;
+    
+//     if (gyroNorm > (LOW_MOTION + HYSTERESIS) || lastBeta == HIGH_BETA) {
+//         if (gyroNorm < (LOW_MOTION - HYSTERESIS))
+//             lastBeta = LOW_BETA;
+//         else
+//             lastBeta = HIGH_BETA;
+//     }
+    
+//     return lastBeta;
+// }
 
 void CompFilter::InitialFiltering(Measurement_t* meas){
     
