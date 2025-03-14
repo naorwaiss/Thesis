@@ -66,12 +66,17 @@ PID_out_t PID_rate_out;
 
 elapsedMicros motor_timer;
 elapsedMicros stab_timer;
+elapsedMicros imu_timer;
+
+static const float SAMPLE_RATE = 833;
 const unsigned long STAB_PERIOD = 1000000 / (ESC_FREQUENCY / 2);  // 300 Hz period in microseconds
 const unsigned long PWM_PERIOD_1 = 1000000 / ESC_FREQUENCY;       // 1,000,000 us / frequency in Hz
+const unsigned long IMU_PERIOD = 1000000 / SAMPLE_RATE;
+
 
 float t_PID_s = 0.0f;
 float t_PID_r = 0.0f;
-unsigned long dt;
+long dt;
 
 void setup() {
     Serial.begin(115200);
@@ -96,19 +101,21 @@ void loop() {
     unsigned long start_time = micros();
     update_controller();
     check_arming_state();
+
+    if (imu_timer >= IMU_PERIOD) {
+        dt = (double)imu_timer / 1000000.0f;
+        
+    
     Update_measurement();
     estimated_attitude_nofilter = ekf.single_process_imu(dt);
     estimated_attitude = ekf.lowPassFilter(estimated_attitude_nofilter, estimated_attitude);
     q_est = ekf.eulerToQuaternion(&estimated_attitude);
 
-    estimated_rate.roll = meas.gyro_LPF.x; 
-    estimated_rate.pitch = meas.gyro_LPF.y;
+    estimated_rate.roll = -1* meas.gyro_LPF.x; 
+    estimated_rate.pitch = -1* meas.gyro_LPF.y;
     estimated_rate.yaw = meas.gyro_LPF.z;
 
 
-    Serial.println("gyro check");
-    Serial.println(meas.gyro_LPF.x - meas.gyro.x);Serial.print("   ");
-    Serial.println(meas.gyro_LPF.y- meas.gyro.y);Serial.print("   ");
 
 
 
@@ -141,6 +148,8 @@ void loop() {
         // Getting the motors struct to send data back:
         motor_pwm = motors.Get_motor();
     }
+    imu_timer = 0;
+}
     // Sending new UDP Packet:
     DRON_COM::convert_Measurment_to_byte(meas,
                                          q_est, desired_attitude,
@@ -150,8 +159,6 @@ void loop() {
 
     DRON_COM::send_data();
 
-    unsigned long end_time = micros();  // End time
-    dt = end_time - start_time;         // Compute execution time
 }
 
 void Update_measurement() {

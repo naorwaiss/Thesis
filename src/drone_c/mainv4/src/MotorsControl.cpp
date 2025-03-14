@@ -2,10 +2,8 @@
 #include "Var_types.h"
 #include "MotorsControl.h"
 
-
-
 // Initialization of the motors
-void Motors::Motors_init(){
+void Motors::Motors_init() {
     // Set the PWM resolution for the ESCs
     analogWriteResolution(12);
 
@@ -27,7 +25,7 @@ void Motors::Motors_init(){
 }
 
 // Arm Function
-void Motors::Arm(){
+void Motors::Arm() {
     // Set the PWM value for the ESCs
     analogWrite(Motor_struct.M1_pin, MOTOR_ARM);
     analogWrite(Motor_struct.M2_pin, MOTOR_ARM);
@@ -35,9 +33,8 @@ void Motors::Arm(){
     analogWrite(Motor_struct.M4_pin, MOTOR_ARM);
 }
 
-
 // Disarm Function
-void Motors::Disarm(){
+void Motors::Disarm() {
     // Set the PWM value for the ESCs
     analogWrite(Motor_struct.M1_pin, MOTOR_OFF);
     analogWrite(Motor_struct.M2_pin, MOTOR_OFF);
@@ -45,7 +42,7 @@ void Motors::Disarm(){
     analogWrite(Motor_struct.M4_pin, MOTOR_OFF);
 }
 
-void Motors::set_motorPWM(){
+void Motors::set_motorPWM() {
     // Set the PWM value for the ESCs
     analogWrite(Motor_struct.M1_pin, Motor_struct.PWM1);
     analogWrite(Motor_struct.M2_pin, Motor_struct.PWM2);
@@ -54,7 +51,6 @@ void Motors::set_motorPWM(){
 }
 
 void Motors::Motor_Mix(attitude_t motor_input, int throttle) {
-
     Motor_struct.PWM1 = throttle - motor_input.roll - motor_input.pitch - motor_input.yaw;
     Motor_struct.PWM2 = throttle - motor_input.roll + motor_input.pitch + motor_input.yaw;
     Motor_struct.PWM3 = throttle + motor_input.roll + motor_input.pitch - motor_input.yaw;
@@ -70,10 +66,8 @@ void Motors::Motor_Mix(attitude_t motor_input, int throttle) {
     Motor_struct.PWM2 = US_2_PULSE(Motor_struct.PWM2);
     Motor_struct.PWM3 = US_2_PULSE(Motor_struct.PWM3);
     Motor_struct.PWM4 = US_2_PULSE(Motor_struct.PWM4);
-
 }
 
-
-motor_t Motors::Get_motor(){
+motor_t Motors::Get_motor() {
     return Motor_struct;
 }

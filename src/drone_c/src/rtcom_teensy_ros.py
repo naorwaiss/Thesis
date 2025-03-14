@@ -27,7 +27,6 @@ class UDPSocketClient(Node):
         self.rc_pub = self.create_publisher(Int32MultiArray, 'rc_channel_data', 10)
         self.desire_rate_pub = self.create_publisher(Float32MultiArray, 'desire_rate', 10)
         self.desire_stab_pub = self.create_publisher(Float32MultiArray, 'desire_stab', 10)
-        self.imu_data_filter = self.create_publisher(Float32MultiArray, 'desire_stab', 10)
         self.motor_pwm_pub = self.create_publisher(Motors, 'motor_pwm', 10)
         self.estimated_rate_pub = self.create_publisher(Float32MultiArray, 'estimated_rate', 10)
         self.PID_stab_pub_modifide = self.create_publisher(Pid, 'PID_stab', 10)

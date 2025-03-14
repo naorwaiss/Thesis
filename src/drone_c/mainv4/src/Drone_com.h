@@ -3,7 +3,6 @@
 
 #include <Arduino.h>
 
-
 #define MAG 'm'
 #define P_IMU_RAW 'p'
 #define P_IMU_FILTER 'P'
@@ -17,9 +16,6 @@
 #define PID_stab_prase 'l'
 #define PID_rate_prase 'b'
 
-
-
-
 #ifndef DRONE_COM_H
 #define DRONE_COM_H
 
@@ -27,14 +23,11 @@ constexpr uint8_t SOCKET_IP_ADDRESS[] = {192, 168, 1, 199};
 constexpr uint16_t SOCKET_PORT_NUMBER = 8888;
 const RTComConfig SOCKET_CONFIG(1, 100, 200, 500);
 
-
-
-
 namespace DRON_COM {
 
 const SocketAddress SOCKET_ADDRESS = SocketAddress(SOCKET_IP_ADDRESS, SOCKET_PORT_NUMBER);
 extern RTCom rtcomSocket;
-extern RTComSession *socketSession;
+extern RTComSession* socketSession;
 
 extern Measurement_t meas;
 extern quat_t q_est;
@@ -47,10 +40,6 @@ extern PID_out_t PID_stab_out;
 extern PID_out_t PID_rate_out;
 extern Controller_s controller_data;
 
-
-
-
-
 void onConnection(RTComSession& session);
 void init_com();
 void emit_data();
@@ -61,7 +50,6 @@ void convert_Measurment_to_byte(Measurement_t meas,
                                 PID_out_t PID_stab_out, PID_out_t PID_rate_out, Controller_s controller_data);
 void send_data();
 
-}
+}  // namespace DRON_COM
 
 #endif
-

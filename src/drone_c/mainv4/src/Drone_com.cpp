@@ -3,7 +3,6 @@
 #include "Var_types.h"
 #include "RTCom/RTCom.h"
 
-
 namespace DRON_COM {
 RTCom rtcomSocket(SOCKET_ADDRESS, SOCKET_CONFIG);
 RTComSession* socketSession = nullptr;
@@ -11,7 +10,7 @@ RTComSession* socketSession = nullptr;
 float* imu_data_raw = (float*)calloc(6, sizeof(float));
 uint8_t imu_byte_raw[sizeof(float) * 6];
 float* imu_data_filter = (float*)calloc(12, sizeof(float));
-uint8_t imu_byte_filter[sizeof(float)*12];
+uint8_t imu_byte_filter[sizeof(float) * 12];
 float* mag_data = (float*)calloc(3, sizeof(float));
 uint8_t mag_byte[sizeof(float) * 3];
 float* euler_data = (float*)calloc(3, sizeof(float));
@@ -156,7 +155,6 @@ void convert_Measurment_to_byte(Measurement_t meas,
     rc_ch_data[7] = controller_data.aux4;
 
     memcpy(rc_byte, rc_ch_data, sizeof(rc_byte));
-
 }
 
 void emit_data() {
@@ -175,10 +173,10 @@ void emit_data() {
 }
 
 void send_data() {
-    rtcomSocket.process();
+    DRON_COM::rtcomSocket.process();
     if (rtcomSocket.isSessionConnected(socketSession)) {
         DRON_COM::emit_data();
     };
 }
 
-}  // namespace DR
+}  // namespace DRON_COM

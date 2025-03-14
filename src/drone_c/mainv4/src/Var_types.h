@@ -5,9 +5,8 @@
 
 #define ESC_FREQUENCY 500  // Frequency of the ESCs
 
-
 static const float SAMPLE_RATE = 833.0f;
-static const float DT = 1.0f/SAMPLE_RATE;
+static const float DT = 1.0f / SAMPLE_RATE;
 
 // Frequencies to be used with the RATE_DO_EXECUTE_HZ macro. Do NOT use an arbitrary number.
 #define RATE_1000_HZ 1000
@@ -23,11 +22,9 @@ static const float DT = 1.0f/SAMPLE_RATE;
 #define RATE_HL_COMMANDER RATE_100_HZ
 #define RATE_SUPERVISOR RATE_25_HZ
 
-
-#define rad2deg 180.0f/PI
+#define rad2deg 180.0f / PI
 #define PI 3.14159265358979323846f
 #define deg2rad PI / 180.0f
-
 
 typedef struct {
     float x;

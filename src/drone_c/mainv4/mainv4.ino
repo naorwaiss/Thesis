@@ -50,17 +50,11 @@ Motors motors(MOTOR1_PIN, MOTOR2_PIN, MOTOR3_PIN, MOTOR4_PIN);
 bool is_armed = false;
 bool is_armed_amit_flag = false;
 
-// IMU and Filter Variables:
 LSM6 IMU;
 LIS3MDL mag;
 LPS baro;
-
-// Filter Object:
 CompFilter Pololu_filter(true);  // True for enabling the magnetometer
 float dt = 1 / 1100.0f;          // 1kHz sample rate in seconds
-
-// Desired Attitude - From the controller:
-
 Measurement_t meas;
 quat_t q_est;
 attitude_t desired_attitude;
@@ -123,10 +117,10 @@ void loop() {
     update_controller();
     // Check arming:
     check_arming_state();
+
     // Update the measurement:
     if (imu_timer >= IMU_PERIOD) {
         actual_dt = (double)imu_timer / 1000000.0f;
-        Serial.println(1 / actual_dt);
 
         Update_Measurement();
         // Update the quaternion:
@@ -167,21 +161,15 @@ void loop() {
             // Getting the motors struct to send data back:
             motor_pwm = motors.Get_motor();
         }
+        DRON_COM::convert_Measurment_to_byte(meas,
+                                             q_est, desired_attitude,
+                                             motor_pwm, desired_rate,
+                                             estimated_attitude, estimated_rate,
+                                             PID_stab_out, PID_rate_out, controller_data);
+
+        DRON_COM::send_data();
         imu_timer = 0;
     }
-    // Sending new UDP Packet:
-    DRON_COM::convert_Measurment_to_byte(meas,
-                                         q_est, desired_attitude,
-                                         motor_pwm, desired_rate,
-                                         estimated_attitude, estimated_rate,
-                                         PID_stab_out, PID_rate_out, controller_data);
-
-    DRON_COM::send_data();
-
-    // Serial.print("roll ");
-    // Serial.println(estimated_attitude.roll);
-    // Serial.print("pitch ");
-    // Serial.println(estimated_attitude.pitch);
 }
 
 void Update_Measurement() {
@@ -298,18 +286,9 @@ void IMU_init() {
     IMU.enableDefault();                       // 1.66 kHz, 2g, 245 dps
     IMU.writeReg(LSM6::CTRL2_G, 0b01110100);   // 0b1010 for ODR 1.66 kHz, 0b0000 for 500 dps range
     IMU.writeReg(LSM6::CTRL1_XL, 0b01110010);  // 0b1010 for ODR 1.66 kHz, 0b0000 for 2g range with  ODR/10 filter
-    // 3. Enable additional filtering (LPF2) for gyroscope with medium cutoff
-    // IMU.writeReg(LSM6::CTRL6_C, 0b00001001);
-
     mag.enableDefault();
     mag.writeReg(LIS3MDL::CTRL_REG1, 0b11111010);  // 1 KHz, high performance mode
     mag.writeReg(LIS3MDL::CTRL_REG2, 0x10);        // +- 4 gauss
-
-    // Set high-performance mode for accelerometer
-    // IMU.writeReg(LSM6::CTRL6_C, 0x00);
-
-    // Set high-performance mode for gyroscope
-    // IMU.writeReg(LSM6::CTRL7_G, 0x00);
 }
 
 void mapping_controller(char state) {
@@ -319,9 +298,9 @@ void mapping_controller(char state) {
         desired_attitude.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_ANGLE, -MAX_ANGLE);  // cahnge here
         /// neeed to remove or change the constrain here -> not limit the yaw
     } else if (state == 'r') {  // Mapping the controller input into desired rate:
-        desired_rate.roll = map(controller_data.roll, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_RATE, MAX_RATE);
-        desired_rate.pitch = map(controller_data.pitch, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_RATE, MAX_RATE);
-        desired_rate.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_RATE, -MAX_RATE);  // cahnge here
+        desired_rate.roll = map( controller_data.roll, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_RATE, MAX_RATE); //change here 
+        desired_rate.pitch = map( controller_data.pitch, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_RATE, MAX_RATE);//change here 
+        desired_rate.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_RATE, -MAX_RATE);  
     }
 }
 
@@ -338,13 +317,13 @@ void check_arming_state() {
     // Using aux2 (channel 6) as the arming switch
     // You can change this to any aux channel you prefer
     if (controller_data.aux2 > 1500) {  // Switch is in high position
-        // if (is_armed_amit_flag == true || controller_data.throttle < (MOTOR_START + 100)) {
-        is_armed = true;
-        // is_armed_amit_flag == true;
-        // }
+        if (is_armed_amit_flag == true || controller_data.throttle < (MOTOR_START + 100)) {
+            is_armed = true;
+            is_armed_amit_flag == true;
+        }
     } else {  // Switch is in low position
         is_armed = false;
-        // is_armed_amit_flag == false;
+        is_armed_amit_flag == false;
         motors.Disarm();  // Ensure motors are stopped when disarmed
         Reset_PID();      // Reset PID states when disarmed
         resetMicrocontroller();

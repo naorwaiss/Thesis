@@ -26,7 +26,7 @@ void initializePIDParams(float RrollPID[3] = nullptr, float RpitchPID[3] = nullp
     //Acro mode control param 
 
     const float defaultRrollPID[3] = {0.8f, 0.001f, 0.01f};
-    const float defaultRpitchPID[3] = {0.8f, 0.001f, 0.01f};
+    const float defaultRpitchPID[3] = {0.9f, 0.001f, 0.03f};   
     const float defaultRyawPID[3] = {2.0f, 0.0f, 0.01f};
     const float defaultImax_rate[2] = {100.0f, 100.0f};
 
@@ -43,8 +43,8 @@ void initializePIDParams(float RrollPID[3] = nullptr, float RpitchPID[3] = nullp
 
     //we dont toch the stablize 
     //stablize mode control param 
-    const float defaultSrollPID[3] = {5.0f, 0.0f, 0.0f};
-    const float defaultSpitchPID[3] = {5.0f, 0.0f, 0.0f};
+    const float defaultSrollPID[3] = {7.0f, 0.01f, 0.0f};
+    const float defaultSpitchPID[3] = {7.0f, 0.01f, 0.0f};
     const float defaultSyawPID[3] = {4.0f, 0.0f, 0.0f};
     const float defaultImax_stab[2] = {100.0f, 100.0f};
 
@@ -138,7 +138,18 @@ PID_out_t PID_rate(attitude_t des_rate, attitude_t actual_rate,float DT) { // Ac
 // PID controller for stabilization
 PID_out_t PID_stab(attitude_t des_angle, attitude_t angle, float DT) {
     // Calculate error
-    angle_err = des_angle - angle;
+
+
+    //// need to check if this is correct 
+    attitude_t angle_new;
+    angle_new.pitch = -1* angle.pitch;
+    angle_new.roll = -1* angle.roll;
+    angle_new.yaw = -1* angle.yaw;
+
+    // adding this need to check if this is correct 
+
+    angle_err = des_angle - angle_new;
+    // angle_err = des_angle - angle;
 
     // Calculate P term:
     stab_out.P_term.roll = stab_params.RollP * angle_err.roll;
