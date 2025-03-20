@@ -26,7 +26,7 @@ void initializePIDParams(float RrollPID[3] = nullptr, float RpitchPID[3] = nullp
     //Acro mode control param 
 
     const float defaultRrollPID[3] = {0.8f, 0.001f, 0.01f};
-    const float defaultRpitchPID[3] = {0.9f, 0.001f, 0.03f};   
+    const float defaultRpitchPID[3] = {1.2f, 0.01f, 0.01f};   
     const float defaultRyawPID[3] = {2.0f, 0.0f, 0.01f};
     const float defaultImax_rate[2] = {100.0f, 100.0f};
 
@@ -91,9 +91,9 @@ PID_out_t PID_rate(attitude_t des_rate, attitude_t actual_rate,float DT) { // Ac
     
     rate_err_filt = des_rate - actual_rate; // Probably the best for the Proportional term?
 
-    if (rate_err_filt.roll < 0.1 && rate_err_filt.roll > -0.1){ rate_err_filt.roll = 0.0; };
-    if (rate_err_filt.pitch < 0.1 && rate_err_filt.pitch > -0.1){ rate_err_filt.pitch = 0.0; };
-    if (rate_err_filt.yaw < 0.1 && rate_err_filt.yaw > -0.1){ rate_err_filt.yaw = 0.0; };
+    if (abs(rate_err_filt.roll) < 0.2){ rate_err_filt.roll = 0.0; };
+    if (abs(rate_err_filt.pitch) < 0.2){ rate_err_filt.pitch = 0.0; };
+    if (abs(rate_err_filt.yaw) < 0.2){ rate_err_filt.yaw = 0.0; };
 
 
 
@@ -131,7 +131,7 @@ PID_out_t PID_rate(attitude_t des_rate, attitude_t actual_rate,float DT) { // Ac
     rate_out.prev_err = rate_err_filt;
     rate_out.prev_Iterm = rate_out.I_term;
 
-    rate_out.PID_ret = rate_out.P_term + rate_out.I_term + rate_out.D_term;
+    rate_out.PID_ret = 1*(rate_out.P_term + rate_out.I_term + rate_out.D_term);  // The minus one is for u = -Kx
     return rate_out; // This is the motor input values
 }
 
@@ -141,15 +141,18 @@ PID_out_t PID_stab(attitude_t des_angle, attitude_t angle, float DT) {
 
 
     //// need to check if this is correct 
-    attitude_t angle_new;
-    angle_new.pitch = -1* angle.pitch;
-    angle_new.roll = -1* angle.roll;
-    angle_new.yaw = -1* angle.yaw;
+    // attitude_t angle_new;
+    // angle_new.pitch = 1* angle.pitch;
+    // angle_new.roll = 1* angle.roll;
+    // angle_new.yaw = 1* angle.yaw;
 
     // adding this need to check if this is correct 
 
-    angle_err = des_angle - angle_new;
-    // angle_err = des_angle - angle;
+    angle_err = des_angle - angle;
+    
+    if (abs(angle_err.roll) < 0.2){ angle_err.roll = 0.0; };
+    if (abs(angle_err.pitch) < 0.2){ angle_err.pitch = 0.0; };
+    if (abs(angle_err.yaw) < 0.2){ angle_err.yaw = 0.0; };
 
     // Calculate P term:
     stab_out.P_term.roll = stab_params.RollP * angle_err.roll;

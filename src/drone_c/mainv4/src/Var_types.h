@@ -67,7 +67,8 @@ typedef struct {
     vec3_t acc;
     vec3_t acc_LPF = {0.0, 0.0, 0.0};
     vec3_t acc_bias = {0.0, 0.0, 0.0};
-    vec3_t gyro;
+    vec3_t gyroRAD;
+    vec3_t gyroDEG;
     vec3_t gyro_bias = {0.0, 0.0, 0.0};
     vec3_t gyro_HPF = {0.0, 0.0, 0.0};
     vec3_t gyro_LPF = {0.0, 0.0, 0.0};

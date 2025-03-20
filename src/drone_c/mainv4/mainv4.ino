@@ -53,7 +53,7 @@ bool is_armed_amit_flag = false;
 LSM6 IMU;
 LIS3MDL mag;
 LPS baro;
-CompFilter Pololu_filter(true);  // True for enabling the magnetometer
+CompFilter Pololu_filter(false);  // True for enabling the magnetometer
 float dt = 1 / 1100.0f;          // 1kHz sample rate in seconds
 Measurement_t meas;
 quat_t q_est;
@@ -130,9 +130,9 @@ void loop() {
 
         if (is_armed) {
             // Get Actual rates:
-            estimated_rate.roll = -1 * meas.gyro_LPF.x * rad2deg;
-            estimated_rate.pitch = -1 * meas.gyro_LPF.y * rad2deg;
-            estimated_rate.yaw = meas.gyro_LPF.z * rad2deg;
+            estimated_rate.roll = meas.gyro_LPF.x;
+            estimated_rate.pitch = meas.gyro_LPF.y;
+            estimated_rate.yaw = meas.gyro_LPF.z;
 
             if ((controller_data.aux1 > 1500) && (stab_timer >= STAB_PERIOD)) {  // Stabilize mode:
                 // Calculating dt for the PID- in seconds:
@@ -189,18 +189,22 @@ void Update_Measurement() {
         meas.acc.z = 0;
     }
 
-    meas.gyro.x = IMU.g.x * POL_GYRO_SENS * deg2rad - meas.gyro_bias.x;
-    meas.gyro.y = IMU.g.y * POL_GYRO_SENS * deg2rad - meas.gyro_bias.y;
-    meas.gyro.z = IMU.g.z * POL_GYRO_SENS * deg2rad - meas.gyro_bias.z;
-    if (abs(meas.gyro.x) < IMU_THRESHOLD) {
-        meas.gyro.x = 0;
+    meas.gyroDEG.x = IMU.g.x * POL_GYRO_SENS - meas.gyro_bias.x;
+    meas.gyroDEG.y = IMU.g.y * POL_GYRO_SENS - meas.gyro_bias.y;
+    meas.gyroDEG.z = IMU.g.z * POL_GYRO_SENS - meas.gyro_bias.z;
+    if (abs(meas.gyroDEG.x) < IMU_THRESHOLD) {
+        meas.gyroDEG.x = 0;
     }
-    if (abs(meas.gyro.y) < IMU_THRESHOLD) {
-        meas.gyro.y = 0;
+    if (abs(meas.gyroDEG.y) < IMU_THRESHOLD) {
+        meas.gyroDEG.y = 0;
     }
-    if (abs(meas.gyro.z) < IMU_THRESHOLD) {
-        meas.gyro.z = 0;
+    if (abs(meas.gyroDEG.z) < IMU_THRESHOLD) {
+        meas.gyroDEG.z = 0;
     }
+    meas.gyroRAD.x = meas.gyroDEG.x * deg2rad;
+    meas.gyroRAD.y = meas.gyroDEG.y * deg2rad;
+    meas.gyroRAD.z = meas.gyroDEG.z * deg2rad;
+
 
     meas.mag.x = mag.m.x * POL_MAG_SENS - meas.mag_bias.x;
     meas.mag.y = mag.m.y * POL_MAG_SENS - meas.mag_bias.y;
@@ -227,9 +231,9 @@ void GyroMagCalibration() {
     while (millis() - start_time < 10000) {
         IMU.read();
         mag.read();
-        float x = IMU.g.x * POL_GYRO_SENS * deg2rad;
-        float y = IMU.g.y * POL_GYRO_SENS * deg2rad;
-        float z = IMU.g.z * POL_GYRO_SENS * deg2rad;
+        float x = IMU.g.x * POL_GYRO_SENS;
+        float y = IMU.g.y * POL_GYRO_SENS;
+        float z = IMU.g.z * POL_GYRO_SENS;
         num_samples++;
         meas.gyro_bias.x += (x - meas.gyro_bias.x) / num_samples;
         meas.gyro_bias.y += (y - meas.gyro_bias.y) / num_samples;
@@ -298,9 +302,9 @@ void mapping_controller(char state) {
         desired_attitude.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_ANGLE, -MAX_ANGLE);  // cahnge here
         /// neeed to remove or change the constrain here -> not limit the yaw
     } else if (state == 'r') {  // Mapping the controller input into desired rate:
-        desired_rate.roll = map( controller_data.roll, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_RATE, MAX_RATE); //change here 
-        desired_rate.pitch = map( controller_data.pitch, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_RATE, MAX_RATE);//change here 
-        desired_rate.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_RATE, -MAX_RATE);  
+        desired_rate.roll = map(controller_data.roll, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_RATE, MAX_RATE);
+        desired_rate.pitch = map(controller_data.pitch, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_RATE, MAX_RATE);
+        desired_rate.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_RATE, -MAX_RATE);
     }
 }
 
