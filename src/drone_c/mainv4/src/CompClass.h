@@ -24,7 +24,8 @@
 #define DEFAULT_BETA 0.4f
 
 // Filter Frequencies:
-#define ACC_LPF_FREQ 1000.0f   // Increase from 10.0f
+#define ACC_LPF_FREQ 500.0f   // Increase from 10.0f
+// #define ACC_LPF_FREQ 1000.0f   // Increase from 10.0f
 #define GYRO_LPF_FREQ 70.0f  // Increase from 40.0f
 #define GYRO_HPF_FREQ 0.0f   // Lower from 2.5f to reduce drift removal aggressiveness
 #define MAG_LPF_FREQ 15.0f   // Increase from 10.0f
