@@ -19,14 +19,15 @@
 #define LOW_MOTION 0.15f    // Slightly lower than 0.2f
 #define HIGH_MOTION 1.0f    // Lower than 1.5f to activate high correction sooner
 
-#define HIGH_BETA 0.9f // Rely more on accelerometer
-#define LOW_BETA 0.01f // Rely more on gyroscope
-#define DEFAULT_BETA 0.4f
+#define HIGH_BETA 0.6f // Rely more on accelerometer
+#define LOW_BETA 0.2f // Rely more on gyroscope
+#define DEFAULT_BETA 0.2f
+#define QUAT_THRESH 0.05f
 
 // Filter Frequencies:
-#define ACC_LPF_FREQ 500.0f   // Increase from 10.0f
+#define ACC_LPF_FREQ 80.0f   // Increase from 10.0f
 // #define ACC_LPF_FREQ 1000.0f   // Increase from 10.0f
-#define GYRO_LPF_FREQ 70.0f  // Increase from 40.0f
+#define GYRO_LPF_FREQ 80.0f  // Increase from 40.0f
 #define GYRO_HPF_FREQ 0.0f   // Lower from 2.5f to reduce drift removal aggressiveness
 #define MAG_LPF_FREQ 15.0f   // Increase from 10.0f
 

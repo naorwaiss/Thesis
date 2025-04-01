@@ -171,7 +171,7 @@ void emit_data() {
     socketSession->emitTyped(estimated_rate_byte, sizeof(estimated_rate_byte), EST_RATE);
     socketSession->emitTyped(PID_stab_out_byte, sizeof(PID_stab_out_byte), PID_stab_prase);
     socketSession->emitTyped(PID_rate_byte, sizeof(PID_rate_byte), PID_rate_prase);
-    socketSession->emitTyped(motor_pwm_byte, sizeof(motor_pwm_byte), MOTOR_DATA_CONST);
+    // socketSession->emitTyped(motor_pwm_byte, sizeof(motor_pwm_byte), MOTOR_DATA_CONST);
 }
 
 void send_data() {

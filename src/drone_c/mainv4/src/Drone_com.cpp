@@ -27,10 +27,10 @@ float* estimated_attitude_data = (float*)calloc(3, sizeof(float));
 uint8_t estimated_attitude_byte[sizeof(float) * 3];
 float* estimated_rate_data = (float*)calloc(3, sizeof(float));
 uint8_t estimated_rate_byte[sizeof(float) * 3];
-float* PID_stab_out_data = (float*)calloc(12, sizeof(float));
-uint8_t PID_stab_out_byte[sizeof(float) * 12];
-float* PID_rate_data = (float*)calloc(12, sizeof(float));
-uint8_t PID_rate_byte[sizeof(float) * 12];
+float* PID_stab_out_data = (float*)calloc(15, sizeof(float));
+uint8_t PID_stab_out_byte[sizeof(float) * 15];
+float* PID_rate_data = (float*)calloc(15, sizeof(float));
+uint8_t PID_rate_byte[sizeof(float) * 15];
 float* motor_data = (float*)calloc(4, sizeof(float));
 uint8_t motor_pwm_byte[sizeof(float) * 4];
 
@@ -105,35 +105,40 @@ void convert_Measurment_to_byte(Measurement_t meas,
     memcpy(desired_rate_byte, desired_rate_data, sizeof(desired_rate_byte));
 
     estimated_rate_data[0] = estimated_rate.pitch;
-    estimated_rate_data[1] = estimated_rate.roll;
     estimated_rate_data[2] = estimated_rate.yaw;
     memcpy(estimated_rate_byte, estimated_rate_data, sizeof(estimated_rate_byte));
-    PID_stab_out_data[0] = PID_stab_out.P_term.pitch;
-    PID_stab_out_data[1] = PID_stab_out.P_term.roll;
-    PID_stab_out_data[2] = PID_stab_out.P_term.yaw;
-    PID_stab_out_data[3] = PID_stab_out.I_term.pitch;
-    PID_stab_out_data[4] = PID_stab_out.I_term.roll;
-    PID_stab_out_data[5] = PID_stab_out.I_term.yaw;
-    PID_stab_out_data[6] = PID_stab_out.D_term.pitch;
-    PID_stab_out_data[7] = PID_stab_out.D_term.roll;
-    PID_stab_out_data[8] = PID_stab_out.D_term.yaw;
-    PID_stab_out_data[9] = PID_stab_out.PID_ret.pitch;
-    PID_stab_out_data[10] = PID_stab_out.PID_ret.roll;
-    PID_stab_out_data[11] = PID_stab_out.PID_ret.yaw;
+    PID_stab_out_data[0] = PID_stab_out.error.pitch;
+    PID_stab_out_data[1] = PID_stab_out.error.roll;
+    PID_stab_out_data[2] = PID_stab_out.error.yaw;
+    PID_stab_out_data[3] = PID_stab_out.P_term.pitch;
+    PID_stab_out_data[4] = PID_stab_out.P_term.roll;
+    PID_stab_out_data[5] = PID_stab_out.P_term.yaw;
+    PID_stab_out_data[6] = PID_stab_out.I_term.pitch;
+    PID_stab_out_data[7] = PID_stab_out.I_term.roll;
+    PID_stab_out_data[8] = PID_stab_out.I_term.yaw;
+    PID_stab_out_data[9] = PID_stab_out.D_term.pitch;
+    PID_stab_out_data[10] = PID_stab_out.D_term.roll;
+    PID_stab_out_data[11] = PID_stab_out.D_term.yaw;
+    PID_stab_out_data[12] = PID_stab_out.PID_ret.pitch;
+    PID_stab_out_data[13] = PID_stab_out.PID_ret.roll;
+    PID_stab_out_data[14] = PID_stab_out.PID_ret.yaw;
     memcpy(PID_stab_out_byte, PID_stab_out_data, sizeof(PID_stab_out_byte));
 
-    PID_rate_data[0] = PID_rate_out.P_term.pitch;
-    PID_rate_data[1] = PID_rate_out.P_term.roll;
-    PID_rate_data[2] = PID_rate_out.P_term.yaw;
-    PID_rate_data[3] = PID_rate_out.I_term.pitch;
-    PID_rate_data[4] = PID_rate_out.I_term.roll;
-    PID_rate_data[5] = PID_rate_out.I_term.yaw;
-    PID_rate_data[6] = PID_rate_out.D_term.pitch;
-    PID_rate_data[7] = PID_rate_out.D_term.roll;
-    PID_rate_data[8] = PID_rate_out.D_term.yaw;
-    PID_rate_data[9] = PID_rate_out.PID_ret.pitch;
-    PID_rate_data[10] = PID_rate_out.PID_ret.roll;
-    PID_rate_data[11] = PID_rate_out.PID_ret.yaw;
+    PID_rate_data[0] = PID_rate_out.error.pitch;
+    PID_rate_data[1] = PID_rate_out.error.roll;
+    PID_rate_data[2] = PID_rate_out.error.yaw;
+    PID_rate_data[3] = PID_rate_out.P_term.pitch;
+    PID_rate_data[4] = PID_rate_out.P_term.roll;
+    PID_rate_data[5] = PID_rate_out.P_term.yaw;
+    PID_rate_data[6] = PID_rate_out.I_term.pitch;
+    PID_rate_data[7] = PID_rate_out.I_term.roll;
+    PID_rate_data[8] = PID_rate_out.I_term.yaw;
+    PID_rate_data[9] = PID_rate_out.D_term.pitch;
+    PID_rate_data[10] = PID_rate_out.D_term.roll;
+    PID_rate_data[11] = PID_rate_out.D_term.yaw;
+    PID_rate_data[12] = PID_rate_out.PID_ret.pitch;
+    PID_rate_data[13] = PID_rate_out.PID_ret.roll;
+    PID_rate_data[14] = PID_rate_out.PID_ret.yaw;
     memcpy(PID_rate_byte, PID_rate_data, sizeof(PID_rate_byte));
 
     motor_data[0] = motor_pwm.PWM1;
@@ -153,7 +158,6 @@ void convert_Measurment_to_byte(Measurement_t meas,
     rc_ch_data[5] = controller_data.aux2;
     rc_ch_data[6] = controller_data.aux3;
     rc_ch_data[7] = controller_data.aux4;
-
     memcpy(rc_byte, rc_ch_data, sizeof(rc_byte));
 }
 

@@ -174,6 +174,7 @@ typedef struct PID_Params_s {
 } PID_Params_t;
 
 typedef struct PID_out_s {
+    attitude_t error = {0.0, 0.0, 0.0};
     attitude_t P_term;
     attitude_t I_term;
     attitude_t D_term;

@@ -31,11 +31,11 @@
 #define MOTOR4_PIN 5
 // new drone
 
-#define MAX_ANGLE 15.0f
+#define MAX_ANGLE 10.0f
 #define MAX_RATE 200.0f
 #define CONTROLLER_MIN 988
 #define CONTROLLER_MAX 2012
-#define IMU_THRESHOLD 0.005f
+#define IMU_THRESHOLD 0.05f
 
 /*
 ------------------------------------------ Global Variables ------------------------------------------

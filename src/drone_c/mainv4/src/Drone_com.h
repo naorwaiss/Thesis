@@ -1,6 +1,5 @@
 #include "RTCom/RTCom.h"
 #include "Var_types.h"
-
 #include <Arduino.h>
 
 #define MAG 'm'
