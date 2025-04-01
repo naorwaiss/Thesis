@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include "Var_types.h"
+#define PID_THRSHOLD 0.02f
 
 void initializePIDParams(float RrollPID[3] = nullptr, float RpitchPID[3] = nullptr, float RyawPID[3] = nullptr,
                          float Imax_rate[2] = nullptr, float SrollPID[3] = nullptr, float SpitchPID[3] = nullptr,

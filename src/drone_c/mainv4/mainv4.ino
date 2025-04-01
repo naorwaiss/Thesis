@@ -48,7 +48,7 @@ Controller_s controller_data;
 // Motors Variables:
 Motors motors(MOTOR1_PIN, MOTOR2_PIN, MOTOR3_PIN, MOTOR4_PIN);
 bool is_armed = false;
-bool is_armed_amit_flag = false;
+bool THR_SAFE = false;
 
 LSM6 IMU;
 LIS3MDL mag;
@@ -321,13 +321,13 @@ void check_arming_state() {
     // Using aux2 (channel 6) as the arming switch
     // You can change this to any aux channel you prefer
     if (controller_data.aux2 > 1500) {  // Switch is in high position
-        if (is_armed_amit_flag == true || controller_data.throttle < (MOTOR_START + 100)) {
+        if (THR_SAFE == true || controller_data.throttle < (MOTOR_START + 100)) {
             is_armed = true;
-            is_armed_amit_flag == true;
+            THR_SAFE == true;
         }
     } else {  // Switch is in low position
         is_armed = false;
-        is_armed_amit_flag == false;
+        THR_SAFE == false;
         motors.Disarm();  // Ensure motors are stopped when disarmed
         Reset_PID();      // Reset PID states when disarmed
         resetMicrocontroller();

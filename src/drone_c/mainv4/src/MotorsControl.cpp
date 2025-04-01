@@ -57,10 +57,10 @@ void Motors::Motor_Mix(attitude_t motor_input, int throttle) {
     Motor_struct.PWM4 = throttle + motor_input.roll - motor_input.pitch + motor_input.yaw;
 
     // Constrain the values to be between 1100 and 1900
-    Motor_struct.PWM1 = constrain(Motor_struct.PWM1, MOTOR_START, 2000);
-    Motor_struct.PWM2 = constrain(Motor_struct.PWM2, MOTOR_START, 2000);
-    Motor_struct.PWM3 = constrain(Motor_struct.PWM3, MOTOR_START, 2000);
-    Motor_struct.PWM4 = constrain(Motor_struct.PWM4, MOTOR_START, 2000);
+    Motor_struct.PWM1 = constrain(Motor_struct.PWM1, MOTOR_START, MOTOR_MAX);
+    Motor_struct.PWM2 = constrain(Motor_struct.PWM2, MOTOR_START, MOTOR_MAX);
+    Motor_struct.PWM3 = constrain(Motor_struct.PWM3, MOTOR_START, MOTOR_MAX);
+    Motor_struct.PWM4 = constrain(Motor_struct.PWM4, MOTOR_START, MOTOR_MAX);
 
     Motor_struct.PWM1 = US_2_PULSE(Motor_struct.PWM1);
     Motor_struct.PWM2 = US_2_PULSE(Motor_struct.PWM2);
