@@ -23,6 +23,9 @@ extern "C"
  */
 typedef struct drone_c__msg__Pid
 {
+  float error_pitch;
+  float error_roll;
+  float error_yaw;
   float p_pitch;
   float p_roll;
   float p_yaw;

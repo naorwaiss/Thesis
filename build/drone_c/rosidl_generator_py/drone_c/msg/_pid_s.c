@@ -50,6 +50,33 @@ bool drone_c__msg__pid__convert_from_py(PyObject * _pymsg, void * _ros_message)
     assert(strncmp("drone_c.msg._pid.Pid", full_classname_dest, 20) == 0);
   }
   drone_c__msg__Pid * ros_message = _ros_message;
+  {  // error_pitch
+    PyObject * field = PyObject_GetAttrString(_pymsg, "error_pitch");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->error_pitch = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
+  {  // error_roll
+    PyObject * field = PyObject_GetAttrString(_pymsg, "error_roll");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->error_roll = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
+  {  // error_yaw
+    PyObject * field = PyObject_GetAttrString(_pymsg, "error_yaw");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->error_yaw = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
   {  // p_pitch
     PyObject * field = PyObject_GetAttrString(_pymsg, "p_pitch");
     if (!field) {
@@ -180,6 +207,39 @@ PyObject * drone_c__msg__pid__convert_to_py(void * raw_ros_message)
     }
   }
   drone_c__msg__Pid * ros_message = (drone_c__msg__Pid *)raw_ros_message;
+  {  // error_pitch
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->error_pitch);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "error_pitch", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // error_roll
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->error_roll);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "error_roll", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // error_yaw
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->error_yaw);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "error_yaw", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
   {  // p_pitch
     PyObject * field = NULL;
     field = PyFloat_FromDouble(ros_message->p_pitch);

@@ -1,4 +1,7 @@
 # Definition of the pid_msg
+float32 error_pitch
+float32 error_roll
+float32 error_yaw
 float32 p_pitch
 float32 p_roll
 float32 p_yaw

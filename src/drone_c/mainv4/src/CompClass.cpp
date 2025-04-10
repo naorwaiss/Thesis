@@ -249,7 +249,8 @@ float CompFilter::calculateDynamicBeta(Measurement_t meas) {
 //     return lastBeta;
 // }
 
-void CompFilter::InitialFiltering(Measurement_t* meas) {
+void CompFilter::InitialFiltering(Measurement_t* meas){
+    
     meas->acc_LPF.x = (1 - ALPHA_ACC_LPF) * meas->acc.x + ALPHA_ACC_LPF * meas->acc_LPF.x;
     meas->acc_LPF.y = (1 - ALPHA_ACC_LPF) * meas->acc.y + ALPHA_ACC_LPF * meas->acc_LPF.y;
     meas->acc_LPF.z = (1 - ALPHA_ACC_LPF) * meas->acc.z + ALPHA_ACC_LPF * meas->acc_LPF.z;
@@ -262,16 +263,17 @@ void CompFilter::InitialFiltering(Measurement_t* meas) {
     gyroPrev.x = meas->gyroRAD.x;
     gyroPrev.y = meas->gyroRAD.y;
     gyroPrev.z = meas->gyroRAD.z;
-
+    
     // Apply Low-pass Filter to Gyro - > DEG. Used for acro
-    meas->gyro_LPF.x = (1 - ALPHA_GYRO_LPF) * meas->gyro_LPF.x + ALPHA_GYRO_LPF * meas->gyroDEG.x;
-    meas->gyro_LPF.y = (1 - ALPHA_GYRO_LPF) * meas->gyro_LPF.y + ALPHA_GYRO_LPF * meas->gyroDEG.y;
-    meas->gyro_LPF.z = (1 - ALPHA_GYRO_LPF) * meas->gyro_LPF.z + ALPHA_GYRO_LPF * meas->gyroDEG.z;
+    meas->gyro_LPF.x = (1 - ALPHA_GYRO_LPF) * meas->gyroDEG.x + ALPHA_GYRO_LPF * meas->gyro_LPF.x;
+    meas->gyro_LPF.y = (1 - ALPHA_GYRO_LPF) * meas->gyroDEG.y + ALPHA_GYRO_LPF * meas->gyro_LPF.y;
+    meas->gyro_LPF.z = (1 - ALPHA_GYRO_LPF) * meas->gyroDEG.z + ALPHA_GYRO_LPF * meas->gyro_LPF.z;
 
     if (USE_MAG) {
         // Apply Low-pass Filter to Mag
-        meas->mag_LPF.x = (1 - ALPHA_MAG_LPF) * meas->mag_LPF.x + ALPHA_MAG_LPF * meas->mag.x;
-        meas->mag_LPF.y = (1 - ALPHA_MAG_LPF) * meas->mag_LPF.y + ALPHA_MAG_LPF * meas->mag.y;
-        meas->mag_LPF.z = (1 - ALPHA_MAG_LPF) * meas->mag_LPF.z + ALPHA_MAG_LPF * meas->mag.z;
+        meas->mag_LPF.x = (1 - ALPHA_MAG_LPF) * meas->mag.x + ALPHA_MAG_LPF * meas->mag_LPF.x;
+        meas->mag_LPF.y = (1 - ALPHA_MAG_LPF) * meas->mag.y + ALPHA_MAG_LPF * meas->mag_LPF.y;
+        meas->mag_LPF.z = (1 - ALPHA_MAG_LPF) * meas->mag.z + ALPHA_MAG_LPF * meas->mag_LPF.z;
     }
+
 }

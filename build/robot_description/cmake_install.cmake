@@ -44,24 +44,6 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/robot_description" TYPE DIRECTORY FILES
-    "/home/naor/Desktop/naor/study/Thesis/src/robot_description/urdf"
-    "/home/naor/Desktop/naor/study/Thesis/src/robot_description/launch"
-    "/home/naor/Desktop/naor/study/Thesis/src/robot_description/rviz"
-    "/home/naor/Desktop/naor/study/Thesis/src/robot_description/meshes"
-    )
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/robot_description" TYPE DIRECTORY FILES
-    "/home/naor/Desktop/naor/study/Thesis/src/robot_description/urdf"
-    "/home/naor/Desktop/naor/study/Thesis/src/robot_description/launch"
-    "/home/naor/Desktop/naor/study/Thesis/src/robot_description/rviz"
-    "/home/naor/Desktop/naor/study/Thesis/src/robot_description/meshes"
-    )
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/robot_description" TYPE DIRECTORY FILES
     "/home/naor/Desktop/naor/study/Thesis/src/robot_description/launch"
     "/home/naor/Desktop/naor/study/Thesis/src/robot_description/config"
     )

@@ -25,6 +25,27 @@ inline void to_flow_style_yaml(
   std::ostream & out)
 {
   out << "{";
+  // member: error_pitch
+  {
+    out << "error_pitch: ";
+    rosidl_generator_traits::value_to_yaml(msg.error_pitch, out);
+    out << ", ";
+  }
+
+  // member: error_roll
+  {
+    out << "error_roll: ";
+    rosidl_generator_traits::value_to_yaml(msg.error_roll, out);
+    out << ", ";
+  }
+
+  // member: error_yaw
+  {
+    out << "error_yaw: ";
+    rosidl_generator_traits::value_to_yaml(msg.error_yaw, out);
+    out << ", ";
+  }
+
   // member: p_pitch
   {
     out << "p_pitch: ";
@@ -114,6 +135,36 @@ inline void to_block_style_yaml(
   const Pid & msg,
   std::ostream & out, size_t indentation = 0)
 {
+  // member: error_pitch
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "error_pitch: ";
+    rosidl_generator_traits::value_to_yaml(msg.error_pitch, out);
+    out << "\n";
+  }
+
+  // member: error_roll
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "error_roll: ";
+    rosidl_generator_traits::value_to_yaml(msg.error_roll, out);
+    out << "\n";
+  }
+
+  // member: error_yaw
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "error_yaw: ";
+    rosidl_generator_traits::value_to_yaml(msg.error_yaw, out);
+    out << "\n";
+  }
+
   // member: p_pitch
   {
     if (indentation > 0) {

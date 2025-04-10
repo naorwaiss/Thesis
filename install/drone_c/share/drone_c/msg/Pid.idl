@@ -8,6 +8,12 @@ module drone_c {
     @verbatim (language="comment", text=
       "Definition of the pid_msg")
     struct Pid {
+      float error_pitch;
+
+      float error_roll;
+
+      float error_yaw;
+
       float p_pitch;
 
       float p_roll;

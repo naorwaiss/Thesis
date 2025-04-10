@@ -32,6 +32,12 @@ cdr_serialize(
   const drone_c::msg::Pid & ros_message,
   eprosima::fastcdr::Cdr & cdr)
 {
+  // Member: error_pitch
+  cdr << ros_message.error_pitch;
+  // Member: error_roll
+  cdr << ros_message.error_roll;
+  // Member: error_yaw
+  cdr << ros_message.error_yaw;
   // Member: p_pitch
   cdr << ros_message.p_pitch;
   // Member: p_roll
@@ -65,6 +71,15 @@ cdr_deserialize(
   eprosima::fastcdr::Cdr & cdr,
   drone_c::msg::Pid & ros_message)
 {
+  // Member: error_pitch
+  cdr >> ros_message.error_pitch;
+
+  // Member: error_roll
+  cdr >> ros_message.error_roll;
+
+  // Member: error_yaw
+  cdr >> ros_message.error_yaw;
+
   // Member: p_pitch
   cdr >> ros_message.p_pitch;
 
@@ -117,6 +132,24 @@ get_serialized_size(
   (void)padding;
   (void)wchar_size;
 
+  // Member: error_pitch
+  {
+    size_t item_size = sizeof(ros_message.error_pitch);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: error_roll
+  {
+    size_t item_size = sizeof(ros_message.error_roll);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: error_yaw
+  {
+    size_t item_size = sizeof(ros_message.error_yaw);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // Member: p_pitch
   {
     size_t item_size = sizeof(ros_message.p_pitch);
@@ -212,6 +245,33 @@ max_serialized_size_Pid(
   full_bounded = true;
   is_plain = true;
 
+
+  // Member: error_pitch
+  {
+    size_t array_size = 1;
+
+    last_member_size = array_size * sizeof(uint32_t);
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: error_roll
+  {
+    size_t array_size = 1;
+
+    last_member_size = array_size * sizeof(uint32_t);
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: error_yaw
+  {
+    size_t array_size = 1;
+
+    last_member_size = array_size * sizeof(uint32_t);
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
 
   // Member: p_pitch
   {

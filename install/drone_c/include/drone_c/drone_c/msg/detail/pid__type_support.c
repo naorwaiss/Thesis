@@ -31,7 +31,58 @@ void drone_c__msg__Pid__rosidl_typesupport_introspection_c__Pid_fini_function(vo
   drone_c__msg__Pid__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember drone_c__msg__Pid__rosidl_typesupport_introspection_c__Pid_message_member_array[12] = {
+static rosidl_typesupport_introspection_c__MessageMember drone_c__msg__Pid__rosidl_typesupport_introspection_c__Pid_message_member_array[15] = {
+  {
+    "error_pitch",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(drone_c__msg__Pid, error_pitch),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL,  // fetch(index, &value) function pointer
+    NULL,  // assign(index, value) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "error_roll",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(drone_c__msg__Pid, error_roll),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL,  // fetch(index, &value) function pointer
+    NULL,  // assign(index, value) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "error_yaw",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(drone_c__msg__Pid, error_yaw),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL,  // fetch(index, &value) function pointer
+    NULL,  // assign(index, value) function pointer
+    NULL  // resize(index) function pointer
+  },
   {
     "p_pitch",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
@@ -241,7 +292,7 @@ static rosidl_typesupport_introspection_c__MessageMember drone_c__msg__Pid__rosi
 static const rosidl_typesupport_introspection_c__MessageMembers drone_c__msg__Pid__rosidl_typesupport_introspection_c__Pid_message_members = {
   "drone_c__msg",  // message namespace
   "Pid",  // message name
-  12,  // number of fields
+  15,  // number of fields
   sizeof(drone_c__msg__Pid),
   drone_c__msg__Pid__rosidl_typesupport_introspection_c__Pid_message_member_array,  // message members
   drone_c__msg__Pid__rosidl_typesupport_introspection_c__Pid_init_function,  // function to initialize message memory (memory has to be allocated)

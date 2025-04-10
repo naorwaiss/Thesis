@@ -200,13 +200,61 @@ private:
 class Init_Pid_p_pitch
 {
 public:
-  Init_Pid_p_pitch()
-  : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
+  explicit Init_Pid_p_pitch(::drone_c::msg::Pid & msg)
+  : msg_(msg)
   {}
   Init_Pid_p_roll p_pitch(::drone_c::msg::Pid::_p_pitch_type arg)
   {
     msg_.p_pitch = std::move(arg);
     return Init_Pid_p_roll(msg_);
+  }
+
+private:
+  ::drone_c::msg::Pid msg_;
+};
+
+class Init_Pid_error_yaw
+{
+public:
+  explicit Init_Pid_error_yaw(::drone_c::msg::Pid & msg)
+  : msg_(msg)
+  {}
+  Init_Pid_p_pitch error_yaw(::drone_c::msg::Pid::_error_yaw_type arg)
+  {
+    msg_.error_yaw = std::move(arg);
+    return Init_Pid_p_pitch(msg_);
+  }
+
+private:
+  ::drone_c::msg::Pid msg_;
+};
+
+class Init_Pid_error_roll
+{
+public:
+  explicit Init_Pid_error_roll(::drone_c::msg::Pid & msg)
+  : msg_(msg)
+  {}
+  Init_Pid_error_yaw error_roll(::drone_c::msg::Pid::_error_roll_type arg)
+  {
+    msg_.error_roll = std::move(arg);
+    return Init_Pid_error_yaw(msg_);
+  }
+
+private:
+  ::drone_c::msg::Pid msg_;
+};
+
+class Init_Pid_error_pitch
+{
+public:
+  Init_Pid_error_pitch()
+  : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
+  {}
+  Init_Pid_error_roll error_pitch(::drone_c::msg::Pid::_error_pitch_type arg)
+  {
+    msg_.error_pitch = std::move(arg);
+    return Init_Pid_error_roll(msg_);
   }
 
 private:
@@ -224,7 +272,7 @@ template<>
 inline
 auto build<::drone_c::msg::Pid>()
 {
-  return drone_c::msg::builder::Init_Pid_p_pitch();
+  return drone_c::msg::builder::Init_Pid_error_pitch();
 }
 
 }  // namespace drone_c

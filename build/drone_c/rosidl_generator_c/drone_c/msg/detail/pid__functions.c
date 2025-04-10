@@ -17,6 +17,9 @@ drone_c__msg__Pid__init(drone_c__msg__Pid * msg)
   if (!msg) {
     return false;
   }
+  // error_pitch
+  // error_roll
+  // error_yaw
   // p_pitch
   // p_roll
   // p_yaw
@@ -38,6 +41,9 @@ drone_c__msg__Pid__fini(drone_c__msg__Pid * msg)
   if (!msg) {
     return;
   }
+  // error_pitch
+  // error_roll
+  // error_yaw
   // p_pitch
   // p_roll
   // p_yaw
@@ -56,6 +62,18 @@ bool
 drone_c__msg__Pid__are_equal(const drone_c__msg__Pid * lhs, const drone_c__msg__Pid * rhs)
 {
   if (!lhs || !rhs) {
+    return false;
+  }
+  // error_pitch
+  if (lhs->error_pitch != rhs->error_pitch) {
+    return false;
+  }
+  // error_roll
+  if (lhs->error_roll != rhs->error_roll) {
+    return false;
+  }
+  // error_yaw
+  if (lhs->error_yaw != rhs->error_yaw) {
     return false;
   }
   // p_pitch
@@ -117,6 +135,12 @@ drone_c__msg__Pid__copy(
   if (!input || !output) {
     return false;
   }
+  // error_pitch
+  output->error_pitch = input->error_pitch;
+  // error_roll
+  output->error_roll = input->error_roll;
+  // error_yaw
+  output->error_yaw = input->error_yaw;
   // p_pitch
   output->p_pitch = input->p_pitch;
   // p_roll

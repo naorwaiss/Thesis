@@ -57,6 +57,9 @@ class Pid(metaclass=Metaclass_Pid):
     """Message class 'Pid'."""
 
     __slots__ = [
+        '_error_pitch',
+        '_error_roll',
+        '_error_yaw',
         '_p_pitch',
         '_p_roll',
         '_p_yaw',
@@ -72,6 +75,9 @@ class Pid(metaclass=Metaclass_Pid):
     ]
 
     _fields_and_field_types = {
+        'error_pitch': 'float',
+        'error_roll': 'float',
+        'error_yaw': 'float',
         'p_pitch': 'float',
         'p_roll': 'float',
         'p_yaw': 'float',
@@ -99,12 +105,18 @@ class Pid(metaclass=Metaclass_Pid):
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
         assert all('_' + key in self.__slots__ for key in kwargs.keys()), \
             'Invalid arguments passed to constructor: %s' % \
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
+        self.error_pitch = kwargs.get('error_pitch', float())
+        self.error_roll = kwargs.get('error_roll', float())
+        self.error_yaw = kwargs.get('error_yaw', float())
         self.p_pitch = kwargs.get('p_pitch', float())
         self.p_roll = kwargs.get('p_roll', float())
         self.p_yaw = kwargs.get('p_yaw', float())
@@ -147,6 +159,12 @@ class Pid(metaclass=Metaclass_Pid):
     def __eq__(self, other):
         if not isinstance(other, self.__class__):
             return False
+        if self.error_pitch != other.error_pitch:
+            return False
+        if self.error_roll != other.error_roll:
+            return False
+        if self.error_yaw != other.error_yaw:
+            return False
         if self.p_pitch != other.p_pitch:
             return False
         if self.p_roll != other.p_roll:
@@ -177,6 +195,51 @@ class Pid(metaclass=Metaclass_Pid):
     def get_fields_and_field_types(cls):
         from copy import copy
         return copy(cls._fields_and_field_types)
+
+    @builtins.property
+    def error_pitch(self):
+        """Message field 'error_pitch'."""
+        return self._error_pitch
+
+    @error_pitch.setter
+    def error_pitch(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'error_pitch' field must be of type 'float'"
+            assert not (value < -3.402823466e+38 or value > 3.402823466e+38) or math.isinf(value), \
+                "The 'error_pitch' field must be a float in [-3.402823466e+38, 3.402823466e+38]"
+        self._error_pitch = value
+
+    @builtins.property
+    def error_roll(self):
+        """Message field 'error_roll'."""
+        return self._error_roll
+
+    @error_roll.setter
+    def error_roll(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'error_roll' field must be of type 'float'"
+            assert not (value < -3.402823466e+38 or value > 3.402823466e+38) or math.isinf(value), \
+                "The 'error_roll' field must be a float in [-3.402823466e+38, 3.402823466e+38]"
+        self._error_roll = value
+
+    @builtins.property
+    def error_yaw(self):
+        """Message field 'error_yaw'."""
+        return self._error_yaw
+
+    @error_yaw.setter
+    def error_yaw(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'error_yaw' field must be of type 'float'"
+            assert not (value < -3.402823466e+38 or value > 3.402823466e+38) or math.isinf(value), \
+                "The 'error_yaw' field must be a float in [-3.402823466e+38, 3.402823466e+38]"
+        self._error_yaw = value
 
     @builtins.property
     def p_pitch(self):

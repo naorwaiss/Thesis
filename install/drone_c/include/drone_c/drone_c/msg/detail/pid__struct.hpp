@@ -38,6 +38,9 @@ struct Pid_
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
+      this->error_pitch = 0.0f;
+      this->error_roll = 0.0f;
+      this->error_yaw = 0.0f;
       this->p_pitch = 0.0f;
       this->p_roll = 0.0f;
       this->p_yaw = 0.0f;
@@ -59,6 +62,9 @@ struct Pid_
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
+      this->error_pitch = 0.0f;
+      this->error_roll = 0.0f;
+      this->error_yaw = 0.0f;
       this->p_pitch = 0.0f;
       this->p_roll = 0.0f;
       this->p_yaw = 0.0f;
@@ -75,6 +81,15 @@ struct Pid_
   }
 
   // field types and members
+  using _error_pitch_type =
+    float;
+  _error_pitch_type error_pitch;
+  using _error_roll_type =
+    float;
+  _error_roll_type error_roll;
+  using _error_yaw_type =
+    float;
+  _error_yaw_type error_yaw;
   using _p_pitch_type =
     float;
   _p_pitch_type p_pitch;
@@ -113,6 +128,24 @@ struct Pid_
   _sum_yaw_type sum_yaw;
 
   // setters for named parameter idiom
+  Type & set__error_pitch(
+    const float & _arg)
+  {
+    this->error_pitch = _arg;
+    return *this;
+  }
+  Type & set__error_roll(
+    const float & _arg)
+  {
+    this->error_roll = _arg;
+    return *this;
+  }
+  Type & set__error_yaw(
+    const float & _arg)
+  {
+    this->error_yaw = _arg;
+    return *this;
+  }
   Type & set__p_pitch(
     const float & _arg)
   {
@@ -228,6 +261,15 @@ struct Pid_
   // comparison operators
   bool operator==(const Pid_ & other) const
   {
+    if (this->error_pitch != other.error_pitch) {
+      return false;
+    }
+    if (this->error_roll != other.error_roll) {
+      return false;
+    }
+    if (this->error_yaw != other.error_yaw) {
+      return false;
+    }
     if (this->p_pitch != other.p_pitch) {
       return false;
     }
