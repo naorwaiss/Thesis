@@ -23,8 +23,11 @@ static const float DT = 1.0f / SAMPLE_RATE;
 #define RATE_SUPERVISOR RATE_25_HZ
 
 #define rad2deg 180.0f / PI
-#define PI 3.14159265358979323846f
+#ifndef PI
+    #define PI 3.14159265358979323846f
+#endif
 #define deg2rad PI / 180.0f
+ 
 
 typedef struct {
     float x;

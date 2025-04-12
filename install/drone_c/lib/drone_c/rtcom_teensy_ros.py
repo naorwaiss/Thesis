@@ -7,6 +7,7 @@ from geometry_msgs.msg import Quaternion
 from drone_c.msg import Pid, Motors, EulerAngles, ImuFilter
 from rtcom import *
 import time
+import math
 
 FLOAT_SIZE = struct.calcsize('f')
 INT_SIZE = struct.calcsize('i')
@@ -43,8 +44,8 @@ class UDPSocketClient(Node):
         self.client.on('w', self.handle_desire_stab)
         self.client.on('a', self.handle_motor_pwm)
         self.client.on('n', self.handle_estimated_rate)
-        self.client.on('l', self.handle_pid_stab)
-        self.client.on('b', self.handle_pid_rate)
+        # self.client.on('l', self.handle_pid_stab)
+        # self.client.on('b', self.handle_pid_rate)
         self.client.on('P', self.handel_imu_filter)
 
     # Callback methods for specific message types
@@ -161,9 +162,9 @@ class UDPSocketClient(Node):
         imu_filter_msg.acc_lpf_x = messages_struct_float[0]
         imu_filter_msg.acc_lpf_y = messages_struct_float[1]
         imu_filter_msg.acc_lpf_z = messages_struct_float[2]
-        imu_filter_msg.gyro_hpf_x = messages_struct_float[3]
-        imu_filter_msg.gyro_hpf_y = messages_struct_float[4]
-        imu_filter_msg.gyro_hpf_z = messages_struct_float[5]
+        imu_filter_msg.gyro_hpf_x = messages_struct_float[3]*(180/math.pi)
+        imu_filter_msg.gyro_hpf_y = messages_struct_float[4]*(180/math.pi)
+        imu_filter_msg.gyro_hpf_z = messages_struct_float[5]*(180/math.pi)
         imu_filter_msg.gyro_lpf_x = messages_struct_float[6]
         imu_filter_msg.gyro_lpf_y = messages_struct_float[7]
         imu_filter_msg.gyro_lpf_z = messages_struct_float[8]

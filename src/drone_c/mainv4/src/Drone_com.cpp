@@ -105,8 +105,12 @@ void convert_Measurment_to_byte(Measurement_t meas,
     memcpy(desired_rate_byte, desired_rate_data, sizeof(desired_rate_byte));
 
     estimated_rate_data[0] = estimated_rate.pitch;
+    estimated_rate_data[1] = estimated_rate.roll;
     estimated_rate_data[2] = estimated_rate.yaw;
     memcpy(estimated_rate_byte, estimated_rate_data, sizeof(estimated_rate_byte));
+
+
+
     PID_stab_out_data[0] = PID_stab_out.error.pitch;
     PID_stab_out_data[1] = PID_stab_out.error.roll;
     PID_stab_out_data[2] = PID_stab_out.error.yaw;
@@ -145,9 +149,9 @@ void convert_Measurment_to_byte(Measurement_t meas,
     motor_data[1] = motor_pwm.PWM2;
     motor_data[2] = motor_pwm.PWM3;
     motor_data[3] = motor_pwm.PWM4;
-    for (size_t i = 0; i < 4; i++) {
-        motor_data[i] = map(motor_data[i], 2200, 4000, 0, 100);
-    }
+    // for (size_t i = 0; i < 4; i++) {
+    //     motor_data[i] = map(motor_data[i], 2200, 4000, 0, 100);
+    // }
     memcpy(motor_pwm_byte, motor_data, sizeof(motor_pwm_byte));
 
     rc_ch_data[0] = controller_data.roll;
@@ -165,7 +169,7 @@ void emit_data() {
     socketSession->emitTyped(imu_byte_raw, sizeof(imu_byte_raw), P_IMU_RAW);
     socketSession->emitTyped(imu_byte_filter, sizeof(imu_byte_filter), P_IMU_FILTER);
     socketSession->emitTyped(mag_byte, sizeof(mag_byte), MAG);
-    socketSession->emitTyped(quaternion_byte, sizeof(quaternion_byte), Quaternion);
+    socketSession->emitTyped(quaternion_byte, sizeof(quaternion_byte), Quaternion_n);
     socketSession->emitTyped(euler_byte, sizeof(euler_byte), EUILER);
     socketSession->emitTyped(rc_byte, sizeof(rc_byte), RC);
     socketSession->emitTyped(desired_rate_byte, sizeof(desired_rate_byte), D_RATE);

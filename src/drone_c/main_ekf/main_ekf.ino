@@ -67,11 +67,13 @@ PID_out_t PID_rate_out;
 elapsedMicros motor_timer;
 elapsedMicros stab_timer;
 elapsedMicros imu_timer;
+elapsedMicros send_data_timer;
 
 static const float SAMPLE_RATE = 833;
 const unsigned long STAB_PERIOD = 1000000 / (ESC_FREQUENCY / 2);  // 300 Hz period in microseconds
 const unsigned long PWM_PERIOD_1 = 1000000 / ESC_FREQUENCY;       // 1,000,000 us / frequency in Hz
 const unsigned long IMU_PERIOD = 1000000 / SAMPLE_RATE;
+const unsigned long SEND_DATA_PERIOD = 1000000 / 50;
 
 
 float t_PID_s = 0.0f;
@@ -148,16 +150,28 @@ void loop() {
         // Getting the motors struct to send data back:
         motor_pwm = motors.Get_motor();
     }
+    if(send_data_timer>=SEND_DATA_PERIOD){
+        DRON_COM::convert_Measurment_to_byte(meas,
+                                             q_est, desired_attitude,
+                                             motor_pwm, desired_rate,
+                                             estimated_attitude, estimated_rate,
+                                             PID_stab_out, PID_rate_out, controller_data);
+
+        DRON_COM::send_data();
+        send_data_timer = 0;
+        }
+
+
     imu_timer = 0;
 }
-    // Sending new UDP Packet:
-    DRON_COM::convert_Measurment_to_byte(meas,
-                                         q_est, desired_attitude,
-                                         motor_pwm, desired_rate,
-                                         estimated_attitude, estimated_rate,
-                                         PID_stab_out, PID_rate_out, controller_data);
+    // // Sending new UDP Packet:
+    // DRON_COM::convert_Measurment_to_byte(meas,
+    //                                      q_est, desired_attitude,
+    //                                      motor_pwm, desired_rate,
+    //                                      estimated_attitude, estimated_rate,
+    //                                      PID_stab_out, PID_rate_out, controller_data);
 
-    DRON_COM::send_data();
+    // DRON_COM::send_data();
 
 }
 

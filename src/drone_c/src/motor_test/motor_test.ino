@@ -85,6 +85,8 @@ void loop() {
     //     map_pwm = 0;
     // }
 
+    // analogWrite(motor_list[2], PWM_val);
+// 
     for (size_t i = 0; i < 4; i++) {
         analogWrite(motor_list[i], PWM_val);
         /* code */

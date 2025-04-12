@@ -25,10 +25,10 @@
 // old_drone
 
 // new drone
-#define MOTOR1_PIN 2
-#define MOTOR2_PIN 3
-#define MOTOR3_PIN 4
-#define MOTOR4_PIN 5
+#define MOTOR1_PIN 2 //front right 
+#define MOTOR2_PIN 3 //back right 
+#define MOTOR3_PIN 4 //back left 
+#define MOTOR4_PIN 5 //fron left 
 // new drone
 
 #define MAX_ANGLE 10.0f
@@ -177,6 +177,10 @@ void loop() {
         DRON_COM::send_data();
         send_data_timer = 0;
         }
+        // Serial.print(motor_pwm.PWM1); Serial.print("  ");
+        // Serial.print(motor_pwm.PWM2); Serial.print("  ");
+        // Serial.print(motor_pwm.PWM3); Serial.print("  ");
+        // Serial.println(motor_pwm.PWM4);
         imu_timer = 0;
     }
 }
@@ -248,9 +252,9 @@ void GyroMagCalibration() {
         meas.gyro_bias.y += (y - meas.gyro_bias.y) / num_samples;
         meas.gyro_bias.z += (z - meas.gyro_bias.z) / num_samples;
 
-        meas.mag_bias.x += (mag.m.x * POL_MAG_SENS - meas.mag_bias.x) / num_samples;
-        meas.mag_bias.y += (mag.m.y * POL_MAG_SENS - meas.mag_bias.y) / num_samples;
-        meas.mag_bias.z += (mag.m.z * POL_MAG_SENS - meas.mag_bias.z) / num_samples;
+        // meas.mag_bias.x += (mag.m.x * POL_MAG_SENS - meas.mag_bias.x) / num_samples;
+        // meas.mag_bias.y += (mag.m.y * POL_MAG_SENS - meas.mag_bias.y) / num_samples;
+        // meas.mag_bias.z += (mag.m.z * POL_MAG_SENS - meas.mag_bias.z) / num_samples;
 
         meas.acc_bias.x += (IMU.a.x * POL_ACC_SENS - meas.acc_bias.x) / num_samples;
         meas.acc_bias.y += (IMU.a.y * POL_ACC_SENS - meas.acc_bias.y) / num_samples;
@@ -271,7 +275,7 @@ void update_controller() {
     // Update the controller data:
     crsf.update();
     controller_data.throttle = crsf.getChannel(3);
-    controller_data.throttle = map(controller_data.throttle, 988, 2012, 1000, 2000);
+    // controller_data.throttle = map(controller_data.throttle, 1000, 2000, 1000, 2000);
     controller_data.roll = crsf.getChannel(1);
     controller_data.pitch = crsf.getChannel(2);
     controller_data.yaw = crsf.getChannel(4);

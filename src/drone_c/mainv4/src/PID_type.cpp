@@ -35,11 +35,24 @@ void initializePIDParams(float RrollPID[3] = nullptr, float RpitchPID[3] = nullp
     const float defaultImax_rate[2] = {100.0f, 100.0f};
 
     // Default STABILIZE mode parameter values
-    const float defaultSrollPID[3] = {7.0f, 0.01f, 0.0f};
-    const float defaultSpitchPID[3] = {7.0f, 0.01f, 0.0f};
+    const float defaultSrollPID[3] = {12.0f, 0.01f, 0.0f};
+    const float defaultSpitchPID[3] = {10.0f, 0.01f, 0.0f};
     const float defaultSyawPID[3] = {4.0f, 0.0f, 0.0f};
     const float defaultImax_stab[2] = {100.0f, 100.0f};
 
+
+
+
+    // const float defaultRrollPID[3] = {0.8f, 0.00f, 0.0f};
+    // const float defaultRpitchPID[3] = {1.2f, 0.0f, 0.0f};   
+    // const float defaultRyawPID[3] = {2.0f, 0.0f, 0.00f};
+    // const float defaultImax_rate[2] = {100.0f, 100.0f};
+
+    // // Default STABILIZE mode parameter values
+    // const float defaultSrollPID[3] = {12.0f, 0.00f, 0.0f};
+    // const float defaultSpitchPID[3] = {10.0f, 0.00f, 0.0f};
+    // const float defaultSyawPID[3] = {4.0f, 0.0f, 0.0f};
+    // const float defaultImax_stab[2] = {100.0f, 100.0f};
     // Assign default values if nullptr is passed
     if (RrollPID == nullptr) RrollPID = const_cast<float*>(defaultRrollPID);
     if (RpitchPID == nullptr) RpitchPID = const_cast<float*>(defaultRpitchPID);
@@ -122,29 +135,32 @@ PID_out_t PID_stab(attitude_t des_angle, attitude_t angle, float DT) {
     // Calculate error
     angle_err = des_angle - angle;
 
-    if (abs(angle_err.roll) < PID_THRSHOLD){ angle_err.roll = 0.0; };
-    if (abs(angle_err.pitch) < PID_THRSHOLD){ angle_err.pitch = 0.0; };
-    if (abs(angle_err.yaw) < PID_THRSHOLD){ angle_err.yaw = 0.0; };
+    // if (abs(angle_err.roll) < PID_THRSHOLD){ angle_err.roll = 0.0; };
+    // if (abs(angle_err.pitch) < PID_THRSHOLD){ angle_err.pitch = 0.0; };
+    // if (abs(angle_err.yaw) < PID_THRSHOLD){ angle_err.yaw = 0.0; };
 
-    if(abs(des_angle.roll) < SMALL_ANGLE && abs(angle_err.roll) < SMALL_ANGLE){
-        stab_out.P_term.roll = STAB_P_ZERO * stab_params.RollP * angle_err.roll;
-    }
-    else {
-        stab_out.P_term.roll = stab_params.RollP * angle_err.roll;
-    }
-    if(abs(des_angle.pitch) < SMALL_ANGLE && abs(angle_err.pitch) < SMALL_ANGLE){
-        stab_out.P_term.pitch = STAB_P_ZERO * stab_params.PitchP * angle_err.pitch;
-    }
-    else {
-        stab_out.P_term.pitch = stab_params.PitchP * angle_err.pitch;
-    }
-    if(abs(des_angle.yaw) < SMALL_ANGLE && abs(angle_err.yaw) < SMALL_ANGLE){
-        stab_out.P_term.yaw = STAB_P_ZERO * stab_params.YawP * angle_err.yaw;
-    }
-    else {
-        stab_out.P_term.yaw = stab_params.YawP * angle_err.yaw;
-    }
+    // if(abs(des_angle.roll) < SMALL_ANGLE && abs(angle_err.roll) < SMALL_ANGLE){
+    //     stab_out.P_term.roll = STAB_P_ZERO * stab_params.RollP * angle_err.roll;
+    // }
+    // else {
+    //     stab_out.P_term.roll = stab_params.RollP * angle_err.roll;
+    // }
+    // if(abs(des_angle.pitch) < SMALL_ANGLE && abs(angle_err.pitch) < SMALL_ANGLE){
+    //     stab_out.P_term.pitch = STAB_P_ZERO * stab_params.PitchP * angle_err.pitch;
+    // }
+    // else {
+    //     stab_out.P_term.pitch = stab_params.PitchP * angle_err.pitch;
+    // }
+    // if(abs(des_angle.yaw) < SMALL_ANGLE && abs(angle_err.yaw) < SMALL_ANGLE){
+    //     stab_out.P_term.yaw = STAB_P_ZERO * stab_params.YawP * angle_err.yaw;
+    // }
+    // else {
+    //     stab_out.P_term.yaw = stab_params.YawP * angle_err.yaw;
+    // }
     
+
+    
+
     // Calculate P term:
     stab_out.P_term.roll = stab_params.RollP * angle_err.roll;
     stab_out.P_term.pitch = stab_params.PitchP * angle_err.pitch;

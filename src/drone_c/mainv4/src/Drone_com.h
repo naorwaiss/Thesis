@@ -7,7 +7,7 @@
 #define P_IMU_FILTER 'P'
 #define EUILER 'e'
 #define RC 'r'
-#define Quaternion 'q'
+#define Quaternion_n 'q'
 #define D_RATE 'z'
 #define D_ATI 'w'
 #define MOTOR_DATA_CONST 'a'

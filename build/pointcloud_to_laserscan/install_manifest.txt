@@ -9,7 +9,6 @@
 /home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/lib/libpointcloud_to_laserscan.so
 /home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/lib/pointcloud_to_laserscan/dummy_pointcloud_publisher
 /home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/launch/sample_pointcloud_to_laserscan_launch.py
-/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/launch/my_launch.py
 /home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/launch/sample_laserscan_to_pointcloud_launch.py
 /home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/ament_index/resource_index/package_run_dependencies/pointcloud_to_laserscan
 /home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/ament_index/resource_index/parent_prefix_path/pointcloud_to_laserscan
