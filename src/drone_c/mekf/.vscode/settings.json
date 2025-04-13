@@ -21,6 +21,7 @@
         "iterator": "cpp",
         "map": "cpp",
         "set": "cpp",
-        "locale": "cpp"
+        "locale": "cpp",
+        "*.ipp": "cpp"
     }
 }

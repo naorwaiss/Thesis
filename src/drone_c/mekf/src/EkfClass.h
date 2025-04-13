@@ -46,11 +46,13 @@ class EKF {
     Vector2f gyro_input;
     Vector2f euiler_data;
     vec3_t gyroPrev = {0.0, 0.0, 0.0};
+    float yaw;
     explicit EKF(Measurement_t* meas, const float dt);
     attitude_t kalman2D(Vector2f gyro, Vector2f meas);
     void pre_kalman();
-    void run_kalman(attitude_t* return_value);
-    void get_quart();
+    void pre_kalman_filter();
+    void run_kalman(attitude_t* return_euiler ,quat_t* return_quart);
+    quat_t get_quart(attitude_t* euiler);
     void mag_yaw();
 
     void InitialFiltering();    

@@ -5,6 +5,10 @@
 #include <Eigen/LU>
 #include "src/Var_types.h"
 #include "src/EkfClass.h"
+#include "src/MotorsControl.h"
+#include <AlfredoCRSF.h>
+#include "src/Drone_com.h"
+#include "src/PID_type.h"
 
 #define POL_ACC_SENS 0.061 / 1000.0f  // FS = 2g, 0.061 mg/LSB
 #define POL_MAG_SENS 1 / 6842.0f
@@ -12,40 +16,74 @@
 #define IMU_TRASHOLD 0.04
 #define IMU_THRESHOLD 0.05f
 
+#define crsfSerial Serial1  // Use Serial1 for the CRSF communication
+
+#define MOTOR1_PIN 2  // front right
+#define MOTOR2_PIN 3  // back right
+#define MOTOR3_PIN 4  // back left
+#define MOTOR4_PIN 5  // fron left
+// new drone
+
+#define MAX_ANGLE 10.0f
+#define MAX_RATE 200.0f
+#define CONTROLLER_MIN 988
+#define CONTROLLER_MAX 2012
+#define IMU_THRESHOLD 0.05f
+
 LSM6 IMU;
 LIS3MDL mag;
 LPS baro;
-elapsedMicros imu_timer;
 Measurement_t meas;
-const unsigned long IMU_PERIOD = 1000000 / SAMPLE_RATE;
 EKF ekf(&meas, DT);
 attitude_t estimated_attitude;
+quat_t q_est;
+motor_t motor_pwm;
+attitude_t desired_rate;
+attitude_t estimated_rate;
+PID_out_t PID_stab_out;
+PID_out_t PID_rate_out;
+AlfredoCRSF crsf;
+Controller_s controller_data;
+Motors motors(MOTOR1_PIN, MOTOR2_PIN, MOTOR3_PIN, MOTOR4_PIN);
+bool is_armed = false;
+bool THR_SAFE = false;
+
+elapsedMicros motor_timer;
+elapsedMicros stab_timer;
+elapsedMicros imu_timer;
+elapsedMicros send_data_timer;
+
+const unsigned long STAB_PERIOD = 1000000 / (ESC_FREQUENCY / 2);  // 300 Hz period in microseconds
+const unsigned long PWM_PERIOD_1 = 1000000 / ESC_FREQUENCY;       // 1,000,000 us / frequency in Hz
+const unsigned long IMU_PERIOD = 1000000 / SAMPLE_RATE;
+const unsigned long SEND_DATA_PERIOD = 1000000 / 50;
 
 void setup() {
     Serial.begin(115200);
     Wire.begin();
+    DRON_COM::init_com();
     IMU_init();
     Serial.println("IMU ready with 2D Kalman");
+    crsfSerial.begin(CRSF_BAUDRATE, SERIAL_8N1);
+    if (!crsfSerial) {
+        while (1) {
+            Serial.println("Invalid crsfSerial configuration");
+        }
+    }
+    crsf.begin(crsfSerial);
+    initializePIDParams();
+    motors.Motors_init();
 }
 
 void loop() {
     if (imu_timer >= IMU_PERIOD) {
         Update_Measurement();
-        ekf.run_kalman(&estimated_attitude);
-
-        // Serial.print("DT:  ");
-        // Serial.print(DT);
-        // Serial.print("  ");
-
-        Serial.print("Roll: ");
-        Serial.print(ekf.state(0) * 180.0 / PI);
-        Serial.print(" | pitch: ");
-        Serial.println(ekf.state(1) * 180.0 / PI);
+        ekf.run_kalman(&estimated_attitude, &q_est);
+        
         imu_timer = 0;
     }
     delay(1);
 }
-
 
 void IMU_init() {
     Wire.begin();
