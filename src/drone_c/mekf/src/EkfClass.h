@@ -53,7 +53,6 @@ class EKF {
     void pre_kalman_filter();
     void run_kalman(attitude_t* return_euiler ,quat_t* return_quart);
     quat_t get_quart(attitude_t* euiler);
-    void mag_yaw();
 
     void InitialFiltering();    
 
