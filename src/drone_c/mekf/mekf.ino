@@ -64,25 +64,33 @@ void setup() {
     Wire.begin();
     DRON_COM::init_com();
     IMU_init();
-    Serial.println("IMU ready with 2D Kalman");
-    crsfSerial.begin(CRSF_BAUDRATE, SERIAL_8N1);
-    if (!crsfSerial) {
-        while (1) {
-            Serial.println("Invalid crsfSerial configuration");
-        }
-    }
-    crsf.begin(crsfSerial);
-    initializePIDParams();
-    motors.Motors_init();
+    // Serial.println("IMU ready with 2D Kalman");
+    // crsfSerial.begin(CRSF_BAUDRATE, SERIAL_8N1);
+    // if (!crsfSerial) {
+    //     while (1) {
+    //         Serial.println("Invalid crsfSerial configuration");
+    //     }
+    // }
+    // crsf.begin(crsfSerial);
+    // initializePIDParams();
+    // motors.Motors_init();
 }
 
 void loop() {
-    update_controller();
-    check_arming_state();
+    // update_controller();
+    // check_arming_state();
 
     if (imu_timer >= IMU_PERIOD) {
         Update_Measurement();
         ekf.run_kalman(&estimated_attitude, &q_est);
+
+        Serial.print("the data return");
+        Serial.print(estimated_attitude.pitch);Serial.print(" ");
+        Serial.print(estimated_attitude.roll);Serial.print(" ");
+        Serial.print(estimated_attitude.yaw);Serial.println(" ");
+
+
+
 
         imu_timer = 0;
     }
@@ -144,15 +152,12 @@ void Update_Measurement() {
     meas.mag.x = mag.m.x * POL_MAG_SENS - meas.mag_bias.x;
     meas.mag.y = mag.m.y * POL_MAG_SENS - meas.mag_bias.y;
     meas.mag.z = mag.m.z * POL_MAG_SENS - meas.mag_bias.z;
-    if (abs(meas.mag.x < IMU_THRESHOLD)) {
-        meas.mag.x = 0;
-    }
-    if (abs(meas.mag.y < IMU_THRESHOLD)) {
-        meas.mag.y = 0;
-    }
-    if (abs(meas.mag.z < IMU_THRESHOLD)) {
-        meas.mag.z = 0;
-    }
+
+    Serial.print(" mag read ");
+    Serial.print(meas.mag.x); Serial.print("  ");
+    Serial.print(meas.mag.y); Serial.print("  ");
+    Serial.print(meas.mag.z); Serial.println("  ");
+
 }
 
 void mapping_controller(char state) {

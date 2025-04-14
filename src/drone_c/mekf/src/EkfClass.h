@@ -7,12 +7,15 @@
 
 
 
-#define P_const 0.001f
+#define P_const 0.0008f
 #define Q_const (0.07f * sqrt(400))
 #define R_const (0.00009f * sqrt(400))
 
 using Eigen::Matrix2f;
 using Eigen::Vector2f;
+using Eigen::Vector3f;
+using Eigen::Matrix3f;
+
 
 
 
@@ -37,18 +40,19 @@ class EKF {
     // extern Eigen::Vector2f;
 
    public:
-    Vector2f state = Vector2f::Zero();
-    Matrix2f P = Matrix2f::Identity() * P_const;
-    Matrix2f Q = Matrix2f::Identity() * Q_const;
-    Matrix2f R = Matrix2f::Identity() * R_const;
-    Matrix2f I = Matrix2f::Identity();
-    Vector2f prev_gyro = Vector2f::Zero();
-    Vector2f gyro_input;
-    Vector2f euiler_data;
+    Vector3f state = Vector3f::Zero(); // Change from Vector2f to Vector3f
+    Matrix3f P = Matrix3f::Identity() * P_const; // Change all matrices to 3x3
+    Matrix3f Q = Matrix3f::Identity() * Q_const;
+    Matrix3f R = Matrix3f::Identity() * R_const;
+    Matrix3f I = Matrix3f::Identity();
+    Vector3f prev_gyro = Vector3f::Zero();
+    Vector3f gyro_input; // Include z-axis gyro
+    Vector3f euler_data; // Include yaw measurements
     vec3_t gyroPrev = {0.0, 0.0, 0.0};
-    float yaw;
+
     explicit EKF(Measurement_t* meas, const float dt);
-    attitude_t kalman2D(Vector2f gyro, Vector2f meas);
+    attitude_t kalman3D(Vector3f gyro, Vector3f euler_data);
+
     void pre_kalman();
     void pre_kalman_filter();
     void run_kalman(attitude_t* return_euiler ,quat_t* return_quart);
