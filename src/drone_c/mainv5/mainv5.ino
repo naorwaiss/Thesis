@@ -9,6 +9,7 @@
 #include <AlfredoCRSF.h>
 #include "src/MotorsControl.h"
 #include "src/PID_type.h"
+#include "src/EkfClass.h"
 
 // IMU Data Conversion
 #define POL_GYRO_SENS 17.5 / 1000.0f  // FS = 125
@@ -64,6 +65,8 @@ attitude_t estimated_attitude;
 attitude_t estimated_rate;
 PID_out_t PID_stab_out;
 PID_out_t PID_rate_out;
+EKF ekf(&meas, DT);
+
 
 // timer//
 elapsedMicros motor_timer;
@@ -128,10 +131,12 @@ void loop() {
         actual_dt = (double)imu_timer / 1000000.0f;
 
         Update_Measurement();
+        Pololu_filter.InitialFiltering(&meas);
+        ekf.run_kalman(&estimated_attitude,&q_est);
         // Update the quaternion:
-        Pololu_filter.UpdateQ(&meas, actual_dt / 2);
-        Pololu_filter.GetEulerRPYdeg(&estimated_attitude, meas.initial_heading);
-        Pololu_filter.GetQuaternion(&q_est);
+        // Pololu_filter.UpdateQ(&meas, actual_dt / 2);
+        // Pololu_filter.GetEulerRPYdeg(&estimated_attitude, meas.initial_heading);
+        // Pololu_filter.GetQuaternion(&q_est);
 
         if (is_armed) {
             // Get Actual rates:
