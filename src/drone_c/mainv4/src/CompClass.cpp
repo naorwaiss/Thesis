@@ -11,7 +11,7 @@ void CompFilter::UpdateQ(Measurement_t* meas, float dt) {
     float hx, hy, _2bx, _2bz, _4bx, _4bz;
 
     // Initial Filtering - Not a must nut it helps.
-    InitialFiltering(meas);
+    // InitialFiltering(meas);
     vec3_t gyro_lpf_rad; 
     gyro_lpf_rad.x = meas->gyro_LPF.x * deg2rad;
     gyro_lpf_rad.y = meas->gyro_LPF.y * deg2rad;

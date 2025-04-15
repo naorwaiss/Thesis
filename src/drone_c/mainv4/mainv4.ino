@@ -9,6 +9,8 @@
 #include <AlfredoCRSF.h>
 #include "src/MotorsControl.h"
 #include "src/PID_type.h"
+#include "src/EkfClass.h"
+
 
 // IMU Data Conversion
 #define POL_GYRO_SENS 17.5 / 1000.0f  // FS = 125
@@ -64,6 +66,7 @@ attitude_t estimated_attitude;
 attitude_t estimated_rate;
 PID_out_t PID_stab_out;
 PID_out_t PID_rate_out;
+EKF ekf(&meas, DT);
 
 // timer//
 elapsedMicros motor_timer;
@@ -128,10 +131,14 @@ void loop() {
         actual_dt = (double)imu_timer / 1000000.0f;
 
         Update_Measurement();
+        Pololu_filter.InitialFiltering(&meas);
+        ekf.run_kalman(&estimated_attitude, &q_est);
+
+        
         // Update the quaternion:
-        Pololu_filter.UpdateQ(&meas, actual_dt / 2);
-        Pololu_filter.GetEulerRPYdeg(&estimated_attitude, meas.initial_heading);
-        Pololu_filter.GetQuaternion(&q_est);
+        // Pololu_filter.UpdateQ(&meas, actual_dt / 2);
+        // Pololu_filter.GetEulerRPYdeg(&estimated_attitude, meas.initial_heading);
+        // Pololu_filter.GetQuaternion(&q_est);
 
         if (is_armed) {
             // Get Actual rates:
@@ -248,16 +255,16 @@ void GyroMagCalibration() {
         float y = IMU.g.y * POL_GYRO_SENS;
         float z = IMU.g.z * POL_GYRO_SENS;
         num_samples++;
-        meas.gyro_bias.x += (x - meas.gyro_bias.x) / num_samples;
-        meas.gyro_bias.y += (y - meas.gyro_bias.y) / num_samples;
-        meas.gyro_bias.z += (z - meas.gyro_bias.z) / num_samples;
+        // meas.gyro_bias.x += (x - meas.gyro_bias.x) / num_samples;
+        // meas.gyro_bias.y += (y - meas.gyro_bias.y) / num_samples;
+        // meas.gyro_bias.z += (z - meas.gyro_bias.z) / num_samples;
 
-        // meas.mag_bias.x += (mag.m.x * POL_MAG_SENS - meas.mag_bias.x) / num_samples;
-        // meas.mag_bias.y += (mag.m.y * POL_MAG_SENS - meas.mag_bias.y) / num_samples;
-        // meas.mag_bias.z += (mag.m.z * POL_MAG_SENS - meas.mag_bias.z) / num_samples;
+        meas.mag_bias.x += (mag.m.x * POL_MAG_SENS - meas.mag_bias.x) / num_samples;
+        meas.mag_bias.y += (mag.m.y * POL_MAG_SENS - meas.mag_bias.y) / num_samples;
+        meas.mag_bias.z += (mag.m.z * POL_MAG_SENS - meas.mag_bias.z) / num_samples;
 
-        meas.acc_bias.x += (IMU.a.x * POL_ACC_SENS - meas.acc_bias.x) / num_samples;
-        meas.acc_bias.y += (IMU.a.y * POL_ACC_SENS - meas.acc_bias.y) / num_samples;
+        // meas.acc_bias.x += (IMU.a.x * POL_ACC_SENS - meas.acc_bias.x) / num_samples;
+        // meas.acc_bias.y += (IMU.a.y * POL_ACC_SENS - meas.acc_bias.y) / num_samples;
         //   meas.acc_bias.z += (IMU.a.z * POL_ACC_SENS - meas.acc_bias.z)/num_samples;
     }
     meas.initial_mag.x = meas.mag_bias.x;

@@ -41,34 +41,34 @@ void EKF::pre_kalman_filter() {
                meas->mag.z * sin_roll;
 
     // Calculate yaw from compensated magnetometer data
-    float yaw = atan2(-by, bx);
+    float yaw = atan2(-by, bx);  /// yaw mase on the mag read
 
-    Serial.println(yaw);
-
+    // Serial.println(yaw);
 
     gyro_input(0) = meas->gyro_LPF.x;
     gyro_input(1) = meas->gyro_LPF.y;
     gyro_input(2) = meas->gyro_LPF.z;
 
+    // euler angle base on measerment
     euler_data(0) = roll;
     euler_data(1) = pitch;
     euler_data(2) = yaw;
-
 }
 
 // New 3D Kalman filter implementation
-attitude_t EKF::kalman3D(Vector3f gyro, Vector3f euler_data) {
+attitude_t EKF::kalman3D(Vector3f gyro_sample, Vector3f euler_data) {
     // Prediction step
 
     // Time update - integrate gyro rates with special handling for yaw
-    Vector3f angle_increment = 0.5f * (1.0f / SAMPLE_RATE) * (gyro + prev_gyro);
+    // Vector3f angle_increment = 0.5f * (1.0f / SAMPLE_RATE) * (gyro + prev_gyro);
+    Vector3f angle_increment = 0.5f * (1.0f / SAMPLE_RATE) * (gyro_sample - prev_gyro);
 
     // Update state with gyro data
     state(0) += angle_increment(0);  // Roll
     state(1) += angle_increment(1);  // Pitch
     state(2) += angle_increment(2);  // Yaw - direct integration of gyro Z
 
-    prev_gyro = gyro;
+    prev_gyro = gyro_sample;
 
     // Update error covariance matrix
     // Make yaw component of Q higher to trust gyro more for yaw
@@ -89,8 +89,8 @@ attitude_t EKF::kalman3D(Vector3f gyro, Vector3f euler_data) {
     Vector3f measurement_error = euler_data - state;
 
     // Normalize yaw error to prevent issues at -π/π boundary
-    while (measurement_error(2) > PI) measurement_error(2) -= 2 * PI;
-    while (measurement_error(2) < -PI) measurement_error(2) += 2 * PI;
+    // while (measurement_error(2) > PI) measurement_error(2) -= 2 * PI;
+    // while (measurement_error(2) < -PI) measurement_error(2) += 2 * PI;
 
     // Correction step with special handling for yaw
     state += K * measurement_error;
@@ -104,8 +104,8 @@ attitude_t EKF::kalman3D(Vector3f gyro, Vector3f euler_data) {
 
     // Prepare return data
     attitude_t return_data;
-    return_data.roll = state(0) * (180.0f / PI);
-    return_data.pitch = state(1) * (180.0f / PI);
+    return_data.roll = state(1) * (180.0f / PI);
+    return_data.pitch = state(0) * (180.0f / PI)*-1;
     return_data.yaw = state(2) * (180.0f / PI);
 
     return return_data;

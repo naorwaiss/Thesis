@@ -80,7 +80,7 @@ class Motors {
          Motor_struct.PWM2 = MOTOR_OFF;
          Motor_struct.PWM3 = MOTOR_OFF;
          Motor_struct.PWM4 = MOTOR_OFF;
-         MeanFilter PWM_filter(4);
+         MeanFilter PWM_filter(8);
      };
 
     // MeanFilter PWM_filter;

@@ -29,14 +29,14 @@ void initializePIDParams(float RrollPID[3] = nullptr, float RpitchPID[3] = nullp
                          float SyawPID[3] = nullptr, float Imax_stab[2] = nullptr){    // Rate mode parameters
     
     // Default ACRO mode parameter values
-    const float defaultRrollPID[3] = {0.8f, 0.001f, 0.01f};
-    const float defaultRpitchPID[3] = {1.2f, 0.01f, 0.01f};   
+    const float defaultRrollPID[3] = {0.07f, 0.001f, 0.01f};
+    const float defaultRpitchPID[3] = {0.07f, 0.005f, 0.01f};   
     const float defaultRyawPID[3] = {2.0f, 0.0f, 0.01f};
     const float defaultImax_rate[2] = {100.0f, 100.0f};
 
     // Default STABILIZE mode parameter values
-    const float defaultSrollPID[3] = {12.0f, 0.01f, 0.0f};
-    const float defaultSpitchPID[3] = {10.0f, 0.01f, 0.0f};
+    const float defaultSrollPID[3] = {15.0f, 0.01f, 0.0f};
+    const float defaultSpitchPID[3] = {15.0f, 0.01f, 0.0f};
     const float defaultSyawPID[3] = {4.0f, 0.0f, 0.0f};
     const float defaultImax_stab[2] = {100.0f, 100.0f};
 
