@@ -28,10 +28,20 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   DEPENDENCIES std_msgs
 )
 
-# install(
-#   DIRECTORY ground_bot/
-#   DESTINATION lib/${PROJECT_NAME}
-# )
+install(
+  DIRECTORY launch
+  DESTINATION share/ground_bot/launch
+)
+install(
+  DIRECTORY config
+  DESTINATION share/ground_bot/config
+)
+# Install URDF files
+install(
+  DIRECTORY urdf/
+  DESTINATION share/${PROJECT_NAME}/urdf
+)
+
 
 
 # install(
