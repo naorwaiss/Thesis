@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "lidar_class.h"
+#include "src/lidar_class.h"
 
 // Serial1: RX = pin 0 (RPLIDAR TX)
 #define RPLIDAR_SERIAL Serial1

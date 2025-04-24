@@ -65,7 +65,7 @@ class Motors {
      #define PWM_MAX ((1 << PWM_RESOLUTION) - 1)
      #define US_2_PULSE(u) ((u) * PWM_MAX / (PWM_PERIOD))
      // #define MOTOR_START  1170
-     #define MOTOR_START 1100
+     #define MOTOR_START 1150
      #define MOTOR_MAX 2000
  
      motor_t Motor_struct;

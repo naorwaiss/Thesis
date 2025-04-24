@@ -44,8 +44,8 @@ class UDPSocketClient(Node):
         self.client.on('w', self.handle_desire_stab)
         self.client.on('a', self.handle_motor_pwm)
         self.client.on('n', self.handle_estimated_rate)
-        # self.client.on('l', self.handle_pid_stab)
-        # self.client.on('b', self.handle_pid_rate)
+        self.client.on('l', self.handle_pid_stab)
+        self.client.on('b', self.handle_pid_rate)
         self.client.on('P', self.handel_imu_filter)
 
     # Callback methods for specific message types
@@ -142,18 +142,21 @@ class UDPSocketClient(Node):
     def handle_pid_rate(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
         pid_msg = Pid()
-        pid_msg.p_pitch = messages_struct_float[0]
-        pid_msg.p_roll = messages_struct_float[1]
-        pid_msg.p_yaw = messages_struct_float[2]
-        pid_msg.i_pitch = messages_struct_float[3]
-        pid_msg.i_roll = messages_struct_float[4]
-        pid_msg.i_yaw = messages_struct_float[5]
-        pid_msg.d_pitch = messages_struct_float[6]
-        pid_msg.d_roll = messages_struct_float[7]
-        pid_msg.d_yaw = messages_struct_float[8]
-        pid_msg.sum_pitch = messages_struct_float[9]
-        pid_msg.sum_roll = messages_struct_float[10]
-        pid_msg.sum_yaw = messages_struct_float[11]
+        pid_msg.error_pitch = messages_struct_float[0]
+        pid_msg.error_roll = messages_struct_float[1]
+        pid_msg.error_yaw = messages_struct_float[2]
+        pid_msg.p_pitch = messages_struct_float[3]
+        pid_msg.p_roll = messages_struct_float[4]
+        pid_msg.p_yaw = messages_struct_float[5]
+        pid_msg.i_pitch = messages_struct_float[6]
+        pid_msg.i_roll = messages_struct_float[7]
+        pid_msg.i_yaw = messages_struct_float[8]
+        pid_msg.d_pitch = messages_struct_float[9]
+        pid_msg.d_roll = messages_struct_float[10]
+        pid_msg.d_yaw = messages_struct_float[11]
+        pid_msg.sum_pitch = messages_struct_float[12]
+        pid_msg.sum_roll = messages_struct_float[13]
+        pid_msg.sum_yaw = messages_struct_float[14]
         self.PID_rate_pub_modifide.publish(pid_msg)
 
     def handel_imu_filter(self, message: bytes):

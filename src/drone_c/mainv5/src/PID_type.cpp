@@ -29,29 +29,32 @@ void initializePIDParams(float RrollPID[3] = nullptr, float RpitchPID[3] = nullp
                          float SyawPID[3] = nullptr, float Imax_stab[2] = nullptr){    // Rate mode parameters
     
     // Default ACRO mode parameter values
-    // const float defaultRrollPID[3] = {0.8f, 0.001f, 0.01f};
-    // const float defaultRpitchPID[3] = {1.2f, 0.01f, 0.01f};   
+    // const float defaultRrollPID[3] = {0.95f, 0.01f, 0.0000008f};
+    // const float defaultRpitchPID[3] = {1.0f, 0.0f, 0.0000008f};   
+    // const float defaultRyawPID[3] = {2.0f, 0.0f, 0.0000005f};
+    // const float defaultImax_rate[2] = {100.0f, 100.0f};
+// 
+    const float defaultRrollPID[3] = {0.9f, 0.00f, 0.015f};
+    const float defaultRpitchPID[3] = {1.3f, 0.0f, 0.015f};   
+    const float defaultRyawPID[3] = {2.0f, 0.0f, 0.005f};
+    const float defaultImax_rate[2] = {100.0f, 100.0f};
+
+
+
+    //24.4
+    // const float defaultRrollPID[3] = {1.0f, 0.8f, 0.0f};
+    // const float defaultRpitchPID[3] = {1.0f, 0.8f, 0.0f};   
     // const float defaultRyawPID[3] = {2.0f, 0.0f, 0.01f};
     // const float defaultImax_rate[2] = {100.0f, 100.0f};
 
-    const float defaultRrollPID[3] = {1.8f, 0.5f, 0.05f};
-    const float defaultRpitchPID[3] = {1.8f, 0.5f, 0.05f};   
-    const float defaultRyawPID[3] = {2.0f, 0.0f, 0.01f};
-    const float defaultImax_rate[2] = {100.0f, 100.0f};
-
     // Default STABILIZE mode parameter values
-    const float defaultSrollPID[3] = {12.0f, 0.01f, 0.0f};
-    const float defaultSpitchPID[3] = {10.0f, 0.01f, 0.0f};
+    const float defaultSrollPID[3] = {10.0f, 0.01f, 0.0f};
+    const float defaultSpitchPID[3] = {9.0f, 0.01f, 0.0f};
     const float defaultSyawPID[3] = {4.0f, 0.0f, 0.0f};
     const float defaultImax_stab[2] = {100.0f, 100.0f};
 
 
 
-
-    // const float defaultRrollPID[3] = {0.8f, 0.00f, 0.0f};
-    // const float defaultRpitchPID[3] = {1.2f, 0.0f, 0.0f};   
-    // const float defaultRyawPID[3] = {2.0f, 0.0f, 0.00f};
-    // const float defaultImax_rate[2] = {100.0f, 100.0f};
 
     // // Default STABILIZE mode parameter values
     // const float defaultSrollPID[3] = {12.0f, 0.00f, 0.0f};
@@ -101,10 +104,11 @@ PID_out_t PID_rate(attitude_t des_rate, attitude_t actual_rate, float DT) { // A
     
     // Calculate error
     rate_err = des_rate - actual_rate; // Probably the best for the Proportional term?
+    Serial.println(DT);
 
-    if (abs(rate_err.roll) < PID_THRSHOLD){ rate_err.roll = 0.0; };
-    if (abs(rate_err.pitch) < PID_THRSHOLD){ rate_err.pitch = 0.0; };
-    if (abs(rate_err.yaw) < PID_THRSHOLD){ rate_err.yaw = 0.0; };
+    // if (abs(rate_err.roll) < PID_THRSHOLD){ rate_err.roll = 0.0; };
+    // if (abs(rate_err.pitch) < PID_THRSHOLD){ rate_err.pitch = 0.0; };
+    // if (abs(rate_err.yaw) < PID_THRSHOLD){ rate_err.yaw = 0.0; };
 
     // Calculate P term:
     rate_out.P_term.roll = rate_params.RollP * rate_err.roll;
@@ -121,6 +125,12 @@ PID_out_t PID_rate(attitude_t des_rate, attitude_t actual_rate, float DT) { // A
     rate_out.D_term.pitch = rate_params.PitchD * (rate_err.pitch - rate_out.prev_err.pitch)/DT;
     rate_out.D_term.yaw = rate_params.YawD * (rate_err.yaw - rate_out.prev_err.yaw)/DT;
 
+    // Calculate D term: using HPF
+    // rate_out.D_term.roll = rate_params.RollD/DT * ( rate_out.D_term.roll + rate_err.roll - rate_out.prev_err.roll);
+    // rate_out.D_term.pitch = rate_params.PitchD/DT * ( rate_out.D_term.pitch + rate_err.pitch - rate_out.prev_err.pitch);
+    // rate_out.D_term.yaw = rate_params.YawD/DT * ( rate_out.D_term.yaw + rate_err.yaw - rate_out.prev_err.yaw);
+    // Serial.println(rate_out.D_term.pitch);
+    
     // Cap the I term
     rate_out.I_term.roll = constrain(rate_out.I_term.roll, -rate_params.Imax_roll, rate_params.Imax_roll);
     rate_out.I_term.pitch = constrain(rate_out.I_term.pitch, -rate_params.Imax_pitch, rate_params.Imax_pitch);

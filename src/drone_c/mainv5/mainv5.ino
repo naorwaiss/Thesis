@@ -10,7 +10,7 @@
 #include "src/MotorsControl.h"
 #include "src/PID_type.h"
 #include "src/EkfClass.h"
-// #include "src/magwick.h"
+#include "src/magwick.h"
 
 // IMU Data Conversion
 #define POL_GYRO_SENS 17.5 / 1000.0f  // FS = 125
@@ -39,6 +39,10 @@
 #define CONTROLLER_MAX 2012
 #define IMU_THRESHOLD 0.05f
 
+#define CONTROLL_THR_MAX 1520
+#define CONTROLL_THR_MIN 1480
+
+
 /*
 ------------------------------------------ Global Variables ------------------------------------------
 */
@@ -55,8 +59,8 @@ bool THR_SAFE = false;
 LSM6 IMU;
 LIS3MDL mag;
 LPS baro;
-CompFilter Pololu_filter(false);  // True for enabling the magnetometer
-float dt = 1 / 1100.0f;           // 1kHz sample rate in seconds
+CompFilter comp_filter(false);  // True for enabling the magnetometer
+float dt = 1 / 1100.0f;         // 1kHz sample rate in seconds
 Measurement_t meas;
 quat_t q_est;
 attitude_t desired_attitude;
@@ -67,10 +71,10 @@ attitude_t estimated_rate;
 PID_out_t PID_stab_out;
 PID_out_t PID_rate_out;
 EKF ekf(&meas, DT);
-Magwick magwick_filter(&meas, &estimated_attitude)
+Magwick magwick_filter(&meas, &estimated_attitude);
 
-    // timer//
-    elapsedMicros motor_timer;
+// timer//
+elapsedMicros motor_timer;
 elapsedMicros stab_timer;
 elapsedMicros imu_timer;
 elapsedMicros send_data_timer;
@@ -80,8 +84,8 @@ const unsigned long PWM_PERIOD_1 = 1000000 / ESC_FREQUENCY;       // 1,000,000 u
 const unsigned long IMU_PERIOD = 1000000 / SAMPLE_RATE;
 const unsigned long SEND_DATA_PERIOD = 1000000 / 50;
 
-float t_PID_s = 0.0f;
-float t_PID_r = 0.0f;
+double t_PID_s = 0.0f;
+double t_PID_r = 0.0f;
 float actual_dt = 0.0f;
 int estimated_switch;
 
@@ -96,7 +100,7 @@ int estimated_switch;
 // Function prototypes
 void GyroMagCalibration();
 void IMU_init();
-void mapping_controller();
+void mapping_controller(char);
 void check_arming_state();
 
 void setup() {
@@ -112,7 +116,6 @@ void setup() {
         }
     }
     crsf.begin(crsfSerial);
-
     initializePIDParams();
     GyroMagCalibration();
     motors.Motors_init();
@@ -129,17 +132,18 @@ void loop() {
     // Update the measurement:
     if (imu_timer >= IMU_PERIOD) {
         actual_dt = (double)imu_timer / 1000000.0f;
-
         Update_Measurement();
+        comp_filter.InitialFiltering(&meas);
+        estimated_state_metude();
 
-        /// can add here enum of desision
 
-        Pololu_filter.InitialFiltering(&meas);
-        ekf.run_kalman(&estimated_attitude, &q_est);
+        // ekf.run_kalman(&estimated_attitude, &q_est);
+
+        // emplimataion of the magwick filter
         // Update the quaternion:
-        // Pololu_filter.UpdateQ(&meas, actual_dt / 2);
-        // Pololu_filter.GetEulerRPYdeg(&estimated_attitude, meas.initial_heading);
-        // Pololu_filter.GetQuaternion(&q_est);
+        // comp_filter.UpdateQ(&meas, actual_dt / 2);
+        // comp_filter.GetEulerRPYdeg(&estimated_attitude, meas.initial_heading);
+        // comp_filter.GetQuaternion(&q_est);
 
         if (is_armed) {
             // Get Actual rates:
@@ -149,7 +153,7 @@ void loop() {
 
             if ((controller_data.aux1 > 1500) && (stab_timer >= STAB_PERIOD)) {  // Stabilize mode:
                 // Calculating dt for the PID- in seconds:
-                t_PID_s = (float)stab_timer / 1000000.0f;
+                t_PID_s = (double)stab_timer / 1000000.0f;
                 mapping_controller('s');
                 // Serial.println("stablize ");
                 PID_stab_out = PID_stab(desired_attitude, estimated_attitude, t_PID_s);
@@ -315,7 +319,14 @@ void IMU_init() {
     mag.writeReg(LIS3MDL::CTRL_REG2, 0x10);        // +- 4 gauss
 }
 
+void controller_trheshold(){
+    if ((controller_data.roll <= CONTROLL_THR_MAX) && (controller_data.roll >= CONTROLL_THR_MIN)){ controller_data.roll = 1500;}
+    if ((controller_data.pitch <= CONTROLL_THR_MAX) && (controller_data.pitch >= CONTROLL_THR_MIN)){ controller_data.pitch = 1500;}
+    if ((controller_data.yaw <= CONTROLL_THR_MAX) && (controller_data.yaw >= CONTROLL_THR_MIN)){ controller_data.yaw = 1500;}
+}
+
 void mapping_controller(char state) {
+    controller_trheshold();
     if (state == 's') {  // Mapping the controller input into desired angle:
         desired_attitude.roll = map(controller_data.roll, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_ANGLE, MAX_ANGLE);
         desired_attitude.pitch = map(controller_data.pitch, CONTROLLER_MIN, CONTROLLER_MAX, MAX_ANGLE, -MAX_ANGLE);
@@ -355,24 +366,26 @@ void check_arming_state() {
 }
 
 void comclass_function() {
-    Pololu_filter.UpdateQ(&meas, actual_dt / 2);
-    Pololu_filter.GetEulerRPYdeg(&estimated_attitude, meas.initial_heading);
-    Pololu_filter.GetQuaternion(&q_est);
+    comp_filter.UpdateQ(&meas, actual_dt / 2);
+    comp_filter.GetEulerRPYdeg(&estimated_attitude, meas.initial_heading);
+    comp_filter.GetQuaternion(&q_est);
 }
 
-void chnnel_estiamted() {
+void channel_estimated() {
     if (controller_data.aux4 > 1700) {
         estimated_switch = 0;
-    }
-
-    else if (controller_data.aux4 < 1100) {
+        // Serial.println("ekf");
+    } else if (controller_data.aux4 < 1100) {
         estimated_switch = 1;
+        // Serial.println("comclass");
     } else {
         estimated_switch = 2;
+        // Serial.println("magwick");
     }
 }
 
 void estimated_state_metude() {
+    channel_estimated();
     switch (estimated_switch) {
         case 0:  // ekkf
             return ekf.run_kalman(&estimated_attitude, &q_est);

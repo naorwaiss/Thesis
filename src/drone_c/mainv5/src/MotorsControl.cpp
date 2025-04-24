@@ -81,10 +81,10 @@ void Motors::Motor_Mix(attitude_t motor_input, int throttle) {
     Motor_struct.PWM3 = US_2_PULSE(Motor_struct.PWM3);
     Motor_struct.PWM4 = US_2_PULSE(Motor_struct.PWM4);
 
-    Serial.print(Motor_struct.PWM1);Serial.print("  ");
-    Serial.print(Motor_struct.PWM2);Serial.print("  ");
-    Serial.print(Motor_struct.PWM3);Serial.print("  ");
-    Serial.print(Motor_struct.PWM4);Serial.println("  ");
+    // Serial.print(Motor_struct.PWM1);Serial.print("  ");
+    // Serial.print(Motor_struct.PWM2);Serial.print("  ");
+    // Serial.print(Motor_struct.PWM3);Serial.print("  ");
+    // Serial.print(Motor_struct.PWM4);Serial.println("  ");
 
 }
 

@@ -232,24 +232,6 @@ float CompFilter::calculateDynamicBeta(Measurement_t meas) {
     }
 }
 
-// float CompFilter::calculateDynamicBeta(Measurement_t meas) {
-//     gyroNorm = sqrtf(meas.gyro_HPF.x * meas.gyro_HPF.x +
-//                    meas.gyro_HPF.y * meas.gyro_HPF.y +
-//                    meas.gyro_HPF.z * meas.gyro_HPF.z);
-
-//     // More consistent beta values with hysteresis
-//     static float lastBeta = DEFAULT_BETA;
-//     static const float HYSTERESIS = 0.05f;
-
-//     if (gyroNorm > (LOW_MOTION + HYSTERESIS) || lastBeta == HIGH_BETA) {
-//         if (gyroNorm < (LOW_MOTION - HYSTERESIS))
-//             lastBeta = LOW_BETA;
-//         else
-//             lastBeta = HIGH_BETA;
-//     }
-
-//     return lastBeta;
-// }
 
 void CompFilter::InitialFiltering(Measurement_t* meas) {
     // meas->acc_LPF.x = (1 - ALPHA_ACC_LPF) * meas->acc.x + ALPHA_ACC_LPF * meas->acc_LPF.x;

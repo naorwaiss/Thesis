@@ -1,0 +1,38 @@
+gmake[2]: *** [CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/build.make:172: CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/drone_c/msg/detail/motors__type_support.cpp.o] Interrupt
+gmake[2]: *** [CMakeFiles/drone_c__rosidl_typesupport_c.dir/build.make:130: CMakeFiles/drone_c__rosidl_typesupport_c.dir/rosidl_typesupport_c/drone_c/msg/pid__type_support.cpp.o] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:343: CMakeFiles/drone_c__rosidl_typesupport_c.dir/all] Interrupt
+gmake[2]: *** [CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/build.make:186: CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/drone_c/msg/detail/imu_filter__type_support.cpp.o] Interrupt
+Traceback (most recent call last):
+  File "/home/naor/Desktop/naor/study/Thesis/build/drone_c/ament_cmake_python/drone_c/setup.py", line 1, in <module>
+    from setuptools import find_packages
+  File "/home/naor/.local/lib/python3.10/site-packages/setuptools/__init__.py", line 29, in <module>
+gmake[2]: *** [CMakeFiles/drone_c__rosidl_typesupport_fastrtps_cpp.dir/build.make:158: CMakeFiles/drone_c__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/drone_c/msg/detail/dds_fastrtps/euler_angles__type_support.cpp.o] Interrupt
+gmake[2]: *** [CMakeFiles/drone_c__rosidl_typesupport_fastrtps_cpp.dir/build.make:144: CMakeFiles/drone_c__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/drone_c/msg/detail/dds_fastrtps/pid__type_support.cpp.o] Interrupt
+gmake[2]: *** [CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/build.make:144: CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/drone_c/msg/detail/pid__type_support.cpp.o] Interrupt
+    from .version import __version__ as __version__
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+gmake[2]: *** [CMakeFiles/drone_c__rosidl_typesupport_fastrtps_cpp.dir/build.make:186: CMakeFiles/drone_c__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/drone_c/msg/detail/dds_fastrtps/imu_filter__type_support.cpp.o] Interrupt
+gmake[2]: *** wait: No child processes.  Stop.
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[2]: *** wait: No child processes.  Stop.
+gmake[2]: *** [CMakeFiles/drone_c__rosidl_typesupport_introspection_c.dir/build.make:144: CMakeFiles/drone_c__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/drone_c/msg/detail/pid__type_support.c.o] Interrupt
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+gmake[1]: *** [CMakeFiles/Makefile2:317: CMakeFiles/drone_c__rosidl_typesupport_introspection_c.dir/all] Interrupt
+gmake[2]: *** [CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/build.make:130: CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/pid__type_support.cpp.o] Interrupt
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+gmake[1]: *** [CMakeFiles/Makefile2:291: CMakeFiles/drone_c__rosidl_typesupport_fastrtps_cpp.dir/all] Error 2
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+gmake[2]: *** [CMakeFiles/drone_c__rosidl_typesupport_fastrtps_c.dir/build.make:144: CMakeFiles/drone_c__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/drone_c/msg/detail/pid__type_support_c.cpp.o] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:239: CMakeFiles/drone_c__rosidl_typesupport_fastrtps_c.dir/all] Interrupt
+gmake[2]: *** [CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/build.make:158: CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/motors__type_support.cpp.o] Interrupt
+  File "<frozen importlib._bootstrap_external>", line 975, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_data
+KeyboardInterrupt
+gmake[2]: *** [CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/build.make:158: CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/drone_c/msg/detail/euler_angles__type_support.cpp.o] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:369: CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/all] Interrupt
+gmake[2]: *** [CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/build.make:172: CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/imu_filter__type_support.cpp.o] Interrupt
+gmake[2]: *** [CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/build.make:144: CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/euler_angles__type_support.cpp.o] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:395: CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/all] Interrupt
+gmake[2]: *** [CMakeFiles/ament_cmake_python_build_drone_c_egg.dir/build.make:70: CMakeFiles/ament_cmake_python_build_drone_c_egg] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:447: CMakeFiles/ament_cmake_python_build_drone_c_egg.dir/all] Interrupt
+gmake: *** [Makefile:146: all] Interrupt

@@ -1,0 +1,37 @@
+gmake[2]: *** [CMakeFiles/ground_bot__rosidl_typesupport_c.dir/build.make:122: CMakeFiles/ground_bot__rosidl_typesupport_c.dir/rosidl_typesupport_c/ground_bot/msg/pwm__type_support.cpp.o] Interrupt
+gmake[2]: *** [CMakeFiles/ground_bot__rosidl_typesupport_introspection_c.dir/build.make:144: CMakeFiles/ground_bot__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ground_bot/msg/detail/motor_data__type_support.c.o] Interrupt
+gmake[2]: *** [CMakeFiles/ground_bot__rosidl_typesupport_c.dir/build.make:136: CMakeFiles/ground_bot__rosidl_typesupport_c.dir/rosidl_typesupport_c/ground_bot/msg/motor_data__type_support.cpp.o] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:343: CMakeFiles/ground_bot__rosidl_typesupport_c.dir/all] Interrupt
+gmake[2]: *** [CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/build.make:130: CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__type_support_c.cpp.o] Interrupt
+gmake[2]: *** [CMakeFiles/ground_bot__rosidl_typesupport_introspection_cpp.dir/build.make:144: CMakeFiles/ground_bot__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ground_bot/msg/detail/motor_data__type_support.cpp.o] Interrupt
+gmake[2]: *** [CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_cpp.dir/build.make:130: CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ground_bot/msg/detail/dds_fastrtps/pwm__type_support.cpp.o] Interrupt
+gmake[2]: *** [CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_cpp.dir/build.make:144: CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ground_bot/msg/detail/dds_fastrtps/motor_data__type_support.cpp.o] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:291: CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_cpp.dir/all] Interrupt
+gmake[2]: *** [CMakeFiles/ground_bot__rosidl_typesupport_cpp.dir/build.make:122: CMakeFiles/ground_bot__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ground_bot/msg/pwm__type_support.cpp.o] Interrupt
+gmake[2]: *** wait: No child processes.  Stop.
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[2]: *** wait: No child processes.  Stop.
+gmake[1]: *** [CMakeFiles/Makefile2:395: CMakeFiles/ground_bot__rosidl_typesupport_cpp.dir/all] Error 2
+Traceback (most recent call last):
+  File "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/ament_cmake_python/ground_bot/setup.py", line 1, in <module>
+    from setuptools import find_packages
+  File "/home/naor/.local/lib/python3.10/site-packages/setuptools/__init__.py", line 27, in <module>
+    from .dist import Distribution
+  File "/home/naor/.local/lib/python3.10/site-packages/setuptools/dist.py", line 19, in <module>
+    from . import (
+  File "/home/naor/.local/lib/python3.10/site-packages/setuptools/_reqs.py", line 8, in <module>
+    from packaging.requirements import Requirement
+  File "<frozen importlib._bootstrap>", line 1024, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 170, in __enter__
+  File "<frozen importlib._bootstrap>", line 196, in _get_module_lock
+  File "<frozen importlib._bootstrap>", line 73, in __init__
+gmake[2]: *** [CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/build.make:144: CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/motor_data__type_support_c.cpp.o] Interrupt
+KeyboardInterrupt
+gmake[2]: *** [CMakeFiles/ground_bot__rosidl_typesupport_introspection_c.dir/build.make:130: CMakeFiles/ground_bot__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ground_bot/msg/detail/pwm__type_support.c.o] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:317: CMakeFiles/ground_bot__rosidl_typesupport_introspection_c.dir/all] Interrupt
+gmake[2]: *** [CMakeFiles/ground_bot__rosidl_typesupport_introspection_cpp.dir/build.make:130: CMakeFiles/ground_bot__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ground_bot/msg/detail/pwm__type_support.cpp.o] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:239: CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/all] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:369: CMakeFiles/ground_bot__rosidl_typesupport_introspection_cpp.dir/all] Interrupt
+gmake[2]: *** [CMakeFiles/ament_cmake_python_build_ground_bot_egg.dir/build.make:70: CMakeFiles/ament_cmake_python_build_ground_bot_egg] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:447: CMakeFiles/ament_cmake_python_build_ground_bot_egg.dir/all] Interrupt
+gmake: *** [Makefile:146: all] Interrupt
