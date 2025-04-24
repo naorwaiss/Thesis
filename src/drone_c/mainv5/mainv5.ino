@@ -10,6 +10,7 @@
 #include "src/MotorsControl.h"
 #include "src/PID_type.h"
 #include "src/EkfClass.h"
+// #include "src/magwick.h"
 
 // IMU Data Conversion
 #define POL_GYRO_SENS 17.5 / 1000.0f  // FS = 125
@@ -26,10 +27,10 @@
 // old_drone
 
 // new drone
-#define MOTOR1_PIN 2 //front right 
-#define MOTOR2_PIN 3 //back right 
-#define MOTOR3_PIN 4 //back left 
-#define MOTOR4_PIN 5 //fron left 
+#define MOTOR1_PIN 2  // front right
+#define MOTOR2_PIN 3  // back right
+#define MOTOR3_PIN 4  // back left
+#define MOTOR4_PIN 5  // fron left
 // new drone
 
 #define MAX_ANGLE 10.0f
@@ -55,7 +56,7 @@ LSM6 IMU;
 LIS3MDL mag;
 LPS baro;
 CompFilter Pololu_filter(false);  // True for enabling the magnetometer
-float dt = 1 / 1100.0f;          // 1kHz sample rate in seconds
+float dt = 1 / 1100.0f;           // 1kHz sample rate in seconds
 Measurement_t meas;
 quat_t q_est;
 attitude_t desired_attitude;
@@ -66,10 +67,10 @@ attitude_t estimated_rate;
 PID_out_t PID_stab_out;
 PID_out_t PID_rate_out;
 EKF ekf(&meas, DT);
+Magwick magwick_filter(&meas, &estimated_attitude)
 
-
-// timer//
-elapsedMicros motor_timer;
+    // timer//
+    elapsedMicros motor_timer;
 elapsedMicros stab_timer;
 elapsedMicros imu_timer;
 elapsedMicros send_data_timer;
@@ -79,11 +80,10 @@ const unsigned long PWM_PERIOD_1 = 1000000 / ESC_FREQUENCY;       // 1,000,000 u
 const unsigned long IMU_PERIOD = 1000000 / SAMPLE_RATE;
 const unsigned long SEND_DATA_PERIOD = 1000000 / 50;
 
-
-
 float t_PID_s = 0.0f;
 float t_PID_r = 0.0f;
 float actual_dt = 0.0f;
+int estimated_switch;
 
 /*
 ------------------------------------------ Global Variables ------------------------------------------
@@ -131,8 +131,11 @@ void loop() {
         actual_dt = (double)imu_timer / 1000000.0f;
 
         Update_Measurement();
+
+        /// can add here enum of desision
+
         Pololu_filter.InitialFiltering(&meas);
-        ekf.run_kalman(&estimated_attitude,&q_est);
+        ekf.run_kalman(&estimated_attitude, &q_est);
         // Update the quaternion:
         // Pololu_filter.UpdateQ(&meas, actual_dt / 2);
         // Pololu_filter.GetEulerRPYdeg(&estimated_attitude, meas.initial_heading);
@@ -172,15 +175,15 @@ void loop() {
             motor_pwm = motors.Get_motor();
         }
 
-        if(send_data_timer>=SEND_DATA_PERIOD){
-        DRON_COM::convert_Measurment_to_byte(meas,
-                                             q_est, desired_attitude,
-                                             motor_pwm, desired_rate,
-                                             estimated_attitude, estimated_rate,
-                                             PID_stab_out, PID_rate_out, controller_data);
+        if (send_data_timer >= SEND_DATA_PERIOD) {
+            DRON_COM::convert_Measurment_to_byte(meas,
+                                                 q_est, desired_attitude,
+                                                 motor_pwm, desired_rate,
+                                                 estimated_attitude, estimated_rate,
+                                                 PID_stab_out, PID_rate_out, controller_data);
 
-        DRON_COM::send_data();
-        send_data_timer = 0;
+            DRON_COM::send_data();
+            send_data_timer = 0;
         }
         // Serial.print(motor_pwm.PWM1); Serial.print("  ");
         // Serial.print(motor_pwm.PWM2); Serial.print("  ");
@@ -222,7 +225,6 @@ void Update_Measurement() {
     meas.gyroRAD.x = meas.gyroDEG.x * deg2rad;
     meas.gyroRAD.y = meas.gyroDEG.y * deg2rad;
     meas.gyroRAD.z = meas.gyroDEG.z * deg2rad;
-
 
     meas.mag.x = mag.m.x * POL_MAG_SENS - meas.mag_bias.x;
     meas.mag.y = mag.m.y * POL_MAG_SENS - meas.mag_bias.y;
@@ -349,5 +351,36 @@ void check_arming_state() {
         motors.Disarm();  // Ensure motors are stopped when disarmed
         Reset_PID();      // Reset PID states when disarmed
         resetMicrocontroller();
+    }
+}
+
+void comclass_function() {
+    Pololu_filter.UpdateQ(&meas, actual_dt / 2);
+    Pololu_filter.GetEulerRPYdeg(&estimated_attitude, meas.initial_heading);
+    Pololu_filter.GetQuaternion(&q_est);
+}
+
+void chnnel_estiamted() {
+    if (controller_data.aux4 > 1700) {
+        estimated_switch = 0;
+    }
+
+    else if (controller_data.aux4 < 1100) {
+        estimated_switch = 1;
+    } else {
+        estimated_switch = 2;
+    }
+}
+
+void estimated_state_metude() {
+    switch (estimated_switch) {
+        case 0:  // ekkf
+            return ekf.run_kalman(&estimated_attitude, &q_est);
+        case 1:  // compclass
+            return comclass_function();
+        case 2:
+            return magwick_filter.magwick_operation();
+        default:
+            return ekf.run_kalman(&estimated_attitude, &q_est);
     }
 }
