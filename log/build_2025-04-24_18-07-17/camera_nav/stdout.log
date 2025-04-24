@@ -1,0 +1,30 @@
+running egg_info
+creating ../../build/camera_nav/camera_nav.egg-info
+writing ../../build/camera_nav/camera_nav.egg-info/PKG-INFO
+writing dependency_links to ../../build/camera_nav/camera_nav.egg-info/dependency_links.txt
+writing requirements to ../../build/camera_nav/camera_nav.egg-info/requires.txt
+writing top-level names to ../../build/camera_nav/camera_nav.egg-info/top_level.txt
+writing manifest file '../../build/camera_nav/camera_nav.egg-info/SOURCES.txt'
+reading manifest file '../../build/camera_nav/camera_nav.egg-info/SOURCES.txt'
+writing manifest file '../../build/camera_nav/camera_nav.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/naor/Desktop/naor/study/Thesis/build/camera_nav/build/lib/camera_nav
+copying camera_nav/__init__.py -> /home/naor/Desktop/naor/study/Thesis/build/camera_nav/build/lib/camera_nav
+running install
+running install_lib
+creating /home/naor/Desktop/naor/study/Thesis/install/camera_nav/lib/python3.10/site-packages/camera_nav
+copying /home/naor/Desktop/naor/study/Thesis/build/camera_nav/build/lib/camera_nav/__init__.py -> /home/naor/Desktop/naor/study/Thesis/install/camera_nav/lib/python3.10/site-packages/camera_nav
+byte-compiling /home/naor/Desktop/naor/study/Thesis/install/camera_nav/lib/python3.10/site-packages/camera_nav/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/ament_index/resource_index/packages
+copying resource/camera_nav -> /home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/ament_index/resource_index/packages
+copying package.xml -> /home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/camera_nav
+creating /home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/camera_nav/config
+copying config/costmap_params.yaml -> /home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/camera_nav/config
+creating /home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/camera_nav/launch
+copying launch/camera_nav_launch.py -> /home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/camera_nav/launch
+running install_egg_info
+Copying ../../build/camera_nav/camera_nav.egg-info to /home/naor/Desktop/naor/study/Thesis/install/camera_nav/lib/python3.10/site-packages/camera_nav-0.0.0-py3.10.egg-info
+running install_scripts
+writing list of installed files to '/home/naor/Desktop/naor/study/Thesis/build/camera_nav/install.log'
