@@ -92,6 +92,7 @@
     <axis xyz="0 0 1"/>
     <limit lower="-0.6" upper="0.6" effort="10" velocity="1"/>
   </joint>
+
   <link name="steer_link_fl"/>
 
   <joint name="front_left_wheel_joint" type="continuous">
@@ -107,9 +108,15 @@
         <cylinder radius="0.28" length="0.1"/>
       </geometry>
     </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.28" length="0.1"/>
+      </geometry>
+    </collision>
     <inertial>
-
-
+      <mass value="1"/>
+      <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
   </link>
 
   <!-- FRONT RIGHT steering -->
@@ -135,6 +142,15 @@
         <cylinder radius="0.28" length="0.1"/>
       </geometry>
     </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.28" length="0.1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
   </link>
 
   <!-- REAR LEFT -->
@@ -151,7 +167,17 @@
         <cylinder radius="0.28" length="0.1"/>
       </geometry>
     </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.28" length="0.1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
   </link>
+
 
   <!-- REAR RIGHT -->
   <joint name="rear_right_wheel_joint" type="continuous">
@@ -167,6 +193,15 @@
         <cylinder radius="0.28" length="0.1"/>
       </geometry>
     </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.28" length="0.1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
   </link>
 
   <!-- Plugins for Ignition Gazebo -->
