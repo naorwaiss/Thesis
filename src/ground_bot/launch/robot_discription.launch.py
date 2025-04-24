@@ -1,19 +1,23 @@
 import os
 from ament_index_python.packages import get_package_share_directory
-
+from pathlib import Path
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument
 from launch.substitutions import Command, LaunchConfiguration
 from launch_ros.actions import Node
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, SetEnvironmentVariable
 from launch_ros.parameter_descriptions import ParameterValue
-
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 def generate_launch_description():
 
     robot_description_path = get_package_share_directory('ground_bot')
-
+    gazebo_resource_path = SetEnvironmentVariable(name='GZ_SIM_RESOURCE_PATH',
+                                                  value=[
+                                                    str(Path(robot_description_path).parent.resolve())
+                                                ]
+    )
     model_arg = DeclareLaunchArgument(name='model',
-                                      default_value=os.path.join(robot_description_path, 'urdf', 'robot.urdf'),
+                                      default_value=os.path.join(robot_description_path, 'urdf', 'robot_description.urdf'),
                                       description='Absolute path to robot urdf file'
                                       )
 
@@ -31,7 +35,52 @@ def generate_launch_description():
                                               'use_sim_time': True}]
                                  )
 
+
+
+
+    gazebo = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(
+                get_package_share_directory("ros_gz_sim"),
+                'launch'
+            ),  '/gz_sim.launch.py']
+        ),
+        launch_arguments=[
+            ('gz_args', [' -v 4 -r empty.sdf ']),
+            ('world', os.path.join(robot_description_path, 'worlds', 'empty.sdf'))
+        ]
+    )
+    gz_spawn_entity = Node(package='ros_gz_sim',
+                           executable='create',
+                           arguments=['-topic', 'robot_description',
+                                      '-name', 'hamma_bot',],
+                           output='screen'
+    )
+    gz_ros2_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        arguments=[
+            # '/model/x8_bot/cmd_vel@geometry_msgs/msg/Twist[gz.msgs.Twist]',
+            # '/model/x8_bot/odometry@nav_msgs/msg/Odometry[gz.msgs.Odometry]'
+            # "/model/x8_bot/depth_camera@sensor_msgs/msg/Image@ignition.msgs.Image",
+            # '/model/x8_bot/depth_camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo]',
+            # "/model/x8_bot/imu@sensor_msgs/msg/Imu[ignition.msgs.IMU]",
+            '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock]',
+
+        ],
+        output='screen'
+    )
+
+
+
+
+
+
     return LaunchDescription([
+        gz_ros2_bridge,
         model_arg,
+        gazebo_resource_path,
         robot_state_publisher,
+        gazebo,
+        gz_spawn_entity
     ])
