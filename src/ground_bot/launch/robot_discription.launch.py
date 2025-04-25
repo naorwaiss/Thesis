@@ -64,7 +64,7 @@ def generate_launch_description():
             # '/model/x8_bot/odometry@nav_msgs/msg/Odometry[gz.msgs.Odometry]'
             # "/model/x8_bot/depth_camera@sensor_msgs/msg/Image@ignition.msgs.Image",
             # '/model/x8_bot/depth_camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo]',
-            # "/model/x8_bot/imu@sensor_msgs/msg/Imu[ignition.msgs.IMU]",
+            "/model/hamma_bot/imu@sensor_msgs/msg/Imu[ignition.msgs.IMU]",
             '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock]',
 
         ],
