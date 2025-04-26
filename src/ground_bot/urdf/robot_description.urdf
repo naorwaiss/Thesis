@@ -276,20 +276,20 @@
   <!-- Rear driving wheels -->
   <joint name="rear_left_wheel_joint">
     <command_interface name="velocity">
-      <param name="min">-1.0</param>
-      <param name="max">1.0</param>
+      <param name="min">-100.0</param>
+      <param name="max">100.0</param>
     </command_interface>
-    <state_interface name="position"/>
     <state_interface name="velocity"/>
+    <state_interface name="position"/>
   </joint>
 
   <joint name="rear_right_wheel_joint">
     <command_interface name="velocity">
-      <param name="min">-1.0</param>
-      <param name="max">1.0</param>
+      <param name="min">-100.0</param>
+      <param name="max">100.0</param>
     </command_interface>
-    <state_interface name="position"/>
     <state_interface name="velocity"/>
+    <state_interface name="position"/>
   </joint>
 
   <!-- Front steering joints -->

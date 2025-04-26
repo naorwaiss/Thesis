@@ -108,6 +108,32 @@ def generate_launch_description():
         output="screen",
     )
 
+    relay_odom = Node(
+        name="relay_odom",
+        package="topic_tools",
+        executable="relay",
+        parameters=[
+            {
+                "input_topic": "/ackermann_controller_velocity/odometry",
+                "output_topic": "/odom",
+            }
+        ],
+        output="screen",
+    )
+
+    # relay_cmd_vel = Node(
+    #     name="relay_cmd_vel",
+    #     package="topic_tools",
+    #     executable="relay",
+    #     parameters=[
+    #         {
+    #             "input_topic": "/cmd_vel",
+    #             "output_topic": "/diff_drive_base_controller/cmd_vel_unstamped",
+    #         }
+    #     ],
+    #     output="screen",
+    # )
+
 
 
     return LaunchDescription([
@@ -130,4 +156,5 @@ def generate_launch_description():
                 on_exit=[load_ackermann_controller],
             )
         ),
+        relay_odom,
     ])

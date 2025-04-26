@@ -43,3 +43,5 @@ ackermann_controller_velocity:
     base_frame_id: base_link
     cmd_vel_topic: "cmd_vel_ack_stamped"
     cmd_type: "geometry_msgs/msg/TwistStamped"
+    # cmd_vel_topic: "cmd_vel"
+    # cmd_type: "geometry_msgs/msg/Twist"
