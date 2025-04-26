@@ -68,14 +68,11 @@ def generate_launch_description():
         package='ros_gz_bridge',
         executable='parameter_bridge',
         arguments=[
-            # '/model/x8_bot/cmd_vel@geometry_msgs/msg/Twist[gz.msgs.Twist]',
-            # '/model/x8_bot/odometry@nav_msgs/msg/Odometry[gz.msgs.Odometry]'
-            # "/model/x8_bot/depth_camera@sensor_msgs/msg/Image@ignition.msgs.Image",
-            # '/model/x8_bot/depth_camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo]',
+            "/robot_cam@sensor_msgs/msg/Image@ignition.msgs.Image",
+            "/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo",
             "/scan@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan",
             "/imu@sensor_msgs/msg/Imu[ignition.msgs.IMU",
             '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock]',
-
         ],
         output='screen'
     )
@@ -92,7 +89,6 @@ def generate_launch_description():
         shell=False,
         output="screen",
     )
-
 
     load_ackermann_controller = ExecuteProcess(
         name="activate_ackermann_controller_velcoity",
@@ -121,18 +117,7 @@ def generate_launch_description():
         output="screen",
     )
 
-    # relay_cmd_vel = Node(
-    #     name="relay_cmd_vel",
-    #     package="topic_tools",
-    #     executable="relay",
-    #     parameters=[
-    #         {
-    #             "input_topic": "/cmd_vel",
-    #             "output_topic": "/diff_drive_base_controller/cmd_vel_unstamped",
-    #         }
-    #     ],
-    #     output="screen",
-    # )
+    
 
 
 

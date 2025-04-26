@@ -5,7 +5,6 @@
 
   <!-- Base footprint -->
   <link name="world_link"/>
-
   <!-- Base link -->
   <joint name="base_joint" type="fixed">
     <parent link="world_link"/>
@@ -40,11 +39,11 @@
   <!-- Lidar -->
   <joint name="base_link_to_lidar" type="fixed">
     <parent link="base_link"/>
-    <child link="lidar"/>
+    <child link="lidar_link"/>
     <origin xyz="0 0 0.25" rpy="0 0 0"/>
   </joint>
 
-  <link name="lidar">
+  <link name="lidar_link">
     <visual>
       <geometry>
         <cylinder radius="0.3" length="0.1"/>
@@ -52,14 +51,24 @@
     </visual>
   </link>
 
+  <link name="camera_frame"/>
+    <joint name="camera_frame_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="camera_link"/>
+    <child link="camera_frame"/>
+  </joint>
+
+
+
+
   <!-- Camera -->
-  <joint name="base_link_to_camera" type="fixed">
+  <joint name="camera_joint" type="fixed">
     <parent link="base_link"/>
-    <child link="camera"/>
+    <child link="camera_link"/>
     <origin xyz="1.6 0 0.4" rpy="0 0 0"/>
   </joint>
 
-  <link name="camera">
+  <link name="camera_link">
     <visual>
       <geometry>
         <box size="0.2 0.6 0.2"/>
@@ -70,11 +79,11 @@
   <!-- IMU -->
   <joint name="base_link_to_imu" type="fixed">
     <parent link="base_link"/>
-    <child link="imu"/>
+    <child link="imu_link"/>
     <origin xyz="-1.1 0 0.2" rpy="0 0 0"/>
   </joint>
 
-  <link name="imu">
+  <link name="imu_link">
     <visual>
       <geometry>
         <box size="0.4 0.4 0.3"/>
@@ -223,6 +232,19 @@
     </inertial>
   </link>
 
+    <plugin name='ignition::gazebo::systems::Physics' filename='ignition-gazebo-physics-system'/>
+    <plugin name='ignition::gazebo::systems::UserCommands' filename='ignition-gazebo-user-commands-system'/>
+    <plugin name='ignition::gazebo::systems::SceneBroadcaster' filename='ignition-gazebo-scene-broadcaster-system'/>
+    <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    
+      <gui>
+      <camera name='gzclient_camera'>
+        <pose>-5.73 3.76 8.10 0 1.1316 -0.4398</pose>
+      </camera>
+    </gui>
+
   <!-- Plugins for Ignition Gazebo -->
 <gazebo>
   <plugin
@@ -253,19 +275,100 @@
   </plugin>
 </gazebo>
 
-  <!-- Sensor Plugins -->
-  <gazebo reference="lidar">
-    <plugin name="lidar_plugin" filename="libignition-gazebo-ray-sensor-system.so"/>
-  </gazebo>
-
-  <gazebo reference="camera">
+`
+  <gazebo reference="camera_link">
     <plugin name="camera_plugin" filename="libignition-gazebo-camera-sensor-system.so"/>
+    <sensor name="robot_cam" type="camera">
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+        <image>
+          <width>320</width>
+          <height>240</height>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+      <topic>robot_cam</topic>
+      <enable_metrics>true</enable_metrics>
+    </sensor>
   </gazebo>
 
-  <gazebo reference="imu">
-    <plugin name="imu_plugin" filename="libignition-gazebo-imu-sensor-system.so"/>
-  </gazebo>
 
+
+
+
+
+  <gazebo reference="imu_link">
+    <sensor name="imu_sensor" type="imu">
+      <ignition_frame_id>imu_link</ignition_frame_id>
+      <plugin filename="ignition-gazebo-imu-system" name="ignition::gazebo::systems::Imu">
+      </plugin>
+
+      <topic>imu</topic>
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <imu>
+        <angular_velocity>
+          <x>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>2e-4</stddev>
+              <bias_mean>0.0000075</bias_mean>
+              <bias_stddev>0.0000008</bias_stddev>
+            </noise>
+          </x>
+          <y>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>2e-4</stddev>
+              <bias_mean>0.0000075</bias_mean>
+              <bias_stddev>0.0000008</bias_stddev>
+            </noise>
+          </y>
+          <z>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>2e-4</stddev>
+              <bias_mean>0.0000075</bias_mean>
+              <bias_stddev>0.0000008</bias_stddev>
+            </noise>
+          </z>
+        </angular_velocity>
+        <linear_acceleration>
+          <x>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>1.7e-2</stddev>
+              <bias_mean>0.1</bias_mean>
+              <bias_stddev>0.001</bias_stddev>
+            </noise>
+          </x>
+          <y>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>1.7e-2</stddev>
+              <bias_mean>0.1</bias_mean>
+              <bias_stddev>0.001</bias_stddev>
+            </noise>
+          </y>
+          <z>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>1.7e-2</stddev>
+              <bias_mean>0.1</bias_mean>
+              <bias_stddev>0.001</bias_stddev>
+            </noise>
+          </z>
+        </linear_acceleration>
+      </imu>
+    </sensor>
+  </gazebo>
 
 
   <ros2_control name="IgnitionSystem" type="system">
@@ -309,6 +412,39 @@
       <parameters>/home/naor/Desktop/naor/study/Thesis/src/ground_bot/config/ackermann_controller.yaml</parameters>
     </plugin>
   </gazebo>
+
+
+  <gazebo reference="lidar_link">
+    <sensor name="lidar" type="gpu_lidar">
+      <ignition_frame_id>lidar_link</ignition_frame_id>
+      <topic>scan</topic>
+      <always_on>true</always_on>
+      <visualize>true</visualize>
+      <update_rate>5</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1.000000</resolution>
+            <min_angle>0.000000</min_angle>
+            <max_angle>6.280000</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.120000</min>
+          <max>3.5</max>
+          <resolution>0.015000</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+    </sensor>
+  </gazebo>
+
+
 
 
 

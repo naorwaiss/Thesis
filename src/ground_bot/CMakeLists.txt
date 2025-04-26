@@ -55,8 +55,9 @@ install(TARGETS
 # === Install launch and config files ===
 install(
   DIRECTORY launch
-  DESTINATION share/${PROJECT_NAME}/launch
+  DESTINATION share/${PROJECT_NAME}
 )
+
 
 install(
   DIRECTORY config

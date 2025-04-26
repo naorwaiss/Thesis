@@ -1,5 +1,0 @@
-[31mCMake Error at CMakeLists.txt:45 (install):
-  install does not recognize sub-command src/src/twisstump_bridge
-
-[0m
-gmake: *** [Makefile:963: cmake_check_build_system] Error 1

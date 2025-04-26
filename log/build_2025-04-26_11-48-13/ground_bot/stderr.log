@@ -1,6 +1,0 @@
-[31mCMake Error at CMakeLists.txt:45 (install):
-  install TARGETS given target "src/src/twisstump_bridge.cpp" which does not
-  exist.
-
-[0m
-gmake: *** [Makefile:963: cmake_check_build_system] Error 1
