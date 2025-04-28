@@ -113,8 +113,10 @@ def generate_launch_description():
         executable='parameter_bridge',
         arguments=[
             '/scan@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan',
-            '/robot_cam@sensor_msgs/msg/Image@ignition.msgs.Image',
-            '/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
+            '/robot_cam_right@sensor_msgs/msg/Image@ignition.msgs.Image',
+            '/robot_cam_left@sensor_msgs/msg/Image@ignition.msgs.Image',
+            '/camera_info_right@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
+            '/camera_info_left@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
             '/imu@sensor_msgs/msg/Imu[ignition.msgs.IMU',
             '/clock@rosgraph_msgs/msg/Clock@gz.msgs.Clock'
         ],
@@ -160,16 +162,16 @@ def generate_launch_description():
         output='screen'
     )
 
-    relay_cmd_vel = Node(
-        name='relay_cmd_vel',
-        package='topic_tools',
-        executable='relay',
-        parameters=[{
-            'input_topic': '/cmd_vel',
-            'output_topic': '/ackermann_controller_velocity/cmd_vel_unstamped'
-        }],
-        output='screen'
-    )
+    # relay_cmd_vel = Node(
+    #     name='relay_cmd_vel',
+    #     package='topic_tools',
+    #     executable='relay',
+    #     parameters=[{
+    #         'input_topic': '/cmd_vel',
+    #         'output_topic': '/ackermann_controller_velocity/cmd_vel_unstamped'
+    #     }],
+    #     output='screen'
+    # )
 
     return LaunchDescription([
         SetEnvironmentVariable(

@@ -1,0 +1,47 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    ackermann_controller_velocity:
+      type: ackermann_steering_controller/AckermannSteeringController
+
+ackermann_controller_velocity:
+  ros__parameters:
+    reference_timeout: 2.0
+    publish_rate: 100.0
+    open_loop: true
+    velocity_rolling_window_size: 10
+    position_feedback: true
+    use_stamped_vel: true
+
+    
+    # front_wheel_names: ["front_left_wheel_joint", "front_right_wheel_joint"]
+    rear_wheels_names: ["rear_left_wheel_joint", "rear_right_wheel_joint"]
+    front_wheels_names: ["front_left_steering_joint", "front_right_steering_joint"]
+    
+    # Joint interfaces
+
+
+    wheelbase: 3.8  # distance between front and rear axles [m]
+    front_wheel_track: 2.2  # distance between front left and right wheels [m]
+    rear_wheel_track: 2.2   # usually same as front for symmetry
+    front_wheels_radius: 0.28
+    rear_wheels_radius: 0.28
+    wheel_separation: 1.0
+    max_steering_angle: 0.785  # 45 degrees in radians
+    min_steering_angle: -0.785
+
+    steering_slow_down_factor: 1.5 #1.0 no slowdown
+    angular_velocity_filter: 0.3
+
+
+    enable_odom_tf: true
+    odom_frame_id: odom
+    base_frame_id: base_link
+    cmd_vel_topic: "cmd_vel_ack_stamped"
+    cmd_type: "geometry_msgs/msg/TwistStamped"
+    # cmd_vel_topic: "cmd_vel"
+    # cmd_type: "geometry_msgs/msg/Twist"

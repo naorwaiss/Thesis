@@ -1,0 +1,66 @@
+[0.517s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/ground_bot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/ground_bot -- -j16 -l16
+[0.589s] [35m[1mConsolidate compiler generated dependencies of target optical_flow_node[0m
+[0.597s] [  2%] Built target ground_bot__cpp
+[0.600s] [ 11%] Built target ground_bot__rosidl_generator_c
+[0.607s] [ 15%] Built target joy_twist_node
+[0.612s] [ 22%] Built target twist_to_twiststamped_node
+[0.612s] [ 22%] [32mBuilding CXX object CMakeFiles/optical_flow_node.dir/src/optical_flow_node.cpp.o[0m
+[0.619s] [ 22%] Built target ament_cmake_python_copy_ground_bot
+[0.632s] [ 31%] Built target ground_bot__rosidl_typesupport_fastrtps_cpp
+[0.633s] [ 40%] Built target ground_bot__rosidl_typesupport_introspection_cpp
+[0.638s] [ 48%] Built target ground_bot__rosidl_typesupport_cpp
+[0.638s] [ 57%] Built target ground_bot__rosidl_typesupport_introspection_c
+[0.640s] [ 66%] Built target ground_bot__rosidl_typesupport_fastrtps_c
+[0.643s] [ 75%] Built target ground_bot__rosidl_typesupport_c
+[0.668s] [ 75%] Built target ground_bot
+[0.694s] [ 77%] Built target ground_bot__py
+[0.720s] [ 84%] Built target ground_bot__rosidl_generator_py
+[0.742s] [ 93%] Built target ground_bot__rosidl_typesupport_c__pyext
+[0.743s] [ 93%] Built target ground_bot__rosidl_typesupport_introspection_c__pyext
+[0.745s] [ 97%] Built target ground_bot__rosidl_typesupport_fastrtps_c__pyext
+[0.853s] running egg_info
+[0.872s] writing ground_bot.egg-info/PKG-INFO
+[0.873s] writing dependency_links to ground_bot.egg-info/dependency_links.txt
+[0.873s] writing top-level names to ground_bot.egg-info/top_level.txt
+[0.949s] reading manifest file 'ground_bot.egg-info/SOURCES.txt'
+[0.951s] writing manifest file 'ground_bot.egg-info/SOURCES.txt'
+[1.038s] [ 97%] Built target ament_cmake_python_build_ground_bot_egg
+[4.249s] [01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:[m[K In member function ‘[01m[Kvoid OpticalFlowNode::imageCallback(sensor_msgs::msg::Image_<std::allocator<void> >::SharedPtr)[m[K’:
+[4.249s] [01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:123:33:[m[K [01;31m[Kerror: [m[K‘[01m[KDualTVL1OpticalFlow[m[K’ is not a member of ‘[01m[Kcv[m[K’; did you mean ‘[01m[KreadOpticalFlow[m[K’?
+[4.249s]   123 |                     cv::Ptr<cv::[01;31m[KDualTVL1OpticalFlow[m[K> tvl1 = cv::DualTVL1OpticalFlow::create();
+[4.249s]       |                                 [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[4.249s]       |                                 [32m[KreadOpticalFlow[m[K
+[4.249s] [01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:123:52:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[4.249s]   123 |                     cv::Ptr<cv::DualTVL1OpticalFlow[01;31m[K>[m[K tvl1 = cv::DualTVL1OpticalFlow::create();
+[4.249s]       |                                                    [01;31m[K^[m[K
+[4.250s] [01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:123:65:[m[K [01;31m[Kerror: [m[K‘[01m[Kcv::DualTVL1OpticalFlow[m[K’ has not been declared
+[4.250s]   123 |                     cv::Ptr<cv::DualTVL1OpticalFlow> tvl1 = cv::[01;31m[KDualTVL1OpticalFlow[m[K::create();
+[4.250s]       |                                                                 [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[4.250s] [01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:124:25:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+[4.250s]   124 |                     tvl1[01;31m[K->[m[KsetTau(0.25);        // Time step
+[4.250s]       |                         [01;31m[K^~[m[K
+[4.250s] [01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:125:25:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+[4.250s]   125 |                     tvl1[01;31m[K->[m[KsetLambda(0.15);     // Weight parameter
+[4.250s]       |                         [01;31m[K^~[m[K
+[4.250s] [01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:126:25:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+[4.250s]   126 |                     tvl1[01;31m[K->[m[KsetTheta(0.3);       // Tightness parameter
+[4.250s]       |                         [01;31m[K^~[m[K
+[4.250s] [01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:127:25:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+[4.250s]   127 |                     tvl1[01;31m[K->[m[KsetScalesNumber(3);  // Number of scales
+[4.250s]       |                         [01;31m[K^~[m[K
+[4.250s] [01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:128:25:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+[4.250s]   128 |                     tvl1[01;31m[K->[m[KsetWarpingsNumber(5);// Number of warpings
+[4.250s]       |                         [01;31m[K^~[m[K
+[4.250s] [01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:129:25:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+[4.250s]   129 |                     tvl1[01;31m[K->[m[KsetEpsilon(0.02);    // Stopping criterion
+[4.250s]       |                         [01;31m[K^~[m[K
+[4.250s] [01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:130:25:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+[4.250s]   130 |                     tvl1[01;31m[K->[m[KsetIterations(30);   // Number of iterations
+[4.251s]       |                         [01;31m[K^~[m[K
+[4.251s] [01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:133:25:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+[4.251s]   133 |                     tvl1[01;31m[K->[m[Kcalc(prev_frame_, current_gray, flow);
+[4.251s]       |                         [01;31m[K^~[m[K
+[7.584s] gmake[2]: *** [CMakeFiles/optical_flow_node.dir/build.make:76: CMakeFiles/optical_flow_node.dir/src/optical_flow_node.cpp.o] Error 1
+[7.584s] gmake[1]: *** [CMakeFiles/Makefile2:648: CMakeFiles/optical_flow_node.dir/all] Error 2
+[7.584s] gmake: *** [Makefile:146: all] Error 2
+[7.587s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/ground_bot' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/ground_bot -- -j16 -l16

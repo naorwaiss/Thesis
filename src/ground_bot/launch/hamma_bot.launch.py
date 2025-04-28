@@ -113,8 +113,10 @@ def generate_launch_description():
         executable='parameter_bridge',
         arguments=[
             '/scan@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan',
-            '/robot_cam@sensor_msgs/msg/Image@ignition.msgs.Image',
-            '/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
+            '/robot_cam_right@sensor_msgs/msg/Image@ignition.msgs.Image',
+            '/robot_cam_left@sensor_msgs/msg/Image@ignition.msgs.Image',
+            '/camera_info_right@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
+            '/camera_info_left@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
             '/imu@sensor_msgs/msg/Imu[ignition.msgs.IMU',
             '/clock@rosgraph_msgs/msg/Clock@gz.msgs.Clock'
         ],

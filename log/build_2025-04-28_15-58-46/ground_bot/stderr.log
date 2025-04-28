@@ -1,0 +1,38 @@
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:[m[K In member function ‘[01m[Kvoid OpticalFlowNode::imageCallback(sensor_msgs::msg::Image_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:123:33:[m[K [01;31m[Kerror: [m[K‘[01m[KDualTVL1OpticalFlow[m[K’ is not a member of ‘[01m[Kcv[m[K’; did you mean ‘[01m[KreadOpticalFlow[m[K’?
+  123 |                     cv::Ptr<cv::[01;31m[KDualTVL1OpticalFlow[m[K> tvl1 = cv::DualTVL1OpticalFlow::create();
+      |                                 [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+      |                                 [32m[KreadOpticalFlow[m[K
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:123:52:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  123 |                     cv::Ptr<cv::DualTVL1OpticalFlow[01;31m[K>[m[K tvl1 = cv::DualTVL1OpticalFlow::create();
+      |                                                    [01;31m[K^[m[K
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:123:65:[m[K [01;31m[Kerror: [m[K‘[01m[Kcv::DualTVL1OpticalFlow[m[K’ has not been declared
+  123 |                     cv::Ptr<cv::DualTVL1OpticalFlow> tvl1 = cv::[01;31m[KDualTVL1OpticalFlow[m[K::create();
+      |                                                                 [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:124:25:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+  124 |                     tvl1[01;31m[K->[m[KsetTau(0.25);        // Time step
+      |                         [01;31m[K^~[m[K
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:125:25:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+  125 |                     tvl1[01;31m[K->[m[KsetLambda(0.15);     // Weight parameter
+      |                         [01;31m[K^~[m[K
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:126:25:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+  126 |                     tvl1[01;31m[K->[m[KsetTheta(0.3);       // Tightness parameter
+      |                         [01;31m[K^~[m[K
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:127:25:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+  127 |                     tvl1[01;31m[K->[m[KsetScalesNumber(3);  // Number of scales
+      |                         [01;31m[K^~[m[K
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:128:25:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+  128 |                     tvl1[01;31m[K->[m[KsetWarpingsNumber(5);// Number of warpings
+      |                         [01;31m[K^~[m[K
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:129:25:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+  129 |                     tvl1[01;31m[K->[m[KsetEpsilon(0.02);    // Stopping criterion
+      |                         [01;31m[K^~[m[K
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:130:25:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+  130 |                     tvl1[01;31m[K->[m[KsetIterations(30);   // Number of iterations
+      |                         [01;31m[K^~[m[K
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/optical_flow_node.cpp:133:25:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+  133 |                     tvl1[01;31m[K->[m[Kcalc(prev_frame_, current_gray, flow);
+      |                         [01;31m[K^~[m[K
+gmake[2]: *** [CMakeFiles/optical_flow_node.dir/build.make:76: CMakeFiles/optical_flow_node.dir/src/optical_flow_node.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:648: CMakeFiles/optical_flow_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2
