@@ -588,6 +588,9 @@ std_msgs_DIR:PATH=/opt/ros/humble/share/std_msgs/cmake
 //The directory containing a CMake configuration file for tracetools.
 tracetools_DIR:PATH=/opt/ros/humble/share/tracetools/cmake
 
+//The directory containing a CMake configuration file for xacro.
+xacro_DIR:PATH=/opt/ros/humble/share/xacro/cmake
+
 //Path to a program.
 xmllint_BIN:FILEPATH=/usr/bin/xmllint
 

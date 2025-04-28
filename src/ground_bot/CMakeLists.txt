@@ -18,6 +18,8 @@ find_package(sensor_msgs REQUIRED)  # ✅ Add this
 find_package(geometry_msgs REQUIRED) 
 find_package(rosidl_default_generators REQUIRED)
 find_package(ament_cmake_python REQUIRED)
+find_package(xacro REQUIRED)
+
 
 # Define message files
 set(msg_files
@@ -68,6 +70,12 @@ install(
 install(
   DIRECTORY urdf/
   DESTINATION share/${PROJECT_NAME}/urdf
+)
+
+# === Install world files ===
+install(
+  DIRECTORY worlds/
+  DESTINATION share/${PROJECT_NAME}/worlds
 )
 
 # === Install Python scripts ===

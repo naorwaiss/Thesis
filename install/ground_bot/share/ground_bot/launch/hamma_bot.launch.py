@@ -2,144 +2,241 @@ import os
 from ament_index_python.packages import get_package_share_directory
 from pathlib import Path
 from launch import LaunchDescription
-from launch.substitutions import Command, LaunchConfiguration
+from launch.substitutions import Command, LaunchConfiguration, NotSubstitution, AndSubstitution
 from launch_ros.actions import Node
-
 from launch.actions import (
     ExecuteProcess,
     DeclareLaunchArgument,
     RegisterEventHandler,
     SetEnvironmentVariable,
-    IncludeLaunchDescription
 )
+from launch.conditions import IfCondition, UnlessCondition
 from launch_ros.parameter_descriptions import ParameterValue
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.event_handlers import OnProcessExit
+from launch.substitutions import FindExecutable, PathJoinSubstitution
 
 def generate_launch_description():
-
     robot_description_path = get_package_share_directory('ground_bot')
-    gazebo_resource_path = SetEnvironmentVariable(name='GZ_SIM_RESOURCE_PATH',
-                                                  value=[
-                                                    str(Path(robot_description_path).parent.resolve())
-                                                ]
+    default_model_path = os.path.join(robot_description_path, 'urdf', 'robot_description.urdf')
+    default_rviz_config_path = os.path.join(robot_description_path, 'rviz', 'urdf_config.rviz')
+
+    # Declare launch arguments
+    use_sim_time = LaunchConfiguration('use_sim_time')
+    use_localization = LaunchConfiguration('use_localization')
+    use_rviz = LaunchConfiguration('use_rviz')
+    log_level = LaunchConfiguration('log_level')
+    gz_verbosity = LaunchConfiguration('gz_verbosity')
+    run_headless = LaunchConfiguration('run_headless')
+    world_file_name = LaunchConfiguration('world_file')
+    gz_models_path = ":".join([robot_description_path, os.path.join(robot_description_path, "models")])
+    world_path = PathJoinSubstitution([robot_description_path, "worlds", world_file_name])
+
+    # Set Gazebo environment variables
+    gz_env = {
+        'GZ_SIM_SYSTEM_PLUGIN_PATH': ':'.join([
+            os.environ.get('GZ_SIM_SYSTEM_PLUGIN_PATH', default=''),
+            os.environ.get('LD_LIBRARY_PATH', default='')
+        ]),
+        'IGN_GAZEBO_SYSTEM_PLUGIN_PATH': ':'.join([
+            os.environ.get('IGN_GAZEBO_SYSTEM_PLUGIN_PATH', default=''),
+            os.environ.get('LD_LIBRARY_PATH', default='')
+        ])
+    }
+
+    robot_state_publisher = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        name='robot_state_publisher',
+        parameters=[{
+            'robot_description': Command(['xacro ', LaunchConfiguration('model')]),
+            'use_sim_time': use_sim_time
+        }]
     )
-    model_arg = DeclareLaunchArgument(name='model',
-                                      default_value=os.path.join(robot_description_path, 'urdf', 'robot_description.urdf'),
-                                      description='Absolute path to robot urdf file'
-                                      )
 
-    robot_description = ParameterValue(Command([
-        'xacro ',
-        LaunchConfiguration('model')
-    ]),
-        value_type=str
+    rviz_node = Node(
+        condition=IfCondition(AndSubstitution(NotSubstitution(run_headless), use_rviz)),
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        output='screen',
+        arguments=['-d', LaunchConfiguration('rvizconfig')]
     )
 
-    robot_state_publisher = Node(package='robot_state_publisher',
-                                 executable='robot_state_publisher',
-                                 name='robot_state_publisher',
-                                 parameters=[{'robot_description': robot_description,
-                                              'use_sim_time': True}]
-                                 )
-
-
-
-
-    gazebo = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([
-            os.path.join(
-                get_package_share_directory("ros_gz_sim"),
-                'launch'
-            ),  '/gz_sim.launch.py']
-        ),
-        launch_arguments=[
-            ('gz_args', [' -v 4 -r empty.sdf ']),
-            ('world', os.path.join(robot_description_path, 'worlds', 'empty.sdf'))
+    robot_localization_node = Node(
+        condition=IfCondition(use_localization),
+        package='robot_localization',
+        executable='ekf_node',
+        name='ekf_filter_node',
+        output='screen',
+        parameters=[
+            os.path.join(robot_description_path, 'config/ekf.yaml'),
+            {'use_sim_time': use_sim_time}
         ]
     )
-    gz_spawn_entity = Node(package='ros_gz_sim',
-                           executable='create',
-                           arguments=['-topic', 'robot_description',
-                                      '-name', 'hamma_bot',],
-                           output='screen'
+
+    # Configure Gazebo launch
+    gazebo = [
+        ExecuteProcess(
+            condition=IfCondition(run_headless),
+            cmd=['ruby', FindExecutable(name="ign"), 'gazebo', '-r', '-v', gz_verbosity, '-s', '--headless-rendering', world_path],
+            output='screen',
+            additional_env=gz_env,
+            shell=False,
+        ),
+        ExecuteProcess(
+            condition=UnlessCondition(run_headless),
+            cmd=['ruby', FindExecutable(name="ign"), 'gazebo', '-r', '-v', gz_verbosity, world_path],
+            output='screen',
+            additional_env=gz_env,
+            shell=False,
+        )
+    ]
+
+    gz_spawn_entity = Node(
+        package='ros_gz_sim',
+        executable='create',
+        arguments=[
+            '-name', 'hamma_bot',
+            '-topic', 'robot_description',
+            '-z', '1.0',
+            '-x', '-2.0',
+            '--ros-args',
+            '--log-level', log_level
+        ],
+        output='screen',
+        parameters=[{'use_sim_time': use_sim_time}]
     )
+
     gz_ros2_bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
         arguments=[
-            "/robot_cam@sensor_msgs/msg/Image@ignition.msgs.Image",
-            "/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo",
-            "/scan@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan",
-            "/imu@sensor_msgs/msg/Imu[ignition.msgs.IMU",
-            '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock]',
+            '/scan@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan',
+            '/robot_cam@sensor_msgs/msg/Image@ignition.msgs.Image',
+            '/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
+            '/imu@sensor_msgs/msg/Imu[ignition.msgs.IMU',
+            '/clock@rosgraph_msgs/msg/Clock@gz.msgs.Clock'
         ],
         output='screen'
     )
+
     load_joint_state_controller = ExecuteProcess(
-        name="activate_joint_state_broadcaster",
+        name='activate_joint_state_broadcaster',
         cmd=[
-            "ros2",
-            "control",
-            "load_controller",
-            "--set-state",
-            "active",
-            "joint_state_broadcaster",
+            'ros2',
+            'control',
+            'load_controller',
+            '--set-state',
+            'active',
+            'joint_state_broadcaster'
         ],
         shell=False,
-        output="screen",
+        output='screen'
     )
 
     load_ackermann_controller = ExecuteProcess(
-        name="activate_ackermann_controller_velcoity",
+        name='activate_ackermann_controller_velocity',
         cmd=[
-            "ros2",
-            "control",
-            "load_controller",
-            "--set-state",
-            "active",
-            "ackermann_controller_velocity",
+            'ros2',
+            'control',
+            'load_controller',
+            '--set-state',
+            'active',
+            'ackermann_controller_velocity'
         ],
         shell=False,
-        output="screen",
+        output='screen'
     )
 
     relay_odom = Node(
-        name="relay_odom",
-        package="topic_tools",
-        executable="relay",
-        parameters=[
-            {
-                "input_topic": "/ackermann_controller_velocity/odometry",
-                "output_topic": "/odom",
-            }
-        ],
-        output="screen",
+        name='relay_odom',
+        package='topic_tools',
+        executable='relay',
+        parameters=[{
+            'input_topic': '/ackermann_controller_velocity/odometry',
+            'output_topic': '/odom'
+        }],
+        output='screen'
     )
 
-    
-
-
+    relay_cmd_vel = Node(
+        name='relay_cmd_vel',
+        package='topic_tools',
+        executable='relay',
+        parameters=[{
+            'input_topic': '/cmd_vel',
+            'output_topic': '/ackermann_controller_velocity/cmd_vel_unstamped'
+        }],
+        output='screen'
+    )
 
     return LaunchDescription([
+        SetEnvironmentVariable(
+            name='IGN_GAZEBO_RESOURCE_PATH',
+            value=gz_models_path
+        ),
+        DeclareLaunchArgument(
+            name='model',
+            default_value=default_model_path,
+            description='Absolute path to robot urdf file'
+        ),
+        DeclareLaunchArgument(
+            name='use_rviz',
+            default_value='True',
+            description='Start RViz'
+        ),
+        DeclareLaunchArgument(
+            name='run_headless',
+            default_value='False',
+            description='Start GZ in headless mode and don\'t start RViz (overrides use_rviz)'
+        ),
+        DeclareLaunchArgument(
+            name='world_file',
+            default_value='empty.sdf'
+        ),
+        DeclareLaunchArgument(
+            name='rvizconfig',
+            default_value=default_rviz_config_path,
+            description='Absolute path to rviz config file'
+        ),
+        DeclareLaunchArgument(
+            name='use_sim_time',
+            default_value='True',
+            description='Flag to enable use_sim_time'
+        ),
+        DeclareLaunchArgument(
+            name='use_localization',
+            default_value='True',
+            description='Use EKF to estimate odom->base_link transform from IMU + wheel odometry'
+        ),
+        DeclareLaunchArgument(
+            name='gz_verbosity',
+            default_value='3',
+            description='Verbosity level for Gazebo (0~4)'
+        ),
+        DeclareLaunchArgument(
+            name='log_level',
+            default_value='warn',
+            description='The level of logging that is applied to all ROS 2 nodes launched by this script'
+        ),
         gz_ros2_bridge,
-        model_arg,
-        gazebo_resource_path,
         robot_state_publisher,
-        gazebo,
         gz_spawn_entity,
-
+        robot_localization_node,
+        # rviz_node,
         RegisterEventHandler(
             event_handler=OnProcessExit(
                 target_action=gz_spawn_entity,
-                on_exit=[load_joint_state_controller],
+                on_exit=[load_joint_state_controller]
             )
         ),
         RegisterEventHandler(
             event_handler=OnProcessExit(
                 target_action=load_joint_state_controller,
-                on_exit=[load_ackermann_controller],
+                on_exit=[load_ackermann_controller]
             )
         ),
-        relay_odom,
-    ])
+        # relay_odom,
+        # relay_cmd_vel
+    ] + gazebo)
