@@ -9,6 +9,7 @@ from launch.actions import (
     DeclareLaunchArgument,
     RegisterEventHandler,
     SetEnvironmentVariable,
+    TimerAction,
 )
 import launch_ros
 from launch.conditions import IfCondition, UnlessCondition
@@ -28,7 +29,7 @@ def generate_launch_description():
 
     # Declare launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time')
-    use_localization = LaunchConfiguration('use_localization')
+    # use_localization = LaunchConfiguration('use_localization')
     use_rviz = LaunchConfiguration('use_rviz')
     log_level = LaunchConfiguration('log_level')
     gz_verbosity = LaunchConfiguration('gz_verbosity')
@@ -67,19 +68,6 @@ def generate_launch_description():
         output='screen',
         arguments=['-d', LaunchConfiguration('rvizconfig')]
     )
-
-    robot_localization_node = Node(
-        condition=IfCondition(use_localization),
-        package="robot_localization",
-        executable="ekf_node",
-        name="ekf_filter_node",
-        output="screen",
-        parameters=[
-            ekf_config_path,
-            {"use_sim_time": use_sim_time},
-        ],
-    )
-
     # Configure Gazebo launch
     gazebo = [
         ExecuteProcess(
@@ -178,6 +166,23 @@ def generate_launch_description():
         output='screen'
     )
 
+    ekf_node = Node(
+        package='robot_localization',
+        executable='ekf_node',
+        name='ekf_filter_node',
+        output='screen',
+        arguments=[
+            '--ros-args',
+            '--params-file', '/home/naor/Desktop/naor/study/Thesis/src/ground_bot/config/ekf.yaml',
+            '--log-level', log_level
+        ]
+    )
+
+    ekf_node_delayed = TimerAction(
+        period=7.0,
+        actions=[ekf_node]
+    )
+
     return LaunchDescription([
         SetEnvironmentVariable(
             name='IGN_GAZEBO_RESOURCE_PATH',
@@ -212,11 +217,11 @@ def generate_launch_description():
             default_value='True',
             description='Flag to enable use_sim_time'
         ),
-        DeclareLaunchArgument(
-            name='use_localization',
-            default_value='True',
-            description='Use EKF to estimate odom->base_link transform from IMU + wheel odometry'
-        ),
+        # DeclareLaunchArgument(
+        #     name='use_localization',
+        #     default_value='True',
+        #     description='Use EKF to estimate odom->base_link transform from IMU + wheel odometry'
+        # ),
         DeclareLaunchArgument(
             name='gz_verbosity',
             default_value='3',
@@ -230,8 +235,7 @@ def generate_launch_description():
         gz_ros2_bridge,
         robot_state_publisher,
         gz_spawn_entity,
-        robot_localization_node,
-        rviz_node,
+        # rviz_node,
         RegisterEventHandler(
             event_handler=OnProcessExit(
                 target_action=gz_spawn_entity,
@@ -246,4 +250,6 @@ def generate_launch_description():
         ),
         relay_odom,
         # relay_cmd_vel,
+        # robot_localization_node,
+        ekf_node_delayed,
     ] + gazebo)

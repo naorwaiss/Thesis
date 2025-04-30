@@ -66,11 +66,17 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        camera_link:
+        camera_link_left:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
+        camera_link_right:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+          ##need to cahnge this link to the bot link
         drivewhl_l_link:
           Alpha: 1
           Show Axes: false

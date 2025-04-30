@@ -428,6 +428,10 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ground_bot/rviz" TYPE DIRECTORY FILES "/home/naor/Desktop/naor/study/Thesis/src/ground_bot/rviz/")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/ground_bot" TYPE PROGRAM FILES "/home/naor/Desktop/naor/study/Thesis/src/ground_bot/ground_bot/ground_bot_rtcom.py")
 endif()
 

@@ -1,5 +1,0 @@
-[31mCMake Error at CMakeLists.txt:57 (install):
-  install TARGETS given target "optical_flow_node" which does not exist.
-
-[0m
-gmake: *** [Makefile:1059: cmake_check_build_system] Error 1
