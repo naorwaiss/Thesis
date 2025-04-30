@@ -10,6 +10,7 @@ from launch.actions import (
     RegisterEventHandler,
     SetEnvironmentVariable,
 )
+import launch_ros
 from launch.conditions import IfCondition, UnlessCondition
 from launch_ros.parameter_descriptions import ParameterValue
 from launch.launch_description_sources import PythonLaunchDescriptionSource
@@ -17,9 +18,13 @@ from launch.event_handlers import OnProcessExit
 from launch.substitutions import FindExecutable, PathJoinSubstitution
 
 def generate_launch_description():
+    pkg_share = launch_ros.substitutions.FindPackageShare(
+        package="ground_bot"
+    ).find("ground_bot")
     robot_description_path = get_package_share_directory('ground_bot')
     default_model_path = os.path.join(robot_description_path, 'urdf', 'robot_description.urdf')
     default_rviz_config_path = os.path.join(robot_description_path, 'rviz', 'urdf_config.rviz')
+    ekf_config_path = os.path.join(robot_description_path, 'config', 'ekf.yaml')
 
     # Declare launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time')
@@ -65,14 +70,14 @@ def generate_launch_description():
 
     robot_localization_node = Node(
         condition=IfCondition(use_localization),
-        package='robot_localization',
-        executable='ekf_node',
-        name='ekf_filter_node',
-        output='screen',
+        package="robot_localization",
+        executable="ekf_node",
+        name="ekf_filter_node",
+        output="screen",
         parameters=[
-            os.path.join(robot_description_path, 'config/ekf.yaml'),
-            {'use_sim_time': use_sim_time}
-        ]
+            ekf_config_path,
+            {"use_sim_time": use_sim_time},
+        ],
     )
 
     # Configure Gazebo launch
@@ -100,7 +105,7 @@ def generate_launch_description():
             '-name', 'hamma_bot',
             '-topic', 'robot_description',
             '-z', '1.0',
-            '-x', '-2.0',
+            '-x', '-1.0',
             '--ros-args',
             '--log-level', log_level
         ],
@@ -162,16 +167,16 @@ def generate_launch_description():
         output='screen'
     )
 
-    # relay_cmd_vel = Node(
-    #     name='relay_cmd_vel',
-    #     package='topic_tools',
-    #     executable='relay',
-    #     parameters=[{
-    #         'input_topic': '/cmd_vel',
-    #         'output_topic': '/ackermann_controller_velocity/cmd_vel_unstamped'
-    #     }],
-    #     output='screen'
-    # )
+    relay_cmd_vel = Node(
+        name='relay_cmd_vel',
+        package='topic_tools',
+        executable='relay',
+        parameters=[{
+            'input_topic': '/cmd_vel',
+            'output_topic': '/ackermann_controller_velocity/reference'
+        }],
+        output='screen'
+    )
 
     return LaunchDescription([
         SetEnvironmentVariable(
@@ -226,7 +231,7 @@ def generate_launch_description():
         robot_state_publisher,
         gz_spawn_entity,
         robot_localization_node,
-        # rviz_node,
+        rviz_node,
         RegisterEventHandler(
             event_handler=OnProcessExit(
                 target_action=gz_spawn_entity,
@@ -239,6 +244,6 @@ def generate_launch_description():
                 on_exit=[load_ackermann_controller]
             )
         ),
-        # relay_odom,
-        # relay_cmd_vel
+        relay_odom,
+        # relay_cmd_vel,
     ] + gazebo)

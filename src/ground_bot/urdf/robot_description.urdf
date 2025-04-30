@@ -4,10 +4,15 @@
 
 
   <!-- Base footprint -->
-  <link name="world_link"/>
+    <link name="base_footprint">
+    <inertial>
+      <mass value="0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
   <!-- Base link -->
   <joint name="base_joint" type="fixed">
-    <parent link="world_link"/>
+    <parent link="base_footprint"/>
     <child link="base_link"/>
     <origin xyz="0 0 0.5" rpy="0 0 0"/>
   </joint>

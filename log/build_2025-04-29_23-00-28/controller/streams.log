@@ -1,0 +1,20 @@
+[1.088s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/src/controller': PYTHONPATH=/home/naor/Desktop/naor/study/Thesis/build/controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/naor/Desktop/naor/study/Thesis/install/controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/controller build --build-base /home/naor/Desktop/naor/study/Thesis/build/controller/build install --record /home/naor/Desktop/naor/study/Thesis/build/controller/install.log --single-version-externally-managed install_data
+[1.340s] running egg_info
+[1.352s] writing ../../build/controller/controller.egg-info/PKG-INFO
+[1.353s] writing dependency_links to ../../build/controller/controller.egg-info/dependency_links.txt
+[1.353s] writing requirements to ../../build/controller/controller.egg-info/requires.txt
+[1.353s] writing top-level names to ../../build/controller/controller.egg-info/top_level.txt
+[1.380s] reading manifest file '../../build/controller/controller.egg-info/SOURCES.txt'
+[1.380s] adding license file 'LICENSE'
+[1.381s] writing manifest file '../../build/controller/controller.egg-info/SOURCES.txt'
+[1.381s] running build
+[1.381s] running build_py
+[1.382s] running install
+[1.385s] running install_lib
+[1.399s] running install_data
+[1.399s] running install_egg_info
+[1.412s] removing '/home/naor/Desktop/naor/study/Thesis/install/controller/lib/python3.10/site-packages/controller-0.0.0-py3.10.egg-info' (and everything under it)
+[1.413s] Copying ../../build/controller/controller.egg-info to /home/naor/Desktop/naor/study/Thesis/install/controller/lib/python3.10/site-packages/controller-0.0.0-py3.10.egg-info
+[1.413s] running install_scripts
+[1.520s] writing list of installed files to '/home/naor/Desktop/naor/study/Thesis/build/controller/install.log'
+[1.541s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/src/controller' returned '0': PYTHONPATH=/home/naor/Desktop/naor/study/Thesis/build/controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/naor/Desktop/naor/study/Thesis/install/controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/controller build --build-base /home/naor/Desktop/naor/study/Thesis/build/controller/build install --record /home/naor/Desktop/naor/study/Thesis/build/controller/install.log --single-version-externally-managed install_data

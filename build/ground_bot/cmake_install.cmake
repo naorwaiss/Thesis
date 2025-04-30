@@ -416,7 +416,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ground_bot/config" TYPE DIRECTORY FILES "/home/naor/Desktop/naor/study/Thesis/src/ground_bot/config")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ground_bot/config" TYPE DIRECTORY FILES "/home/naor/Desktop/naor/study/Thesis/src/ground_bot/config/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

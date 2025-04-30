@@ -66,9 +66,8 @@ install(
   DESTINATION share/${PROJECT_NAME}
 )
 
-
 install(
-  DIRECTORY config
+  DIRECTORY config/
   DESTINATION share/${PROJECT_NAME}/config
 )
 
@@ -83,6 +82,14 @@ install(
   DIRECTORY worlds/
   DESTINATION share/${PROJECT_NAME}/worlds
 )
+
+
+# === Install rviz files ===
+install(
+  DIRECTORY rviz/
+  DESTINATION share/${PROJECT_NAME}/rviz
+)
+
 
 # === Install Python scripts ===
 install(PROGRAMS
