@@ -1,0 +1,31 @@
+[0.849s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/src/roller': PYTHONPATH=/home/naor/Desktop/naor/study/Thesis/build/roller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/naor/Desktop/naor/study/Thesis/install/roller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/roller build --build-base /home/naor/Desktop/naor/study/Thesis/build/roller/build install --record /home/naor/Desktop/naor/study/Thesis/build/roller/install.log --single-version-externally-managed install_data
+[0.962s] /home/naor/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:270: UserWarning: Unknown distribution option: 'tests_require'
+[0.962s]   warnings.warn(msg)
+[1.033s] running egg_info
+[1.045s] creating ../../build/roller/roller.egg-info
+[1.045s] writing ../../build/roller/roller.egg-info/PKG-INFO
+[1.045s] writing dependency_links to ../../build/roller/roller.egg-info/dependency_links.txt
+[1.045s] writing requirements to ../../build/roller/roller.egg-info/requires.txt
+[1.045s] writing top-level names to ../../build/roller/roller.egg-info/top_level.txt
+[1.045s] writing manifest file '../../build/roller/roller.egg-info/SOURCES.txt'
+[1.070s] reading manifest file '../../build/roller/roller.egg-info/SOURCES.txt'
+[1.070s] adding license file 'LICENSE'
+[1.070s] writing manifest file '../../build/roller/roller.egg-info/SOURCES.txt'
+[1.071s] running build
+[1.071s] running build_py
+[1.071s] creating /home/naor/Desktop/naor/study/Thesis/build/roller/build/lib/roller
+[1.071s] copying roller/__init__.py -> /home/naor/Desktop/naor/study/Thesis/build/roller/build/lib/roller
+[1.071s] running install
+[1.074s] running install_lib
+[1.086s] creating /home/naor/Desktop/naor/study/Thesis/install/roller/lib/python3.10/site-packages/roller
+[1.086s] copying /home/naor/Desktop/naor/study/Thesis/build/roller/build/lib/roller/__init__.py -> /home/naor/Desktop/naor/study/Thesis/install/roller/lib/python3.10/site-packages/roller
+[1.087s] byte-compiling /home/naor/Desktop/naor/study/Thesis/install/roller/lib/python3.10/site-packages/roller/__init__.py to __init__.cpython-310.pyc
+[1.087s] running install_data
+[1.087s] creating /home/naor/Desktop/naor/study/Thesis/install/roller/share/ament_index/resource_index/packages
+[1.087s] copying resource/roller -> /home/naor/Desktop/naor/study/Thesis/install/roller/share/ament_index/resource_index/packages
+[1.087s] copying package.xml -> /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller
+[1.088s] running install_egg_info
+[1.102s] Copying ../../build/roller/roller.egg-info to /home/naor/Desktop/naor/study/Thesis/install/roller/lib/python3.10/site-packages/roller-0.0.0-py3.10.egg-info
+[1.103s] running install_scripts
+[1.199s] writing list of installed files to '/home/naor/Desktop/naor/study/Thesis/build/roller/install.log'
+[1.218s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/src/roller' returned '0': PYTHONPATH=/home/naor/Desktop/naor/study/Thesis/build/roller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/naor/Desktop/naor/study/Thesis/install/roller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/roller build --build-base /home/naor/Desktop/naor/study/Thesis/build/roller/build install --record /home/naor/Desktop/naor/study/Thesis/build/roller/install.log --single-version-externally-managed install_data

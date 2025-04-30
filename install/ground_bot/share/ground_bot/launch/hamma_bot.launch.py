@@ -183,6 +183,15 @@ def generate_launch_description():
         actions=[ekf_node]
     )
 
+
+    static_tf_base = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='static_basefootprint_to_baselink',
+        arguments=['0', '0', '0', '0', '0', '0', 'base_footprint', 'base_link'],
+        output='screen'
+)
+
     return LaunchDescription([
         SetEnvironmentVariable(
             name='IGN_GAZEBO_RESOURCE_PATH',
@@ -250,6 +259,6 @@ def generate_launch_description():
         ),
         relay_odom,
         # relay_cmd_vel,
-        # robot_localization_node,
         ekf_node_delayed,
+        static_tf_base
     ] + gazebo)
