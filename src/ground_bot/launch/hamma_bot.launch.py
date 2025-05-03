@@ -56,7 +56,7 @@ def generate_launch_description():
         name='robot_state_publisher',
         parameters=[{
             'robot_description': Command(['xacro ', LaunchConfiguration('model')]),
-            'use_sim_time': use_sim_time
+            'use_sim_time': True
         }]
     )
 
@@ -98,14 +98,14 @@ def generate_launch_description():
             '--log-level', log_level
         ],
         output='screen',
-        parameters=[{'use_sim_time': use_sim_time}]
+        parameters=[{'use_sim_time': True}]
     )
 
     gz_ros2_bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
         arguments=[
-            '/scan@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan',
+            # '/scan@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan',
             '/robot_cam_right@sensor_msgs/msg/Image@ignition.msgs.Image',
             '/robot_cam_left@sensor_msgs/msg/Image@ignition.msgs.Image',
             '/camera_info_right@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
@@ -126,7 +126,7 @@ def generate_launch_description():
             'active',
             'joint_state_broadcaster'
         ],
-        shell=False,
+        shell=True,
         output='screen'
     )
 
@@ -140,7 +140,7 @@ def generate_launch_description():
             'active',
             'ackermann_controller_velocity'
         ],
-        shell=False,
+        shell=True,
         output='screen'
     )
 
@@ -183,8 +183,21 @@ def generate_launch_description():
         actions=[ekf_node]
     )
 
-
-    
+    depth_camera_tf_link = Node(
+            package='tf2_ros',
+            executable='static_transform_publisher',
+            name='static_tf_lidar_to_camera',
+            arguments=[
+                '--x', '0',
+                '--y', '0',
+                '--z', '0',
+                '--roll', '0',
+                '--pitch', '1.57',
+                '--yaw', '0',
+                '--frame-id', 'camera_front_link',
+                '--child-frame-id', 'camera_link'
+            ]
+    )
 
     return LaunchDescription([
         SetEnvironmentVariable(
@@ -238,7 +251,7 @@ def generate_launch_description():
         gz_ros2_bridge,
         robot_state_publisher,
         gz_spawn_entity,
-        # rviz_node,
+        rviz_node,
         RegisterEventHandler(
             event_handler=OnProcessExit(
                 target_action=gz_spawn_entity,
@@ -253,6 +266,6 @@ def generate_launch_description():
         ),
         relay_odom,
         # relay_cmd_vel,
-        # robot_localization_node,
+        # depth_camera_tf_link,
         ekf_node_delayed,
     ] + gazebo)

@@ -1,0 +1,506 @@
+[0.080s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.080s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=16, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x798ff6d0c0a0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x798ff6ed7a60>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x798ff6ed7a60>>, mixin_verb=('build',))
+[0.107s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.108s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.108s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.108s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.108s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.108s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.108s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/naor/Desktop/naor/study/Thesis'
+[0.108s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.108s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.108s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.108s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.108s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.108s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.108s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.108s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.108s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_nav) by extensions ['ignore', 'ignore_ament_install']
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_nav) by extension 'ignore'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_nav) by extension 'ignore_ament_install'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_nav) by extensions ['colcon_pkg']
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_nav) by extension 'colcon_pkg'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_nav) by extensions ['colcon_meta']
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_nav) by extension 'colcon_meta'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_nav) by extensions ['ros']
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src/camera_nav) by extension 'ros'
+[0.122s] DEBUG:colcon.colcon_core.package_identification:Package 'src/camera_nav' with type 'ros.ament_python' and name 'camera_nav'
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller) by extensions ['ignore', 'ignore_ament_install']
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller) by extension 'ignore'
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller) by extension 'ignore_ament_install'
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller) by extensions ['colcon_pkg']
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller) by extension 'colcon_pkg'
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller) by extensions ['colcon_meta']
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller) by extension 'colcon_meta'
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller) by extensions ['ros']
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller) by extension 'ros'
+[0.123s] DEBUG:colcon.colcon_core.package_identification:Package 'src/controller' with type 'ros.ament_python' and name 'controller'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(src/drone_c) by extensions ['ignore', 'ignore_ament_install']
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(src/drone_c) by extension 'ignore'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(src/drone_c) by extension 'ignore_ament_install'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(src/drone_c) by extensions ['colcon_pkg']
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(src/drone_c) by extension 'colcon_pkg'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(src/drone_c) by extensions ['colcon_meta']
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(src/drone_c) by extension 'colcon_meta'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(src/drone_c) by extensions ['ros']
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(src/drone_c) by extension 'ros'
+[0.123s] DEBUG:colcon.colcon_core.package_identification:Package 'src/drone_c' with type 'ros.ament_cmake' and name 'drone_c'
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(src/ground_bot) by extensions ['ignore', 'ignore_ament_install']
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(src/ground_bot) by extension 'ignore'
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(src/ground_bot) by extension 'ignore_ament_install'
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(src/ground_bot) by extensions ['colcon_pkg']
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(src/ground_bot) by extension 'colcon_pkg'
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(src/ground_bot) by extensions ['colcon_meta']
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(src/ground_bot) by extension 'colcon_meta'
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(src/ground_bot) by extensions ['ros']
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(src/ground_bot) by extension 'ros'
+[0.124s] DEBUG:colcon.colcon_core.package_identification:Package 'src/ground_bot' with type 'ros.ament_cmake' and name 'ground_bot'
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(src/pointcloud_to_laserscan) by extensions ['ignore', 'ignore_ament_install']
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(src/pointcloud_to_laserscan) by extension 'ignore'
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(src/pointcloud_to_laserscan) by extension 'ignore_ament_install'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(src/pointcloud_to_laserscan) by extensions ['colcon_pkg']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(src/pointcloud_to_laserscan) by extension 'colcon_pkg'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(src/pointcloud_to_laserscan) by extensions ['colcon_meta']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(src/pointcloud_to_laserscan) by extension 'colcon_meta'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(src/pointcloud_to_laserscan) by extensions ['ros']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(src/pointcloud_to_laserscan) by extension 'ros'
+[0.125s] DEBUG:colcon.colcon_core.package_identification:Package 'src/pointcloud_to_laserscan' with type 'ros.ament_cmake' and name 'pointcloud_to_laserscan'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_description) by extensions ['ignore', 'ignore_ament_install']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_description) by extension 'ignore'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_description) by extension 'ignore_ament_install'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_description) by extensions ['colcon_pkg']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_description) by extension 'colcon_pkg'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_description) by extensions ['colcon_meta']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_description) by extension 'colcon_meta'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_description) by extensions ['ros']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_description) by extension 'ros'
+[0.126s] DEBUG:colcon.colcon_core.package_identification:Package 'src/robot_description' with type 'ros.ament_cmake' and name 'robot_description'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(src/roller) by extensions ['ignore', 'ignore_ament_install']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(src/roller) by extension 'ignore'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(src/roller) by extension 'ignore_ament_install'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(src/roller) by extensions ['colcon_pkg']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(src/roller) by extension 'colcon_pkg'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(src/roller) by extensions ['colcon_meta']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(src/roller) by extension 'colcon_meta'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(src/roller) by extensions ['ros']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(src/roller) by extension 'ros'
+[0.127s] DEBUG:colcon.colcon_core.package_identification:Package 'src/roller' with type 'ros.ament_python' and name 'roller'
+[0.127s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.127s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.127s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.127s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.127s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.142s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.143s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.144s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 7 installed packages in /home/naor/Desktop/naor/study/Thesis/install
+[0.144s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 2 installed packages in /home/naor/Desktop/naor/work/capsule_repo/install
+[0.146s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 417 installed packages in /opt/ros/humble
+[0.147s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'controller' build argument 'cmake_args' from command line to 'None'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'controller' build argument 'cmake_target' from command line to 'None'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'controller' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'controller' build argument 'cmake_clean_cache' from command line to 'False'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'controller' build argument 'cmake_clean_first' from command line to 'False'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'controller' build argument 'cmake_force_configure' from command line to 'False'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'controller' build argument 'ament_cmake_args' from command line to 'None'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'controller' build argument 'catkin_cmake_args' from command line to 'None'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'controller' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.184s] DEBUG:colcon.colcon_core.verb:Building package 'controller' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/naor/Desktop/naor/study/Thesis/build/controller', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/naor/Desktop/naor/study/Thesis/install/controller', 'merge_install': False, 'path': '/home/naor/Desktop/naor/study/Thesis/src/controller', 'symlink_install': False, 'test_result_base': None}
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'drone_c' build argument 'cmake_args' from command line to 'None'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'drone_c' build argument 'cmake_target' from command line to 'None'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'drone_c' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'drone_c' build argument 'cmake_clean_cache' from command line to 'False'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'drone_c' build argument 'cmake_clean_first' from command line to 'False'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'drone_c' build argument 'cmake_force_configure' from command line to 'False'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'drone_c' build argument 'ament_cmake_args' from command line to 'None'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'drone_c' build argument 'catkin_cmake_args' from command line to 'None'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'drone_c' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.184s] DEBUG:colcon.colcon_core.verb:Building package 'drone_c' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/naor/Desktop/naor/study/Thesis/build/drone_c', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/naor/Desktop/naor/study/Thesis/install/drone_c', 'merge_install': False, 'path': '/home/naor/Desktop/naor/study/Thesis/src/drone_c', 'symlink_install': False, 'test_result_base': None}
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'ground_bot' build argument 'cmake_args' from command line to 'None'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'ground_bot' build argument 'cmake_target' from command line to 'None'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'ground_bot' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'ground_bot' build argument 'cmake_clean_cache' from command line to 'False'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'ground_bot' build argument 'cmake_clean_first' from command line to 'False'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'ground_bot' build argument 'cmake_force_configure' from command line to 'False'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'ground_bot' build argument 'ament_cmake_args' from command line to 'None'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'ground_bot' build argument 'catkin_cmake_args' from command line to 'None'
+[0.184s] Level 5:colcon.colcon_core.verb:set package 'ground_bot' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.184s] DEBUG:colcon.colcon_core.verb:Building package 'ground_bot' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/naor/Desktop/naor/study/Thesis/build/ground_bot', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/naor/Desktop/naor/study/Thesis/install/ground_bot', 'merge_install': False, 'path': '/home/naor/Desktop/naor/study/Thesis/src/ground_bot', 'symlink_install': False, 'test_result_base': None}
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'pointcloud_to_laserscan' build argument 'cmake_args' from command line to 'None'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'pointcloud_to_laserscan' build argument 'cmake_target' from command line to 'None'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'pointcloud_to_laserscan' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'pointcloud_to_laserscan' build argument 'cmake_clean_cache' from command line to 'False'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'pointcloud_to_laserscan' build argument 'cmake_clean_first' from command line to 'False'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'pointcloud_to_laserscan' build argument 'cmake_force_configure' from command line to 'False'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'pointcloud_to_laserscan' build argument 'ament_cmake_args' from command line to 'None'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'pointcloud_to_laserscan' build argument 'catkin_cmake_args' from command line to 'None'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'pointcloud_to_laserscan' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.185s] DEBUG:colcon.colcon_core.verb:Building package 'pointcloud_to_laserscan' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/naor/Desktop/naor/study/Thesis/build/pointcloud_to_laserscan', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan', 'merge_install': False, 'path': '/home/naor/Desktop/naor/study/Thesis/src/pointcloud_to_laserscan', 'symlink_install': False, 'test_result_base': None}
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'robot_description' build argument 'cmake_args' from command line to 'None'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'robot_description' build argument 'cmake_target' from command line to 'None'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'robot_description' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'robot_description' build argument 'cmake_clean_cache' from command line to 'False'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'robot_description' build argument 'cmake_clean_first' from command line to 'False'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'robot_description' build argument 'cmake_force_configure' from command line to 'False'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'robot_description' build argument 'ament_cmake_args' from command line to 'None'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'robot_description' build argument 'catkin_cmake_args' from command line to 'None'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'robot_description' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.185s] DEBUG:colcon.colcon_core.verb:Building package 'robot_description' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/naor/Desktop/naor/study/Thesis/build/robot_description', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/naor/Desktop/naor/study/Thesis/install/robot_description', 'merge_install': False, 'path': '/home/naor/Desktop/naor/study/Thesis/src/robot_description', 'symlink_install': False, 'test_result_base': None}
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'roller' build argument 'cmake_args' from command line to 'None'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'roller' build argument 'cmake_target' from command line to 'None'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'roller' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'roller' build argument 'cmake_clean_cache' from command line to 'False'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'roller' build argument 'cmake_clean_first' from command line to 'False'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'roller' build argument 'cmake_force_configure' from command line to 'False'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'roller' build argument 'ament_cmake_args' from command line to 'None'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'roller' build argument 'catkin_cmake_args' from command line to 'None'
+[0.185s] Level 5:colcon.colcon_core.verb:set package 'roller' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.185s] DEBUG:colcon.colcon_core.verb:Building package 'roller' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/naor/Desktop/naor/study/Thesis/build/roller', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/naor/Desktop/naor/study/Thesis/install/roller', 'merge_install': False, 'path': '/home/naor/Desktop/naor/study/Thesis/src/roller', 'symlink_install': False, 'test_result_base': None}
+[0.186s] Level 5:colcon.colcon_core.verb:set package 'camera_nav' build argument 'cmake_args' from command line to 'None'
+[0.186s] Level 5:colcon.colcon_core.verb:set package 'camera_nav' build argument 'cmake_target' from command line to 'None'
+[0.186s] Level 5:colcon.colcon_core.verb:set package 'camera_nav' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.186s] Level 5:colcon.colcon_core.verb:set package 'camera_nav' build argument 'cmake_clean_cache' from command line to 'False'
+[0.186s] Level 5:colcon.colcon_core.verb:set package 'camera_nav' build argument 'cmake_clean_first' from command line to 'False'
+[0.186s] Level 5:colcon.colcon_core.verb:set package 'camera_nav' build argument 'cmake_force_configure' from command line to 'False'
+[0.186s] Level 5:colcon.colcon_core.verb:set package 'camera_nav' build argument 'ament_cmake_args' from command line to 'None'
+[0.186s] Level 5:colcon.colcon_core.verb:set package 'camera_nav' build argument 'catkin_cmake_args' from command line to 'None'
+[0.186s] Level 5:colcon.colcon_core.verb:set package 'camera_nav' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.186s] DEBUG:colcon.colcon_core.verb:Building package 'camera_nav' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/naor/Desktop/naor/study/Thesis/build/camera_nav', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/naor/Desktop/naor/study/Thesis/install/camera_nav', 'merge_install': False, 'path': '/home/naor/Desktop/naor/study/Thesis/src/camera_nav', 'symlink_install': False, 'test_result_base': None}
+[0.186s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.187s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.187s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/naor/Desktop/naor/study/Thesis/src/pointcloud_to_laserscan' with build type 'ament_cmake'
+[0.187s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/naor/Desktop/naor/study/Thesis/src/pointcloud_to_laserscan'
+[0.188s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.189s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.189s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.191s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/naor/Desktop/naor/study/Thesis/src/controller' with build type 'ament_python'
+[0.192s] Level 1:colcon.colcon_core.shell:create_environment_hook('controller', 'ament_prefix_path')
+[0.192s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/controller/share/controller/hook/ament_prefix_path.ps1'
+[0.192s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/controller/share/controller/hook/ament_prefix_path.dsv'
+[0.192s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/controller/share/controller/hook/ament_prefix_path.sh'
+[0.193s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.193s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.196s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/naor/Desktop/naor/study/Thesis/src/drone_c' with build type 'ament_cmake'
+[0.196s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/naor/Desktop/naor/study/Thesis/src/drone_c'
+[0.196s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.196s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.198s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/naor/Desktop/naor/study/Thesis/src/ground_bot' with build type 'ament_cmake'
+[0.198s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/naor/Desktop/naor/study/Thesis/src/ground_bot'
+[0.199s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.199s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.201s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/naor/Desktop/naor/study/Thesis/src/robot_description' with build type 'ament_cmake'
+[0.201s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/naor/Desktop/naor/study/Thesis/src/robot_description'
+[0.201s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.201s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.204s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/naor/Desktop/naor/study/Thesis/src/roller' with build type 'ament_python'
+[0.204s] Level 1:colcon.colcon_core.shell:create_environment_hook('roller', 'ament_prefix_path')
+[0.204s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/hook/ament_prefix_path.ps1'
+[0.204s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/hook/ament_prefix_path.dsv'
+[0.205s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/hook/ament_prefix_path.sh'
+[0.205s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.205s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.212s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/pointcloud_to_laserscan': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/pointcloud_to_laserscan -- -j16 -l16
+[0.366s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/naor/Desktop/naor/study/Thesis/src/controller'
+[0.366s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.366s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.371s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/drone_c': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/drone_c -- -j16 -l16
+[0.373s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/ground_bot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/ground_bot -- -j16 -l16
+[0.375s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/robot_description -- -j16 -l16
+[0.569s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/naor/Desktop/naor/study/Thesis/src/roller'
+[0.569s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.569s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.574s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/pointcloud_to_laserscan' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/pointcloud_to_laserscan -- -j16 -l16
+[0.582s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/pointcloud_to_laserscan': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/pointcloud_to_laserscan
+[0.584s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/robot_description -- -j16 -l16
+[0.585s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/robot_description
+[0.591s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(pointcloud_to_laserscan)
+[0.591s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/pointcloud_to_laserscan' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/pointcloud_to_laserscan
+[0.592s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan' for CMake module files
+[0.593s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan' for CMake config files
+[0.593s] Level 1:colcon.colcon_core.shell:create_environment_hook('pointcloud_to_laserscan', 'cmake_prefix_path')
+[0.593s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/hook/cmake_prefix_path.ps1'
+[0.593s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/hook/cmake_prefix_path.dsv'
+[0.594s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/hook/cmake_prefix_path.sh'
+[0.596s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/lib'
+[0.596s] Level 1:colcon.colcon_core.shell:create_environment_hook('pointcloud_to_laserscan', 'ld_library_path_lib')
+[0.596s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/hook/ld_library_path_lib.ps1'
+[0.597s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/hook/ld_library_path_lib.dsv'
+[0.597s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/hook/ld_library_path_lib.sh'
+[0.598s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/bin'
+[0.598s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/lib/pkgconfig/pointcloud_to_laserscan.pc'
+[0.598s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/lib/python3.10/site-packages'
+[0.598s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/bin'
+[0.599s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/package.ps1'
+[0.600s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/package.dsv'
+[0.600s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/package.sh'
+[0.601s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/package.bash'
+[0.601s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/package.zsh'
+[0.601s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/colcon-core/packages/pointcloud_to_laserscan)
+[0.602s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(pointcloud_to_laserscan)
+[0.602s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan' for CMake module files
+[0.602s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan' for CMake config files
+[0.602s] Level 1:colcon.colcon_core.shell:create_environment_hook('pointcloud_to_laserscan', 'cmake_prefix_path')
+[0.603s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/hook/cmake_prefix_path.ps1'
+[0.603s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/hook/cmake_prefix_path.dsv'
+[0.603s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/hook/cmake_prefix_path.sh'
+[0.603s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/lib'
+[0.604s] Level 1:colcon.colcon_core.shell:create_environment_hook('pointcloud_to_laserscan', 'ld_library_path_lib')
+[0.604s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/hook/ld_library_path_lib.ps1'
+[0.604s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/hook/ld_library_path_lib.dsv'
+[0.604s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/hook/ld_library_path_lib.sh'
+[0.604s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/bin'
+[0.604s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/lib/pkgconfig/pointcloud_to_laserscan.pc'
+[0.605s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/lib/python3.10/site-packages'
+[0.605s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/bin'
+[0.605s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/package.ps1'
+[0.605s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/package.dsv'
+[0.606s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/package.sh'
+[0.606s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/package.bash'
+[0.606s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/pointcloud_to_laserscan/package.zsh'
+[0.607s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/share/colcon-core/packages/pointcloud_to_laserscan)
+[0.607s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/naor/Desktop/naor/study/Thesis/src/camera_nav' with build type 'ament_python'
+[0.607s] Level 1:colcon.colcon_core.shell:create_environment_hook('camera_nav', 'ament_prefix_path')
+[0.607s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/camera_nav/hook/ament_prefix_path.ps1'
+[0.608s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/camera_nav/hook/ament_prefix_path.dsv'
+[0.608s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/camera_nav/hook/ament_prefix_path.sh'
+[0.608s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.608s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.611s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(robot_description)
+[0.612s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/robot_description' for CMake module files
+[0.612s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/robot_description
+[0.612s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/robot_description' for CMake config files
+[0.612s] Level 1:colcon.colcon_core.shell:create_environment_hook('robot_description', 'cmake_prefix_path')
+[0.613s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/hook/cmake_prefix_path.ps1'
+[0.613s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/hook/cmake_prefix_path.dsv'
+[0.613s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/hook/cmake_prefix_path.sh'
+[0.614s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/robot_description/bin'
+[0.614s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/robot_description/lib/pkgconfig/robot_description.pc'
+[0.614s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/robot_description/lib/python3.10/site-packages'
+[0.614s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/robot_description/bin'
+[0.614s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/package.ps1'
+[0.615s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/package.dsv'
+[0.615s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/package.sh'
+[0.616s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/package.bash'
+[0.616s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/package.zsh'
+[0.616s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naor/Desktop/naor/study/Thesis/install/robot_description/share/colcon-core/packages/robot_description)
+[0.617s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(robot_description)
+[0.617s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/robot_description' for CMake module files
+[0.617s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/robot_description' for CMake config files
+[0.617s] Level 1:colcon.colcon_core.shell:create_environment_hook('robot_description', 'cmake_prefix_path')
+[0.617s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/hook/cmake_prefix_path.ps1'
+[0.618s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/hook/cmake_prefix_path.dsv'
+[0.618s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/hook/cmake_prefix_path.sh'
+[0.618s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/robot_description/bin'
+[0.618s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/robot_description/lib/pkgconfig/robot_description.pc'
+[0.619s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/robot_description/lib/python3.10/site-packages'
+[0.619s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/robot_description/bin'
+[0.619s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/package.ps1'
+[0.619s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/package.dsv'
+[0.620s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/package.sh'
+[0.620s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/package.bash'
+[0.620s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/package.zsh'
+[0.621s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naor/Desktop/naor/study/Thesis/install/robot_description/share/colcon-core/packages/robot_description)
+[0.788s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/naor/Desktop/naor/study/Thesis/src/camera_nav'
+[0.788s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.788s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.793s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/ground_bot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/ground_bot -- -j16 -l16
+[0.794s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/ground_bot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/ground_bot
+[0.794s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/drone_c' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/drone_c -- -j16 -l16
+[0.796s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/drone_c': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/drone_c
+[0.848s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(drone_c)
+[0.848s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/drone_c' for CMake module files
+[0.851s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/drone_c' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/drone_c
+[0.851s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/drone_c' for CMake config files
+[0.851s] Level 1:colcon.colcon_core.shell:create_environment_hook('drone_c', 'cmake_prefix_path')
+[0.851s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/hook/cmake_prefix_path.ps1'
+[0.852s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/hook/cmake_prefix_path.dsv'
+[0.852s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/hook/cmake_prefix_path.sh'
+[0.853s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib'
+[0.853s] Level 1:colcon.colcon_core.shell:create_environment_hook('drone_c', 'ld_library_path_lib')
+[0.853s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/hook/ld_library_path_lib.ps1'
+[0.853s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/hook/ld_library_path_lib.dsv'
+[0.854s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/hook/ld_library_path_lib.sh'
+[0.854s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/drone_c/bin'
+[0.854s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/pkgconfig/drone_c.pc'
+[0.854s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/python3.10/site-packages'
+[0.855s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/drone_c/bin'
+[0.855s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/package.ps1'
+[0.855s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/package.dsv'
+[0.856s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/package.sh'
+[0.856s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/package.bash'
+[0.856s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/package.zsh'
+[0.857s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/colcon-core/packages/drone_c)
+[0.857s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(drone_c)
+[0.857s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/drone_c' for CMake module files
+[0.858s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/drone_c' for CMake config files
+[0.858s] Level 1:colcon.colcon_core.shell:create_environment_hook('drone_c', 'cmake_prefix_path')
+[0.858s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/hook/cmake_prefix_path.ps1'
+[0.858s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/hook/cmake_prefix_path.dsv'
+[0.859s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/hook/cmake_prefix_path.sh'
+[0.859s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib'
+[0.859s] Level 1:colcon.colcon_core.shell:create_environment_hook('drone_c', 'ld_library_path_lib')
+[0.859s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/hook/ld_library_path_lib.ps1'
+[0.859s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/hook/ld_library_path_lib.dsv'
+[0.860s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/hook/ld_library_path_lib.sh'
+[0.860s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/drone_c/bin'
+[0.860s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/pkgconfig/drone_c.pc'
+[0.860s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/python3.10/site-packages'
+[0.860s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/drone_c/bin'
+[0.861s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/package.ps1'
+[0.861s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/package.dsv'
+[0.862s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/package.sh'
+[0.862s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/package.bash'
+[0.862s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/package.zsh'
+[0.863s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/colcon-core/packages/drone_c)
+[0.863s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ground_bot)
+[0.863s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/ground_bot' for CMake module files
+[0.864s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/ground_bot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/ground_bot
+[0.864s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/ground_bot' for CMake config files
+[0.864s] Level 1:colcon.colcon_core.shell:create_environment_hook('ground_bot', 'cmake_prefix_path')
+[0.864s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/hook/cmake_prefix_path.ps1'
+[0.865s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/hook/cmake_prefix_path.dsv'
+[0.865s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/hook/cmake_prefix_path.sh'
+[0.865s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib'
+[0.866s] Level 1:colcon.colcon_core.shell:create_environment_hook('ground_bot', 'ld_library_path_lib')
+[0.866s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/hook/ld_library_path_lib.ps1'
+[0.866s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/hook/ld_library_path_lib.dsv'
+[0.866s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/hook/ld_library_path_lib.sh'
+[0.867s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/bin'
+[0.867s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/pkgconfig/ground_bot.pc'
+[0.867s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/python3.10/site-packages'
+[0.867s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/bin'
+[0.867s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/package.ps1'
+[0.868s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/package.dsv'
+[0.868s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/package.sh'
+[0.868s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/package.bash'
+[0.869s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/package.zsh'
+[0.869s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/colcon-core/packages/ground_bot)
+[0.869s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ground_bot)
+[0.869s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/ground_bot' for CMake module files
+[0.870s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/ground_bot' for CMake config files
+[0.870s] Level 1:colcon.colcon_core.shell:create_environment_hook('ground_bot', 'cmake_prefix_path')
+[0.870s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/hook/cmake_prefix_path.ps1'
+[0.871s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/hook/cmake_prefix_path.dsv'
+[0.871s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/hook/cmake_prefix_path.sh'
+[0.871s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib'
+[0.871s] Level 1:colcon.colcon_core.shell:create_environment_hook('ground_bot', 'ld_library_path_lib')
+[0.871s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/hook/ld_library_path_lib.ps1'
+[0.872s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/hook/ld_library_path_lib.dsv'
+[0.872s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/hook/ld_library_path_lib.sh'
+[0.872s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/bin'
+[0.872s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/pkgconfig/ground_bot.pc'
+[0.872s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/python3.10/site-packages'
+[0.873s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/bin'
+[0.873s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/package.ps1'
+[0.873s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/package.dsv'
+[0.874s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/package.sh'
+[0.874s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/package.bash'
+[0.874s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/package.zsh'
+[0.875s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/colcon-core/packages/ground_bot)
+[0.989s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naor/Desktop/naor/study/Thesis/src/controller': PYTHONPATH=/home/naor/Desktop/naor/study/Thesis/build/controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/naor/Desktop/naor/study/Thesis/install/controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/controller build --build-base /home/naor/Desktop/naor/study/Thesis/build/controller/build install --record /home/naor/Desktop/naor/study/Thesis/build/controller/install.log --single-version-externally-managed install_data
+[1.004s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naor/Desktop/naor/study/Thesis/src/roller': PYTHONPATH=/home/naor/Desktop/naor/study/Thesis/build/roller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/naor/Desktop/naor/study/Thesis/install/roller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/roller build --build-base /home/naor/Desktop/naor/study/Thesis/build/roller/build install --record /home/naor/Desktop/naor/study/Thesis/build/roller/install.log --single-version-externally-managed install_data
+[1.194s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naor/Desktop/naor/study/Thesis/src/camera_nav': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan:/home/naor/Desktop/naor/study/Thesis/install/robot_description:/home/naor/Desktop/naor/study/Thesis/install/ground_bot:/home/naor/Desktop/naor/study/Thesis/install/drone_c PYTHONPATH=/home/naor/Desktop/naor/study/Thesis/build/camera_nav/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/naor/Desktop/naor/study/Thesis/install/camera_nav/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/camera_nav build --build-base /home/naor/Desktop/naor/study/Thesis/build/camera_nav/build install --record /home/naor/Desktop/naor/study/Thesis/build/camera_nav/install.log --single-version-externally-managed install_data
+[1.377s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/controller' for CMake module files
+[1.377s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naor/Desktop/naor/study/Thesis/src/controller' returned '0': PYTHONPATH=/home/naor/Desktop/naor/study/Thesis/build/controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/naor/Desktop/naor/study/Thesis/install/controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/controller build --build-base /home/naor/Desktop/naor/study/Thesis/build/controller/build install --record /home/naor/Desktop/naor/study/Thesis/build/controller/install.log --single-version-externally-managed install_data
+[1.377s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/controller' for CMake config files
+[1.378s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/controller/lib'
+[1.378s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/controller/bin'
+[1.378s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/controller/lib/pkgconfig/controller.pc'
+[1.378s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/controller/lib/python3.10/site-packages'
+[1.378s] Level 1:colcon.colcon_core.shell:create_environment_hook('controller', 'pythonpath')
+[1.378s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/controller/share/controller/hook/pythonpath.ps1'
+[1.378s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/controller/share/controller/hook/pythonpath.dsv'
+[1.379s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/controller/share/controller/hook/pythonpath.sh'
+[1.379s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/controller/bin'
+[1.379s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(controller)
+[1.379s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/controller/share/controller/package.ps1'
+[1.380s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naor/Desktop/naor/study/Thesis/install/controller/share/controller/package.dsv'
+[1.380s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/controller/share/controller/package.sh'
+[1.380s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/controller/share/controller/package.bash'
+[1.381s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/controller/share/controller/package.zsh'
+[1.381s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naor/Desktop/naor/study/Thesis/install/controller/share/colcon-core/packages/controller)
+[1.389s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/roller' for CMake module files
+[1.389s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naor/Desktop/naor/study/Thesis/src/roller' returned '0': PYTHONPATH=/home/naor/Desktop/naor/study/Thesis/build/roller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/naor/Desktop/naor/study/Thesis/install/roller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/roller build --build-base /home/naor/Desktop/naor/study/Thesis/build/roller/build install --record /home/naor/Desktop/naor/study/Thesis/build/roller/install.log --single-version-externally-managed install_data
+[1.390s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/roller' for CMake config files
+[1.390s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/roller/lib'
+[1.390s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/roller/bin'
+[1.390s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/roller/lib/pkgconfig/roller.pc'
+[1.390s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/roller/lib/python3.10/site-packages'
+[1.390s] Level 1:colcon.colcon_core.shell:create_environment_hook('roller', 'pythonpath')
+[1.390s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/hook/pythonpath.ps1'
+[1.391s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/hook/pythonpath.dsv'
+[1.391s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/hook/pythonpath.sh'
+[1.391s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/roller/bin'
+[1.391s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(roller)
+[1.392s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/package.ps1'
+[1.392s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/package.dsv'
+[1.392s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/package.sh'
+[1.393s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/package.bash'
+[1.393s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/package.zsh'
+[1.393s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naor/Desktop/naor/study/Thesis/install/roller/share/colcon-core/packages/roller)
+[1.599s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/camera_nav' for CMake module files
+[1.599s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naor/Desktop/naor/study/Thesis/src/camera_nav' returned '0': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan:/home/naor/Desktop/naor/study/Thesis/install/robot_description:/home/naor/Desktop/naor/study/Thesis/install/ground_bot:/home/naor/Desktop/naor/study/Thesis/install/drone_c PYTHONPATH=/home/naor/Desktop/naor/study/Thesis/build/camera_nav/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/naor/Desktop/naor/study/Thesis/install/camera_nav/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/camera_nav build --build-base /home/naor/Desktop/naor/study/Thesis/build/camera_nav/build install --record /home/naor/Desktop/naor/study/Thesis/build/camera_nav/install.log --single-version-externally-managed install_data
+[1.600s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/camera_nav' for CMake config files
+[1.600s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/camera_nav/lib'
+[1.600s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/camera_nav/bin'
+[1.600s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/camera_nav/lib/pkgconfig/camera_nav.pc'
+[1.600s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/camera_nav/lib/python3.10/site-packages'
+[1.600s] Level 1:colcon.colcon_core.shell:create_environment_hook('camera_nav', 'pythonpath')
+[1.601s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/camera_nav/hook/pythonpath.ps1'
+[1.601s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/camera_nav/hook/pythonpath.dsv'
+[1.601s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/camera_nav/hook/pythonpath.sh'
+[1.602s] Level 1:colcon.colcon_core.environment:checking '/home/naor/Desktop/naor/study/Thesis/install/camera_nav/bin'
+[1.602s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(camera_nav)
+[1.602s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/camera_nav/package.ps1'
+[1.602s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/camera_nav/package.dsv'
+[1.603s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/camera_nav/package.sh'
+[1.603s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/camera_nav/package.bash'
+[1.603s] INFO:colcon.colcon_core.shell:Creating package script '/home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/camera_nav/package.zsh'
+[1.603s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naor/Desktop/naor/study/Thesis/install/camera_nav/share/colcon-core/packages/camera_nav)
+[1.604s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[1.604s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[1.604s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[1.604s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[1.608s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[1.608s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[1.608s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[1.616s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[1.616s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/naor/Desktop/naor/study/Thesis/install/local_setup.ps1'
+[1.617s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/naor/Desktop/naor/study/Thesis/install/_local_setup_util_ps1.py'
+[1.618s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/naor/Desktop/naor/study/Thesis/install/setup.ps1'
+[1.619s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/naor/Desktop/naor/study/Thesis/install/local_setup.sh'
+[1.619s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/naor/Desktop/naor/study/Thesis/install/_local_setup_util_sh.py'
+[1.620s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/naor/Desktop/naor/study/Thesis/install/setup.sh'
+[1.621s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/naor/Desktop/naor/study/Thesis/install/local_setup.bash'
+[1.621s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/naor/Desktop/naor/study/Thesis/install/setup.bash'
+[1.622s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/naor/Desktop/naor/study/Thesis/install/local_setup.zsh'
+[1.622s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/naor/Desktop/naor/study/Thesis/install/setup.zsh'

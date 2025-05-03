@@ -76,18 +76,32 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-          ##need to cahnge this link to the bot link
-        drivewhl_l_link:
+        steer_link_fl:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        drivewhl_r_link:
+        steer_link_fr:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        front_caster:
+        wheel_fl:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel_fr:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel_rl:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel_rr:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -123,11 +137,17 @@ Visualization Manager:
           Value: true
         camera_link:
           Value: true
-        drivewhl_l_link:
+        steer_link_fl:
           Value: true
-        drivewhl_r_link:
+        steer_link_fr:
           Value: true
-        front_caster:
+        wheel_fl:
+          Value: true
+        wheel_fr:
+          Value: true
+        wheel_rl:
+          Value: true
+        wheel_rr:
           Value: true
         imu_link:
           Value: true
@@ -151,11 +171,17 @@ Visualization Manager:
               camera_link:
                 camera_depth_frame:
                   {}
-              drivewhl_l_link:
+              steer_link_fl:
                 {}
-              drivewhl_r_link:
+              steer_link_fr:
                 {}
-              front_caster:
+              wheel_fl:
+                {}
+              wheel_fr:
+                {}
+              wheel_rl:
+                {}
+              wheel_rr:
                 {}
               imu_link:
                 {}
