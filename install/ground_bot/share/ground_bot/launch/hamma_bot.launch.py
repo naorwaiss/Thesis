@@ -25,7 +25,6 @@ def generate_launch_description():
     robot_description_path = get_package_share_directory('ground_bot')
     default_model_path = os.path.join(robot_description_path, 'urdf', 'robot_description.urdf')
     default_rviz_config_path = os.path.join(robot_description_path, 'rviz', 'urdf_config.rviz')
-    ekf_config_path = os.path.join(robot_description_path, 'config', 'ekf.yaml')
 
     # Declare launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time')
@@ -56,7 +55,6 @@ def generate_launch_description():
         name='robot_state_publisher',
         parameters=[{
             'robot_description': Command(['xacro ', LaunchConfiguration('model')]),
-            'use_sim_time': True
         }]
     )
 
@@ -86,7 +84,7 @@ def generate_launch_description():
         )
     ]
 
-    gz_spawn_entity = Node(
+    spawn_entity = Node(
         package='ros_gz_sim',
         executable='create',
         arguments=[
@@ -98,14 +96,14 @@ def generate_launch_description():
             '--log-level', log_level
         ],
         output='screen',
-        parameters=[{'use_sim_time': True}]
+        parameters=[{'use_sim_time': use_sim_time}]
     )
 
     gz_ros2_bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
         arguments=[
-            # '/scan@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan',
+            '/scan@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan',
             '/robot_cam_right@sensor_msgs/msg/Image@ignition.msgs.Image',
             '/robot_cam_left@sensor_msgs/msg/Image@ignition.msgs.Image',
             '/camera_info_right@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
@@ -250,11 +248,11 @@ def generate_launch_description():
         ),
         gz_ros2_bridge,
         robot_state_publisher,
-        gz_spawn_entity,
+        spawn_entity,
         rviz_node,
         RegisterEventHandler(
             event_handler=OnProcessExit(
-                target_action=gz_spawn_entity,
+                target_action=spawn_entity,
                 on_exit=[load_joint_state_controller]
             )
         ),
@@ -266,6 +264,6 @@ def generate_launch_description():
         ),
         relay_odom,
         # relay_cmd_vel,
-        depth_camera_tf_link,
+        # depth_camera_tf_link,
         ekf_node_delayed,
     ] + gazebo)
