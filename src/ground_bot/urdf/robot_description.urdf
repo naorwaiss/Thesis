@@ -34,6 +34,16 @@
 
   <link name="base_footprint" />
 
+  <!-- <joint name="base_joint" type="fixed">
+    <parent link="odom"/>
+    <child link="base_link"/>
+    <origin xyz="0.0 0.0 1.0" rpy="0 0 0"/>
+  </joint> -->
+
+  <!-- <link name="base_footprint" /> -->
+
+
+
   <!-- FRONT LEFT steering -->
   <link name="steer_link_fl">
     <inertial>
@@ -431,6 +441,16 @@
     <command_interface name="position"/>
     <state_interface name="position"/>
     <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="front_left_wheel_joint">
+    <state_interface name="velocity"/>
+    <state_interface name="position"/>
+  </joint>
+
+  <joint name="front_right_wheel_joint">
+    <state_interface name="velocity"/>
+    <state_interface name="position"/>
   </joint>
 
 </ros2_control>

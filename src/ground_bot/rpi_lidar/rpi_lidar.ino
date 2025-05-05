@@ -17,9 +17,6 @@ RTComSession *socketSession = nullptr;
 lidar_data output;
 lidar_class lidar(&output, socketSession, &Serial1, &motor_pin);
 
-
-
-
 void onConnect(RTComSession &session) {
     socketSession = &session;
     lidar.updateSession(socketSession);
@@ -28,7 +25,6 @@ void onConnect(RTComSession &session) {
         Serial.println("Disconnected from Spider.");
     });   
 }
-
 
 void setup() {
     lidar.init_lidar();

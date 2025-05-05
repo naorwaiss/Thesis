@@ -141,6 +141,19 @@ def generate_launch_description():
         shell=True,
         output='screen'
     )
+    load_front_wheel_data = ExecuteProcess(
+        name='activate_front_wheel_data',
+        cmd=[
+            'ros2',
+            'control',
+            'load_controller',
+            '--set-state',
+            'active',
+            'front_wheel_data'
+        ],
+        shell=True,
+        output='screen'
+    )
 
     relay_odom = Node(
         name='relay_odom',
@@ -260,6 +273,12 @@ def generate_launch_description():
             event_handler=OnProcessExit(
                 target_action=load_joint_state_controller,
                 on_exit=[load_ackermann_controller]
+            )
+        ),
+        RegisterEventHandler(
+            event_handler=OnProcessExit(
+                target_action=load_ackermann_controller,
+                on_exit=[load_front_wheel_data]
             )
         ),
         relay_odom,
