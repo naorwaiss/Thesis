@@ -6,9 +6,10 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /RobotModel1/Links1
         - /TF1
       Splitter Ratio: 0.5
-    Tree Height: 302
+    Tree Height: 557
 Visualization Manager:
   Class: ""
   Displays:
@@ -17,24 +18,9 @@ Visualization Manager:
       Class: rviz_default_plugins/Grid
       Color: 160; 160; 164
       Enabled: true
-      Line Style:
-        Line Width: 0.029999999329447746
-        Value: Lines
       Name: Grid
-      Normal Cell Count: 0
-      Offset:
-        X: 0
-        Y: 0
-        Z: 0
-      Plane: XY
-      Plane Cell Count: 10
-      Reference Frame: <Fixed Frame>
-      Value: true
-    - Alpha: 0.6000000238418579
+    - Alpha: 0.6
       Class: rviz_default_plugins/RobotModel
-      Collision Enabled: false
-      Description File: ""
-      Description Source: Topic
       Description Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -42,162 +28,21 @@ Visualization Manager:
         Reliability Policy: Reliable
         Value: /robot_description
       Enabled: true
-      Links:
-        All Links Enabled: true
-        Expand Joint Details: false
-        Expand Link Details: false
-        Expand Tree: false
-        Link Tree Style: Links in Alphabetic Order
-        base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        camera_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        camera_front_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        camera_link_left:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        camera_link_right:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        imu_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        lidar_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        steer_link_fl:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        steer_link_fr:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        wheel_fl:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        wheel_fr:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        wheel_rl:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        wheel_rr:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-      Mass Properties:
-        Inertia: false
-        Mass: false
       Name: RobotModel
-      TF Prefix: ""
-      Update Interval: 0
-      Value: true
       Visual Enabled: true
     - Class: rviz_default_plugins/TF
       Enabled: true
-      Frame Timeout: 15
-      Frames:
-        All Enabled: true
-        base_link:
-          Value: true
-        camera_frame:
-          Value: true
-        camera_front_link:
-          Value: true
-        camera_link_left:
-          Value: true
-        camera_link_right:
-          Value: true
-        imu_link:
-          Value: true
-        lidar_link:
-          Value: true
-        map:
-          Value: true
-        odom:
-          Value: true
-        steer_link_fl:
-          Value: true
-        steer_link_fr:
-          Value: true
-        wheel_fl:
-          Value: true
-        wheel_fr:
-          Value: true
-        wheel_rl:
-          Value: true
-        wheel_rr:
-          Value: true
-      Marker Scale: 0.30000001192092896
       Name: TF
+      Marker Scale: 0.3
       Show Arrows: true
       Show Axes: true
       Show Names: true
-      Tree:
-        base_link:
-          camera_frame:
-            {}
-          camera_front_link:
-            {}
-          camera_link_left:
-            {}
-          camera_link_right:
-            {}
-          imu_link:
-            {}
-          lidar_link:
-            {}
-          steer_link_fl:
-            wheel_fl:
-              {}
-          steer_link_fr:
-            wheel_fr:
-              {}
-          wheel_rl:
-            {}
-          wheel_rr:
-            {}
-        map:
-          odom:
-            {}
-      Update Interval: 0
-      Value: true
-    - Alpha: 0.699999988079071
-      Class: rviz_default_plugins/Map
-      Color Scheme: map
-      Draw Behind: false
+    - Class: rviz_default_plugins/Map
       Enabled: false
       Name: Map
       Topic:
         Depth: 5
         Durability Policy: Transient Local
-        Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /map
@@ -208,11 +53,11 @@ Visualization Manager:
         Reliability Policy: Reliable
         Value: /map_updates
       Use Timestamp: false
-      Value: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: map
+    Fixed Frame: base_link
     Frame Rate: 30
   Name: root
   Tools:
@@ -230,33 +75,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 24.93704605102539
-      Enable Stereo Rendering:
-        Stereo Eye Separation: 0.05999999865889549
-        Stereo Focal Distance: 1
-        Swap Stereo Eyes: false
-        Value: false
-      Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
-      Focal Shape Fixed Size: true
-      Focal Shape Size: 0.05000000074505806
-      Invert Z Axis: false
       Name: Current View
-      Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7853981852531433
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.7853981852531433
     Saved: ~
-Window Geometry:
-  Displays:
-    collapsed: false
-  Height: 531
-  Hide Left Dock: false
-  Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd000000010000000000000156000001b9fc0200000001fb000000100044006900730070006c006100790073010000003d000001b9000000c900ffffff00000160000001b900000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
-  Width: 700
-  X: 120
-  Y: 77

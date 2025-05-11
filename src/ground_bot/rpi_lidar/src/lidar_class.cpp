@@ -52,7 +52,7 @@ void lidar_class::take_lidar_data() {
 
             uint16_t dist_raw = b[1] | (b[2] << 8);
             float distance = (dist_raw / 4.0)/1000.0;  // Convert to mm
-
+ 
             measurement->angle = angle;
             measurement->distance = distance;
 

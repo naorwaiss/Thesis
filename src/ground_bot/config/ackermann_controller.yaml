@@ -48,4 +48,5 @@ front_wheel_data:
       - front_right_wheel_joint
     state_interface_names:
       - velocity
+      - position
     

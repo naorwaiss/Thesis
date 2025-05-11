@@ -34,9 +34,15 @@ void setup() {
 
 void loop() {
     lidar.take_lidar_data();
-    rtcomSocket.process();
-    if (!rtcomSocket.isSessionConnected(socketSession)) {
-        return;
-    }
+    // rtcomSocket.process();
+    Serial.println("Lidar data sent.");
+    Serial.print("Angle: ");
+    Serial.print(output.angle);
+    Serial.print(" Distance: ");
+    Serial.println(output.distance);
+    
+    // if (!rtcomSocket.isSessionConnected(socketSession)) {
+    //     return;
+    // }
     
 }

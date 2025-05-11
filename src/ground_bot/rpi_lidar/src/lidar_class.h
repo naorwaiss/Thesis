@@ -27,7 +27,7 @@ class lidar_class {
     void init_lidar();
     void sendStartScan();
     void send_lidar_data();
-    void updateSession(RTComSession* newSession);
+    // void updateSession(RTComSession* newSession);
     void take_lidar_data();
 };
 
