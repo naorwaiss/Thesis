@@ -1,0 +1,4 @@
+source;share/roller/local_setup.bash
+source;share/roller/local_setup.dsv
+source;share/roller/local_setup.sh
+source;share/roller/local_setup.zsh

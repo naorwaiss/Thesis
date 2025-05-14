@@ -1,0 +1,9 @@
+/home/naor/Desktop/naor/study/Thesis/build/roller/CMakeFiles/uninstall.dir
+/home/naor/Desktop/naor/study/Thesis/build/roller/CMakeFiles/roller_uninstall.dir
+/home/naor/Desktop/naor/study/Thesis/build/roller/CMakeFiles/test.dir
+/home/naor/Desktop/naor/study/Thesis/build/roller/CMakeFiles/edit_cache.dir
+/home/naor/Desktop/naor/study/Thesis/build/roller/CMakeFiles/rebuild_cache.dir
+/home/naor/Desktop/naor/study/Thesis/build/roller/CMakeFiles/list_install_components.dir
+/home/naor/Desktop/naor/study/Thesis/build/roller/CMakeFiles/install.dir
+/home/naor/Desktop/naor/study/Thesis/build/roller/CMakeFiles/install/local.dir
+/home/naor/Desktop/naor/study/Thesis/build/roller/CMakeFiles/install/strip.dir

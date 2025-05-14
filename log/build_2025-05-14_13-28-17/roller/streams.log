@@ -1,0 +1,42 @@
+[0.172s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/roller': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake /home/naor/Desktop/naor/study/Thesis/src/roller -DCMAKE_INSTALL_PREFIX=/home/naor/Desktop/naor/study/Thesis/install/roller
+[0.252s] -- The C compiler identification is GNU 11.4.0
+[0.293s] -- The CXX compiler identification is GNU 11.4.0
+[0.302s] -- Detecting C compiler ABI info
+[0.349s] -- Detecting C compiler ABI info - done
+[0.355s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.355s] -- Detecting C compile features
+[0.356s] -- Detecting C compile features - done
+[0.358s] -- Detecting CXX compiler ABI info
+[0.424s] -- Detecting CXX compiler ABI info - done
+[0.430s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.430s] -- Detecting CXX compile features
+[0.431s] -- Detecting CXX compile features - done
+[0.433s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.728s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.816s] -- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.883s] -- Added test 'lint_cmake' to check CMake code style
+[0.884s] -- Added test 'xmllint' to check XML markup files
+[0.885s] -- Configuring done
+[0.886s] -- Generating done
+[0.887s] -- Build files have been written to: /home/naor/Desktop/naor/study/Thesis/build/roller
+[0.890s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/roller' returned '0': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake /home/naor/Desktop/naor/study/Thesis/src/roller -DCMAKE_INSTALL_PREFIX=/home/naor/Desktop/naor/study/Thesis/install/roller
+[0.891s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/roller': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/roller -- -j16 -l16
+[0.924s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/roller' returned '0': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/roller -- -j16 -l16
+[0.925s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/roller': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/roller
+[0.930s] -- Install configuration: ""
+[0.930s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/roller/share/ament_index/resource_index/package_run_dependencies/roller
+[0.931s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/roller/share/ament_index/resource_index/parent_prefix_path/roller
+[0.931s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/environment/ament_prefix_path.sh
+[0.931s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/environment/ament_prefix_path.dsv
+[0.931s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/environment/path.sh
+[0.931s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/environment/path.dsv
+[0.931s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/local_setup.bash
+[0.931s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/local_setup.sh
+[0.931s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/local_setup.zsh
+[0.931s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/local_setup.dsv
+[0.931s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/package.dsv
+[0.932s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/roller/share/ament_index/resource_index/packages/roller
+[0.932s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/cmake/rollerConfig.cmake
+[0.932s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/cmake/rollerConfig-version.cmake
+[0.932s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/package.xml
+[0.934s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/roller' returned '0': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/roller
