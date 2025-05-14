@@ -406,8 +406,6 @@ Window Geometry:
   X: 0
   Y: 34
   
-
-  
 slam_toolbox:
   ros__parameters:
     use_sim_time: false
@@ -420,3 +418,4 @@ slam_toolbox:
     odom_frame: odom
     base_frame: base_link
     map_frame: map
+

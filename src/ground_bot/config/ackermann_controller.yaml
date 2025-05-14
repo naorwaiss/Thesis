@@ -43,7 +43,7 @@ ackermann_controller_velocity:
 
 front_wheel_data:
   ros__parameters:
-    joint:
+    joints:
       - front_left_wheel_joint
       - front_right_wheel_joint
     state_interface_names:

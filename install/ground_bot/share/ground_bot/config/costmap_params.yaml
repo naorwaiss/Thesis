@@ -47,7 +47,7 @@ local_costmap:
       publish_frequency: 2.0
       global_frame: odom
       robot_base_frame: base_link
-      use_sim_time: false
+      use_sim_time: true
       rolling_window: true
       width: 5.0  # Increased from default 3.0
       height: 5.0  # Increased from default 3.0

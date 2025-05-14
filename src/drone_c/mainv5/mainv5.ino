@@ -248,7 +248,7 @@ void Update_Measurement() {
     // meas.baro_data.asl = baro.pressureToAltitudeMeters(meas.baro_data.pressure);
 }
 
-void GyroMagCalibration() {
+void    GyroMagCalibration() {
     Serial.println("Starting Gyro calibration");
     int start_time = millis();
     int num_samples = 0;

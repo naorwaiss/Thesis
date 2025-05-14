@@ -1,6 +1,11 @@
+source;share/roller/hook/cmake_prefix_path.ps1
+source;share/roller/hook/cmake_prefix_path.dsv
+source;share/roller/hook/cmake_prefix_path.sh
 source;share/roller/hook/pythonpath.ps1
 source;share/roller/hook/pythonpath.dsv
 source;share/roller/hook/pythonpath.sh
-source;share/roller/hook/ament_prefix_path.ps1
-source;share/roller/hook/ament_prefix_path.dsv
-source;share/roller/hook/ament_prefix_path.sh
+source;share/roller/local_setup.bash
+source;share/roller/local_setup.dsv
+source;share/roller/local_setup.ps1
+source;share/roller/local_setup.sh
+source;share/roller/local_setup.zsh
