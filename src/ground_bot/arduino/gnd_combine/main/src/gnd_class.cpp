@@ -1,6 +1,6 @@
 #include "gnd_class.h"
 
-gnd_bot::gnd_bot(double dt_loop,uint8_t pwmh_right, uint8_t dir_right, uint8_t pwmh_left, uint8_t dir_left,
+gnd_bot::gnd_bot(double dt_loop, uint8_t pwmh_right, uint8_t dir_right, uint8_t pwmh_left, uint8_t dir_left,
                  uint8_t encoderA_right, uint8_t encoderB_right, uint8_t encoderA_left, uint8_t encoderB_left)
     : right_encoder(encoderA_right, encoderB_right),
       left_encoder(encoderA_left, encoderB_left) {
@@ -9,7 +9,6 @@ gnd_bot::gnd_bot(double dt_loop,uint8_t pwmh_right, uint8_t dir_right, uint8_t p
     right_motor.encoderA_pin = encoderA_right;
     right_motor.encoderB_pin = encoderB_right;
     right_motor.direction = false;
-
     left_motor.pwmh_pin = pwmh_left;
     left_motor.dir_pin = dir_left;
     left_motor.encoderA_pin = encoderA_left;
@@ -45,9 +44,8 @@ void gnd_bot::get_velocity_prediction(Motor_Data &motor, Encoder &encoder) {
     motor.vk += (motor.b * motor.rk) / this->dt_sec;
     motor.xk_1 = motor.xk;
     motor.vk_1 = omega;  // Use computed angular velocity
-    motor.wheel_linera_speed = motor.vk_1 * RADIOUS_MM;
+    motor.wheel_linera_speed = motor.vk_1 * (RADIOUS_MM / 1000);
 }
-
 
 void gnd_bot::init() {
     pinMode(left_motor.dir_pin, OUTPUT);
@@ -59,7 +57,6 @@ void gnd_bot::init() {
     set_alfa_beta();
     set_pid_param();
 }
-
 
 void gnd_bot::open_loop_pwm(uint16_t axis_data, Motor_Data &motor) {
     axis_data = constrain(axis_data, 1000, 2000);
@@ -76,11 +73,27 @@ void gnd_bot::open_loop_pwm(uint16_t axis_data, Motor_Data &motor) {
     analogWrite(motor.pwmh_pin, motor.pwm_value);
 }
 
+void gnd_bot::get_twist_msg() {
+    robot.x_dot_estimate = (left_motor.wheel_linera_speed + right_motor.wheel_linera_speed) / 2;
+    robot.omega_dot_estimate = (right_motor.wheel_linera_speed - left_motor.wheel_linera_speed) / (DISTANCE_BETWEEN_WHEELS / 1000);
+}
 
-void gnd_bot::main(float omega_dot,float x_dot){
+int gnd_bot::motor_pid_omega(Motor_Data &motor, Encoder &encoder, double dt, uint16_t axis_data) {
+    int pwm_out = 0;
+    float goal = 0.0, error = 0.0, derivative = 0.0;
+    goal = map(axis_data, 1000, 2000, 0, max_omga);  /// need to fix it with the direction
+    // get_velocity_prediction(motor, encoder, dt);
+    error = goal - motor.omega_dot;
+    motor.integral += error * dt;
+    derivative = (error - motor.prev_error) / dt;  // Compute derivative
+    motor.pid_out = (motor.Kp * error) + (motor.Ki * motor.integral) + (motor.Kd + derivative);
+    motor.prev_error = error;
+}
+
+void gnd_bot::main(float omega_dot, float x_dot) {
     get_velocity_prediction(left_motor, left_encoder);
     get_velocity_prediction(right_motor, right_encoder);
+    get_twist_msg();
     robot.omega_dot_cmmand = omega_dot;
     robot.x_dot_cmmand = x_dot;
-
 }

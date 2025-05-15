@@ -47,6 +47,8 @@ struct gnd_bot
 {
     float twist_linear;
     float twist_angular;
+    float omega_dot_cmmand;
+    float x_dot_cmmand;
 };
 
 

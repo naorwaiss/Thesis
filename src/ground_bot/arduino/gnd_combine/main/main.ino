@@ -1,4 +1,8 @@
 #include "src/gnd_class.h"
+#include "src/RTCom/RTCom.h"
+#include "src/sender.h"
+#include "src/roller.h"
+
 
 #define right_motor_pwmh_pin 3
 #define right_motor_dir_pin 2
@@ -9,22 +13,41 @@
 #define left_motor_encoderA_pin 8
 #define left_motor_encoderB_pin 9
 
+
 #define loop_time_hz 200
 elapsedMicros loop_time;
 const double dt_loop = 1000000.0 / loop_time_hz;
 double time_sec = 1/loop_time_hz;
 
+
+constexpr uint8_t IP_ADDRESS[4] = {192, 168, 1, 177};
+constexpr uint16_t PORT_NUMBER = 8888;
+const SocketAddress SOCKET_ADDRESS = SocketAddress(IP_ADDRESS, PORT_NUMBER);
+RTCom rtcomSocket(SOCKET_ADDRESS, RTComConfig(1, 100, 200, 500));
+RTComSession *socketSession = nullptr;
+
 gnd_bot gnd_platform(time_sec,right_motor_pwmh_pin, right_motor_dir_pin, left_motor_pwmh_pin, left_motor_dir_pin, right_motor_encoderA_pin, right_motor_encoderB_pin, left_motor_encoderA_pin, left_motor_encoderB_pin);
+roller roller_instance(time_sec, 10, 11, 12, 13, 14);
+sender sender_instance(socketSession, &gnd_platform, &roller_instance);
+
+void onConnect(RTComSession &session) {
+    socketSession = &session;
+    Serial.print("Created session with ");
+    sender_instance.update_session(session);
+    Serial.println(socketSession->address.toString());
+}
 
 void setup() {
     gnd_platform.init();
-
+    roller_instance.init_roller();
+    rtcomSocket.begin();
+    rtcomSocket.onConnection(onConnect);
 }
 
 void loop() {
     if (loop_time > dt_loop) {
         // gnd_platform.main();
+        roller_instance.main_roller();
         loop_time = 0;
     }
-
 }

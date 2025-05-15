@@ -1,11 +1,14 @@
 #ifndef GND_CLASS_H
 #define GND_CLASS_H
 
-
+#include <Arduino.h>
 #include <Encoder.h>
 
 #define RADIOUS_MM 122.5
+#define DISTANCE_BETWEEN_WHEELS 248
 #define PPR 1000
+#define max_omga 20
+#define max_linear 20 * RADIOUS_MM
 
 struct Motor_Data {
     uint8_t pwmh_pin;
@@ -31,7 +34,7 @@ struct Robot_Data {
     float omega_dot_cmmand;
     float x_dot_cmmand;
     float x_dot_estimate;
-    float y_dot_estimate;
+    float omega_dot_estimate;
 };
 
 class gnd_bot {
@@ -48,6 +51,8 @@ class gnd_bot {
         void main(float omega_dot,float x_dot);
         void get_velocity_prediction(Motor_Data &motor, Encoder &encoder);
         void open_loop_pwm(uint16_t axis_data, Motor_Data &motor);
+        void get_twist_msg();
+        int motor_pid_omega(Motor_Data &motor, Encoder &encoder, double dt, uint16_t axis_data);
     private:
       double dt_sec;
 };
