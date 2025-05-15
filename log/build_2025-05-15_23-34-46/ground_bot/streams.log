@@ -1,0 +1,290 @@
+[0.168s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/ground_bot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake /home/naor/Desktop/naor/study/Thesis/src/ground_bot -DCMAKE_INSTALL_PREFIX=/home/naor/Desktop/naor/study/Thesis/install/ground_bot
+[0.215s] -- The C compiler identification is GNU 11.4.0
+[0.258s] -- The CXX compiler identification is GNU 11.4.0
+[0.263s] -- Detecting C compiler ABI info
+[0.318s] -- Detecting C compiler ABI info - done
+[0.323s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.323s] -- Detecting C compile features
+[0.324s] -- Detecting C compile features - done
+[0.325s] -- Detecting CXX compiler ABI info
+[0.388s] -- Detecting CXX compiler ABI info - done
+[0.392s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.393s] -- Detecting CXX compile features
+[0.393s] -- Detecting CXX compile features - done
+[0.395s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.781s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.870s] -- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)
+[0.905s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.910s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.917s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.925s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.943s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.982s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.985s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.052s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.080s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.113s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.120s] -- Looking for pthread.h
+[1.170s] -- Looking for pthread.h - found
+[1.170s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.224s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.225s] -- Found Threads: TRUE  
+[1.265s] -- Found sensor_msgs: 4.8.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[1.287s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[1.294s] -- Found xacro: 2.0.13 (/opt/ros/humble/share/xacro/cmake)
+[1.295s] -- Found cv_bridge: 3.2.1 (/opt/ros/humble/share/cv_bridge/cmake)
+[1.301s] -- Found OpenCV: /usr/local (found version "4.12.0") 
+[1.538s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[1.926s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.072s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.097s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[2.100s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[2.139s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[2.139s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[2.139s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[2.139s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[2.162s] -- Found PythonExtra: .so  
+[2.207s] -- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[2.225s] -- Added test 'copyright' to check source files copyright and LICENSE
+[2.226s] -- Added test 'flake8' to check Python code syntax and style conventions
+[2.227s] -- Added test 'lint_cmake' to check CMake code style
+[2.228s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[2.232s] -- Added test 'uncrustify' to check C / C++ code style
+[2.232s] -- Configured uncrustify additional arguments: 
+[2.233s] -- Added test 'xmllint' to check XML markup files
+[2.236s] -- Configuring done
+[2.269s] -- Generating done
+[2.281s] -- Build files have been written to: /home/naor/Desktop/naor/study/Thesis/build/ground_bot
+[2.296s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/ground_bot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake /home/naor/Desktop/naor/study/Thesis/src/ground_bot -DCMAKE_INSTALL_PREFIX=/home/naor/Desktop/naor/study/Thesis/install/ground_bot
+[2.297s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/ground_bot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/ground_bot -- -j16 -l16
+[2.343s] [  2%] [34m[1mGenerating C code for ROS interfaces[0m
+[2.369s] [  2%] Built target ament_cmake_python_copy_ground_bot
+[2.370s] [  5%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[2.760s] running egg_info
+[2.788s] creating ground_bot.egg-info
+[2.789s] writing ground_bot.egg-info/PKG-INFO
+[2.790s] writing dependency_links to ground_bot.egg-info/dependency_links.txt
+[2.791s] writing top-level names to ground_bot.egg-info/top_level.txt
+[2.791s] writing manifest file 'ground_bot.egg-info/SOURCES.txt'
+[2.854s] [  5%] Built target ground_bot__cpp
+[2.861s] [  7%] [32mBuilding C object CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.c.o[0m
+[2.866s] [ 10%] [32mBuilding C object CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/pwm__functions.c.o[0m
+[2.870s] [ 12%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[2.874s] [ 17%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[2.874s] [ 17%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[2.883s] reading manifest file 'ground_bot.egg-info/SOURCES.txt'
+[2.884s] writing manifest file 'ground_bot.egg-info/SOURCES.txt'
+[2.931s] [ 17%] Built target ament_cmake_python_build_ground_bot_egg
+[2.936s] [ 20%] [32m[1mLinking C shared library libground_bot__rosidl_generator_c.so[0m
+[3.003s] [ 20%] Built target ground_bot__rosidl_generator_c
+[3.018s] [ 23%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[3.034s] [ 25%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[3.038s] [ 28%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[3.356s] [ 30%] [32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ground_bot/msg/pwm__type_support.cpp.o[0m
+[3.361s] [ 33%] [32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ground_bot/msg/motor_data__type_support.cpp.o[0m
+[3.596s] [ 35%] [32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ground_bot/msg/detail/pwm__type_support.cpp.o[0m
+[3.597s] [ 38%] [32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ground_bot/msg/detail/motor_data__type_support.cpp.o[0m
+[3.749s] [ 41%] [32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_c.dir/rosidl_typesupport_c/ground_bot/msg/pwm__type_support.cpp.o[0m
+[3.749s] [ 43%] [32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_c.dir/rosidl_typesupport_c/ground_bot/msg/motor_data__type_support.cpp.o[0m
+[3.820s] [ 46%] [32mBuilding C object CMakeFiles/ground_bot__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ground_bot/msg/detail/pwm__type_support.c.o[0m
+[3.828s] [ 48%] [32mBuilding C object CMakeFiles/ground_bot__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ground_bot/msg/detail/motor_data__type_support.c.o[0m
+[3.830s] [ 51%] [32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ground_bot/msg/detail/dds_fastrtps/motor_data__type_support.cpp.o[0m
+[3.847s] [ 53%] [32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ground_bot/msg/detail/dds_fastrtps/pwm__type_support.cpp.o[0m
+[3.859s] [ 56%] [32m[1mLinking CXX shared library libground_bot__rosidl_typesupport_c.so[0m
+[3.931s] [ 58%] [32m[1mLinking C shared library libground_bot__rosidl_typesupport_introspection_c.so[0m
+[4.009s] [ 58%] Built target ground_bot__rosidl_typesupport_introspection_c
+[4.028s] [ 58%] Built target ground_bot__rosidl_typesupport_c
+[4.113s] [ 61%] [32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__type_support_c.cpp.o[0m
+[4.116s] [ 64%] [32mBuilding CXX object CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/motor_data__type_support_c.cpp.o[0m
+[4.164s] [ 66%] [32m[1mLinking CXX shared library libground_bot__rosidl_typesupport_cpp.so[0m
+[4.339s] [ 66%] Built target ground_bot__rosidl_typesupport_cpp
+[4.705s] [ 69%] [32m[1mLinking CXX shared library libground_bot__rosidl_typesupport_introspection_cpp.so[0m
+[4.794s] [ 71%] [32m[1mLinking CXX shared library libground_bot__rosidl_typesupport_fastrtps_c.so[0m
+[4.806s] [ 71%] Built target ground_bot__rosidl_typesupport_introspection_cpp
+[4.941s] [ 74%] [32m[1mLinking CXX shared library libground_bot__rosidl_typesupport_fastrtps_cpp.so[0m
+[4.967s] [ 74%] Built target ground_bot__rosidl_typesupport_fastrtps_c
+[5.145s] [ 74%] Built target ground_bot__rosidl_typesupport_fastrtps_cpp
+[5.178s] [ 74%] Built target ground_bot
+[5.213s] [ 76%] [34m[1mGenerating Python code for ROS interfaces[0m
+[5.567s] [ 76%] Built target ground_bot__py
+[5.586s] [ 79%] [32mBuilding C object CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_pwm_s.c.o[0m
+[5.586s] [ 82%] [32mBuilding C object CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_motor_data_s.c.o[0m
+[5.670s] [ 84%] [32m[1mLinking C shared library rosidl_generator_py/ground_bot/libground_bot__rosidl_generator_py.so[0m
+[5.705s] [ 84%] Built target ground_bot__rosidl_generator_py
+[5.726s] [ 87%] [32mBuilding C object CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[5.726s] [ 92%] [32mBuilding C object CMakeFiles/ground_bot__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[5.726s] [ 92%] [32mBuilding C object CMakeFiles/ground_bot__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_c.c.o[0m
+[5.818s] [ 94%] [32m[1mLinking C shared library rosidl_generator_py/ground_bot/ground_bot_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[5.833s] [ 97%] [32m[1mLinking C shared library rosidl_generator_py/ground_bot/ground_bot_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[5.836s] [100%] [32m[1mLinking C shared library rosidl_generator_py/ground_bot/ground_bot_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[5.860s] [100%] Built target ground_bot__rosidl_typesupport_c__pyext
+[5.863s] [100%] Built target ground_bot__rosidl_typesupport_fastrtps_c__pyext
+[5.867s] [100%] Built target ground_bot__rosidl_typesupport_introspection_c__pyext
+[5.877s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/ground_bot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/ground_bot -- -j16 -l16
+[5.878s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/ground_bot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/ground_bot
+[5.885s] -- Install configuration: ""
+[5.885s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ament_index/resource_index/rosidl_interfaces/ground_bot
+[5.885s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot
+[5.885s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg
+[5.885s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/motor_data.h
+[5.885s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/pwm.h
+[5.886s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/rosidl_generator_c__visibility_control.h
+[5.886s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail
+[5.886s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__functions.c
+[5.886s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__type_support.h
+[5.886s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__functions.c
+[5.886s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__type_support.h
+[5.886s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__functions.h
+[5.886s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__struct.h
+[5.886s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__functions.h
+[5.886s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__struct.h
+[5.887s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/environment/library_path.sh
+[5.887s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/environment/library_path.dsv
+[5.887s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_generator_c.so
+[5.887s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_generator_c.so" to ""
+[5.887s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot
+[5.887s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg
+[5.887s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[5.887s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail
+[5.887s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__rosidl_typesupport_fastrtps_c.h
+[5.887s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__rosidl_typesupport_fastrtps_c.h
+[5.888s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_fastrtps_c.so
+[5.888s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_fastrtps_c.so" to ""
+[5.888s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot
+[5.888s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg
+[5.888s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/rosidl_generator_cpp__visibility_control.hpp
+[5.888s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/motor_data.hpp
+[5.888s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/pwm.hpp
+[5.888s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail
+[5.888s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__builder.hpp
+[5.888s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__struct.hpp
+[5.889s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__builder.hpp
+[5.889s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__struct.hpp
+[5.889s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__traits.hpp
+[5.889s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__traits.hpp
+[5.889s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__type_support.hpp
+[5.889s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__type_support.hpp
+[5.889s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot
+[5.889s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg
+[5.889s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[5.889s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail
+[5.890s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__rosidl_typesupport_fastrtps_cpp.hpp
+[5.890s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/dds_fastrtps
+[5.890s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__rosidl_typesupport_fastrtps_cpp.hpp
+[5.890s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_fastrtps_cpp.so
+[5.890s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_fastrtps_cpp.so" to ""
+[5.890s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot
+[5.890s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg
+[5.890s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[5.890s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail
+[5.890s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__type_support.c
+[5.891s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__rosidl_typesupport_introspection_c.h
+[5.891s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__rosidl_typesupport_introspection_c.h
+[5.891s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__type_support.c
+[5.891s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_introspection_c.so
+[5.891s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_introspection_c.so" to ""
+[5.891s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_c.so
+[5.891s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_c.so" to ""
+[5.891s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot
+[5.891s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg
+[5.891s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail
+[5.891s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__rosidl_typesupport_introspection_cpp.hpp
+[5.892s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__rosidl_typesupport_introspection_cpp.hpp
+[5.892s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/pwm__type_support.cpp
+[5.892s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/include/ground_bot/ground_bot/msg/detail/motor_data__type_support.cpp
+[5.892s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_introspection_cpp.so
+[5.892s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_introspection_cpp.so" to ""
+[5.892s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_cpp.so
+[5.892s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_typesupport_cpp.so" to ""
+[5.892s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/environment/pythonpath.sh
+[5.892s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/environment/pythonpath.dsv
+[5.892s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot-0.0.1-py3.10.egg-info
+[5.892s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot-0.0.1-py3.10.egg-info/SOURCES.txt
+[5.892s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot-0.0.1-py3.10.egg-info/PKG-INFO
+[5.893s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot-0.0.1-py3.10.egg-info/dependency_links.txt
+[5.893s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot-0.0.1-py3.10.egg-info/top_level.txt
+[5.893s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot
+[5.893s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/ground_bot_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[5.893s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/__init__.py
+[5.893s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg
+[5.893s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg/__init__.py
+[5.893s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg/_motor_data_s.c
+[5.893s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg/_pwm_s.c
+[5.893s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg/_pwm.py
+[5.893s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg/_motor_data.py
+[5.893s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c
+[5.893s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/ground_bot_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[5.894s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/_ground_bot_s.ep.rosidl_typesupport_introspection_c.c
+[5.894s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/libground_bot__rosidl_generator_py.so
+[5.894s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/ground_bot_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[5.894s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/_ground_bot_s.ep.rosidl_typesupport_c.c
+[5.919s] Listing '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot'...
+[5.919s] Compiling '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/__init__.py'...
+[5.919s] Listing '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg'...
+[5.919s] Compiling '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg/__init__.py'...
+[5.920s] Compiling '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg/_motor_data.py'...
+[5.920s] Compiling '/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/msg/_pwm.py'...
+[5.923s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/ground_bot_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[5.923s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/ground_bot_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[5.923s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/ground_bot_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[5.924s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/ground_bot_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[5.924s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/ground_bot_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[5.924s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/local/lib/python3.10/dist-packages/ground_bot/ground_bot_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[5.924s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_generator_py.so
+[5.924s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/libground_bot__rosidl_generator_py.so" to ""
+[5.924s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/msg/Pwm.idl
+[5.924s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/msg/MotorData.idl
+[5.924s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/msg/Pwm.msg
+[5.924s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/msg/MotorData.msg
+[5.924s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/launch
+[5.924s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/launch/sim_bot.launch.py
+[5.925s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/launch/real_bot.launch.py
+[5.925s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/config
+[5.925s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/config/diff_drive_controller_velocity.yaml
+[5.925s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/config/ekf.yaml
+[5.925s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/urdf
+[5.925s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/urdf/ground_bot_descriptor.urdf
+[5.925s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/worlds
+[5.925s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/rviz
+[5.925s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/rviz/urdf_config.rviz
+[5.925s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/ground_bot/ground_bot_rtcom.py
+[5.925s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ament_index/resource_index/package_run_dependencies/ground_bot
+[5.925s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ament_index/resource_index/parent_prefix_path/ground_bot
+[5.925s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/environment/ament_prefix_path.sh
+[5.925s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/environment/ament_prefix_path.dsv
+[5.925s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/environment/path.sh
+[5.926s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/environment/path.dsv
+[5.926s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/local_setup.bash
+[5.926s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/local_setup.sh
+[5.926s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/local_setup.zsh
+[5.926s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/local_setup.dsv
+[5.926s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/package.dsv
+[5.926s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ament_index/resource_index/packages/ground_bot
+[5.926s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/export_ground_bot__rosidl_generator_cExport.cmake
+[5.926s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/export_ground_bot__rosidl_generator_cExport-noconfig.cmake
+[5.926s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/export_ground_bot__rosidl_typesupport_fastrtps_cExport.cmake
+[5.926s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/export_ground_bot__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[5.926s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/export_ground_bot__rosidl_generator_cppExport.cmake
+[5.926s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/export_ground_bot__rosidl_typesupport_fastrtps_cppExport.cmake
+[5.926s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/export_ground_bot__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[5.927s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_bot__rosidl_typesupport_introspection_cExport.cmake
+[5.927s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_bot__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[5.927s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_bot__rosidl_typesupport_cExport.cmake
+[5.927s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_bot__rosidl_typesupport_cExport-noconfig.cmake
+[5.927s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_bot__rosidl_typesupport_introspection_cppExport.cmake
+[5.927s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_bot__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[5.927s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_bot__rosidl_typesupport_cppExport.cmake
+[5.927s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_bot__rosidl_typesupport_cppExport-noconfig.cmake
+[5.927s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/export_ground_bot__rosidl_generator_pyExport.cmake
+[5.927s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/export_ground_bot__rosidl_generator_pyExport-noconfig.cmake
+[5.927s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/rosidl_cmake-extras.cmake
+[5.927s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ament_cmake_export_dependencies-extras.cmake
+[5.927s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ament_cmake_export_include_directories-extras.cmake
+[5.928s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ament_cmake_export_libraries-extras.cmake
+[5.928s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ament_cmake_export_targets-extras.cmake
+[5.928s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[5.928s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[5.928s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_botConfig.cmake
+[5.928s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/cmake/ground_botConfig-version.cmake
+[5.928s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/package.xml
+[5.930s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/ground_bot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/ground_bot

@@ -53,6 +53,7 @@ void setup() {
 
 void loop() {
     if (loop_time > dt_loop) {
+        socketSession.process();
         // gnd_platform.main();
         roller_instance.main_roller();
         loop_time = 0;

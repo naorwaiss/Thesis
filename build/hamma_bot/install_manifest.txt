@@ -77,7 +77,6 @@
 /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/launch/simple_joy_control.launch.py
 /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/launch/navigation_launch.launch.py
 /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/launch/ackermann_drive_example.launch.py
-/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/launch/nav_diy.launch.py
 /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/launch/hamma_bot.launch.py
 /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/config/costmap_params.yaml
 /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/config/ackermann_controller.yaml
