@@ -14,6 +14,13 @@
 #define left_motor_encoderB_pin 9
 
 
+//have problem with this pin
+// #define roller_motor_INA_pin 7
+// #define roller_motor_INB_pin 5
+// #define roller_motor_PWM_pin 6
+// #define DOUT_data 8
+// #define CLK_data 9
+
 #define loop_time_hz 200
 elapsedMicros loop_time;
 const double dt_loop = 1000000.0 / loop_time_hz;
