@@ -15,8 +15,6 @@
 /home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c__pyext.dir
 /home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles/ground_bot__rosidl_typesupport_introspection_c__pyext.dir
 /home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles/ground_bot__rosidl_typesupport_c__pyext.dir
-/home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles/twist_to_twiststamped_node.dir
-/home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles/joy_twist_node.dir
 /home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles/test.dir
 /home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles/edit_cache.dir
 /home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles/rebuild_cache.dir

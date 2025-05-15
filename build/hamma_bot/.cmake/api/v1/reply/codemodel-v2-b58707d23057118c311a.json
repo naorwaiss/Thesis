@@ -1,0 +1,251 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-d55dc710def53588d584.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19
+					]
+				},
+				{
+					"build" : "hamma_bot__py",
+					"jsonFile" : "directory-hamma_bot__py-a13a47027e66e74e012d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/naor/Desktop/naor/study/Thesis/build/hamma_bot/hamma_bot__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "hamma_bot",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_hamma_bot_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_hamma_bot_egg-0c211d42135c03ed2f66.json",
+					"name" : "ament_cmake_python_build_hamma_bot_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_hamma_bot::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_hamma_bot-bce4725e8759e3b072ca.json",
+					"name" : "ament_cmake_python_copy_hamma_bot",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hamma_bot::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hamma_bot-9c8a25c29b59856b93df.json",
+					"name" : "hamma_bot",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hamma_bot__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hamma_bot__cpp-f2df99f7982a2c45cf60.json",
+					"name" : "hamma_bot__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "hamma_bot__py::@687d63939c8fe12a4c3f",
+					"jsonFile" : "target-hamma_bot__py-477a5e14f6c94534bf9d.json",
+					"name" : "hamma_bot__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hamma_bot__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hamma_bot__rosidl_generator_c-1cc9e20742c8df4d1d50.json",
+					"name" : "hamma_bot__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hamma_bot__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hamma_bot__rosidl_generator_py-1cd741349fba7931d91e.json",
+					"name" : "hamma_bot__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hamma_bot__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hamma_bot__rosidl_typesupport_c-4403d81f20a740d82523.json",
+					"name" : "hamma_bot__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hamma_bot__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hamma_bot__rosidl_typesupport_c__pyext-43b2073cb9dd0669907c.json",
+					"name" : "hamma_bot__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hamma_bot__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hamma_bot__rosidl_typesupport_cpp-d6136f079d5833e18ef6.json",
+					"name" : "hamma_bot__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hamma_bot__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hamma_bot__rosidl_typesupport_fastrtps_c-ff0a93aceb783a5c7de3.json",
+					"name" : "hamma_bot__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hamma_bot__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hamma_bot__rosidl_typesupport_fastrtps_c__pyext-34675847440c0889fdb5.json",
+					"name" : "hamma_bot__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hamma_bot__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hamma_bot__rosidl_typesupport_fastrtps_cpp-5e1bed218b8f8cb89697.json",
+					"name" : "hamma_bot__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hamma_bot__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hamma_bot__rosidl_typesupport_introspection_c-c12dc1d50c7d297c2233.json",
+					"name" : "hamma_bot__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hamma_bot__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hamma_bot__rosidl_typesupport_introspection_c__pyext-1067abc46614e863f048.json",
+					"name" : "hamma_bot__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hamma_bot__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hamma_bot__rosidl_typesupport_introspection_cpp-bf63d1a76ebec9c7be6f.json",
+					"name" : "hamma_bot__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hamma_bot_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hamma_bot_uninstall-37321c26344abfbfa9d1.json",
+					"name" : "hamma_bot_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "joy_twist_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-joy_twist_node-9afd27ae054bebf96b65.json",
+					"name" : "joy_twist_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "twist_to_twiststamped_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-twist_to_twiststamped_node-46836e6763447ef1efcd.json",
+					"name" : "twist_to_twiststamped_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-9700afadcdc461b3eef3.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/naor/Desktop/naor/study/Thesis/build/hamma_bot",
+		"source" : "/home/naor/Desktop/naor/study/Thesis/src/hamma_bot"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

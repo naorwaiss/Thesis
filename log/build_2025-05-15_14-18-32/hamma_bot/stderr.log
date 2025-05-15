@@ -1,0 +1,6 @@
+[31mCMake Error at cmake_install.cmake:435 (file):
+  file INSTALL cannot find
+  "/home/naor/Desktop/naor/study/Thesis/src/hamma_bot/hamma_bot/hamma_bot_rtcom.py":
+  No such file or directory.
+
+[0m

@@ -34,32 +34,6 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   DEPENDENCIES std_msgs
 )
 
-# === Build C++ executables ===
-add_executable(twist_to_twiststamped_node src/twisstump_bridge.cpp)
-add_executable(joy_twist_node src/joy_twist.cpp)
-
-ament_target_dependencies(twist_to_twiststamped_node
-  rclcpp
-  geometry_msgs
-)
-
-ament_target_dependencies(joy_twist_node
-  rclcpp
-  sensor_msgs
-  geometry_msgs
-)
-
-
-
-
-
-# === Install binaries ===
-install(TARGETS
-  twist_to_twiststamped_node
-  joy_twist_node
-  DESTINATION lib/${PROJECT_NAME}
-)
-
 # === Install launch and config files ===
 install(
   DIRECTORY launch

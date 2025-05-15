@@ -393,32 +393,6 @@ ground_bot__rosidl_typesupport_c__pyext/fast:
 .PHONY : ground_bot__rosidl_typesupport_c__pyext/fast
 
 #=============================================================================
-# Target rules for targets named twist_to_twiststamped_node
-
-# Build rule for target.
-twist_to_twiststamped_node: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 twist_to_twiststamped_node
-.PHONY : twist_to_twiststamped_node
-
-# fast build rule for target.
-twist_to_twiststamped_node/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/twist_to_twiststamped_node.dir/build.make CMakeFiles/twist_to_twiststamped_node.dir/build
-.PHONY : twist_to_twiststamped_node/fast
-
-#=============================================================================
-# Target rules for targets named joy_twist_node
-
-# Build rule for target.
-joy_twist_node: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 joy_twist_node
-.PHONY : joy_twist_node
-
-# fast build rule for target.
-joy_twist_node/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/joy_twist_node.dir/build.make CMakeFiles/joy_twist_node.dir/build
-.PHONY : joy_twist_node/fast
-
-#=============================================================================
 # Target rules for targets named ground_bot__py
 
 # Build rule for target.
@@ -887,54 +861,6 @@ rosidl_typesupport_introspection_cpp/ground_bot/msg/detail/pwm__type_support.cpp
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ground_bot__rosidl_typesupport_introspection_cpp.dir/build.make CMakeFiles/ground_bot__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ground_bot/msg/detail/pwm__type_support.cpp.s
 .PHONY : rosidl_typesupport_introspection_cpp/ground_bot/msg/detail/pwm__type_support.cpp.s
 
-src/joy_twist.o: src/joy_twist.cpp.o
-.PHONY : src/joy_twist.o
-
-# target to build an object file
-src/joy_twist.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/joy_twist_node.dir/build.make CMakeFiles/joy_twist_node.dir/src/joy_twist.cpp.o
-.PHONY : src/joy_twist.cpp.o
-
-src/joy_twist.i: src/joy_twist.cpp.i
-.PHONY : src/joy_twist.i
-
-# target to preprocess a source file
-src/joy_twist.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/joy_twist_node.dir/build.make CMakeFiles/joy_twist_node.dir/src/joy_twist.cpp.i
-.PHONY : src/joy_twist.cpp.i
-
-src/joy_twist.s: src/joy_twist.cpp.s
-.PHONY : src/joy_twist.s
-
-# target to generate assembly for a file
-src/joy_twist.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/joy_twist_node.dir/build.make CMakeFiles/joy_twist_node.dir/src/joy_twist.cpp.s
-.PHONY : src/joy_twist.cpp.s
-
-src/twisstump_bridge.o: src/twisstump_bridge.cpp.o
-.PHONY : src/twisstump_bridge.o
-
-# target to build an object file
-src/twisstump_bridge.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/twist_to_twiststamped_node.dir/build.make CMakeFiles/twist_to_twiststamped_node.dir/src/twisstump_bridge.cpp.o
-.PHONY : src/twisstump_bridge.cpp.o
-
-src/twisstump_bridge.i: src/twisstump_bridge.cpp.i
-.PHONY : src/twisstump_bridge.i
-
-# target to preprocess a source file
-src/twisstump_bridge.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/twist_to_twiststamped_node.dir/build.make CMakeFiles/twist_to_twiststamped_node.dir/src/twisstump_bridge.cpp.i
-.PHONY : src/twisstump_bridge.cpp.i
-
-src/twisstump_bridge.s: src/twisstump_bridge.cpp.s
-.PHONY : src/twisstump_bridge.s
-
-# target to generate assembly for a file
-src/twisstump_bridge.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/twist_to_twiststamped_node.dir/build.make CMakeFiles/twist_to_twiststamped_node.dir/src/twisstump_bridge.cpp.s
-.PHONY : src/twisstump_bridge.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -966,8 +892,6 @@ help:
 	@echo "... ground_bot__rosidl_typesupport_introspection_c"
 	@echo "... ground_bot__rosidl_typesupport_introspection_c__pyext"
 	@echo "... ground_bot__rosidl_typesupport_introspection_cpp"
-	@echo "... joy_twist_node"
-	@echo "... twist_to_twiststamped_node"
 	@echo "... rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.o"
 	@echo "... rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.i"
 	@echo "... rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.s"
@@ -1025,12 +949,6 @@ help:
 	@echo "... rosidl_typesupport_introspection_cpp/ground_bot/msg/detail/pwm__type_support.o"
 	@echo "... rosidl_typesupport_introspection_cpp/ground_bot/msg/detail/pwm__type_support.i"
 	@echo "... rosidl_typesupport_introspection_cpp/ground_bot/msg/detail/pwm__type_support.s"
-	@echo "... src/joy_twist.o"
-	@echo "... src/joy_twist.i"
-	@echo "... src/joy_twist.s"
-	@echo "... src/twisstump_bridge.o"
-	@echo "... src/twisstump_bridge.i"
-	@echo "... src/twisstump_bridge.s"
 .PHONY : help
 
 

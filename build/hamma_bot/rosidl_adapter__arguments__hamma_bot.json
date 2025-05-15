@@ -1,0 +1,7 @@
+{
+  "package_name": "hamma_bot",
+  "non_idl_tuples": [
+    "/home/naor/Desktop/naor/study/Thesis/src/hamma_bot:msg/Pwm.msg",
+    "/home/naor/Desktop/naor/study/Thesis/src/hamma_bot:msg/MotorData.msg"
+  ]
+}
