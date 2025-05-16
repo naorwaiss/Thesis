@@ -38,8 +38,8 @@ private:
     rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr cmd_pub_;
 
     // Parameters you can tweak
-    const double max_speed_ = 1.0;            // [m/s] maximum speed
-    const double max_steering_angle_ = 1.0;   // [rad] maximum steering angle
+    const double max_speed_ = 2.0;            // [m/s] maximum speed
+    const double max_steering_angle_ = 2.4;   // [rad] maximum steering angle
 };
 
 int main(int argc, char * argv[])

@@ -109,7 +109,7 @@
     </geometry>
   </collision>
   <inertial>
-    <mass value="10"/>
+    <mass value="30"/>
     <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
   </inertial>
 </link>
@@ -172,6 +172,67 @@
   <origin xyz="0 0 0" rpy="0 0 0"/>
 </joint>
 
+
+<link name="lidar_link">
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <box size="0.01 0.01 0.01"/>
+    </geometry>
+  </visual>
+</link>
+
+<joint name="lidar_joint" type="fixed">
+  <parent link="base_link"/>
+  <child link="lidar_link"/>
+  <origin xyz="0.2 0 0.03" rpy="0 0 0"/>
+</joint>
+
+
+  <gazebo reference="lidar_link">
+    <sensor name="lidar" type="gpu_lidar">
+      <ignition_frame_id>lidar_link</ignition_frame_id>
+      <topic>scan</topic>
+      <always_on>true</always_on>
+      <visualize>true</visualize>
+      <update_rate>2</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>180</samples>
+            <resolution>1.000000</resolution>
+            <min_angle>-0.75</min_angle>
+            <max_angle>0.75</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.120000</min>
+          <max>3.5</max>
+          <resolution>0.015000</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+    </sensor>
+  </gazebo>
+
+<link name="depth_camera_real_link">
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <box size="0.01 0.01 0.01"/>
+    </geometry>
+  </visual>
+</link>
+
+<joint name="depth_camera_real_joint" type="fixed">
+  <parent link="base_link"/>
+  <child link="depth_camera_real_link"/>
+  <origin xyz="0.2 0 0.04" rpy="0 0 0"/>
+</joint>
 
 
   <gazebo reference="imu_link">
@@ -265,6 +326,8 @@
     <state_interface name="velocity"/>
     <state_interface name="position"/>
   </joint>
+
+
 
 
 </ros2_control>

@@ -80,6 +80,7 @@
 /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/worlds/empty.sdf
 /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/worlds/bookstore.sdf
 /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/rviz/urdf_config.rviz
+/home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ground_bot/rviz/urdf_real_bot.rviz
 /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/ground_bot/ground_bot_rtcom.py
 /home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib/ground_bot/joy_twist
 /home/naor/Desktop/naor/study/Thesis/install/ground_bot/share/ament_index/resource_index/package_run_dependencies/ground_bot

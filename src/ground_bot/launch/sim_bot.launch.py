@@ -106,8 +106,8 @@ def generate_launch_description():
         arguments=[
             '-name', 'hamma_bot',
             '-topic', 'robot_description',
-            '-z', '1.0',
-            '-x', '-1.0',
+            '-z', '0.3',
+            '-x', '-0.3',
             '--ros-args',
             '--log-level', log_level
         ],
@@ -118,11 +118,7 @@ def generate_launch_description():
         package='ros_gz_bridge',
         executable='parameter_bridge',
         arguments=[
-            # '/scan@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan',
-            # '/robot_cam_right@sensor_msgs/msg/Image@ignition.msgs.Image',
-            # '/robot_cam_left@sensor_msgs/msg/Image@ignition.msgs.Image',
-            # '/camera_info_right@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
-            # '/camera_info_left@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
+            '/scan@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan',
             '/imu@sensor_msgs/msg/Imu[ignition.msgs.IMU',
             '/clock@rosgraph_msgs/msg/Clock@gz.msgs.Clock'
         ],
