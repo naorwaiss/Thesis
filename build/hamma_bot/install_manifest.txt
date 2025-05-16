@@ -85,6 +85,7 @@
 /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/config/nav2_params.yaml
 /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/config/ekf.yaml
 /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/urdf/robot_description.urdf
+/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/worlds/worlds.sdf
 /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/worlds/empty.sdf
 /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/worlds/bookstore.sdf
 /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/rviz/urdf_config.rviz

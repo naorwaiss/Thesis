@@ -2,8 +2,10 @@
 #include "src/RTCom/RTCom.h"
 #include "src/sender.h"
 #include "src/roller.h"
+#include <AlfredoCRSF.h>
 
-
+#define crsfSerial Serial1  // Use Serial1 for the CRSF communication
+#define NUM_CHANNELS 16
 #define right_motor_pwmh_pin 3
 #define right_motor_dir_pin 2
 #define left_motor_pwmh_pin 5
@@ -25,14 +27,14 @@
 elapsedMicros loop_time;
 const double dt_loop = 1000000.0 / loop_time_hz;
 double time_sec = 1/loop_time_hz;
-
+uint16_t channels[NUM_CHANNELS];  // RC channel values
 
 constexpr uint8_t IP_ADDRESS[4] = {192, 168, 1, 177};
 constexpr uint16_t PORT_NUMBER = 8888;
 const SocketAddress SOCKET_ADDRESS = SocketAddress(IP_ADDRESS, PORT_NUMBER);
 RTCom rtcomSocket(SOCKET_ADDRESS, RTComConfig(1, 100, 200, 500));
 RTComSession *socketSession = nullptr;
-
+AlfredoCRSF crsf;
 gnd_bot gnd_platform(time_sec,right_motor_pwmh_pin, right_motor_dir_pin, left_motor_pwmh_pin, left_motor_dir_pin, right_motor_encoderA_pin, right_motor_encoderB_pin, left_motor_encoderA_pin, left_motor_encoderB_pin);
 roller roller_instance(time_sec, 10, 11, 12, 13, 14);
 sender sender_instance(socketSession, &gnd_platform, &roller_instance);
@@ -43,8 +45,15 @@ void onConnect(RTComSession &session) {
     sender_instance.update_session(session);
     Serial.println(socketSession->address.toString());
 }
+void executed_ch() {
+    crsf.update();
+    for (size_t i = 0; i < NUM_CHANNELS; i++) {
+        channels[i] = crsf.getChannel(i + 1);
+    }
+}
 
 void setup() {
+    crsfSerial.begin(CRSF_BAUDRATE, SERIAL_8N1);
     gnd_platform.init();
     roller_instance.init_roller();
     rtcomSocket.begin();
@@ -52,9 +61,12 @@ void setup() {
 }
 
 void loop() {
+    executed_ch();
     if (loop_time > dt_loop) {
-        socketSession.process();
-        // gnd_platform.main();
+        rtcomSocket.process();
+        float omega_dot_cmmand = constrain(map(channels[0], 1000, 2000, -1, 1), -1, 1);
+        float x_dot_cmmand = constrain(map(channels[2], 1000, 2000, -1, 1), -1, 1);
+        gnd_platform.main(omega_dot_cmmand, x_dot_cmmand);
         roller_instance.main_roller();
         loop_time = 0;
     }

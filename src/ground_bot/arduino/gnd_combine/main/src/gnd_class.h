@@ -35,6 +35,9 @@ struct Robot_Data {
     float x_dot_cmmand;
     float x_dot_estimate;
     float omega_dot_estimate;
+    float x_estimate;
+    float y_estimate;
+    float omega_estimate;
 };
 
 class gnd_bot {
@@ -53,6 +56,7 @@ class gnd_bot {
         void open_loop_pwm(uint16_t axis_data, Motor_Data &motor);
         void get_twist_msg();
         int motor_pid_omega(Motor_Data &motor, Encoder &encoder, double dt, uint16_t axis_data);
+        void position_estimate();
     private:
       double dt_sec;
 };

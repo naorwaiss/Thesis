@@ -47,6 +47,8 @@ void gnd_bot::get_velocity_prediction(Motor_Data &motor, Encoder &encoder) {
     motor.wheel_linera_speed = motor.vk_1 * (RADIOUS_MM / 1000);
 }
 
+
+
 void gnd_bot::init() {
     pinMode(left_motor.dir_pin, OUTPUT);
     pinMode(left_motor.pwmh_pin, OUTPUT);
@@ -76,6 +78,20 @@ void gnd_bot::open_loop_pwm(uint16_t axis_data, Motor_Data &motor) {
 void gnd_bot::get_twist_msg() {
     robot.x_dot_estimate = (left_motor.wheel_linera_speed + right_motor.wheel_linera_speed) / 2;
     robot.omega_dot_estimate = (right_motor.wheel_linera_speed - left_motor.wheel_linera_speed) / (DISTANCE_BETWEEN_WHEELS / 1000);
+}
+
+void gnd_bot::position_estimate() {
+    get_twist_msg();
+    double delta_theta = robot.omega_dot_estimate * this->dt_sec;
+    double theta_mid = robot.omega_estimate + delta_theta / 2.0;
+
+    double delta_x = robot.x_dot_estimate * this->dt_sec * cos(theta_mid);
+    double delta_y = robot.x_dot_estimate * this->dt_sec * sin(theta_mid);
+
+    robot.x_estimate += delta_x;
+    robot.y_estimate += delta_y;
+    robot.omega_estimate += delta_theta;
+    robot.omega_estimate = atan2(sin(robot.omega_estimate), cos(robot.omega_estimate));
 }
 
 int gnd_bot::motor_pid_omega(Motor_Data &motor, Encoder &encoder, double dt, uint16_t axis_data) {

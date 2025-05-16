@@ -15,10 +15,13 @@ void sender::update_session(RTComSession& newsession) {
 }
 
 void sender::convert_data() {
-    float float_odom[2];
-    float_odom[0] = my_bot->robot.x_dot_estimate;
-    float_odom[1] = my_bot->robot.omega_dot_estimate;
-    conver_and_send_data(float_odom, sizeof(float)*2, ODOM_TYPE);
+    float float_odom[5];
+    float_odom[0] = my_bot->robot.x_estimate;
+    float_odom[1] = my_bot->robot.y_estimate;
+    float_odom[2] = my_bot->robot.omega_estimate;
+    float_odom[3] = my_bot->robot.x_dot_estimate;
+    float_odom[4] = my_bot->robot.omega_dot_estimate;
+    conver_and_send_data(float_odom, sizeof(float)*5, ODOM_TYPE);
     float float_twist[2];
     float_twist[0] = my_bot->robot.omega_dot_cmmand;
     float_twist[1] = my_bot->robot.x_dot_cmmand;

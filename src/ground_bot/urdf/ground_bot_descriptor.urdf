@@ -134,6 +134,16 @@
       <cylinder length="0.2" radius="0.01"/>
     </geometry>
   </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <cylinder length="0.2" radius="0.01"/>
+    </geometry>
+  </collision>
+  <inertial>
+    <mass value="10"/>
+    <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+  </inertial>
 </link>
 
 <joint name="stand_joint" type="fixed">
@@ -149,6 +159,16 @@
       <cylinder length="0.02" radius="0.15"/>
     </geometry>
   </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <cylinder length="0.02" radius="0.15"/>
+    </geometry>
+  </collision>
+  <inertial>
+    <mass value="10"/>
+    <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+  </inertial>
 </link>
 
 <joint name="launch_pad_joint" type="fixed">

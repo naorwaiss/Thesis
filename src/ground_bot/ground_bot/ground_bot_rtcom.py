@@ -5,7 +5,8 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Imu, MagneticField
 from std_msgs.msg import Float32MultiArray, Int32MultiArray
-from geometry_msgs.msg import Quaternion, Twist  # Import Twist message
+from geometry_msgs.msg import Quaternion, PoseWithCovariance, TwistWithCovariance  # Import Twist message
+from nav_msgs.msg import Odometry
 
 from ground_bot.msg import Pwm,MotorData
 from ground_bot.rtcom import *
@@ -23,15 +24,14 @@ class UDPSocketClient(Node):
         self.linear_dot_pub = self.create_publisher(MotorData, 'linear_velo', 10)
         self.wheel_rotation_speed_pwm = self.create_publisher(MotorData, 'imu_filter', 10)
         self.motor_pwm_pub = self.create_publisher(Pwm, 'gnd_bot_pwm', 10)
-        self.odom_twist_pub = self.create_publisher(Twist, 'odom_twist', 10)
-
+        self.odom_pub = self.create_publisher(Odometry, 'odom', 10)
 
 
         # Register callbacks for each message type using RTComClient's `on` method
         self.client.on('L', self.linear_dot)
         self.client.on('O', self.wheel_rotation_speed)
         self.client.on('P', self.motor_pwm)
-        self.client.on('T', self.twist_msg)
+        self.client.on('T', self.odom)
 
 
     def linear_dot(self, message: bytes):
@@ -57,13 +57,16 @@ class UDPSocketClient(Node):
         omega_speed.left_motor = messages_struct_float[0]
         omega_speed.right_motor = messages_struct_float[1]
         self.wheel_rotation_speed_pwm.publish(omega_speed)
-    
-    def twist_msg(self, message: bytes):
+
+    def odom(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
-        twist = Twist()
-        twist.linear.x = messages_struct_float[0]
-        twist.angular.z = messages_struct_float[1]
-        self.odom_twist_pub.publish(twist)
+        odom = Odometry()
+        odom.pose.pose.position.x = messages_struct_float[0]
+        odom.pose.pose.position.y = messages_struct_float[1]
+        odom.pose.pose.position.z = messages_struct_float[2]
+        odom.twist.twist.linear.x = messages_struct_float[3]
+        odom.twist.twist.angular.z = messages_struct_float[4]
+        self.odom_pub.publish(odom)
 
 
 def main(args=None):
