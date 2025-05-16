@@ -23,12 +23,15 @@ find_package(cv_bridge REQUIRED)
 find_package(OpenCV REQUIRED)
 
 
+add_executable(joy_twist src/joy_twist.cpp)
+ament_target_dependencies(joy_twist rclcpp sensor_msgs geometry_msgs)
+
+
 # Define message files
 set(msg_files
   "msg/Pwm.msg"
   "msg/MotorData.msg"
 )
-
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
   DEPENDENCIES std_msgs
@@ -71,6 +74,10 @@ install(PROGRAMS
   DESTINATION lib/${PROJECT_NAME}
 )
 
+install(TARGETS
+  joy_twist
+  DESTINATION lib/${PROJECT_NAME}
+)
 # === If building for testing ===
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

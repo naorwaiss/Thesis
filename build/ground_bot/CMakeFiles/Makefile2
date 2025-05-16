@@ -63,6 +63,7 @@ CMAKE_BINARY_DIR = /home/naor/Desktop/naor/study/Thesis/build/ground_bot
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/joy_twist.dir/all
 all: CMakeFiles/ground_bot.dir/all
 all: CMakeFiles/ground_bot__rosidl_generator_c.dir/all
 all: CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/all
@@ -86,6 +87,7 @@ preinstall: ground_bot__py/preinstall
 # The main recursive "clean" target.
 clean: CMakeFiles/uninstall.dir/clean
 clean: CMakeFiles/ground_bot_uninstall.dir/clean
+clean: CMakeFiles/joy_twist.dir/clean
 clean: CMakeFiles/ground_bot.dir/clean
 clean: CMakeFiles/ground_bot__rosidl_generator_c.dir/clean
 clean: CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/clean
@@ -170,6 +172,32 @@ ground_bot_uninstall: CMakeFiles/ground_bot_uninstall.dir/rule
 CMakeFiles/ground_bot_uninstall.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ground_bot_uninstall.dir/build.make CMakeFiles/ground_bot_uninstall.dir/clean
 .PHONY : CMakeFiles/ground_bot_uninstall.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/joy_twist.dir
+
+# All Build rule for target.
+CMakeFiles/joy_twist.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/joy_twist.dir/build.make CMakeFiles/joy_twist.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/joy_twist.dir/build.make CMakeFiles/joy_twist.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles --progress-num=40,41 "Built target joy_twist"
+.PHONY : CMakeFiles/joy_twist.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/joy_twist.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/joy_twist.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles 0
+.PHONY : CMakeFiles/joy_twist.dir/rule
+
+# Convenience name for target.
+joy_twist: CMakeFiles/joy_twist.dir/rule
+.PHONY : joy_twist
+
+# clean rule for target.
+CMakeFiles/joy_twist.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/joy_twist.dir/build.make CMakeFiles/joy_twist.dir/clean
+.PHONY : CMakeFiles/joy_twist.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/ground_bot.dir

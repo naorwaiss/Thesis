@@ -1,5 +1,6 @@
 /home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles/uninstall.dir
 /home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles/ground_bot_uninstall.dir
+/home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles/joy_twist.dir
 /home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles/ground_bot.dir
 /home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles/ground_bot__rosidl_generator_c.dir
 /home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir

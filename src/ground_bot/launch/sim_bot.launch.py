@@ -144,6 +144,43 @@ def generate_launch_description():
             shell=False,
         )
     ]
+    relay_odom = Node(
+        name="relay_odom",
+        package="topic_tools",
+        executable="relay",
+        parameters=[
+            {
+                "input_topic": "/diff_drive_base_controller/odom",
+                "output_topic": "/odom",
+            }
+        ],
+        output="screen",
+    )
+
+    relay_cmd_vel = Node(
+        name="relay_cmd_vel",
+        package="topic_tools",
+        executable="relay",
+        parameters=[
+            {
+                "input_topic": "/cmd_vel",
+                "output_topic": "/diff_drive_base_controller/cmd_vel_unstamped",
+            }
+        ],
+        output="screen",
+    )
+    ekf_node = Node(
+        package='robot_localization',
+        executable='ekf_node',
+        name='ekf_filter_node',
+        output='screen',
+        arguments=[
+            '--ros-args',
+            '--params-file', '/home/naor/Desktop/naor/study/Thesis/src/ground_bot/config/ekf.yaml',
+            '--log-level', log_level
+        ]
+    )
+
 
     return LaunchDescription([
         SetEnvironmentVariable(
@@ -205,4 +242,7 @@ def generate_launch_description():
                 on_exit=[load_diff_drive_controller]
             )
         ),
+        relay_odom,
+        # relay_cmd_vel,
+        ekf_node,
     ]+gazebo)

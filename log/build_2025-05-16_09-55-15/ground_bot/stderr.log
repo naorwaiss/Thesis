@@ -1,0 +1,7 @@
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/joy_twist.cpp:[m[K In member function ‘[01m[Kvoid JoyToAckermannBridge::joyCallback(sensor_msgs::msg::Joy_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/joy_twist.cpp:24:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing Twist = struct geometry_msgs::msg::Twist_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct geometry_msgs::msg::Twist_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kheader[m[K’
+   24 |         cmd_msg.[01;31m[Kheader[m[K.frame_id = "base_link";
+      |                 [01;31m[K^~~~~~[m[K
+gmake[2]: *** [CMakeFiles/joy_twist.dir/build.make:76: CMakeFiles/joy_twist.dir/src/joy_twist.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:182: CMakeFiles/joy_twist.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

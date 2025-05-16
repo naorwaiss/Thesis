@@ -198,6 +198,19 @@ ground_bot_uninstall/fast:
 .PHONY : ground_bot_uninstall/fast
 
 #=============================================================================
+# Target rules for targets named joy_twist
+
+# Build rule for target.
+joy_twist: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 joy_twist
+.PHONY : joy_twist
+
+# fast build rule for target.
+joy_twist/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/joy_twist.dir/build.make CMakeFiles/joy_twist.dir/build
+.PHONY : joy_twist/fast
+
+#=============================================================================
 # Target rules for targets named ground_bot
 
 # Build rule for target.
@@ -861,6 +874,30 @@ rosidl_typesupport_introspection_cpp/ground_bot/msg/detail/pwm__type_support.cpp
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ground_bot__rosidl_typesupport_introspection_cpp.dir/build.make CMakeFiles/ground_bot__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ground_bot/msg/detail/pwm__type_support.cpp.s
 .PHONY : rosidl_typesupport_introspection_cpp/ground_bot/msg/detail/pwm__type_support.cpp.s
 
+src/joy_twist.o: src/joy_twist.cpp.o
+.PHONY : src/joy_twist.o
+
+# target to build an object file
+src/joy_twist.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/joy_twist.dir/build.make CMakeFiles/joy_twist.dir/src/joy_twist.cpp.o
+.PHONY : src/joy_twist.cpp.o
+
+src/joy_twist.i: src/joy_twist.cpp.i
+.PHONY : src/joy_twist.i
+
+# target to preprocess a source file
+src/joy_twist.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/joy_twist.dir/build.make CMakeFiles/joy_twist.dir/src/joy_twist.cpp.i
+.PHONY : src/joy_twist.cpp.i
+
+src/joy_twist.s: src/joy_twist.cpp.s
+.PHONY : src/joy_twist.s
+
+# target to generate assembly for a file
+src/joy_twist.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/joy_twist.dir/build.make CMakeFiles/joy_twist.dir/src/joy_twist.cpp.s
+.PHONY : src/joy_twist.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -892,6 +929,7 @@ help:
 	@echo "... ground_bot__rosidl_typesupport_introspection_c"
 	@echo "... ground_bot__rosidl_typesupport_introspection_c__pyext"
 	@echo "... ground_bot__rosidl_typesupport_introspection_cpp"
+	@echo "... joy_twist"
 	@echo "... rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.o"
 	@echo "... rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.i"
 	@echo "... rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.s"
@@ -949,6 +987,9 @@ help:
 	@echo "... rosidl_typesupport_introspection_cpp/ground_bot/msg/detail/pwm__type_support.o"
 	@echo "... rosidl_typesupport_introspection_cpp/ground_bot/msg/detail/pwm__type_support.i"
 	@echo "... rosidl_typesupport_introspection_cpp/ground_bot/msg/detail/pwm__type_support.s"
+	@echo "... src/joy_twist.o"
+	@echo "... src/joy_twist.i"
+	@echo "... src/joy_twist.s"
 .PHONY : help
 
 

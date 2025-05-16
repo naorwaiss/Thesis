@@ -1,0 +1,20 @@
+[0.175s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/roller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/roller -- -j16 -l16
+[0.270s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/roller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/roller -- -j16 -l16
+[0.270s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/roller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/roller
+[0.274s] -- Install configuration: ""
+[0.274s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/ament_index/resource_index/package_run_dependencies/roller
+[0.274s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/ament_index/resource_index/parent_prefix_path/roller
+[0.274s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/environment/ament_prefix_path.sh
+[0.274s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/environment/ament_prefix_path.dsv
+[0.274s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/environment/path.sh
+[0.275s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/environment/path.dsv
+[0.275s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/local_setup.bash
+[0.275s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/local_setup.sh
+[0.275s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/local_setup.zsh
+[0.275s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/local_setup.dsv
+[0.275s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/package.dsv
+[0.275s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/ament_index/resource_index/packages/roller
+[0.275s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/cmake/rollerConfig.cmake
+[0.275s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/cmake/rollerConfig-version.cmake
+[0.275s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/package.xml
+[0.447s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/roller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/roller

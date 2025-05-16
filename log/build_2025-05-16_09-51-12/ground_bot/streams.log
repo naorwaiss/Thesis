@@ -1,0 +1,59 @@
+[0.173s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/ground_bot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/ground_bot -- -j16 -l16
+[0.195s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.352s] -- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)
+[0.381s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.383s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.389s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.398s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.410s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.440s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.442s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.538s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.585s] -- Found sensor_msgs: 4.8.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[0.607s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.613s] -- Found xacro: 2.0.13 (/opt/ros/humble/share/xacro/cmake)
+[0.614s] -- Found cv_bridge: 3.2.1 (/opt/ros/humble/share/cv_bridge/cmake)
+[0.852s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[1.226s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.363s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.396s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[1.426s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.427s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[1.427s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[1.446s] -- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.457s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.458s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.459s] -- Added test 'lint_cmake' to check CMake code style
+[1.460s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.463s] -- Added test 'uncrustify' to check C / C++ code style
+[1.463s] -- Configured uncrustify additional arguments: 
+[1.463s] -- Added test 'xmllint' to check XML markup files
+[1.465s] -- Configuring done
+[1.491s] -- Generating done
+[1.500s] -- Build files have been written to: /home/naor/Desktop/naor/study/Thesis/build/ground_bot
+[1.525s] [35m[1mConsolidate compiler generated dependencies of target ground_bot__rosidl_generator_c[0m
+[1.530s] [  4%] Built target ground_bot__cpp
+[1.530s] [  4%] [32mBuilding CXX object CMakeFiles/joy_twist.dir/src/joy_twist.cpp.o[0m
+[1.534s] [ 14%] Built target ground_bot__rosidl_generator_c
+[1.537s] [01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/joy_twist.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Krclcpp/rclcpp.hpp: No such file or directory
+[1.537s]     1 | #include [01;31m[K"rclcpp/rclcpp.hpp"[m[K
+[1.537s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[1.537s] compilation terminated.
+[1.538s] gmake[2]: *** [CMakeFiles/joy_twist.dir/build.make:76: CMakeFiles/joy_twist.dir/src/joy_twist.cpp.o] Error 1
+[1.538s] gmake[1]: *** [CMakeFiles/Makefile2:182: CMakeFiles/joy_twist.dir/all] Error 2
+[1.538s] gmake[1]: *** Waiting for unfinished jobs....
+[1.541s] [35m[1mConsolidate compiler generated dependencies of target ground_bot__rosidl_typesupport_introspection_cpp[0m
+[1.541s] [35m[1mConsolidate compiler generated dependencies of target ground_bot__rosidl_typesupport_fastrtps_cpp[0m
+[1.541s] [35m[1mConsolidate compiler generated dependencies of target ground_bot__rosidl_typesupport_cpp[0m
+[1.545s] [ 14%] Built target ament_cmake_python_copy_ground_bot
+[1.547s] [35m[1mConsolidate compiler generated dependencies of target ground_bot__rosidl_typesupport_fastrtps_c[0m
+[1.548s] [35m[1mConsolidate compiler generated dependencies of target ground_bot__rosidl_typesupport_introspection_c[0m
+[1.548s] [35m[1mConsolidate compiler generated dependencies of target ground_bot__rosidl_typesupport_c[0m
+[1.557s] [ 24%] Built target ground_bot__rosidl_typesupport_cpp
+[1.558s] [ 34%] Built target ground_bot__rosidl_typesupport_introspection_cpp
+[1.559s] [ 43%] Built target ground_bot__rosidl_typesupport_fastrtps_cpp
+[1.561s] [ 53%] Built target ground_bot__rosidl_typesupport_introspection_c
+[1.561s] [ 63%] Built target ground_bot__rosidl_typesupport_c
+[1.561s] [ 73%] Built target ground_bot__rosidl_typesupport_fastrtps_c
+[1.562s] gmake: *** [Makefile:146: all] Error 2
+[1.563s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/ground_bot' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/ground_bot -- -j16 -l16

@@ -1,14 +1,7 @@
 <?xml version="1.0"?>
 <robot name="ground_bot">
 
-  <link name="base_footprint">
-  </link>
 
-  <joint name="base_footprint_joint" type="fixed">
-    <parent link="base_footprint"/>
-    <child link="base_link"/>
-    <origin xyz="0.0 0.0 -0.2" rpy="0 0 0"/>
-  </joint>
 
   <link name="base_link">  
     <visual>
@@ -27,10 +20,22 @@
       </geometry>
     </collision>
     <inertial>
-      <mass value="10"/>
+      <mass value="100"/>
       <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
     </inertial>
   </link>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_footprint"/>
+    <origin xyz="0.0 0.0 -0.15" rpy="0 0 0"/>
+  </joint>
+
+
+
+  <link name="base_footprint">
+  </link>
+
 
   <link name="wheel_right_link">
     <visual>
@@ -79,15 +84,15 @@
 <joint name="wheel_right_joint" type="continuous">
   <parent link="base_link"/>
   <child link="wheel_right_link"/>
-  <origin xyz="-0.15 0.153 -0.02" rpy="1.577 0 0"/>
-  <axis xyz="0 0 1"/>
+  <origin xyz="-0.15 -0.18 -0.02" rpy="1.577 0 0"/>
+  <axis xyz="0 0 -1"/>
 </joint>
 
 <joint name="wheel_left_joint" type="continuous">
   <parent link="base_link"/>
   <child link="wheel_left_link"/>
-  <origin xyz="-0.15 -0.153 -0.02" rpy="1.577 0 0"/>
-  <axis xyz="0 0 1"/>
+  <origin xyz="-0.15 0.18 -0.02" rpy="1.577 0 0"/>
+  <axis xyz="0 0 -1"/>
 </joint>
 
 <link name ="caster_wheel_link">
@@ -114,6 +119,12 @@
   <child link="caster_wheel_link"/>
   <origin xyz="0.1 0 -0.06" rpy="0 0 0"/>
 </joint>
+
+    <gazebo reference="caster_wheel_link">
+        <material>Gazebo/White</material>
+        <mu1 value="0.001"/>
+        <mu2 value="0.001"/>
+    </gazebo>
 
 
 <link name="stand_link">
@@ -148,7 +159,7 @@
 
 <link name="imu_link">
   <visual>
-    <origin xyz="0 0   0" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
       <box size="0.01 0.01 0.01"/>
     </geometry>

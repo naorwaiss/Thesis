@@ -1,0 +1,41 @@
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/joy_twist.cpp:[m[K In constructor ‘[01m[KJoyToAckermannBridge::JoyToAckermannBridge()[m[K’:
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/joy_twist.cpp:15:63:[m[K [01;31m[Kerror: [m[K‘[01m[KTwistStamped[m[K’ is not a member of ‘[01m[Kgeometry_msgs::msg[m[K’
+   15 |         cmd_pub_ = this->create_publisher<geometry_msgs::msg::[01;31m[KTwistStamped[m[K>(
+      |                                                               [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/joy_twist.cpp:15:76:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KJoyToAckermannBridge::create_publisher<<expression error> >(const char [8], int)[m[K’
+   15 |         cmd_pub_ = [01;31m[Kthis->create_publisher<geometry_msgs::msg::TwistStamped>([m[K
+      |                    [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^[m[K
+   16 | [01;31m[K            "cmd_vel", 10[m[K
+      |             [01;31m[K~~~~~~~~~~~~~[m[K                                                   
+   17 | [01;31m[K        )[m[K;
+      |         [01;31m[K~[m[K                                                                   
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/joy_twist.cpp:1[m[K:
+[01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:195:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class MessageT, class AllocatorT, class PublisherT> std::shared_ptr<PublisherT> rclcpp::Node::create_publisher(const string&, const rclcpp::QoS&, const rclcpp::PublisherOptionsWithAllocator<AllocatorT>&)[m[K’
+  195 |   [01;36m[Kcreate_publisher[m[K(
+      |   [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:195:3:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/joy_twist.cpp:15:76:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+   15 |         cmd_pub_ = [01;31m[Kthis->create_publisher<geometry_msgs::msg::TwistStamped>([m[K
+      |                    [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^[m[K
+   16 | [01;31m[K            "cmd_vel", 10[m[K
+      |             [01;31m[K~~~~~~~~~~~~~[m[K                                                   
+   17 | [01;31m[K        )[m[K;
+      |         [01;31m[K~[m[K                                                                   
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/joy_twist.cpp:[m[K In member function ‘[01m[Kvoid JoyToAckermannBridge::joyCallback(sensor_msgs::msg::Joy_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/joy_twist.cpp:24:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing Twist = struct geometry_msgs::msg::Twist_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct geometry_msgs::msg::Twist_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kheader[m[K’
+   24 |         cmd_msg.[01;31m[Kheader[m[K.frame_id = "base_link";
+      |                 [01;31m[K^~~~~~[m[K
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/joy_twist.cpp:28:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing Twist = struct geometry_msgs::msg::Twist_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct geometry_msgs::msg::Twist_<std::allocator<void> >[m[K’} has no member named ‘[01m[Ktwist[m[K’; did you mean ‘[01m[KTwist_[m[K’?
+   28 |             cmd_msg.[01;31m[Ktwist[m[K.linear.x = msg->axes[1] * linear_speed;         // Forward/Backward
+      |                     [01;31m[K^~~~~[m[K
+      |                     [32m[KTwist_[m[K
+[01m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/joy_twist.cpp:29:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing Twist = struct geometry_msgs::msg::Twist_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct geometry_msgs::msg::Twist_<std::allocator<void> >[m[K’} has no member named ‘[01m[Ktwist[m[K’; did you mean ‘[01m[KTwist_[m[K’?
+   29 |             cmd_msg.[01;31m[Ktwist[m[K.angular.z = msg->axes[2] * angular_speed; // Left/Right steering
+      |                     [01;31m[K^~~~~[m[K
+      |                     [32m[KTwist_[m[K
+gmake[2]: *** [CMakeFiles/joy_twist.dir/build.make:76: CMakeFiles/joy_twist.dir/src/joy_twist.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:182: CMakeFiles/joy_twist.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2
