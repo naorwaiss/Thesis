@@ -1,6 +1,0 @@
-[01m[Kcc1plus:[m[K [01;31m[Kfatal error: [m[K/home/naor/Desktop/naor/study/Thesis/src/ground_bot/src/joy_twist.cpp: No such file or directory
-compilation terminated.
-gmake[2]: *** [CMakeFiles/joy_twist.dir/build.make:76: CMakeFiles/joy_twist.dir/src/joy_twist.cpp.o] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:182: CMakeFiles/joy_twist.dir/all] Error 2
-gmake[1]: *** Waiting for unfinished jobs....
-gmake: *** [Makefile:146: all] Error 2

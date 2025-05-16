@@ -1,0 +1,333 @@
+[0.183s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/drone_c': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake /home/naor/Desktop/naor/study/Thesis/src/drone_c -DCMAKE_INSTALL_PREFIX=/home/naor/Desktop/naor/study/Thesis/install/drone_c
+[0.298s] -- The C compiler identification is GNU 11.4.0
+[0.365s] -- The CXX compiler identification is GNU 11.4.0
+[0.372s] -- Detecting C compiler ABI info
+[0.467s] -- Detecting C compiler ABI info - done
+[0.472s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.472s] -- Detecting C compile features
+[0.472s] -- Detecting C compile features - done
+[0.474s] -- Detecting CXX compiler ABI info
+[0.580s] -- Detecting CXX compiler ABI info - done
+[0.588s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.589s] -- Detecting CXX compile features
+[0.589s] -- Detecting CXX compile features - done
+[0.591s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.932s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.012s] -- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)
+[1.045s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[1.049s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.055s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.065s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.076s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.110s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.113s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.237s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.262s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.299s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.306s] -- Looking for pthread.h
+[1.383s] -- Looking for pthread.h - found
+[1.383s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.473s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.474s] -- Found Threads: TRUE  
+[1.516s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[1.791s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[2.159s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.332s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.365s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[2.368s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[2.411s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[2.411s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[2.411s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[2.411s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[2.453s] -- Found PythonExtra: .so  
+[2.521s] -- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[2.543s] -- Added test 'copyright' to check source files copyright and LICENSE
+[2.549s] -- Added test 'flake8' to check Python code syntax and style conventions
+[2.552s] -- Added test 'lint_cmake' to check CMake code style
+[2.553s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[2.558s] -- Added test 'uncrustify' to check C / C++ code style
+[2.558s] -- Configured uncrustify additional arguments: 
+[2.559s] -- Added test 'xmllint' to check XML markup files
+[2.562s] -- Configuring done
+[2.597s] -- Generating done
+[2.609s] -- Build files have been written to: /home/naor/Desktop/naor/study/Thesis/build/drone_c
+[2.627s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/drone_c' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake /home/naor/Desktop/naor/study/Thesis/src/drone_c -DCMAKE_INSTALL_PREFIX=/home/naor/Desktop/naor/study/Thesis/install/drone_c
+[2.630s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/drone_c': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/drone_c -- -j16 -l16
+[2.733s] [  1%] [34m[1mGenerating C code for ROS interfaces[0m
+[2.755s] [  3%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[2.807s] [  3%] Built target ament_cmake_python_copy_drone_c
+[3.158s] running egg_info
+[3.184s] creating drone_c.egg-info
+[3.185s] writing drone_c.egg-info/PKG-INFO
+[3.185s] writing dependency_links to drone_c.egg-info/dependency_links.txt
+[3.186s] writing top-level names to drone_c.egg-info/top_level.txt
+[3.186s] writing manifest file 'drone_c.egg-info/SOURCES.txt'
+[3.252s] reading manifest file 'drone_c.egg-info/SOURCES.txt'
+[3.253s] writing manifest file 'drone_c.egg-info/SOURCES.txt'
+[3.422s] [  3%] Built target ament_cmake_python_build_drone_c_egg
+[3.496s] [  3%] Built target drone_c__cpp
+[3.559s] [  5%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[3.561s] [  7%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[3.567s] [  9%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[3.589s] [ 10%] [32mBuilding C object CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/euler_angles__functions.c.o[0m
+[3.597s] [ 12%] [32mBuilding C object CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/imu_filter__functions.c.o[0m
+[3.606s] [ 16%] [32mBuilding C object CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/pid__functions.c.o[0m
+[3.607s] [ 16%] [32mBuilding C object CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/motors__functions.c.o[0m
+[3.733s] [ 18%] [32m[1mLinking C shared library libdrone_c__rosidl_generator_c.so[0m
+[3.852s] [ 18%] Built target drone_c__rosidl_generator_c
+[3.958s] [ 20%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[3.971s] [ 21%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[3.974s] [ 23%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[4.337s] [ 25%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/pid__type_support.cpp.o[0m
+[4.392s] [ 27%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/motors__type_support.cpp.o[0m
+[4.395s] [ 29%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/euler_angles__type_support.cpp.o[0m
+[4.410s] [ 30%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/imu_filter__type_support.cpp.o[0m
+[4.603s] [ 32%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/drone_c/msg/detail/pid__type_support.cpp.o[0m
+[4.636s] [ 34%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/drone_c/msg/detail/imu_filter__type_support.cpp.o[0m
+[4.663s] [ 36%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/drone_c/msg/detail/motors__type_support.cpp.o[0m
+[4.663s] [ 38%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/drone_c/msg/detail/euler_angles__type_support.cpp.o[0m
+[4.698s] [ 40%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/drone_c/msg/detail/dds_fastrtps/pid__type_support.cpp.o[0m
+[4.802s] [ 41%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/drone_c/msg/detail/dds_fastrtps/euler_angles__type_support.cpp.o[0m
+[4.808s] [ 43%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/drone_c/msg/detail/dds_fastrtps/imu_filter__type_support.cpp.o[0m
+[4.813s] [ 45%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/drone_c/msg/detail/dds_fastrtps/motors__type_support.cpp.o[0m
+[5.093s] [ 47%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_c.dir/rosidl_typesupport_c/drone_c/msg/pid__type_support.cpp.o[0m
+[5.146s] [ 49%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_c.dir/rosidl_typesupport_c/drone_c/msg/motors__type_support.cpp.o[0m
+[5.161s] [ 50%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_c.dir/rosidl_typesupport_c/drone_c/msg/euler_angles__type_support.cpp.o[0m
+[5.166s] [ 52%] [32m[1mLinking CXX shared library libdrone_c__rosidl_typesupport_cpp.so[0m
+[5.190s] [ 54%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_c.dir/rosidl_typesupport_c/drone_c/msg/imu_filter__type_support.cpp.o[0m
+[5.359s] [ 56%] [32mBuilding C object CMakeFiles/drone_c__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/drone_c/msg/detail/pid__type_support.c.o[0m
+[5.400s] [ 58%] [32mBuilding C object CMakeFiles/drone_c__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/drone_c/msg/detail/euler_angles__type_support.c.o[0m
+[5.530s] [ 60%] [32mBuilding C object CMakeFiles/drone_c__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/drone_c/msg/detail/motors__type_support.c.o[0m
+[5.551s] [ 61%] [32mBuilding C object CMakeFiles/drone_c__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/drone_c/msg/detail/imu_filter__type_support.c.o[0m
+[5.567s] [ 63%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/drone_c/msg/detail/pid__type_support_c.cpp.o[0m
+[5.579s] [ 65%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/drone_c/msg/detail/euler_angles__type_support_c.cpp.o[0m
+[5.592s] [ 67%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/drone_c/msg/detail/motors__type_support_c.cpp.o[0m
+[5.597s] [ 69%] [32m[1mLinking CXX shared library libdrone_c__rosidl_typesupport_introspection_cpp.so[0m
+[5.623s] [ 70%] [32mBuilding CXX object CMakeFiles/drone_c__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/drone_c/msg/detail/imu_filter__type_support_c.cpp.o[0m
+[5.662s] [ 72%] [32m[1mLinking CXX shared library libdrone_c__rosidl_typesupport_fastrtps_cpp.so[0m
+[5.669s] [ 74%] [32m[1mLinking CXX shared library libdrone_c__rosidl_typesupport_c.so[0m
+[5.745s] [ 74%] Built target drone_c__rosidl_typesupport_cpp
+[5.798s] [ 76%] [32m[1mLinking C shared library libdrone_c__rosidl_typesupport_introspection_c.so[0m
+[5.828s] [ 76%] Built target drone_c__rosidl_typesupport_introspection_cpp
+[5.855s] [ 76%] Built target drone_c__rosidl_typesupport_c
+[5.883s] [ 76%] Built target drone_c__rosidl_typesupport_introspection_c
+[5.908s] [ 76%] Built target drone_c__rosidl_typesupport_fastrtps_cpp
+[6.072s] [ 78%] [32m[1mLinking CXX shared library libdrone_c__rosidl_typesupport_fastrtps_c.so[0m
+[6.157s] [ 78%] Built target drone_c__rosidl_typesupport_fastrtps_c
+[6.192s] [ 78%] Built target drone_c
+[6.220s] [ 80%] [34m[1mGenerating Python code for ROS interfaces[0m
+[6.742s] [ 80%] Built target drone_c__py
+[6.773s] [ 81%] [32mBuilding C object CMakeFiles/drone_c__rosidl_generator_py.dir/rosidl_generator_py/drone_c/msg/_motors_s.c.o[0m
+[6.781s] [ 85%] [32mBuilding C object CMakeFiles/drone_c__rosidl_generator_py.dir/rosidl_generator_py/drone_c/msg/_imu_filter_s.c.o[0m
+[6.781s] [ 85%] [32mBuilding C object CMakeFiles/drone_c__rosidl_generator_py.dir/rosidl_generator_py/drone_c/msg/_euler_angles_s.c.o[0m
+[6.781s] [ 87%] [32mBuilding C object CMakeFiles/drone_c__rosidl_generator_py.dir/rosidl_generator_py/drone_c/msg/_pid_s.c.o[0m
+[6.894s] [ 89%] [32m[1mLinking C shared library rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so[0m
+[6.946s] [ 89%] Built target drone_c__rosidl_generator_py
+[6.981s] [ 90%] [32mBuilding C object CMakeFiles/drone_c__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[6.985s] [ 92%] [32mBuilding C object CMakeFiles/drone_c__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[6.986s] [ 94%] [32mBuilding C object CMakeFiles/drone_c__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_c.c.o[0m
+[7.063s] [ 98%] [32m[1mLinking C shared library rosidl_generator_py/drone_c/drone_c_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[7.064s] [ 98%] [32m[1mLinking C shared library rosidl_generator_py/drone_c/drone_c_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[7.066s] [100%] [32m[1mLinking C shared library rosidl_generator_py/drone_c/drone_c_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[7.113s] [100%] Built target drone_c__rosidl_typesupport_c__pyext
+[7.113s] [100%] Built target drone_c__rosidl_typesupport_introspection_c__pyext
+[7.115s] [100%] Built target drone_c__rosidl_typesupport_fastrtps_c__pyext
+[7.126s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/drone_c' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/drone_c -- -j16 -l16
+[7.128s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/drone_c': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/drone_c
+[7.142s] -- Install configuration: ""
+[7.142s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/ament_index/resource_index/rosidl_interfaces/drone_c
+[7.142s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c
+[7.142s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg
+[7.143s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/motors.h
+[7.143s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/imu_filter.h
+[7.143s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/euler_angles.h
+[7.143s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/pid.h
+[7.143s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/rosidl_generator_c__visibility_control.h
+[7.143s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail
+[7.143s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__functions.c
+[7.143s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/pid__struct.h
+[7.143s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/motors__struct.h
+[7.143s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/pid__functions.h
+[7.143s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__type_support.h
+[7.143s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__functions.h
+[7.143s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/pid__type_support.h
+[7.143s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/motors__functions.h
+[7.144s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/motors__type_support.h
+[7.144s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__type_support.h
+[7.144s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/motors__functions.c
+[7.144s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__functions.h
+[7.144s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__functions.c
+[7.145s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/pid__functions.c
+[7.145s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__struct.h
+[7.145s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__struct.h
+[7.145s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/environment/library_path.sh
+[7.145s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/environment/library_path.dsv
+[7.146s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/libdrone_c__rosidl_generator_c.so
+[7.146s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/libdrone_c__rosidl_generator_c.so" to ""
+[7.146s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c
+[7.146s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg
+[7.147s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[7.147s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail
+[7.147s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__rosidl_typesupport_fastrtps_c.h
+[7.147s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__rosidl_typesupport_fastrtps_c.h
+[7.147s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/pid__rosidl_typesupport_fastrtps_c.h
+[7.147s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/motors__rosidl_typesupport_fastrtps_c.h
+[7.147s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/libdrone_c__rosidl_typesupport_fastrtps_c.so
+[7.148s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/libdrone_c__rosidl_typesupport_fastrtps_c.so" to ""
+[7.148s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c
+[7.148s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg
+[7.148s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/pid.hpp
+[7.148s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/motors.hpp
+[7.148s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/rosidl_generator_cpp__visibility_control.hpp
+[7.148s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/euler_angles.hpp
+[7.149s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/imu_filter.hpp
+[7.149s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail
+[7.149s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/motors__traits.hpp
+[7.149s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__struct.hpp
+[7.149s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/pid__type_support.hpp
+[7.149s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__struct.hpp
+[7.149s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__traits.hpp
+[7.149s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/motors__builder.hpp
+[7.149s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/motors__struct.hpp
+[7.149s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__builder.hpp
+[7.149s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/pid__struct.hpp
+[7.149s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__type_support.hpp
+[7.149s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__traits.hpp
+[7.150s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/motors__type_support.hpp
+[7.150s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/pid__builder.hpp
+[7.150s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/pid__traits.hpp
+[7.150s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__type_support.hpp
+[7.150s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__builder.hpp
+[7.150s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c
+[7.150s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg
+[7.150s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[7.150s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail
+[7.150s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__rosidl_typesupport_fastrtps_cpp.hpp
+[7.150s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__rosidl_typesupport_fastrtps_cpp.hpp
+[7.150s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/dds_fastrtps
+[7.150s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/motors__rosidl_typesupport_fastrtps_cpp.hpp
+[7.151s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/pid__rosidl_typesupport_fastrtps_cpp.hpp
+[7.151s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/libdrone_c__rosidl_typesupport_fastrtps_cpp.so
+[7.151s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/libdrone_c__rosidl_typesupport_fastrtps_cpp.so" to ""
+[7.151s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c
+[7.151s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg
+[7.151s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[7.151s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail
+[7.151s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/pid__rosidl_typesupport_introspection_c.h
+[7.151s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/motors__type_support.c
+[7.151s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__type_support.c
+[7.152s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/motors__rosidl_typesupport_introspection_c.h
+[7.152s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/pid__type_support.c
+[7.152s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__rosidl_typesupport_introspection_c.h
+[7.152s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__type_support.c
+[7.152s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__rosidl_typesupport_introspection_c.h
+[7.152s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/libdrone_c__rosidl_typesupport_introspection_c.so
+[7.152s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/libdrone_c__rosidl_typesupport_introspection_c.so" to ""
+[7.152s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/libdrone_c__rosidl_typesupport_c.so
+[7.152s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/libdrone_c__rosidl_typesupport_c.so" to ""
+[7.152s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c
+[7.152s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg
+[7.153s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail
+[7.153s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/motors__type_support.cpp
+[7.153s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__rosidl_typesupport_introspection_cpp.hpp
+[7.153s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/pid__type_support.cpp
+[7.153s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__rosidl_typesupport_introspection_cpp.hpp
+[7.153s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/imu_filter__type_support.cpp
+[7.153s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/euler_angles__type_support.cpp
+[7.153s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/pid__rosidl_typesupport_introspection_cpp.hpp
+[7.153s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/include/drone_c/drone_c/msg/detail/motors__rosidl_typesupport_introspection_cpp.hpp
+[7.153s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/libdrone_c__rosidl_typesupport_introspection_cpp.so
+[7.153s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/libdrone_c__rosidl_typesupport_introspection_cpp.so" to ""
+[7.153s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/libdrone_c__rosidl_typesupport_cpp.so
+[7.154s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/libdrone_c__rosidl_typesupport_cpp.so" to ""
+[7.154s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/environment/pythonpath.sh
+[7.154s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/environment/pythonpath.dsv
+[7.154s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c-0.0.1-py3.10.egg-info
+[7.154s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c-0.0.1-py3.10.egg-info/SOURCES.txt
+[7.154s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c-0.0.1-py3.10.egg-info/PKG-INFO
+[7.154s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c-0.0.1-py3.10.egg-info/dependency_links.txt
+[7.154s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c-0.0.1-py3.10.egg-info/top_level.txt
+[7.154s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c
+[7.154s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/drone_c_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[7.155s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/__init__.py
+[7.155s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/msg
+[7.155s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/msg/_motors_s.c
+[7.155s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/msg/__init__.py
+[7.155s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/msg/_pid.py
+[7.155s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/msg/_euler_angles_s.c
+[7.155s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/msg/_imu_filter.py
+[7.155s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/msg/_euler_angles.py
+[7.155s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/msg/_pid_s.c
+[7.156s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/msg/_imu_filter_s.c
+[7.156s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/msg/_motors.py
+[7.156s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/_drone_c_s.ep.rosidl_typesupport_c.c
+[7.156s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c
+[7.156s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/libdrone_c__rosidl_generator_py.so
+[7.156s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/drone_c_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[7.156s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/drone_c_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[7.156s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/_drone_c_s.ep.rosidl_typesupport_introspection_c.c
+[7.199s] Listing '/home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c'...
+[7.199s] Compiling '/home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/__init__.py'...
+[7.199s] Listing '/home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/msg'...
+[7.199s] Compiling '/home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/msg/__init__.py'...
+[7.199s] Compiling '/home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/msg/_euler_angles.py'...
+[7.199s] Compiling '/home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/msg/_imu_filter.py'...
+[7.199s] Compiling '/home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/msg/_motors.py'...
+[7.200s] Compiling '/home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/msg/_pid.py'...
+[7.204s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/drone_c_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[7.204s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/drone_c_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[7.204s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/drone_c_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[7.205s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/drone_c_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[7.205s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/drone_c_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[7.205s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/drone_c/local/lib/python3.10/dist-packages/drone_c/drone_c_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[7.205s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/libdrone_c__rosidl_generator_py.so
+[7.205s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/libdrone_c__rosidl_generator_py.so" to ""
+[7.205s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/msg/Pid.idl
+[7.206s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/msg/EulerAngles.idl
+[7.206s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/msg/Motors.idl
+[7.206s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/msg/ImuFilter.idl
+[7.206s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/msg/Pid.msg
+[7.206s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/msg/EulerAngles.msg
+[7.206s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/msg/Motors.msg
+[7.206s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/msg/ImuFilter.msg
+[7.206s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/drone_c/rtcom_teensy_ros.py
+[7.207s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/ament_index/resource_index/package_run_dependencies/drone_c
+[7.208s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/ament_index/resource_index/parent_prefix_path/drone_c
+[7.208s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/environment/ament_prefix_path.sh
+[7.208s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/environment/ament_prefix_path.dsv
+[7.208s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/environment/path.sh
+[7.208s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/environment/path.dsv
+[7.209s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/local_setup.bash
+[7.209s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/local_setup.sh
+[7.209s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/local_setup.zsh
+[7.209s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/local_setup.dsv
+[7.209s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/package.dsv
+[7.209s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/ament_index/resource_index/packages/drone_c
+[7.209s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/export_drone_c__rosidl_generator_cExport.cmake
+[7.210s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/export_drone_c__rosidl_generator_cExport-noconfig.cmake
+[7.210s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/export_drone_c__rosidl_typesupport_fastrtps_cExport.cmake
+[7.210s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/export_drone_c__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[7.210s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/export_drone_c__rosidl_generator_cppExport.cmake
+[7.210s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/export_drone_c__rosidl_typesupport_fastrtps_cppExport.cmake
+[7.210s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/export_drone_c__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[7.210s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/drone_c__rosidl_typesupport_introspection_cExport.cmake
+[7.210s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/drone_c__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[7.211s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/drone_c__rosidl_typesupport_cExport.cmake
+[7.211s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/drone_c__rosidl_typesupport_cExport-noconfig.cmake
+[7.211s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/drone_c__rosidl_typesupport_introspection_cppExport.cmake
+[7.211s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/drone_c__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[7.211s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/drone_c__rosidl_typesupport_cppExport.cmake
+[7.211s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/drone_c__rosidl_typesupport_cppExport-noconfig.cmake
+[7.211s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/export_drone_c__rosidl_generator_pyExport.cmake
+[7.212s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/export_drone_c__rosidl_generator_pyExport-noconfig.cmake
+[7.212s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/rosidl_cmake-extras.cmake
+[7.212s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/ament_cmake_export_dependencies-extras.cmake
+[7.212s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/ament_cmake_export_include_directories-extras.cmake
+[7.212s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/ament_cmake_export_libraries-extras.cmake
+[7.212s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/ament_cmake_export_targets-extras.cmake
+[7.212s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[7.212s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[7.213s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/drone_cConfig.cmake
+[7.213s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/cmake/drone_cConfig-version.cmake
+[7.213s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/package.xml
+[7.216s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/drone_c' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/naor/Desktop/naor/study/Thesis/install/camera_nav:/home/naor/Desktop/naor/study/Thesis/install/controller:/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/drone_c

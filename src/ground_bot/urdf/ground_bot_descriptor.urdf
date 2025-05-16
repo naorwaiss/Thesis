@@ -219,7 +219,8 @@
     </sensor>
   </gazebo>
 
-<link name="depth_camera_real_link">
+
+<link name="camera_link">
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
@@ -228,12 +229,11 @@
   </visual>
 </link>
 
-<joint name="depth_camera_real_joint" type="fixed">
+<joint name="camera_mount_joint" type="fixed">
   <parent link="base_link"/>
-  <child link="depth_camera_real_link"/>
-  <origin xyz="0.2 0 0.04" rpy="0 0 0"/>
+  <child link="camera_link"/>
+  <origin xyz="0.2 0 0.04" rpy="0 1.57 0"/>
 </joint>
-
 
   <gazebo reference="imu_link">
     <sensor name="imu_sensor" type="imu">

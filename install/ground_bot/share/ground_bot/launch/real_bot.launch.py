@@ -7,7 +7,8 @@ from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-
+from launch.event_handlers import OnProcessExit
+from launch.actions import RegisterEventHandler
 
 def generate_launch_description():
     robot_description_path = get_package_share_directory('ground_bot')
@@ -52,10 +53,16 @@ def generate_launch_description():
         name='pointcloud_to_laserscan',
         output='screen',
     )
-
+    static_tf_node = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='static_transform_publisher',
+        output='screen',
+        arguments=['0', '0', '0', '0', '0', '0', '1', 'real_sense_link', 'camera_depth_optical_frame']
+    )
     return LaunchDescription([
         realsense_launch,
         pointcloud_to_laserscan_node,
-        robot_state_publisher,
-        rviz
+        robot_state_publisher,  
+        rviz,
     ])
