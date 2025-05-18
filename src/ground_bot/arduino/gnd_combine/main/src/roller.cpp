@@ -55,15 +55,6 @@ void roller::set_pid_param(float Kp, float Ki, float Kd) {
     pid.Kd = Kd;
 }
 
-void roller::main_roller() {
-    load_cell.raw_Data = load_cell_sensor.get_value();
-    load_cell.tension = (load_cell.raw_Data - load_cell.rawEmpty) / load_cell.load_ScaleFactor;
-    if (load_cell.tension > -load_cell.tension_threshold && load_cell.tension < load_cell.tension_threshold) load_cell.tension = 0;
-    error_find();
-    pid.control = PID_control();
-    applyMotorControl(pid.control);
-}
-
 float roller::PID_control() {
     float control = 0;
     pid.integral += load_cell.error * (1 / dt);
@@ -82,5 +73,15 @@ void roller::init_roller() {
     analogWriteFrequency(PWM_PIN, 20000);
     init_roller_motor();
     stopMotor();
-
 }
+
+void roller::main_roller() {
+    load_cell.raw_Data = load_cell_sensor.get_value();
+    load_cell.tension = (load_cell.raw_Data - load_cell.rawEmpty) / load_cell.load_ScaleFactor;
+    if (load_cell.tension > -load_cell.tension_threshold && load_cell.tension < load_cell.tension_threshold) load_cell.tension = 0;
+    error_find();
+    pid.control = PID_control();
+    applyMotorControl(pid.control);
+}
+
+

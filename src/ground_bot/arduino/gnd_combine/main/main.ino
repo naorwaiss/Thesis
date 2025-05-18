@@ -6,14 +6,15 @@
 
 #define crsfSerial Serial1  // Use Serial1 for the CRSF communication
 #define NUM_CHANNELS 16
-#define right_motor_pwmh_pin 3
-#define right_motor_dir_pin 2
-#define left_motor_pwmh_pin 5
-#define left_motor_dir_pin 4
-#define right_motor_encoderA_pin 7
-#define right_motor_encoderB_pin 6
-#define left_motor_encoderA_pin 8
-#define left_motor_encoderB_pin 9
+
+#define right_motor_pwmh_pin 3 // for the ground bot
+#define right_motor_dir_pin 2   // for the ground bot
+#define left_motor_pwmh_pin 5 // for the ground bot
+#define left_motor_dir_pin 4   // for the ground bot
+#define right_motor_encoderA_pin 7 // for the ground bot
+#define right_motor_encoderB_pin 6 // for the ground bot
+#define left_motor_encoderA_pin 8 // for the ground bot
+#define left_motor_encoderB_pin 9 // for the ground bot
 
 
 //have problem with this pin
@@ -53,8 +54,8 @@ void executed_ch() {
 }
 
 void setup() {
-    crsfSerial.begin(CRSF_BAUDRATE, SERIAL_8N1);
-    gnd_platform.init();
+    // crsfSerial.begin(CRSF_BAUDRATE, SERIAL_8N1);
+    // gnd_platform.init();
     roller_instance.init_roller();
     rtcomSocket.begin();
     rtcomSocket.onConnection(onConnect);
@@ -64,9 +65,9 @@ void loop() {
     executed_ch();
     if (loop_time > dt_loop) {
         rtcomSocket.process();
-        float omega_dot_cmmand = constrain(map(channels[0], 1000, 2000, -1, 1), -1, 1);
-        float x_dot_cmmand = constrain(map(channels[2], 1000, 2000, -1, 1), -1, 1);
-        gnd_platform.main(omega_dot_cmmand, x_dot_cmmand);
+        // float omega_dot_cmmand = constrain(map(channels[0], 1000, 2000, -1, 1), -1, 1);
+        // float x_dot_cmmand = constrain(map(channels[2], 1000, 2000, -1, 1), -1, 1);
+        // gnd_platform.main(omega_dot_cmmand, x_dot_cmmand);
         roller_instance.main_roller();
         loop_time = 0;
     }
