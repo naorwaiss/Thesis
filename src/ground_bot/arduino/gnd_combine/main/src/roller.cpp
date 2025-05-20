@@ -1,25 +1,37 @@
 #include "roller.h"
 
-roller::roller(double dt_sec, uint8_t INA_PIN_ARRIVE, uint8_t INB_PIN_ARRIVE, uint8_t PWM_PIN_ARRIVE, uint8_t DOUT_ARRIVE, uint8_t CLK_ARRIVE) {
+roller::roller(double dt_sec,uint8_t ENA_ARRIVE, uint8_t INA_PIN_ARRIVE, uint8_t INB_PIN_ARRIVE, uint8_t PWM_PIN_ARRIVE, uint8_t DOUT_ARRIVE, uint8_t CLK_ARRIVE) {
     INA_PIN = INA_PIN_ARRIVE;
     INB_PIN = INB_PIN_ARRIVE;
     PWM_PIN = PWM_PIN_ARRIVE;
+    ENA_PIN = ENA_ARRIVE;
     DOUT = DOUT_ARRIVE;
     CLK = CLK_ARRIVE;
-    dt = dt_sec;
+    this->dt = dt_sec;
 }
 
 void roller::init_roller_motor() {
+    pinMode(ENA_PIN, OUTPUT);
     pinMode(INA_PIN, OUTPUT);
     pinMode(INB_PIN, OUTPUT);
     pinMode(PWM_PIN, OUTPUT);
 }
 
 void roller::stopMotor() {
-    analogWrite(PWM_PIN, 0);
-    digitalWrite(INA_PIN, LOW);
-    digitalWrite(INB_PIN, LOW);
+  digitalWrite(ENA_PIN, LOW);
+  digitalWrite(INA_PIN, LOW);
+  digitalWrite(INB_PIN, LOW);
+  analogWrite(PWM_PIN, 0);
 }
+
+void roller::motor_control(int pwm) {
+    digitalWrite(ENA_PIN, HIGH);   // הפעלת המנוע
+    digitalWrite(INA_PIN, HIGH);  // כיוון קדימה
+    digitalWrite(INB_PIN, LOW);   // כיוון קדימה
+    analogWrite(PWM_PIN, pwm);    // מהירות 50%
+}
+
+
 
 void roller::error_find() {
     if (load_cell.tension < load_cell.minTension) {
@@ -35,8 +47,10 @@ void roller::applyMotorControl(float control) {
     int pwmOut = abs(pid.control);
     if (pwmOut < 50 && pwmOut > 0) pwmOut = 50;
     pwmOut = constrain(pwmOut, 0, 255);
-
-    if (pid.control > 0) {
+    Serial.print("pwmOut: ");
+    Serial.println(pwmOut);
+    digitalWrite(ENA_PIN, HIGH);
+    if (pid.control > 0 ) {
         digitalWrite(INA_PIN, HIGH);
         digitalWrite(INB_PIN, LOW);
         analogWrite(PWM_PIN, pwmOut);
@@ -60,10 +74,10 @@ float roller::PID_control() {
     pid.integral += load_cell.error * (1 / dt);
     pid.integral = constrain(pid.integral, -pid.integralMax, pid.integralMax);
     float derivative = (load_cell.error - pid.previousError) * (1 / dt);
-    pid.previousError = load_cell.error;
+    pid.previousError += load_cell.error;
     control = pid.Kp * load_cell.error + pid.Ki * pid.integral + pid.Kd * derivative;
     if (abs(control) < 25) control = 0;
-    if (abs(load_cell.error) < 5) control *= 0.5;
+    if (abs(load_cell.error) < 5) control *= 0.5;    
     return control;
 }
 
@@ -78,12 +92,21 @@ void roller::init_roller() {
 
 void roller::main_roller() {
     load_cell.raw_Data = load_cell_sensor.get_value();
-    Serial.println(load_cell.raw_Data);
     load_cell.tension = (load_cell.raw_Data - load_cell.rawEmpty) / load_cell.load_ScaleFactor;
     if (load_cell.tension > -load_cell.tension_threshold && load_cell.tension < load_cell.tension_threshold) load_cell.tension = 0;
     error_find();
     pid.control = PID_control();
     applyMotorControl(pid.control);
+
+    Serial.print("load_cell.tension: ");
+    Serial.println(load_cell.tension);  
+    Serial.print("pid.control: ");
+    Serial.println(pid.control);    
+    Serial.print("load_cell.error: ");
+    Serial.println(load_cell.error);    
+    Serial.print("pid.previousError: ");
+    Serial.println(pid.previousError);
+    
 }
 
 

@@ -42,7 +42,6 @@
 #define CONTROLL_THR_MAX 1520
 #define CONTROLL_THR_MIN 1480
 
-
 /*
 ------------------------------------------ Global Variables ------------------------------------------
 */
@@ -135,7 +134,6 @@ void loop() {
         Update_Measurement();
         comp_filter.InitialFiltering(&meas);
         estimated_state_metude();
-
 
         // ekf.run_kalman(&estimated_attitude, &q_est);
 
@@ -248,7 +246,7 @@ void Update_Measurement() {
     // meas.baro_data.asl = baro.pressureToAltitudeMeters(meas.baro_data.pressure);
 }
 
-void    GyroMagCalibration() {
+void GyroMagCalibration() {
     Serial.println("Starting Gyro calibration");
     int start_time = millis();
     int num_samples = 0;
@@ -319,10 +317,16 @@ void IMU_init() {
     mag.writeReg(LIS3MDL::CTRL_REG2, 0x10);        // +- 4 gauss
 }
 
-void controller_trheshold(){
-    if ((controller_data.roll <= CONTROLL_THR_MAX) && (controller_data.roll >= CONTROLL_THR_MIN)){ controller_data.roll = 1500;}
-    if ((controller_data.pitch <= CONTROLL_THR_MAX) && (controller_data.pitch >= CONTROLL_THR_MIN)){ controller_data.pitch = 1500;}
-    if ((controller_data.yaw <= CONTROLL_THR_MAX) && (controller_data.yaw >= CONTROLL_THR_MIN)){ controller_data.yaw = 1500;}
+void controller_trheshold() {
+    if ((controller_data.roll <= CONTROLL_THR_MAX) && (controller_data.roll >= CONTROLL_THR_MIN)) {
+        controller_data.roll = 1500;
+    }
+    if ((controller_data.pitch <= CONTROLL_THR_MAX) && (controller_data.pitch >= CONTROLL_THR_MIN)) {
+        controller_data.pitch = 1500;
+    }
+    if ((controller_data.yaw <= CONTROLL_THR_MAX) && (controller_data.yaw >= CONTROLL_THR_MIN)) {
+        controller_data.yaw = 1500;
+    }
 }
 
 void mapping_controller(char state) {

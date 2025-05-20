@@ -27,34 +27,20 @@ PID_Params_t stab_params; // PID parameters for stabilization controller
 void initializePIDParams(float RrollPID[3] = nullptr, float RpitchPID[3] = nullptr, float RyawPID[3] = nullptr,
                          float Imax_rate[2] = nullptr, float SrollPID[3] = nullptr, float SpitchPID[3] = nullptr,
                          float SyawPID[3] = nullptr, float Imax_stab[2] = nullptr){    // Rate mode parameters
-    
-    // Default ACRO mode parameter values
-    // const float defaultRrollPID[3] = {0.95f, 0.01f, 0.0000008f};
-    // const float defaultRpitchPID[3] = {1.0f, 0.0f, 0.0000008f};   
-    // const float defaultRyawPID[3] = {2.0f, 0.0f, 0.0000005f};
-    // const float defaultImax_rate[2] = {100.0f, 100.0f};
-// 
-    const float defaultRrollPID[3] = {0.9f, 0.00f, 0.015f};
+
+
+    const float defaultRrollPID[3] = {1.3f, 0.00f, 0.015f};
     const float defaultRpitchPID[3] = {1.3f, 0.0f, 0.015f};   
     const float defaultRyawPID[3] = {2.0f, 0.0f, 0.005f};
     const float defaultImax_rate[2] = {100.0f, 100.0f};
 
 
 
-    //24.4
-    // const float defaultRrollPID[3] = {1.0f, 0.8f, 0.0f};
-    // const float defaultRpitchPID[3] = {1.0f, 0.8f, 0.0f};   
-    // const float defaultRyawPID[3] = {2.0f, 0.0f, 0.01f};
-    // const float defaultImax_rate[2] = {100.0f, 100.0f};
-
     // Default STABILIZE mode parameter values
     const float defaultSrollPID[3] = {10.0f, 0.01f, 0.0f};
     const float defaultSpitchPID[3] = {9.0f, 0.01f, 0.0f};
     const float defaultSyawPID[3] = {4.0f, 0.0f, 0.0f};
     const float defaultImax_stab[2] = {100.0f, 100.0f};
-
-
-
 
     // // Default STABILIZE mode parameter values
     // const float defaultSrollPID[3] = {12.0f, 0.00f, 0.0f};

@@ -27,8 +27,8 @@
 // Filter Frequencies:
 #define ACC_LPF_FREQ 25.0f   // Increase from 10.0f
 // #define ACC_LPF_FREQ 1000.0f   // Increase from 10.0f
-#define GYRO_LPF_FREQ 25.0f  // Increase from 40.0f
-#define GYRO_HPF_FREQ 0.5f   // Lower from 2.5f to reduce drift removal aggressiveness
+#define GYRO_LPF_FREQ 20.0f  // Increase from 40.0f
+#define GYRO_HPF_FREQ 1.0f   // Lower from 2.5f to reduce drift removal aggressiveness
 #define MAG_LPF_FREQ 15.0f   // Increase from 10.0f
 
 // Calculate filter coefficients based on cutoff frequencies

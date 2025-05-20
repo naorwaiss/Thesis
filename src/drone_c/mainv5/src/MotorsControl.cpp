@@ -49,7 +49,7 @@ void Motors::Disarm() {
 
 void Motors::set_motorPWM() {
     // Set the PWM value for the ESCs
-    analogWrite(Motor_struct.M1_pin, Motor_struct.PWM1);
+    analogWrite(Motor_struct.M1_pin, Motor_struct.PWM1+50);
     analogWrite(Motor_struct.M2_pin, Motor_struct.PWM2);
     analogWrite(Motor_struct.M3_pin, Motor_struct.PWM3);
     analogWrite(Motor_struct.M4_pin, Motor_struct.PWM4);

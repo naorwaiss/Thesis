@@ -20,16 +20,17 @@
 
 
 //have problem with this pin
-// #define roller_motor_INA_pin 7
-// #define roller_motor_INB_pin 5
-// #define roller_motor_PWM_pin 6
+#define roller_motor_INA_pin 36
+#define roller_motor_INB_pin 33
+#define roller_motor_PWM_pin 15
+#define roller_motor_ENA_pin 37
 #define DOUT_data 14
 #define CLK_data 13
 
 #define loop_time_hz 200
 elapsedMicros loop_time;
 const double dt_loop = 1000000.0 / loop_time_hz;
-double time_sec = 1/loop_time_hz;
+double time_sec = 1.0/loop_time_hz;
 uint16_t channels[NUM_CHANNELS];  // RC channel values
 
 constexpr uint8_t IP_ADDRESS[4] = {192, 168, 1, 177};
@@ -39,7 +40,7 @@ RTCom rtcomSocket(SOCKET_ADDRESS, RTComConfig(1, 100, 200, 500));
 RTComSession *socketSession = nullptr;
 AlfredoCRSF crsf;
 gnd_bot gnd_platform(time_sec,right_motor_pwmh_pin, right_motor_dir_pin, left_motor_pwmh_pin, left_motor_dir_pin, right_motor_encoderA_pin, right_motor_encoderB_pin, left_motor_encoderA_pin, left_motor_encoderB_pin);
-roller roller_instance(time_sec, 10, 11, 12, DOUT_data, CLK_data);
+roller roller_instance(time_sec, roller_motor_ENA_pin, roller_motor_INA_pin , roller_motor_INB_pin, roller_motor_PWM_pin, DOUT_data, CLK_data);
 ImuMadgwick imu(&Wire1,loop_time_hz);
 sender sender_instance(socketSession, &gnd_platform, &roller_instance);
 
@@ -59,8 +60,9 @@ void executed_ch() {
 void setup() {
     Serial.begin(115200);
     // crsfSerial.begin(CRSF_BAUDRATE, SERIAL_8N1);
-    // gnd_platform.init();
+    gnd_platform.init();
     roller_instance.init_roller();
+    roller_instance.set_pid_param(10, 0.0, 0.0);
     // rtcomSocket.begin();
     // rtcomSocket.onConnection(onConnect);
 }
