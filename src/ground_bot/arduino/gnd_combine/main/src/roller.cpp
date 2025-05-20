@@ -73,10 +73,12 @@ void roller::init_roller() {
     analogWriteFrequency(PWM_PIN, 20000);
     init_roller_motor();
     stopMotor();
+    Serial.println("roller motor initialized");
 }
 
 void roller::main_roller() {
     load_cell.raw_Data = load_cell_sensor.get_value();
+    Serial.println(load_cell.raw_Data);
     load_cell.tension = (load_cell.raw_Data - load_cell.rawEmpty) / load_cell.load_ScaleFactor;
     if (load_cell.tension > -load_cell.tension_threshold && load_cell.tension < load_cell.tension_threshold) load_cell.tension = 0;
     error_find();
