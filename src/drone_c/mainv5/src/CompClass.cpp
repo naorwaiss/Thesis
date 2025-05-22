@@ -12,7 +12,7 @@ void CompFilter::UpdateQ(Measurement_t* meas, float dt) {
 
     // Initial Filtering - Not a must nut it helps.
     // InitialFiltering(meas);
-    vec3_t gyro_lpf_rad; 
+    vec3_t gyro_lpf_rad;
     gyro_lpf_rad.x = meas->gyro_LPF.x * deg2rad;
     gyro_lpf_rad.y = meas->gyro_LPF.y * deg2rad;
     gyro_lpf_rad.z = meas->gyro_LPF.z * deg2rad;
@@ -215,7 +215,8 @@ float CompFilter::calculateDynamicBeta(Measurement_t meas) {
     // Compute the norm (magnitude) of the gyroscope vector
     gyroNorm = sqrtf(meas.gyro_LPF.x * meas.gyro_LPF.x +
                      meas.gyro_LPF.y * meas.gyro_LPF.y +
-                     meas.gyro_LPF.z * meas.gyro_LPF.z) * deg2rad;
+                     meas.gyro_LPF.z * meas.gyro_LPF.z) *
+               deg2rad;
     // Adapt Beta based on gyroscope norm
     if (gyroNorm < LOW_MOTION) {
         // System is likely stable or slow-moving, increase Beta for more correction
@@ -232,15 +233,14 @@ float CompFilter::calculateDynamicBeta(Measurement_t meas) {
     }
 }
 
-
 void CompFilter::InitialFiltering(Measurement_t* meas) {
     // meas->acc_LPF.x = (1 - ALPHA_ACC_LPF) * meas->acc.x + ALPHA_ACC_LPF * meas->acc_LPF.x;
     // meas->acc_LPF.y = (1 - ALPHA_ACC_LPF) * meas->acc.y + ALPHA_ACC_LPF * meas->acc_LPF.y;
     // meas->acc_LPF.z = (1 - ALPHA_ACC_LPF) * meas->acc.z + ALPHA_ACC_LPF * meas->acc_LPF.z;
 
-    meas->acc_LPF.y = (1 - ALPHA_ACC_LPF) * meas->acc.y +  ALPHA_ACC_LPF * meas->acc_LPF.y;
-    meas->acc_LPF.x = (1 - ALPHA_ACC_LPF) * meas->acc.x +  ALPHA_ACC_LPF * meas->acc_LPF.x;
-    meas->acc_LPF.z = (1 - ALPHA_ACC_LPF) * meas->acc.z +  ALPHA_ACC_LPF * meas->acc_LPF.z;
+    meas->acc_LPF.y = ALPHA_ACC_LPF * meas->acc.y + (1 - ALPHA_ACC_LPF) * meas->acc_LPF.y;
+    meas->acc_LPF.x = ALPHA_ACC_LPF * meas->acc.x + (1 - ALPHA_ACC_LPF) * meas->acc_LPF.x;
+    meas->acc_LPF.z = ALPHA_ACC_LPF * meas->acc.z + (1 - ALPHA_ACC_LPF) * meas->acc_LPF.z;
 
     // Apply High-pass Filter to Gyro - > RAD. Used for the filter
 

@@ -160,7 +160,7 @@ typedef struct state_s {
     vec3_t acceleration;
 } state_t;
 
-typedef struct PID_Params_s {
+typedef struct PID_Params_s{
     float RollP;
     float RollI;
     float RollD;
@@ -170,11 +170,19 @@ typedef struct PID_Params_s {
     float YawP;
     float YawI;
     float YawD;
+    // Those alphas are used for HPF to calculate the derivative term:
+    float Alpha_roll;
+    float Alpha_pitch;
+    float Alpha_yaw;
+    float RollD_tau;
+    float PitchD_tau;
+    float YawD_tau;
+
     float Imax_roll;
     float Imax_pitch;
     float Imax_yaw;
 
-} PID_Params_t;
+}PID_Params_t;
 
 typedef struct PID_out_s {
     attitude_t error = {0.0, 0.0, 0.0};

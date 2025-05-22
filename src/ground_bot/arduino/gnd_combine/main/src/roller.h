@@ -5,9 +5,8 @@
 #include "HX711.h"
 
 struct load_cell_t {
-    const float minTension = 10;
-    const float maxTension = 40;
-    const float tension_threshold = 2;
+    const float dis_tension = 10;
+    const float threshold_tension = 5;
     const long rawEmpty = 162592;
     const float load_ScaleFactor = (200400 - rawEmpty) / 39;
     float error = 0;

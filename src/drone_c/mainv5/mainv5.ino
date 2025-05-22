@@ -135,14 +135,6 @@ void loop() {
         comp_filter.InitialFiltering(&meas);
         estimated_state_metude();
 
-        // ekf.run_kalman(&estimated_attitude, &q_est);
-
-        // emplimataion of the magwick filter
-        // Update the quaternion:
-        // comp_filter.UpdateQ(&meas, actual_dt / 2);
-        // comp_filter.GetEulerRPYdeg(&estimated_attitude, meas.initial_heading);
-        // comp_filter.GetQuaternion(&q_est);
-
         if (is_armed) {
             // Get Actual rates:
             estimated_rate.roll = meas.gyro_LPF.x;
@@ -215,15 +207,15 @@ void Update_Measurement() {
     meas.gyroDEG.x = IMU.g.x * POL_GYRO_SENS - meas.gyro_bias.x;
     meas.gyroDEG.y = IMU.g.y * POL_GYRO_SENS - meas.gyro_bias.y;
     meas.gyroDEG.z = IMU.g.z * POL_GYRO_SENS - meas.gyro_bias.z;
-    if (abs(meas.gyroDEG.x) < IMU_THRESHOLD) {
-        meas.gyroDEG.x = 0;
-    }
-    if (abs(meas.gyroDEG.y) < IMU_THRESHOLD) {
-        meas.gyroDEG.y = 0;
-    }
-    if (abs(meas.gyroDEG.z) < IMU_THRESHOLD) {
-        meas.gyroDEG.z = 0;
-    }
+    // if (abs(meas.gyroDEG.x) < IMU_THRESHOLD) {
+    //     meas.gyroDEG.x = 0;
+    // }
+    // if (abs(meas.gyroDEG.y) < IMU_THRESHOLD) {
+    //     meas.gyroDEG.y = 0;
+    // }
+    // if (abs(meas.gyroDEG.z) < IMU_THRESHOLD) {
+    //     meas.gyroDEG.z = 0;
+    // }
     meas.gyroRAD.x = meas.gyroDEG.x * deg2rad;
     meas.gyroRAD.y = meas.gyroDEG.y * deg2rad;
     meas.gyroRAD.z = meas.gyroDEG.z * deg2rad;
@@ -378,13 +370,10 @@ void comclass_function() {
 void channel_estimated() {
     if (controller_data.aux4 > 1700) {
         estimated_switch = 0;
-        // Serial.println("ekf");
     } else if (controller_data.aux4 < 1100) {
         estimated_switch = 1;
-        // Serial.println("comclass");
     } else {
         estimated_switch = 2;
-        // Serial.println("magwick");
     }
 }
 

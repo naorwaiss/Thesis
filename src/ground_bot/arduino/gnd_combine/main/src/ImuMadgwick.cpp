@@ -12,7 +12,7 @@
 // Date			Author          Notes
 // 29/09/2011	SOH Madgwick    Initial release
 // 02/10/2011	SOH Madgwick	Optimised for reduced CPU load
-// 19/02/2012	SOH Madgwick	Magnetometer measurement is normalised
+// 19/02/2012	SOH Madgwisck	Magnetometer measurement is normalised
 //
 //=============================================================================================
 
@@ -20,6 +20,7 @@
 // Header files
 
 #include "ImuMadgwick.h"
+#include <Arduino.h>
 #include <math.h>
 
 //-------------------------------------------------------------------------------------------
@@ -35,7 +36,9 @@
 //-------------------------------------------------------------------------------------------
 // AHRS algorithm update
 
-ImuMadgwick::ImuMadgwick(TwoWire* wireInstance,double sampleFrequency) {
+ImuMadgwick::ImuMadgwick(TwoWire& wireInstance, double sampleFrequency) 
+    : wire(wireInstance)  // Initialize reference in initialization list
+{
 	beta = betaDef;
 	q0 = 1.0f;
 	q1 = 0.0f;
@@ -44,7 +47,6 @@ ImuMadgwick::ImuMadgwick(TwoWire* wireInstance,double sampleFrequency) {
 	invSampleFreq = 1.0f / sampleFreqDef;
 	anglesComputed = 0;
 	dt_sec = 1.0/sampleFrequency;
-	wire = wireInstance;  // Store the pointer directly
 }
 
 void ImuMadgwick::update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
@@ -252,45 +254,44 @@ void ImuMadgwick::computeAngles()
 }
 
 void ImuMadgwick::writeRegister(uint8_t reg, uint8_t value) {
-	wire->beginTransmission(IIM42652_ADDR);  // IMU I2C address
-	wire->write(reg);
-	wire->write(value);
-	wire->endTransmission();
+	wire.beginTransmission(IIM42652_ADDR);  // IMU I2C address
+	wire.write(reg);
+	wire.write(value);
+	wire.endTransmission();
 }
 
 uint8_t ImuMadgwick::readRegister(uint8_t reg) {
-	wire->beginTransmission(IIM42652_ADDR);  // IMU I2C address
-	wire->write(reg);
-	wire->endTransmission(false);
-	wire->requestFrom(0x68, 1);
-	return wire->read();
+	wire.beginTransmission(IIM42652_ADDR);  // IMU I2C address
+	wire.write(reg);
+	wire.endTransmission(false);
+	wire.requestFrom(0x68, 1);
+	return wire.read();
 }
 
 int16_t ImuMadgwick::read16bit(uint8_t reg) {
-    wire->beginTransmission(IIM42652_ADDR);
-    wire->write(reg);
-    wire->endTransmission(false);
-    wire->requestFrom(IIM42652_ADDR, 2);
-    uint8_t msb = wire->read();
-    uint8_t lsb = wire->read();
+    wire.beginTransmission(IIM42652_ADDR);
+    wire.write(reg);
+    wire.endTransmission(false);
+    wire.requestFrom(IIM42652_ADDR, 2);
+    uint8_t msb = wire.read();
+    uint8_t lsb = wire.read();
     return (int16_t)((msb << 8) | lsb);
 }
 
 
 
 void ImuMadgwick::init_imu_orientation() {
-	wire->begin();
-	wire->setClock(400000);
-	writeRegister(PWR_MGMT0_REG, 0b00001111);  // GYRO_MODE=11, ACCEL_MODE=11 (Low Noise)
-	delay(1);
-	writeRegister(GYRO_CONFIG0, 0b00100111);   // FS_SEL=010 (±500 dps), ODR=0111 (200 Hz)
-	writeRegister(ACCEL_CONFIG0, 0b01000111);  // FS_SEL=010 (±4g), ODR=0111 (200 Hz)
-	uint8_t whoAmI = readRegister(WHO_AM_I_REG);
-	Serial.print("WHO_AM_I: 0x");
-	Serial.println(whoAmI, HEX);
-	writeRegister(PWR_MGMT0_REG, 0x0F);  // accelerometer and gyroscope on, default ODR
-	delay(100);
-
+    wire.begin();
+    wire.setClock(400000);
+    writeRegister(PWR_MGMT0_REG, 0b00001111);  // GYRO_MODE=11, ACCEL_MODE=11 (Low Noise)
+    delay(1);
+    writeRegister(GYRO_CONFIG0, 0b00100111);   // FS_SEL=010 (±500 dps), ODR=0111 (200 Hz)
+    writeRegister(ACCEL_CONFIG0, 0b01000111);  // FS_SEL=010 (±4g), ODR=0111 (200 Hz)
+    uint8_t whoAmI = readRegister(WHO_AM_I_REG);
+    Serial.print("WHO_AM_I: 0x");
+    Serial.println(whoAmI, HEX);
+    writeRegister(PWR_MGMT0_REG, 0x0F);  // accelerometer and gyroscope on, default ODR
+    delay(100);
 }
 
 void ImuMadgwick::imu_update() {
@@ -315,8 +316,21 @@ void ImuMadgwick::imu_update() {
 
 
 void ImuMadgwick::imu_operation_process() {
-	imu_update();
-
-
-
+    imu_update();
+    
+    // Print the raw accelerometer data
+    Serial.print("Raw Accel (m/s^2) - X: ");
+    Serial.print(imu_measurement.accel.x);
+    Serial.print(" Y: ");
+    Serial.print(imu_measurement.accel.y);
+    Serial.print(" Z: ");
+    Serial.println(imu_measurement.accel.z);
+    
+    // Print the raw gyroscope data
+    Serial.print("Raw Gyro (deg/s) - X: ");
+    Serial.print(imu_measurement.gyro.x);
+    Serial.print(" Y: ");
+    Serial.print(imu_measurement.gyro.y);
+    Serial.print(" Z: ");
+    Serial.println(imu_measurement.gyro.z);
 }
