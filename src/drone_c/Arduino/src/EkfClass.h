@@ -16,24 +16,10 @@ using Eigen::Matrix3f;
 using Eigen::Vector2f;
 using Eigen::Vector3f;
 
-// Filter Frequencies:
-#define ACC_LPF_FREQ 40.0f   // Increase from 10.0f
-// #define ACC_LPF_FREQ 1000.0f   // Increase from 10.0f
-#define GYRO_LPF_FREQ 40.0f  // Increase from 40.0f
-#define GYRO_HPF_FREQ 0.5f   // Lower from 2.5f to reduce drift removal aggressiveness
-#define MAG_LPF_FREQ 15.0f   // Increase from 10.0f
-
-// static const float ALPHA_ACC_LPF = (2.0f * PI * ACC_LPF_FREQ * DT / (2.0f * PI * ACC_LPF_FREQ * DT + 1.0f));
-// static const float ALPHA_GYRO_LPF = (2.0f * PI * GYRO_LPF_FREQ * DT / (2.0f * PI * GYRO_LPF_FREQ * DT + 1.0f));
-// static const float ALPHA_HPF = (1.0f / (2.0f * PI * GYRO_HPF_FREQ * DT + 1.0f));
-// static const float ALPHA_MAG_LPF = (2.0f * PI * MAG_LPF_FREQ * DT / (2.0f * PI * MAG_LPF_FREQ * DT + 1.0f));
-
 class EKF {
    private:
     static Measurement_t* meas;
     static const float dt;
-    // extern Eigen::Matrix2f;
-    // extern Eigen::Vector2f;
 
    public:
     Vector3f state = Vector3f::Zero();            // Change from Vector2f to Vector3f
@@ -53,8 +39,6 @@ class EKF {
     void pre_kalman_filter();
     void run_kalman(attitude_t* return_euiler, quat_t* return_quart);
     quat_t get_quart(attitude_t* euiler);
-
-    // void InitialFiltering();
 };
 
 #endif

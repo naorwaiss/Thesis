@@ -10,8 +10,8 @@
 #include "src/MotorsControl.h"
 #include "src/PID_type.h"
 #include "src/EkfClass.h"
-#include "src/magwick.h"
-
+#include "src/Madgwick.h"
+#include "src/STD_Filter.h"
 // IMU Data Conversion
 #define POL_GYRO_SENS 17.5 / 1000.0f  // FS = 125
 #define POL_ACC_SENS 0.061 / 1000.0f  // FS = 2g, 0.061 mg/LSB
@@ -70,7 +70,8 @@ attitude_t estimated_rate;
 PID_out_t PID_stab_out;
 PID_out_t PID_rate_out;
 EKF ekf(&meas, DT);
-Magwick magwick_filter(&meas, &estimated_attitude);
+Madgwick magwick_filter(&meas, &estimated_attitude,&q_est,833,0.9);
+STD_Filter std_filter(&meas,833);
 
 // timer//
 elapsedMicros motor_timer;
@@ -132,7 +133,8 @@ void loop() {
     if (imu_timer >= IMU_PERIOD) {
         actual_dt = (double)imu_timer / 1000000.0f;
         Update_Measurement();
-        comp_filter.InitialFiltering(&meas);
+        // comp_filter.InitialFiltering(&meas);
+        std_filter.all_filter();
         estimated_state_metude();
 
         if (is_armed) {
@@ -179,10 +181,6 @@ void loop() {
             DRON_COM::send_data();
             send_data_timer = 0;
         }
-        // Serial.print(motor_pwm.PWM1); Serial.print("  ");
-        // Serial.print(motor_pwm.PWM2); Serial.print("  ");
-        // Serial.print(motor_pwm.PWM3); Serial.print("  ");
-        // Serial.println(motor_pwm.PWM4);
         imu_timer = 0;
     }
 }
@@ -207,15 +205,6 @@ void Update_Measurement() {
     meas.gyroDEG.x = IMU.g.x * POL_GYRO_SENS - meas.gyro_bias.x;
     meas.gyroDEG.y = IMU.g.y * POL_GYRO_SENS - meas.gyro_bias.y;
     meas.gyroDEG.z = IMU.g.z * POL_GYRO_SENS - meas.gyro_bias.z;
-    // if (abs(meas.gyroDEG.x) < IMU_THRESHOLD) {
-    //     meas.gyroDEG.x = 0;
-    // }
-    // if (abs(meas.gyroDEG.y) < IMU_THRESHOLD) {
-    //     meas.gyroDEG.y = 0;
-    // }
-    // if (abs(meas.gyroDEG.z) < IMU_THRESHOLD) {
-    //     meas.gyroDEG.z = 0;
-    // }
     meas.gyroRAD.x = meas.gyroDEG.x * deg2rad;
     meas.gyroRAD.y = meas.gyroDEG.y * deg2rad;
     meas.gyroRAD.z = meas.gyroDEG.z * deg2rad;
@@ -252,14 +241,8 @@ void GyroMagCalibration() {
         meas.gyro_bias.x += (x - meas.gyro_bias.x) / num_samples;
         meas.gyro_bias.y += (y - meas.gyro_bias.y) / num_samples;
         meas.gyro_bias.z += (z - meas.gyro_bias.z) / num_samples;
-
-        // meas.mag_bias.x += (mag.m.x * POL_MAG_SENS - meas.mag_bias.x) / num_samples;
-        // meas.mag_bias.y += (mag.m.y * POL_MAG_SENS - meas.mag_bias.y) / num_samples;
-        // meas.mag_bias.z += (mag.m.z * POL_MAG_SENS - meas.mag_bias.z) / num_samples;
-
         meas.acc_bias.x += (IMU.a.x * POL_ACC_SENS - meas.acc_bias.x) / num_samples;
         meas.acc_bias.y += (IMU.a.y * POL_ACC_SENS - meas.acc_bias.y) / num_samples;
-        //   meas.acc_bias.z += (IMU.a.z * POL_ACC_SENS - meas.acc_bias.z)/num_samples;
     }
     meas.initial_mag.x = meas.mag_bias.x;
     meas.initial_mag.y = meas.mag_bias.y;
@@ -385,7 +368,7 @@ void estimated_state_metude() {
         case 1:  // compclass
             return comclass_function();
         case 2:
-            return magwick_filter.magwick_operation();
+            return magwick_filter.madgwick_operation();
         default:
             return ekf.run_kalman(&estimated_attitude, &q_est);
     }

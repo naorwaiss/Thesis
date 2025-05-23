@@ -25,19 +25,19 @@
 #define QUAT_THRESH 0.05f
 
 // Filter Frequencies:
-#define ACC_LPF_FREQ 80.0f   // Increase from 10.0f
-// #define ACC_LPF_FREQ 1000.0f   // Increase from 10.0f
-#define GYRO_LPF_FREQ 80.0f  // Increase from 40.0f
-#define GYRO_HPF_FREQ 1.0f   // Lower from 2.5f to reduce drift removal aggressiveness
-#define MAG_LPF_FREQ 50.0f   // Increase from 10.0f
+// #define ACC_LPF_FREQ 80.0f   // Increase from 10.0f
+// // #define ACC_LPF_FREQ 1000.0f   // Increase from 10.0f
+// #define GYRO_LPF_FREQ 80.0f  // Increase from 40.0f
+// #define GYRO_HPF_FREQ 1.0f   // Lower from 2.5f to reduce drift removal aggressiveness
+// #define MAG_LPF_FREQ 50.0f   // Increase from 10.0f
 
 // Calculate filter coefficients based on cutoff frequencies
 // static const float SAMPLE_RATE = 1100.0f;
 // static const float DT = 1.0f/SAMPLE_RATE;
-static const float ALPHA_ACC_LPF = (2.0f * PI * ACC_LPF_FREQ * DT) / (2.0f * PI * ACC_LPF_FREQ * DT + 1.0f);
-static const float ALPHA_GYRO_LPF = (2.0f * PI * GYRO_LPF_FREQ * DT) / (2.0f * PI * GYRO_LPF_FREQ * DT + 1.0f);
-static const float ALPHA_HPF = (1.0f / (2.0f * PI * GYRO_HPF_FREQ * DT + 1.0f));
-static const float ALPHA_MAG_LPF = (2.0f * PI * MAG_LPF_FREQ * DT) / (2.0f * PI * MAG_LPF_FREQ * DT + 1.0f);
+// static const float ALPHA_ACC_LPF = (2.0f * PI * ACC_LPF_FREQ * DT) / (2.0f * PI * ACC_LPF_FREQ * DT + 1.0f);
+// static const float ALPHA_GYRO_LPF = (2.0f * PI * GYRO_LPF_FREQ * DT) / (2.0f * PI * GYRO_LPF_FREQ * DT + 1.0f);
+// static const float ALPHA_HPF = (1.0f / (2.0f * PI * GYRO_HPF_FREQ * DT + 1.0f));
+// static const float ALPHA_MAG_LPF = (2.0f * PI * MAG_LPF_FREQ * DT) / (2.0f * PI * MAG_LPF_FREQ * DT + 1.0f);
 
 
 class CompFilter {
@@ -61,7 +61,7 @@ class CompFilter {
 
 
         void UpdateQ(Measurement_t* , float );
-        void InitialFiltering(Measurement_t* );
+        // void InitialFiltering(Measurement_t* );
         float calculateDynamicBeta(Measurement_t );
         float invSqrt(float x);
         void GetQuaternion(quat_t* q_);

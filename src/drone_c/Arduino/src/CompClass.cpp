@@ -12,7 +12,7 @@ void CompFilter::UpdateQ(Measurement_t* meas, float dt) {
 
     // Initial Filtering - Not a must nut it helps.
     // InitialFiltering(meas);
-    vec3_t gyro_lpf_rad; 
+    vec3_t gyro_lpf_rad;
     gyro_lpf_rad.x = meas->gyro_LPF.x * deg2rad;
     gyro_lpf_rad.y = meas->gyro_LPF.y * deg2rad;
     gyro_lpf_rad.z = meas->gyro_LPF.z * deg2rad;
@@ -215,7 +215,8 @@ float CompFilter::calculateDynamicBeta(Measurement_t meas) {
     // Compute the norm (magnitude) of the gyroscope vector
     gyroNorm = sqrtf(meas.gyro_LPF.x * meas.gyro_LPF.x +
                      meas.gyro_LPF.y * meas.gyro_LPF.y +
-                     meas.gyro_LPF.z * meas.gyro_LPF.z) * deg2rad;
+                     meas.gyro_LPF.z * meas.gyro_LPF.z) *
+               deg2rad;
     // Adapt Beta based on gyroscope norm
     if (gyroNorm < LOW_MOTION) {
         // System is likely stable or slow-moving, increase Beta for more correction
@@ -232,53 +233,34 @@ float CompFilter::calculateDynamicBeta(Measurement_t meas) {
     }
 }
 
-// float CompFilter::calculateDynamicBeta(Measurement_t meas) {
-//     gyroNorm = sqrtf(meas.gyro_HPF.x * meas.gyro_HPF.x +
-//                    meas.gyro_HPF.y * meas.gyro_HPF.y +
-//                    meas.gyro_HPF.z * meas.gyro_HPF.z);
+// void CompFilter::InitialFiltering(Measurement_t* meas) {
+//     // meas->acc_LPF.x = (1 - ALPHA_ACC_LPF) * meas->acc.x + ALPHA_ACC_LPF * meas->acc_LPF.x;
+//     // meas->acc_LPF.y = (1 - ALPHA_ACC_LPF) * meas->acc.y + ALPHA_ACC_LPF * meas->acc_LPF.y;
+//     // meas->acc_LPF.z = (1 - ALPHA_ACC_LPF) * meas->acc.z + ALPHA_ACC_LPF * meas->acc_LPF.z;
 
-//     // More consistent beta values with hysteresis
-//     static float lastBeta = DEFAULT_BETA;
-//     static const float HYSTERESIS = 0.05f;
+//     meas->acc_LPF.y = ALPHA_ACC_LPF * meas->acc.y + (1 - ALPHA_ACC_LPF) * meas->acc_LPF.y;
+//     meas->acc_LPF.x = ALPHA_ACC_LPF * meas->acc.x + (1 - ALPHA_ACC_LPF) * meas->acc_LPF.x;
+//     meas->acc_LPF.z = ALPHA_ACC_LPF * meas->acc.z + (1 - ALPHA_ACC_LPF) * meas->acc_LPF.z;
 
-//     if (gyroNorm > (LOW_MOTION + HYSTERESIS) || lastBeta == HIGH_BETA) {
-//         if (gyroNorm < (LOW_MOTION - HYSTERESIS))
-//             lastBeta = LOW_BETA;
-//         else
-//             lastBeta = HIGH_BETA;
+//     // Apply High-pass Filter to Gyro - > RAD. Used for the filter
+
+//     meas->gyro_HPF.x = ALPHA_HPF * (meas->gyro_HPF.x + meas->gyroRAD.x - gyroPrev.x);
+//     meas->gyro_HPF.y = ALPHA_HPF * (meas->gyro_HPF.y + meas->gyroRAD.y - gyroPrev.y);
+//     meas->gyro_HPF.z = ALPHA_HPF * (meas->gyro_HPF.z + meas->gyroRAD.z - gyroPrev.z);
+
+//     gyroPrev.x = meas->gyroRAD.x;
+//     gyroPrev.y = meas->gyroRAD.y;
+//     gyroPrev.z = meas->gyroRAD.z;
+
+//     // Apply Low-pass Filter to Gyro - > DEG. Used for acro
+//     meas->gyro_LPF.x = ALPHA_GYRO_LPF * meas->gyroDEG.x + (1 - ALPHA_GYRO_LPF) * meas->gyro_LPF.x;
+//     meas->gyro_LPF.y = ALPHA_GYRO_LPF * meas->gyroDEG.y + (1 - ALPHA_GYRO_LPF) * meas->gyro_LPF.y;
+//     meas->gyro_LPF.z = ALPHA_GYRO_LPF * meas->gyroDEG.z + (1 - ALPHA_GYRO_LPF) * meas->gyro_LPF.z;
+
+//     if (USE_MAG) {
+//         // Apply Low-pass Filter to Mag
+//         meas->mag_LPF.x = (1 - ALPHA_MAG_LPF) * meas->mag.x + ALPHA_MAG_LPF * meas->mag_LPF.x;
+//         meas->mag_LPF.y = (1 - ALPHA_MAG_LPF) * meas->mag.y + ALPHA_MAG_LPF * meas->mag_LPF.y;
+//         meas->mag_LPF.z = (1 - ALPHA_MAG_LPF) * meas->mag.z + ALPHA_MAG_LPF * meas->mag_LPF.z;
 //     }
-
-//     return lastBeta;
 // }
-
-void CompFilter::InitialFiltering(Measurement_t* meas) {
-    // meas->acc_LPF.x = (1 - ALPHA_ACC_LPF) * meas->acc.x + ALPHA_ACC_LPF * meas->acc_LPF.x;
-    // meas->acc_LPF.y = (1 - ALPHA_ACC_LPF) * meas->acc.y + ALPHA_ACC_LPF * meas->acc_LPF.y;
-    // meas->acc_LPF.z = (1 - ALPHA_ACC_LPF) * meas->acc.z + ALPHA_ACC_LPF * meas->acc_LPF.z;
-
-    meas->acc_LPF.x = ALPHA_ACC_LPF * meas->acc.x + (1 - ALPHA_ACC_LPF) * meas->acc_LPF.x;
-    meas->acc_LPF.y = ALPHA_ACC_LPF * meas->acc.y + (1 - ALPHA_ACC_LPF) * meas->acc_LPF.y;
-    meas->acc_LPF.z = ALPHA_ACC_LPF * meas->acc.z + (1 - ALPHA_ACC_LPF) * meas->acc_LPF.z;
-
-    // Apply High-pass Filter to Gyro - > RAD. Used for the filter
-
-    meas->gyro_HPF.x = ALPHA_HPF * (meas->gyro_HPF.x + meas->gyroRAD.x - gyroPrev.x);
-    meas->gyro_HPF.y = ALPHA_HPF * (meas->gyro_HPF.y + meas->gyroRAD.y - gyroPrev.y);
-    meas->gyro_HPF.z = ALPHA_HPF * (meas->gyro_HPF.z + meas->gyroRAD.z - gyroPrev.z);
-
-    gyroPrev.x = meas->gyroRAD.x;
-    gyroPrev.y = meas->gyroRAD.y;
-    gyroPrev.z = meas->gyroRAD.z;
-
-    // Apply Low-pass Filter to Gyro - > DEG. Used for acro
-    meas->gyro_LPF.x = ALPHA_GYRO_LPF * meas->gyroDEG.x + (1 - ALPHA_GYRO_LPF) * meas->gyro_LPF.x;
-    meas->gyro_LPF.y = ALPHA_GYRO_LPF * meas->gyroDEG.y + (1 - ALPHA_GYRO_LPF) * meas->gyro_LPF.y;
-    meas->gyro_LPF.z = ALPHA_GYRO_LPF * meas->gyroDEG.z + (1 - ALPHA_GYRO_LPF) * meas->gyro_LPF.z;
-
-    if (USE_MAG) {
-        // Apply Low-pass Filter to Mag
-        meas->mag_LPF.x = (1 - ALPHA_MAG_LPF) * meas->mag.x + ALPHA_MAG_LPF * meas->mag_LPF.x;
-        meas->mag_LPF.y = (1 - ALPHA_MAG_LPF) * meas->mag.y + ALPHA_MAG_LPF * meas->mag_LPF.y;
-        meas->mag_LPF.z = (1 - ALPHA_MAG_LPF) * meas->mag.z + ALPHA_MAG_LPF * meas->mag_LPF.z;
-    }
-}

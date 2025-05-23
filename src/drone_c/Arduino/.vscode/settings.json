@@ -76,6 +76,10 @@
         "__hash_table": "cpp",
         "__split_buffer": "cpp",
         "__tree": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "*.ipp": "cpp",
+        "variant": "cpp",
+        "__functional_base": "cpp",
+        "locale": "cpp"
     }
 }

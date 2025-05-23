@@ -3,20 +3,12 @@
 #include "Var_types.h"
 
 #define ALPHA_LPF 0.6f
-// attitude_t angle; // Attitude
-// attitude_t angle_des; // Desired attitude
-// attitude_t rate; // Attitude rate
-// attitude_t rate_des; // Desired attitude rate
 attitude_t angle_err;  // Attitude error
 attitude_t rate_err_HPF;
 attitude_t rate_err_LPF;
 attitude_t rate_err_clean;
 attitude_t rate_err = {0.0, 0.0, 0.0};
 attitude_t stab_err = {0.0, 0.0, 0.0};
-
-// attitude_t angle_err_prev; // Previous attitude error
-// attitude_t rate_err_prev; // Previous attitude rate error
-
 PID_out_t rate_out, stab_out;  // Output of rate and stabilization controllers
 
 PID_Params_t rate_params;  // PID parameters for rate controller
@@ -27,7 +19,7 @@ void initializePIDParams(float RrollPID[3] = nullptr, float RpitchPID[3] = nullp
                          float Imax_rate[2] = nullptr, float SrollPID[3] = nullptr, float SpitchPID[3] = nullptr,
                          float SyawPID[3] = nullptr, float Imax_stab[2] = nullptr) {  // Rate mode parameters
 
-    const float defaultRrollPID[3] = {1.6, 0.15f, 0.95f}; // DO NOT GO OVER Kd=0.9 !!!! Drone will kill someone!!!
+    const float defaultRrollPID[3] = {1.6, 0.15f, 0.95f};  // DO NOT GO OVER Kd=0.9 !!!! Drone will kill someone!!!
     const float defaultRpitchPID[3] = {1.6f, 0.15f, 0.95f};
     const float defaultRyawPID[3] = {2.0f, 0.0f, 0.05f};
     const float defaultImax_rate[2] = {100.0f, 100.0f};
@@ -37,7 +29,6 @@ void initializePIDParams(float RrollPID[3] = nullptr, float RpitchPID[3] = nullp
     const float defaultSpitchPID[3] = {9.0f, 0.01f, 0.0f};
     const float defaultSyawPID[3] = {4.0f, 0.0f, 0.0f};
     const float defaultImax_stab[2] = {100.0f, 100.0f};
-
 
     // Assign default values if nullptr is passed
     if (RrollPID == nullptr) RrollPID = const_cast<float*>(defaultRrollPID);
@@ -76,14 +67,13 @@ void initializePIDParams(float RrollPID[3] = nullptr, float RpitchPID[3] = nullp
     stab_params.Imax_pitch = stab_params.Imax_roll;
     stab_params.Imax_yaw = Imax_stab[1];
 
-
     // Alphas for the derivative term:
-        // Larger tau means slower response, more filtering. smaller tau means faster response, less filtering.
+    // Larger tau means slower response, more filtering. smaller tau means faster response, less filtering.
     float cutoff_freq = 5.0f;
     rate_params.Alpha_roll = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
     rate_params.Alpha_pitch = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
     rate_params.Alpha_yaw = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
-    
+
     stab_params.Alpha_roll = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
     stab_params.Alpha_pitch = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
     stab_params.Alpha_yaw = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
@@ -106,21 +96,12 @@ PID_out_t PID_rate(attitude_t des_rate, attitude_t actual_rate, float DT) {  // 
     rate_out.I_term.pitch = rate_out.prev_Iterm.pitch + (rate_params.PitchI / 2) * (rate_err.pitch + rate_out.prev_err.pitch) * DT;
     rate_out.I_term.yaw = rate_out.prev_Iterm.yaw + (rate_params.YawI / 2) * (rate_err.yaw + rate_out.prev_err.yaw) * DT;
 
-    // // Calculate D term: Explicitly calculating via numerical differentiation
-    // rate_out.D_term.roll = rate_params.RollD * (rate_err.roll - rate_out.prev_err.roll) / DT;
-    // rate_out.D_term.pitch = rate_params.PitchD * (rate_err.pitch - rate_out.prev_err.pitch) / DT;
-    // rate_out.D_term.yaw = rate_params.YawD * (rate_err.yaw - rate_out.prev_err.yaw) / DT;
-
     // Apply HPF to the derivative term
     rate_out.D_term.roll = rate_params.RollD * rate_params.Alpha_roll * (rate_err.roll - rate_out.prev_err.roll + rate_out.D_term.roll);
     rate_out.D_term.pitch = rate_params.PitchD * rate_params.Alpha_pitch * (rate_err.pitch - rate_out.prev_err.pitch + rate_out.D_term.pitch);
     rate_out.D_term.yaw = rate_params.YawD * rate_params.Alpha_yaw * (rate_err.yaw - rate_out.prev_err.yaw + rate_out.D_term.yaw);
     Serial.print(" rate_out.D_term.roll");
     Serial.println(rate_out.D_term.roll);
-
-
-
-    // Serial.println(rate_out.D_term.pitch);
 
     // Cap the I term
     rate_out.I_term.roll = constrain(rate_out.I_term.roll, -rate_params.Imax_roll, rate_params.Imax_roll);
@@ -150,11 +131,6 @@ PID_out_t PID_stab(attitude_t des_angle, attitude_t angle, float DT) {
     stab_out.I_term.roll = stab_out.prev_Iterm.roll + (stab_params.RollI / 2) * (angle_err.roll + stab_out.prev_err.roll) * DT;
     stab_out.I_term.pitch = stab_out.prev_Iterm.pitch + (stab_params.PitchI / 2) * (angle_err.pitch + stab_out.prev_err.pitch) * DT;
     stab_out.I_term.yaw = stab_out.prev_Iterm.yaw + (stab_params.YawI / 2) * (angle_err.yaw + stab_out.prev_err.yaw) * DT;
-
-    // Calculate D term:
-    // stab_out.D_term.roll = stab_params.RollD * (angle_err.roll - stab_out.prev_err.roll) / DT;
-    // stab_out.D_term.pitch = stab_params.PitchD * (angle_err.pitch - stab_out.prev_err.pitch) / DT;
-    // stab_out.D_term.yaw = stab_params.YawD * (angle_err.yaw - stab_out.prev_err.yaw) / DT;
 
     // // Apply HPF to the derivative term
     stab_out.D_term.roll = stab_params.RollD * stab_params.Alpha_roll * (angle_err.roll - stab_out.prev_err.roll + stab_out.D_term.roll);

@@ -8,7 +8,6 @@ EKF::EKF(Measurement_t* meas_data, float dt) {
     delta_t = dt;
 }
 
-
 void EKF::pre_kalman_filter() {
     // InitialFiltering();
 
@@ -107,36 +106,6 @@ void EKF::run_kalman(attitude_t* return_euiler, quat_t* return_quart) {
     *return_euiler = kalman3D(gyro_input, euler_data);
     *return_quart = get_quart(return_euiler);
 }
-
-// void EKF::InitialFiltering() {
-//     // meas->acc_LPF.x = (1 - ALPHA_ACC_LPF) * meas->acc.x + ALPHA_ACC_LPF * meas->acc_LPF.x;
-//     // meas->acc_LPF.y = (1 - ALPHA_ACC_LPF) * meas->acc.y + ALPHA_ACC_LPF * meas->acc_LPF.y;
-//     // meas->acc_LPF.z = (1 - ALPHA_ACC_LPF) * meas->acc.z + ALPHA_ACC_LPF * meas->acc_LPF.z;
-
-//     meas->acc_LPF.x = ALPHA_ACC_LPF * meas->acc.x + (1 - ALPHA_ACC_LPF) * meas->acc_LPF.x;
-//     meas->acc_LPF.y = ALPHA_ACC_LPF * meas->acc.y + (1 - ALPHA_ACC_LPF) * meas->acc_LPF.y;
-//     meas->acc_LPF.z = ALPHA_ACC_LPF * meas->acc.z + (1 - ALPHA_ACC_LPF) * meas->acc_LPF.z;
-
-//     // Apply High-pass Filter to Gyro - > RAD. Used for the filter
-
-//     meas->gyro_HPF.x = ALPHA_HPF * (meas->gyro_HPF.x + meas->gyroRAD.x - gyroPrev.x);
-//     meas->gyro_HPF.y = ALPHA_HPF * (meas->gyro_HPF.y + meas->gyroRAD.y - gyroPrev.y);
-//     meas->gyro_HPF.z = ALPHA_HPF * (meas->gyro_HPF.z + meas->gyroRAD.z - gyroPrev.z);
-
-//     gyroPrev.x = meas->gyroRAD.x;
-//     gyroPrev.y = meas->gyroRAD.y;
-//     gyroPrev.z = meas->gyroRAD.z;
-
-//     // Apply Low-pass Filter to Gyro - > DEG. Used for acro
-//     meas->gyro_LPF.x = ALPHA_GYRO_LPF * meas->gyroDEG.x + (1 - ALPHA_GYRO_LPF) * meas->gyro_LPF.x;
-//     meas->gyro_LPF.y = ALPHA_GYRO_LPF * meas->gyroDEG.y + (1 - ALPHA_GYRO_LPF) * meas->gyro_LPF.y;
-//     meas->gyro_LPF.z = ALPHA_GYRO_LPF * meas->gyroDEG.z + (1 - ALPHA_GYRO_LPF) * meas->gyro_LPF.z;
-
-//     // Apply Low-pass Filter to Mag
-//     meas->mag_LPF.x = (1 - ALPHA_MAG_LPF) * meas->mag.x + ALPHA_MAG_LPF * meas->mag_LPF.x;
-//     meas->mag_LPF.y = (1 - ALPHA_MAG_LPF) * meas->mag.y + ALPHA_MAG_LPF * meas->mag_LPF.y;
-//     meas->mag_LPF.z = (1 - ALPHA_MAG_LPF) * meas->mag.z + ALPHA_MAG_LPF * meas->mag_LPF.z;
-// }
 
 quat_t EKF::get_quart(attitude_t* euiler) {
     quat_t q;
