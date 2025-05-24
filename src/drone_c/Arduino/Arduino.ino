@@ -19,13 +19,6 @@
 
 #define crsfSerial Serial1  // Use Serial1 for the CRSF communication
 
-// old_drone
-//  #define MOTOR1_PIN 2
-//  #define MOTOR2_PIN 3
-//  #define MOTOR3_PIN 5
-//  #define MOTOR4_PIN 4
-// old_drone
-
 // new drone
 #define MOTOR1_PIN 2  // front right
 #define MOTOR2_PIN 3  // back right
@@ -72,6 +65,7 @@ PID_out_t PID_rate_out;
 EKF ekf(&meas, DT);
 Madgwick magwick_filter(&meas, &estimated_attitude,&q_est,833,0.9);
 STD_Filter std_filter(&meas,833);
+
 
 // timer//
 elapsedMicros motor_timer;

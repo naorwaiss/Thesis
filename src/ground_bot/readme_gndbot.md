@@ -1,4 +1,4 @@
-# hamma_bot_deco 
+# gnd_bot_deco 
 
 ## explain
     this is the part of the code that play the gnd bot 

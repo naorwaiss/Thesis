@@ -25,23 +25,24 @@ void roller::stopMotor() {
 }
 
 void roller::motor_control(int pwm) {
-    digitalWrite(ENA_PIN, HIGH);   // הפעלת המנוע
-    digitalWrite(INA_PIN, LOW);  // כיוון קדימה
-    digitalWrite(INB_PIN, HIGH);   // כיוון קדימה
-    analogWrite(PWM_PIN, pwm);    // מהירות 50%
+    int pwm_const = constrain(pwm, -255, 255);
+    int dir = pwm_const > 0 ? 1 : 2;
+    switch (dir) {
+    case 1:
+        digitalWrite(ENA_PIN, HIGH);  
+        digitalWrite(INA_PIN, HIGH);  
+        digitalWrite(INB_PIN, LOW);  
+        analogWrite(PWM_PIN, abs(pwm_const));
+        break;
+    case 2:
+        digitalWrite(ENA_PIN, HIGH);  
+        digitalWrite(INA_PIN, LOW);  
+        digitalWrite(INB_PIN, HIGH);  
+        analogWrite(PWM_PIN, abs(pwm_const));
+        break;    
+    }
 }
 
-
-
-// void roller::error_find() {
-//     if (load_cell.tension < load_cell.minTension) {
-//         load_cell.error = load_cell.minTension - load_cell.tension;  // need to tension
-//     } else if (load_cell.tension > load_cell.maxTension) {
-//         load_cell.error = load_cell.maxTension - load_cell.tension;  // need to release
-//     } else {
-//         load_cell.error = 0;
-//     }
-// }
 
 void roller::error_find() {
     float error;

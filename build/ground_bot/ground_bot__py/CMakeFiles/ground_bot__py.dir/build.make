@@ -71,9 +71,11 @@ ground_bot__py/CMakeFiles/ground_bot__py: rosidl_generator_py/ground_bot/_ground
 ground_bot__py/CMakeFiles/ground_bot__py: rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_c.c
 ground_bot__py/CMakeFiles/ground_bot__py: rosidl_generator_py/ground_bot/msg/_pwm.py
 ground_bot__py/CMakeFiles/ground_bot__py: rosidl_generator_py/ground_bot/msg/_motor_data.py
+ground_bot__py/CMakeFiles/ground_bot__py: rosidl_generator_py/ground_bot/msg/_roller_data.py
 ground_bot__py/CMakeFiles/ground_bot__py: rosidl_generator_py/ground_bot/msg/__init__.py
 ground_bot__py/CMakeFiles/ground_bot__py: rosidl_generator_py/ground_bot/msg/_pwm_s.c
 ground_bot__py/CMakeFiles/ground_bot__py: rosidl_generator_py/ground_bot/msg/_motor_data_s.c
+ground_bot__py/CMakeFiles/ground_bot__py: rosidl_generator_py/ground_bot/msg/_roller_data_s.c
 
 rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/lib/rosidl_generator_py/rosidl_generator_py
 rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_generator_py/__init__.py
@@ -90,6 +92,7 @@ rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c:
 rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/rosidl_generator_py/resource/_srv.py.em
 rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/ground_bot/msg/Pwm.idl
 rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/ground_bot/msg/MotorData.idl
+rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/ground_bot/msg/RollerData.idl
 rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/std_msgs/msg/Bool.idl
 rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/std_msgs/msg/Byte.idl
 rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/std_msgs/msg/ByteMultiArray.idl
@@ -137,6 +140,9 @@ rosidl_generator_py/ground_bot/msg/_pwm.py: rosidl_generator_py/ground_bot/_grou
 rosidl_generator_py/ground_bot/msg/_motor_data.py: rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/ground_bot/msg/_motor_data.py
 
+rosidl_generator_py/ground_bot/msg/_roller_data.py: rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/ground_bot/msg/_roller_data.py
+
 rosidl_generator_py/ground_bot/msg/__init__.py: rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/ground_bot/msg/__init__.py
 
@@ -145,6 +151,9 @@ rosidl_generator_py/ground_bot/msg/_pwm_s.c: rosidl_generator_py/ground_bot/_gro
 
 rosidl_generator_py/ground_bot/msg/_motor_data_s.c: rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/ground_bot/msg/_motor_data_s.c
+
+rosidl_generator_py/ground_bot/msg/_roller_data_s.c: rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/ground_bot/msg/_roller_data_s.c
 
 ground_bot__py: ground_bot__py/CMakeFiles/ground_bot__py
 ground_bot__py: rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_c.c
@@ -155,6 +164,8 @@ ground_bot__py: rosidl_generator_py/ground_bot/msg/_motor_data.py
 ground_bot__py: rosidl_generator_py/ground_bot/msg/_motor_data_s.c
 ground_bot__py: rosidl_generator_py/ground_bot/msg/_pwm.py
 ground_bot__py: rosidl_generator_py/ground_bot/msg/_pwm_s.c
+ground_bot__py: rosidl_generator_py/ground_bot/msg/_roller_data.py
+ground_bot__py: rosidl_generator_py/ground_bot/msg/_roller_data_s.c
 ground_bot__py: ground_bot__py/CMakeFiles/ground_bot__py.dir/build.make
 .PHONY : ground_bot__py
 

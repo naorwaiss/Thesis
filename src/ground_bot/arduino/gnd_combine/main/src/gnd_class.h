@@ -17,7 +17,7 @@ struct Motor_Data {
     uint8_t encoderB_pin;
     bool direction;
     long encoder_read;
-    float omega_dot;
+    float omega_drive_wheel;
     float pwm_value;
     float xk_1 = 0, vk_1 = 0, xk = 0, vk = 0, rk = 0;
     float a = 0.85, b = 0.005;

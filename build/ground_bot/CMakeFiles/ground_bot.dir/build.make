@@ -68,6 +68,7 @@ include CMakeFiles/ground_bot.dir/progress.make
 
 CMakeFiles/ground_bot: /home/naor/Desktop/naor/study/Thesis/src/ground_bot/msg/Pwm.msg
 CMakeFiles/ground_bot: /home/naor/Desktop/naor/study/Thesis/src/ground_bot/msg/MotorData.msg
+CMakeFiles/ground_bot: /home/naor/Desktop/naor/study/Thesis/src/ground_bot/msg/RollerData.msg
 CMakeFiles/ground_bot: /opt/ros/humble/share/std_msgs/msg/Bool.idl
 CMakeFiles/ground_bot: /opt/ros/humble/share/std_msgs/msg/Byte.idl
 CMakeFiles/ground_bot: /opt/ros/humble/share/std_msgs/msg/ByteMultiArray.idl

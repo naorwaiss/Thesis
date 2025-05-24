@@ -5,11 +5,7 @@
 #include "Var_types.h"
 
 
-// Define PI if not already defined
-#ifndef PI
-#define PI 3.14159265358979323846
-#define rad2deg 180.0f/PI
-#endif
+
 
 // Angle conversion constants:
 

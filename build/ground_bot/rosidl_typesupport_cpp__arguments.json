@@ -4,7 +4,8 @@
   "template_dir": "/opt/ros/humble/share/rosidl_typesupport_cpp/resource",
   "idl_tuples": [
     "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_adapter/ground_bot:msg/Pwm.idl",
-    "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_adapter/ground_bot:msg/MotorData.idl"
+    "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_adapter/ground_bot:msg/MotorData.idl",
+    "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_adapter/ground_bot:msg/RollerData.idl"
   ],
   "ros_interface_dependencies": [
     "std_msgs:/opt/ros/humble/share/std_msgs/msg/Bool.idl",
@@ -49,6 +50,7 @@
     "/opt/ros/humble/share/rosidl_typesupport_cpp/resource/srv__type_support.cpp.em",
     "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_adapter/ground_bot/msg/Pwm.idl",
     "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_adapter/ground_bot/msg/MotorData.idl",
+    "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_adapter/ground_bot/msg/RollerData.idl",
     "/opt/ros/humble/share/std_msgs/msg/Bool.idl",
     "/opt/ros/humble/share/std_msgs/msg/Byte.idl",
     "/opt/ros/humble/share/std_msgs/msg/ByteMultiArray.idl",

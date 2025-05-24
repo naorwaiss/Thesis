@@ -20,7 +20,12 @@ set(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_cpp/ground_bot/msg/detail/pwm__struct.hpp" "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_cpp/ground_bot/msg/pwm.hpp"
   "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_cpp/ground_bot/msg/detail/pwm__traits.hpp" "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_cpp/ground_bot/msg/pwm.hpp"
   "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_cpp/ground_bot/msg/detail/pwm__type_support.hpp" "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_cpp/ground_bot/msg/pwm.hpp"
+  "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_cpp/ground_bot/msg/detail/roller_data__builder.hpp" "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_cpp/ground_bot/msg/pwm.hpp"
+  "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_cpp/ground_bot/msg/detail/roller_data__struct.hpp" "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_cpp/ground_bot/msg/pwm.hpp"
+  "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_cpp/ground_bot/msg/detail/roller_data__traits.hpp" "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_cpp/ground_bot/msg/pwm.hpp"
+  "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_cpp/ground_bot/msg/detail/roller_data__type_support.hpp" "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_cpp/ground_bot/msg/pwm.hpp"
   "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_cpp/ground_bot/msg/motor_data.hpp" "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_cpp/ground_bot/msg/pwm.hpp"
+  "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_cpp/ground_bot/msg/roller_data.hpp" "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_cpp/ground_bot/msg/pwm.hpp"
   )
 
 

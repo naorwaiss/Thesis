@@ -9,25 +9,12 @@ static const float SAMPLE_RATE = 833.0f;
 static const float DT = 1.0f / SAMPLE_RATE;
 
 // Frequencies to be used with the RATE_DO_EXECUTE_HZ macro. Do NOT use an arbitrary number.
-#define RATE_1000_HZ 1000
-#define RATE_500_HZ 500
-#define RATE_250_HZ 250
-#define RATE_100_HZ 100
-#define RATE_50_HZ 50
-#define RATE_25_HZ 25
 
-#define RATE_MAIN_LOOP RATE_1000_HZ
-#define ATTITUDE_RATE RATE_500_HZ
-#define POSITION_RATE RATE_100_HZ
-#define RATE_HL_COMMANDER RATE_100_HZ
-#define RATE_SUPERVISOR RATE_25_HZ
-
-#define rad2deg 180.0f / PI
 #ifndef PI
-    #define PI 3.14159265358979323846f
+#define PI 3.14159265358979323846f
 #endif
 #define deg2rad PI / 180.0f
- 
+#define rad2deg 180.0f / PI
 
 typedef struct {
     float x;
@@ -48,24 +35,6 @@ typedef struct baro_s {
     float asl;          // m (ASL = altitude above sea level)
 } baro_t;
 
-// Notch filter data structure
-typedef struct notch_filter_s {
-    float coeffs_a[3];  // IIR coefficients
-    float coeffs_b[3];  // FIR coefficients
-    float inputs[3];    // Input history
-    float outputs[3];   // Output history
-} notch_filter_t;
-
-// Sensor filtering data structure
-typedef struct filter_data_s {
-    notch_filter_t acc_x_notch;
-    notch_filter_t acc_y_notch;
-    notch_filter_t acc_z_notch;
-    vec3_t acc_filtered;
-    vec3_t gyro_filtered;
-    vec3_t mag_filtered;
-} filter_data_t;
-
 typedef struct {
     vec3_t acc;
     vec3_t acc_LPF = {0.0, 0.0, 0.0};
@@ -81,7 +50,6 @@ typedef struct {
     vec3_t initial_mag = {0.0, 0.0, 0.0};
     float initial_heading = 0.0;
     baro_t baro_data;
-    filter_data_t filter_data;  // Added filter data structure
 } Measurement_t;
 
 typedef struct attitude_s {
@@ -151,16 +119,7 @@ inline attitude_t& operator-=(attitude_t& a, attitude_t& b) {
     return a;
 }
 
-typedef struct state_s {
-    attitude_t attitude_angles;
-    quat_t attitudeQuaternion;
-    float height;
-    vec3_t velocity;
-    vec3_t position;
-    vec3_t acceleration;
-} state_t;
-
-typedef struct PID_Params_s{
+typedef struct PID_Params_s {
     float RollP;
     float RollI;
     float RollD;
@@ -177,12 +136,11 @@ typedef struct PID_Params_s{
     float RollD_tau;
     float PitchD_tau;
     float YawD_tau;
-
     float Imax_roll;
     float Imax_pitch;
     float Imax_yaw;
 
-}PID_Params_t;
+} PID_Params_t;
 
 typedef struct PID_out_s {
     attitude_t error = {0.0, 0.0, 0.0};
@@ -219,5 +177,14 @@ typedef struct Controller_s {
     int aux3;
     int aux4;
 } Controller_t;
+
+typedef struct state_s {
+    attitude_t attitude_angles;
+    quat_t attitude_Quaternion;
+    float height;
+    vec3_t velocity;
+    vec3_t position;
+    vec3_t acceleration;
+} state_t;
 
 #endif

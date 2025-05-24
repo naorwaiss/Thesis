@@ -7,6 +7,7 @@
 #define ACC_LPF_FREQ 80.0f   // Increase from 10.0f
 
 #include "Var_types.h"
+
 class STD_Filter {
    public:
     STD_Filter(Measurement_t* meas_data, float sample_hz);

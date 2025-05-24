@@ -79,6 +79,7 @@ rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__rosidl_typesupport_fast
 rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__rosidl_typesupport_fastrtps_c.h: /opt/ros/humble/share/rosidl_typesupport_fastrtps_c/resource/srv__type_support_c.cpp.em
 rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__rosidl_typesupport_fastrtps_c.h: rosidl_adapter/ground_bot/msg/Pwm.idl
 rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__rosidl_typesupport_fastrtps_c.h: rosidl_adapter/ground_bot/msg/MotorData.idl
+rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__rosidl_typesupport_fastrtps_c.h: rosidl_adapter/ground_bot/msg/RollerData.idl
 rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__rosidl_typesupport_fastrtps_c.h: /opt/ros/humble/share/std_msgs/msg/Bool.idl
 rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__rosidl_typesupport_fastrtps_c.h: /opt/ros/humble/share/std_msgs/msg/Byte.idl
 rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__rosidl_typesupport_fastrtps_c.h: /opt/ros/humble/share/std_msgs/msg/ByteMultiArray.idl
@@ -123,6 +124,12 @@ rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/motor_data__rosidl_typesuppo
 rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/motor_data__type_support_c.cpp: rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__rosidl_typesupport_fastrtps_c.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/motor_data__type_support_c.cpp
 
+rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__rosidl_typesupport_fastrtps_c.h: rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__rosidl_typesupport_fastrtps_c.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__rosidl_typesupport_fastrtps_c.h
+
+rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp: rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__rosidl_typesupport_fastrtps_c.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp
+
 CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__type_support_c.cpp.o: CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/flags.make
 CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__type_support_c.cpp.o: rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__type_support_c.cpp
 CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__type_support_c.cpp.o: CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/compiler_depend.ts
@@ -151,16 +158,32 @@ CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/motor_data__type_support_c.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/motor_data__type_support_c.cpp -o CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/motor_data__type_support_c.cpp.s
 
+CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp.o: CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/flags.make
+CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp.o: rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp
+CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp.o: CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp.o -MF CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp.o.d -o CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp.o -c /home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp
+
+CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp > CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp.i
+
+CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp -o CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp.s
+
 # Object files for target ground_bot__rosidl_typesupport_fastrtps_c
 ground_bot__rosidl_typesupport_fastrtps_c_OBJECTS = \
 "CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__type_support_c.cpp.o" \
-"CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/motor_data__type_support_c.cpp.o"
+"CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/motor_data__type_support_c.cpp.o" \
+"CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp.o"
 
 # External object files for target ground_bot__rosidl_typesupport_fastrtps_c
 ground_bot__rosidl_typesupport_fastrtps_c_EXTERNAL_OBJECTS =
 
 libground_bot__rosidl_typesupport_fastrtps_c.so: CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__type_support_c.cpp.o
 libground_bot__rosidl_typesupport_fastrtps_c.so: CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/motor_data__type_support_c.cpp.o
+libground_bot__rosidl_typesupport_fastrtps_c.so: CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp.o
 libground_bot__rosidl_typesupport_fastrtps_c.so: CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/build.make
 libground_bot__rosidl_typesupport_fastrtps_c.so: libground_bot__rosidl_generator_c.so
 libground_bot__rosidl_typesupport_fastrtps_c.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_fastrtps_c.so
@@ -174,7 +197,7 @@ libground_bot__rosidl_typesupport_fastrtps_c.so: /opt/ros/humble/lib/libbuiltin_
 libground_bot__rosidl_typesupport_fastrtps_c.so: /opt/ros/humble/lib/librosidl_runtime_c.so
 libground_bot__rosidl_typesupport_fastrtps_c.so: /opt/ros/humble/lib/librcutils.so
 libground_bot__rosidl_typesupport_fastrtps_c.so: CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libground_bot__rosidl_typesupport_fastrtps_c.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library libground_bot__rosidl_typesupport_fastrtps_c.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -189,6 +212,8 @@ CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/depend: rosidl_typesupp
 CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/depend: rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/motor_data__type_support_c.cpp
 CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/depend: rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__rosidl_typesupport_fastrtps_c.h
 CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/depend: rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/pwm__type_support_c.cpp
+CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/depend: rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__rosidl_typesupport_fastrtps_c.h
+CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/depend: rosidl_typesupport_fastrtps_c/ground_bot/msg/detail/roller_data__type_support_c.cpp
 	cd /home/naor/Desktop/naor/study/Thesis/build/ground_bot && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/naor/Desktop/naor/study/Thesis/src/ground_bot /home/naor/Desktop/naor/study/Thesis/src/ground_bot /home/naor/Desktop/naor/study/Thesis/build/ground_bot /home/naor/Desktop/naor/study/Thesis/build/ground_bot /home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ground_bot__rosidl_typesupport_fastrtps_c.dir/depend
 

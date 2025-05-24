@@ -11,13 +11,11 @@ void STD_Filter::acc_low_pass_filter() {
     _meas_data->acc_LPF.z = ALPHA_ACC_LPF * _meas_data->acc.z + (1 - ALPHA_ACC_LPF) * _meas_data->acc_LPF.z;
 }
 
-
 void STD_Filter::gyro_low_pass_filter() {
     _meas_data->gyro_LPF.x = ALPHA_GYRO_LPF * _meas_data->gyroDEG.x + (1 - ALPHA_GYRO_LPF) * _meas_data->gyro_LPF.x;
     _meas_data->gyro_LPF.y = ALPHA_GYRO_LPF * _meas_data->gyroDEG.y + (1 - ALPHA_GYRO_LPF) * _meas_data->gyro_LPF.y;
     _meas_data->gyro_LPF.z = ALPHA_GYRO_LPF * _meas_data->gyroDEG.z + (1 - ALPHA_GYRO_LPF) * _meas_data->gyro_LPF.z;
 }
-
 
 void STD_Filter::gyro_high_pass_filter() {
     _meas_data->gyro_HPF.x = ALPHA_HPF * (_meas_data->gyro_HPF.x + _meas_data->gyroRAD.x - _gyroPrev.x);

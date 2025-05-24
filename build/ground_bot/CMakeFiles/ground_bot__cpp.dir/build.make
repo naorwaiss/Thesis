@@ -76,6 +76,11 @@ CMakeFiles/ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/detail/motor_dat
 CMakeFiles/ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/detail/motor_data__struct.hpp
 CMakeFiles/ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/detail/motor_data__traits.hpp
 CMakeFiles/ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/detail/motor_data__type_support.hpp
+CMakeFiles/ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/roller_data.hpp
+CMakeFiles/ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/detail/roller_data__builder.hpp
+CMakeFiles/ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/detail/roller_data__struct.hpp
+CMakeFiles/ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/detail/roller_data__traits.hpp
+CMakeFiles/ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/detail/roller_data__type_support.hpp
 CMakeFiles/ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/rosidl_generator_cpp__visibility_control.hpp
 
 rosidl_generator_cpp/ground_bot/msg/pwm.hpp: /opt/ros/humble/lib/rosidl_generator_cpp/rosidl_generator_cpp
@@ -95,6 +100,7 @@ rosidl_generator_cpp/ground_bot/msg/pwm.hpp: /opt/ros/humble/share/rosidl_genera
 rosidl_generator_cpp/ground_bot/msg/pwm.hpp: /opt/ros/humble/share/rosidl_generator_cpp/resource/srv__traits.hpp.em
 rosidl_generator_cpp/ground_bot/msg/pwm.hpp: rosidl_adapter/ground_bot/msg/Pwm.idl
 rosidl_generator_cpp/ground_bot/msg/pwm.hpp: rosidl_adapter/ground_bot/msg/MotorData.idl
+rosidl_generator_cpp/ground_bot/msg/pwm.hpp: rosidl_adapter/ground_bot/msg/RollerData.idl
 rosidl_generator_cpp/ground_bot/msg/pwm.hpp: /opt/ros/humble/share/std_msgs/msg/Bool.idl
 rosidl_generator_cpp/ground_bot/msg/pwm.hpp: /opt/ros/humble/share/std_msgs/msg/Byte.idl
 rosidl_generator_cpp/ground_bot/msg/pwm.hpp: /opt/ros/humble/share/std_msgs/msg/ByteMultiArray.idl
@@ -157,6 +163,21 @@ rosidl_generator_cpp/ground_bot/msg/detail/motor_data__traits.hpp: rosidl_genera
 rosidl_generator_cpp/ground_bot/msg/detail/motor_data__type_support.hpp: rosidl_generator_cpp/ground_bot/msg/pwm.hpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/ground_bot/msg/detail/motor_data__type_support.hpp
 
+rosidl_generator_cpp/ground_bot/msg/roller_data.hpp: rosidl_generator_cpp/ground_bot/msg/pwm.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/ground_bot/msg/roller_data.hpp
+
+rosidl_generator_cpp/ground_bot/msg/detail/roller_data__builder.hpp: rosidl_generator_cpp/ground_bot/msg/pwm.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/ground_bot/msg/detail/roller_data__builder.hpp
+
+rosidl_generator_cpp/ground_bot/msg/detail/roller_data__struct.hpp: rosidl_generator_cpp/ground_bot/msg/pwm.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/ground_bot/msg/detail/roller_data__struct.hpp
+
+rosidl_generator_cpp/ground_bot/msg/detail/roller_data__traits.hpp: rosidl_generator_cpp/ground_bot/msg/pwm.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/ground_bot/msg/detail/roller_data__traits.hpp
+
+rosidl_generator_cpp/ground_bot/msg/detail/roller_data__type_support.hpp: rosidl_generator_cpp/ground_bot/msg/pwm.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/ground_bot/msg/detail/roller_data__type_support.hpp
+
 ground_bot__cpp: CMakeFiles/ground_bot__cpp
 ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/detail/motor_data__builder.hpp
 ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/detail/motor_data__struct.hpp
@@ -166,8 +187,13 @@ ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/detail/pwm__builder.hpp
 ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/detail/pwm__struct.hpp
 ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/detail/pwm__traits.hpp
 ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/detail/pwm__type_support.hpp
+ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/detail/roller_data__builder.hpp
+ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/detail/roller_data__struct.hpp
+ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/detail/roller_data__traits.hpp
+ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/detail/roller_data__type_support.hpp
 ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/motor_data.hpp
 ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/pwm.hpp
+ground_bot__cpp: rosidl_generator_cpp/ground_bot/msg/roller_data.hpp
 ground_bot__cpp: CMakeFiles/ground_bot__cpp.dir/build.make
 .PHONY : ground_bot__cpp
 

@@ -9,52 +9,6 @@
 
 #define MOTOR_NUMBER 4
 
-struct MeanFilter {
-    /*
-    struct the andle the motor speed sample and make mean filter to the data -> for type 1
-    */
-    int sample;
-    Eigen::MatrixXf sum;
-
-    MeanFilter(int sample)
-        : sample(sample), sum(Eigen::MatrixXf::Zero(MOTOR_NUMBER, sample)) {}
-
-    void printMatrix() const {
-        for (int i = 0; i < sum.rows(); ++i) {
-            for (int j = 0; j < sum.cols(); ++j) {
-                Serial.print(sum(i, j), 4);
-                Serial.print("\t");
-            }
-            Serial.println();
-        }
-        Serial.println();
-    }
-
-    // Push a new value to a specific motor row
-    void pushSample(int motor_index, float value) {
-        if (motor_index < 0 || motor_index >= sum.rows()) return;
-
-        // Shift all values to the right
-        for (int j = sample - 1; j > 0; --j) {
-            sum(motor_index, j) = sum(motor_index, j - 1);
-        }
-        sum(motor_index, 0) = value;
-    }
-
-    float getRowMean(int motor_index) const {
-        if (motor_index < 0 || motor_index >= sum.rows()) return 0.0f;
-
-        float row_sum = 0.0f;
-        for (int j = 0; j < sample; ++j) {
-            row_sum += sum(motor_index, j);
-        }
-        return row_sum / sample;
-    }
-};
-
-// extern MeanFilter PWM_filter;
-
-
 
 class Motors {
     private:
@@ -80,7 +34,6 @@ class Motors {
          Motor_struct.PWM2 = MOTOR_OFF;
          Motor_struct.PWM3 = MOTOR_OFF;
          Motor_struct.PWM4 = MOTOR_OFF;
-         MeanFilter PWM_filter(4);
      };
 
     // MeanFilter PWM_filter;

@@ -19,6 +19,8 @@ set(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_py/ground_bot/msg/_motor_data_s.c" "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c"
   "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_py/ground_bot/msg/_pwm.py" "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c"
   "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_py/ground_bot/msg/_pwm_s.c" "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c"
+  "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_py/ground_bot/msg/_roller_data.py" "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c"
+  "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_py/ground_bot/msg/_roller_data_s.c" "/home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_fastrtps_c.c"
   )
 
 

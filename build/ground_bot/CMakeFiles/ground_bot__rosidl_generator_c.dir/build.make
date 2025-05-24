@@ -84,6 +84,7 @@ rosidl_generator_c/ground_bot/msg/pwm.h: /opt/ros/humble/share/rosidl_generator_
 rosidl_generator_c/ground_bot/msg/pwm.h: /opt/ros/humble/share/rosidl_generator_c/resource/srv__type_support.h.em
 rosidl_generator_c/ground_bot/msg/pwm.h: rosidl_adapter/ground_bot/msg/Pwm.idl
 rosidl_generator_c/ground_bot/msg/pwm.h: rosidl_adapter/ground_bot/msg/MotorData.idl
+rosidl_generator_c/ground_bot/msg/pwm.h: rosidl_adapter/ground_bot/msg/RollerData.idl
 rosidl_generator_c/ground_bot/msg/pwm.h: /opt/ros/humble/share/std_msgs/msg/Bool.idl
 rosidl_generator_c/ground_bot/msg/pwm.h: /opt/ros/humble/share/std_msgs/msg/Byte.idl
 rosidl_generator_c/ground_bot/msg/pwm.h: /opt/ros/humble/share/std_msgs/msg/ByteMultiArray.idl
@@ -140,11 +141,26 @@ rosidl_generator_c/ground_bot/msg/detail/motor_data__struct.h: rosidl_generator_
 rosidl_generator_c/ground_bot/msg/detail/motor_data__type_support.h: rosidl_generator_c/ground_bot/msg/pwm.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/ground_bot/msg/detail/motor_data__type_support.h
 
+rosidl_generator_c/ground_bot/msg/roller_data.h: rosidl_generator_c/ground_bot/msg/pwm.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/ground_bot/msg/roller_data.h
+
+rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.h: rosidl_generator_c/ground_bot/msg/pwm.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.h
+
+rosidl_generator_c/ground_bot/msg/detail/roller_data__struct.h: rosidl_generator_c/ground_bot/msg/pwm.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/ground_bot/msg/detail/roller_data__struct.h
+
+rosidl_generator_c/ground_bot/msg/detail/roller_data__type_support.h: rosidl_generator_c/ground_bot/msg/pwm.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/ground_bot/msg/detail/roller_data__type_support.h
+
 rosidl_generator_c/ground_bot/msg/detail/pwm__functions.c: rosidl_generator_c/ground_bot/msg/pwm.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/ground_bot/msg/detail/pwm__functions.c
 
 rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.c: rosidl_generator_c/ground_bot/msg/pwm.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.c
+
+rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c: rosidl_generator_c/ground_bot/msg/pwm.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c
 
 CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/pwm__functions.c.o: CMakeFiles/ground_bot__rosidl_generator_c.dir/flags.make
 CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/pwm__functions.c.o: rosidl_generator_c/ground_bot/msg/detail/pwm__functions.c
@@ -174,23 +190,39 @@ CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.c -o CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.c.s
 
+CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c.o: CMakeFiles/ground_bot__rosidl_generator_c.dir/flags.make
+CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c.o: rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c
+CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c.o: CMakeFiles/ground_bot__rosidl_generator_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c.o -MF CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c.o.d -o CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c.o -c /home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c
+
+CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c > CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c.i
+
+CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c -o CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c.s
+
 # Object files for target ground_bot__rosidl_generator_c
 ground_bot__rosidl_generator_c_OBJECTS = \
 "CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/pwm__functions.c.o" \
-"CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.c.o"
+"CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.c.o" \
+"CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c.o"
 
 # External object files for target ground_bot__rosidl_generator_c
 ground_bot__rosidl_generator_c_EXTERNAL_OBJECTS =
 
 libground_bot__rosidl_generator_c.so: CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/pwm__functions.c.o
 libground_bot__rosidl_generator_c.so: CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.c.o
+libground_bot__rosidl_generator_c.so: CMakeFiles/ground_bot__rosidl_generator_c.dir/rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c.o
 libground_bot__rosidl_generator_c.so: CMakeFiles/ground_bot__rosidl_generator_c.dir/build.make
 libground_bot__rosidl_generator_c.so: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_c.so
 libground_bot__rosidl_generator_c.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so
 libground_bot__rosidl_generator_c.so: /opt/ros/humble/lib/librosidl_runtime_c.so
 libground_bot__rosidl_generator_c.so: /opt/ros/humble/lib/librcutils.so
 libground_bot__rosidl_generator_c.so: CMakeFiles/ground_bot__rosidl_generator_c.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C shared library libground_bot__rosidl_generator_c.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C shared library libground_bot__rosidl_generator_c.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ground_bot__rosidl_generator_c.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -209,8 +241,13 @@ CMakeFiles/ground_bot__rosidl_generator_c.dir/depend: rosidl_generator_c/ground_
 CMakeFiles/ground_bot__rosidl_generator_c.dir/depend: rosidl_generator_c/ground_bot/msg/detail/pwm__functions.h
 CMakeFiles/ground_bot__rosidl_generator_c.dir/depend: rosidl_generator_c/ground_bot/msg/detail/pwm__struct.h
 CMakeFiles/ground_bot__rosidl_generator_c.dir/depend: rosidl_generator_c/ground_bot/msg/detail/pwm__type_support.h
+CMakeFiles/ground_bot__rosidl_generator_c.dir/depend: rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.c
+CMakeFiles/ground_bot__rosidl_generator_c.dir/depend: rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.h
+CMakeFiles/ground_bot__rosidl_generator_c.dir/depend: rosidl_generator_c/ground_bot/msg/detail/roller_data__struct.h
+CMakeFiles/ground_bot__rosidl_generator_c.dir/depend: rosidl_generator_c/ground_bot/msg/detail/roller_data__type_support.h
 CMakeFiles/ground_bot__rosidl_generator_c.dir/depend: rosidl_generator_c/ground_bot/msg/motor_data.h
 CMakeFiles/ground_bot__rosidl_generator_c.dir/depend: rosidl_generator_c/ground_bot/msg/pwm.h
+CMakeFiles/ground_bot__rosidl_generator_c.dir/depend: rosidl_generator_c/ground_bot/msg/roller_data.h
 	cd /home/naor/Desktop/naor/study/Thesis/build/ground_bot && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/naor/Desktop/naor/study/Thesis/src/ground_bot /home/naor/Desktop/naor/study/Thesis/src/ground_bot /home/naor/Desktop/naor/study/Thesis/build/ground_bot /home/naor/Desktop/naor/study/Thesis/build/ground_bot /home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles/ground_bot__rosidl_generator_c.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ground_bot__rosidl_generator_c.dir/depend
 

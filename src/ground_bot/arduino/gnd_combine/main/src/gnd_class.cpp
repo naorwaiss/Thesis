@@ -44,6 +44,7 @@ void gnd_bot::get_velocity_prediction(Motor_Data &motor, Encoder &encoder) {
     motor.vk += (motor.b * motor.rk) / this->dt_sec;
     motor.xk_1 = motor.xk;
     motor.vk_1 = omega;  // Use computed angular velocity
+    motor.omega_drive_wheel = omega; 
     motor.wheel_linera_speed = motor.vk_1 * (RADIOUS_MM / 1000);
 }
 
@@ -99,7 +100,7 @@ int gnd_bot::motor_pid_omega(Motor_Data &motor, Encoder &encoder, double dt, uin
     float goal = 0.0, error = 0.0, derivative = 0.0;
     goal = map(axis_data, 1000, 2000, 0, max_omga);  /// need to fix it with the direction
     // get_velocity_prediction(motor, encoder, dt);
-    error = goal - motor.omega_dot;
+    error = goal - motor.omega_drive_wheel;
     motor.integral += error * dt;
     derivative = (error - motor.prev_error) / dt;  // Compute derivative
     motor.pid_out = (motor.Kp * error) + (motor.Ki * motor.integral) + (motor.Kd + derivative);
@@ -109,7 +110,7 @@ int gnd_bot::motor_pid_omega(Motor_Data &motor, Encoder &encoder, double dt, uin
 void gnd_bot::main(float omega_dot, float x_dot) {
     get_velocity_prediction(left_motor, left_encoder);
     get_velocity_prediction(right_motor, right_encoder);
-    get_twist_msg();
     robot.omega_dot_cmmand = omega_dot;
     robot.x_dot_cmmand = x_dot;
+    get_twist_msg();
 }

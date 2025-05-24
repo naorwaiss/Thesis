@@ -248,7 +248,10 @@ CMakeFiles/ground_bot__rosidl_typesupport_introspection_c__pyext.dir/rosidl_gene
   rosidl_generator_c/ground_bot/msg/detail/pwm__functions.h \
   rosidl_generator_c/ground_bot/msg/detail/motor_data__type_support.h \
   rosidl_generator_c/ground_bot/msg/detail/motor_data__struct.h \
-  rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.h
+  rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.h \
+  rosidl_generator_c/ground_bot/msg/detail/roller_data__type_support.h \
+  rosidl_generator_c/ground_bot/msg/detail/roller_data__struct.h \
+  rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.h
 
 
 rosidl_generator_c/ground_bot/msg/detail/motor_data__functions.h:
@@ -435,6 +438,8 @@ rosidl_generator_c/ground_bot/msg/detail/pwm__struct.h:
 
 /usr/include/linux/types.h:
 
+rosidl_generator_c/ground_bot/msg/detail/roller_data__functions.h:
+
 /usr/include/python3.10/sliceobject.h:
 
 /usr/include/features.h:
@@ -559,6 +564,8 @@ rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_introspection
 
 /usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
 
+rosidl_generator_c/ground_bot/msg/detail/roller_data__type_support.h:
+
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
 
 /usr/include/x86_64-linux-gnu/bits/getopt_core.h:
@@ -656,6 +663,8 @@ rosidl_generator_py/ground_bot/_ground_bot_s.ep.rosidl_typesupport_introspection
 /usr/include/python3.10/structseq.h:
 
 /usr/include/assert.h:
+
+rosidl_generator_c/ground_bot/msg/detail/roller_data__struct.h:
 
 /usr/include/python3.10/ceval.h:
 

@@ -1,0 +1,310 @@
+[0.172s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/hamma_bot': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake /home/naor/Desktop/naor/study/Thesis/src/hamma_bot -DCMAKE_INSTALL_PREFIX=/home/naor/Desktop/naor/study/Thesis/install/hamma_bot
+[0.251s] -- The C compiler identification is GNU 11.4.0
+[0.321s] -- The CXX compiler identification is GNU 11.4.0
+[0.329s] -- Detecting C compiler ABI info
+[0.414s] -- Detecting C compiler ABI info - done
+[0.419s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.420s] -- Detecting C compile features
+[0.420s] -- Detecting C compile features - done
+[0.422s] -- Detecting CXX compiler ABI info
+[0.517s] -- Detecting CXX compiler ABI info - done
+[0.526s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.526s] -- Detecting CXX compile features
+[0.527s] -- Detecting CXX compile features - done
+[0.529s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.866s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.949s] -- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)
+[0.989s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.992s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.999s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.009s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.024s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.066s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.070s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.233s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.264s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.304s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.311s] -- Looking for pthread.h
+[1.399s] -- Looking for pthread.h - found
+[1.399s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.499s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.500s] -- Found Threads: TRUE  
+[1.546s] -- Found sensor_msgs: 4.8.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[1.568s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[1.575s] -- Found xacro: 2.0.13 (/opt/ros/humble/share/xacro/cmake)
+[1.577s] -- Found cv_bridge: 3.2.1 (/opt/ros/humble/share/cv_bridge/cmake)
+[1.584s] -- Found OpenCV: /usr/local (found version "4.12.0") 
+[1.893s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[2.261s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.434s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.470s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[2.472s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[2.513s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[2.513s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[2.513s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[2.513s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[2.547s] -- Found PythonExtra: .so  
+[2.605s] -- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[2.625s] -- Added test 'copyright' to check source files copyright and LICENSE
+[2.627s] -- Added test 'flake8' to check Python code syntax and style conventions
+[2.628s] -- Added test 'lint_cmake' to check CMake code style
+[2.629s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[2.631s] -- Added test 'uncrustify' to check C / C++ code style
+[2.631s] -- Configured uncrustify additional arguments: 
+[2.631s] -- Added test 'xmllint' to check XML markup files
+[2.634s] -- Configuring done
+[2.675s] -- Generating done
+[2.690s] -- Build files have been written to: /home/naor/Desktop/naor/study/Thesis/build/hamma_bot
+[2.707s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/hamma_bot' returned '0': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake /home/naor/Desktop/naor/study/Thesis/src/hamma_bot -DCMAKE_INSTALL_PREFIX=/home/naor/Desktop/naor/study/Thesis/install/hamma_bot
+[2.708s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/hamma_bot': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/hamma_bot -- -j16 -l16
+[2.823s] [  2%] [34m[1mGenerating C code for ROS interfaces[0m
+[2.860s] [  4%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[2.876s] [  6%] [32mBuilding CXX object CMakeFiles/joy_twist_node.dir/src/joy_twist.cpp.o[0m
+[2.879s] [  9%] [32mBuilding CXX object CMakeFiles/twist_to_twiststamped_node.dir/src/twisstump_bridge.cpp.o[0m
+[2.890s] [  9%] Built target ament_cmake_python_copy_hamma_bot
+[3.237s] running egg_info
+[3.270s] creating hamma_bot.egg-info
+[3.270s] writing hamma_bot.egg-info/PKG-INFO
+[3.270s] writing dependency_links to hamma_bot.egg-info/dependency_links.txt
+[3.271s] writing top-level names to hamma_bot.egg-info/top_level.txt
+[3.271s] writing manifest file 'hamma_bot.egg-info/SOURCES.txt'
+[3.344s] [  9%] Built target hamma_bot__cpp
+[3.359s] [ 11%] [32mBuilding C object CMakeFiles/hamma_bot__rosidl_generator_c.dir/rosidl_generator_c/hamma_bot/msg/detail/pwm__functions.c.o[0m
+[3.370s] reading manifest file 'hamma_bot.egg-info/SOURCES.txt'
+[3.371s] writing manifest file 'hamma_bot.egg-info/SOURCES.txt'
+[3.377s] [ 13%] [32mBuilding C object CMakeFiles/hamma_bot__rosidl_generator_c.dir/rosidl_generator_c/hamma_bot/msg/detail/motor_data__functions.c.o[0m
+[3.386s] [ 16%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[3.411s] [ 18%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[3.448s] [ 20%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[3.640s] [ 20%] Built target ament_cmake_python_build_hamma_bot_egg
+[3.720s] [ 23%] [32m[1mLinking C shared library libhamma_bot__rosidl_generator_c.so[0m
+[3.899s] [ 23%] Built target hamma_bot__rosidl_generator_c
+[3.974s] [ 27%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/hamma_bot/msg/detail/motor_data__type_support.cpp.o[0m
+[3.975s] [ 27%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/hamma_bot/msg/pwm__type_support.cpp.o[0m
+[3.992s] [ 30%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/hamma_bot/msg/detail/pwm__type_support.cpp.o[0m
+[3.993s] [ 34%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[3.993s] [ 34%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[4.002s] [ 37%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[4.010s] [ 39%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/hamma_bot/msg/motor_data__type_support.cpp.o[0m
+[4.123s] [ 41%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/hamma_bot/msg/detail/dds_fastrtps/motor_data__type_support.cpp.o[0m
+[4.125s] [ 44%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/hamma_bot/msg/detail/dds_fastrtps/pwm__type_support.cpp.o[0m
+[4.721s] [ 46%] [32m[1mLinking CXX shared library libhamma_bot__rosidl_typesupport_introspection_cpp.so[0m
+[4.852s] [ 48%] [32m[1mLinking CXX shared library libhamma_bot__rosidl_typesupport_cpp.so[0m
+[5.041s] [ 51%] [32mBuilding C object CMakeFiles/hamma_bot__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/hamma_bot/msg/detail/pwm__type_support.c.o[0m
+[5.095s] [ 53%] [32mBuilding C object CMakeFiles/hamma_bot__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/hamma_bot/msg/detail/motor_data__type_support.c.o[0m
+[5.132s] [ 55%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_c.dir/rosidl_typesupport_c/hamma_bot/msg/motor_data__type_support.cpp.o[0m
+[5.146s] [ 58%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_c.dir/rosidl_typesupport_c/hamma_bot/msg/pwm__type_support.cpp.o[0m
+[5.172s] [ 60%] [32m[1mLinking CXX shared library libhamma_bot__rosidl_typesupport_fastrtps_cpp.so[0m
+[5.479s] [ 60%] Built target hamma_bot__rosidl_typesupport_introspection_cpp
+[5.517s] [ 62%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/hamma_bot/msg/detail/motor_data__type_support_c.cpp.o[0m
+[5.519s] [ 65%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/hamma_bot/msg/detail/pwm__type_support_c.cpp.o[0m
+[5.522s] [ 65%] Built target hamma_bot__rosidl_typesupport_cpp
+[5.557s] [ 67%] [32m[1mLinking C shared library libhamma_bot__rosidl_typesupport_introspection_c.so[0m
+[5.657s] [ 69%] [32m[1mLinking CXX shared library libhamma_bot__rosidl_typesupport_c.so[0m
+[5.749s] [ 69%] Built target hamma_bot__rosidl_typesupport_fastrtps_cpp
+[5.882s] [ 69%] Built target hamma_bot__rosidl_typesupport_introspection_c
+[5.934s] [ 69%] Built target hamma_bot__rosidl_typesupport_c
+[6.021s] [ 72%] [32m[1mLinking CXX shared library libhamma_bot__rosidl_typesupport_fastrtps_c.so[0m
+[6.094s] [ 72%] Built target hamma_bot__rosidl_typesupport_fastrtps_c
+[6.131s] [ 72%] Built target hamma_bot
+[6.159s] [ 74%] [34m[1mGenerating Python code for ROS interfaces[0m
+[6.431s] [ 74%] Built target hamma_bot__py
+[6.466s] [ 76%] [32mBuilding C object CMakeFiles/hamma_bot__rosidl_generator_py.dir/rosidl_generator_py/hamma_bot/msg/_motor_data_s.c.o[0m
+[6.467s] [ 79%] [32mBuilding C object CMakeFiles/hamma_bot__rosidl_generator_py.dir/rosidl_generator_py/hamma_bot/msg/_pwm_s.c.o[0m
+[6.584s] [ 81%] [32m[1mLinking C shared library rosidl_generator_py/hamma_bot/libhamma_bot__rosidl_generator_py.so[0m
+[6.639s] [ 81%] Built target hamma_bot__rosidl_generator_py
+[6.677s] [ 83%] [32mBuilding C object CMakeFiles/hamma_bot__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/hamma_bot/_hamma_bot_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[6.682s] [ 86%] [32mBuilding C object CMakeFiles/hamma_bot__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/hamma_bot/_hamma_bot_s.ep.rosidl_typesupport_c.c.o[0m
+[6.685s] [ 88%] [32mBuilding C object CMakeFiles/hamma_bot__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/hamma_bot/_hamma_bot_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[6.760s] [ 90%] [32m[1mLinking C shared library rosidl_generator_py/hamma_bot/hamma_bot_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[6.765s] [ 93%] [32m[1mLinking C shared library rosidl_generator_py/hamma_bot/hamma_bot_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[6.789s] [ 95%] [32m[1mLinking C shared library rosidl_generator_py/hamma_bot/hamma_bot_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[6.811s] [ 95%] Built target hamma_bot__rosidl_typesupport_c__pyext
+[6.812s] [ 95%] Built target hamma_bot__rosidl_typesupport_introspection_c__pyext
+[6.839s] [ 95%] Built target hamma_bot__rosidl_typesupport_fastrtps_c__pyext
+[10.646s] [ 97%] [32m[1mLinking CXX executable joy_twist_node[0m
+[10.859s] [100%] [32m[1mLinking CXX executable twist_to_twiststamped_node[0m
+[11.035s] [100%] Built target joy_twist_node
+[11.170s] [100%] Built target twist_to_twiststamped_node
+[11.181s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/hamma_bot' returned '0': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/hamma_bot -- -j16 -l16
+[11.183s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/hamma_bot': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/hamma_bot
+[11.191s] -- Install configuration: ""
+[11.191s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/ament_index/resource_index/rosidl_interfaces/hamma_bot
+[11.191s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot
+[11.191s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg
+[11.191s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/motor_data.h
+[11.192s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/pwm.h
+[11.192s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/rosidl_generator_c__visibility_control.h
+[11.192s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail
+[11.192s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/pwm__functions.c
+[11.192s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/pwm__type_support.h
+[11.192s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/motor_data__functions.c
+[11.192s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/motor_data__type_support.h
+[11.192s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/pwm__functions.h
+[11.192s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/motor_data__struct.h
+[11.192s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/motor_data__functions.h
+[11.192s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/pwm__struct.h
+[11.192s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/environment/library_path.sh
+[11.193s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/environment/library_path.dsv
+[11.193s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/libhamma_bot__rosidl_generator_c.so
+[11.193s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/libhamma_bot__rosidl_generator_c.so" to ""
+[11.193s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot
+[11.193s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg
+[11.193s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[11.193s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail
+[11.193s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/motor_data__rosidl_typesupport_fastrtps_c.h
+[11.193s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/pwm__rosidl_typesupport_fastrtps_c.h
+[11.193s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/libhamma_bot__rosidl_typesupport_fastrtps_c.so
+[11.193s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/libhamma_bot__rosidl_typesupport_fastrtps_c.so" to ""
+[11.194s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot
+[11.194s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg
+[11.194s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/rosidl_generator_cpp__visibility_control.hpp
+[11.194s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/motor_data.hpp
+[11.194s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/pwm.hpp
+[11.194s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail
+[11.194s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/motor_data__builder.hpp
+[11.194s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/motor_data__struct.hpp
+[11.194s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/pwm__builder.hpp
+[11.194s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/pwm__struct.hpp
+[11.194s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/motor_data__traits.hpp
+[11.194s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/pwm__traits.hpp
+[11.194s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/pwm__type_support.hpp
+[11.194s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/motor_data__type_support.hpp
+[11.194s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot
+[11.194s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg
+[11.194s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[11.194s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail
+[11.195s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/pwm__rosidl_typesupport_fastrtps_cpp.hpp
+[11.195s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/dds_fastrtps
+[11.195s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/motor_data__rosidl_typesupport_fastrtps_cpp.hpp
+[11.195s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/libhamma_bot__rosidl_typesupport_fastrtps_cpp.so
+[11.195s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/libhamma_bot__rosidl_typesupport_fastrtps_cpp.so" to ""
+[11.195s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot
+[11.195s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg
+[11.195s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[11.195s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail
+[11.195s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/motor_data__type_support.c
+[11.195s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/motor_data__rosidl_typesupport_introspection_c.h
+[11.195s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/pwm__rosidl_typesupport_introspection_c.h
+[11.195s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/pwm__type_support.c
+[11.195s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/libhamma_bot__rosidl_typesupport_introspection_c.so
+[11.195s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/libhamma_bot__rosidl_typesupport_introspection_c.so" to ""
+[11.196s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/libhamma_bot__rosidl_typesupport_c.so
+[11.196s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/libhamma_bot__rosidl_typesupport_c.so" to ""
+[11.196s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot
+[11.196s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg
+[11.196s] -- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail
+[11.196s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/pwm__rosidl_typesupport_introspection_cpp.hpp
+[11.196s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/motor_data__rosidl_typesupport_introspection_cpp.hpp
+[11.196s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/pwm__type_support.cpp
+[11.196s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/include/hamma_bot/hamma_bot/msg/detail/motor_data__type_support.cpp
+[11.196s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/libhamma_bot__rosidl_typesupport_introspection_cpp.so
+[11.197s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/libhamma_bot__rosidl_typesupport_introspection_cpp.so" to ""
+[11.197s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/libhamma_bot__rosidl_typesupport_cpp.so
+[11.197s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/libhamma_bot__rosidl_typesupport_cpp.so" to ""
+[11.197s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/environment/pythonpath.sh
+[11.197s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/environment/pythonpath.dsv
+[11.197s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot-0.0.1-py3.10.egg-info
+[11.197s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot-0.0.1-py3.10.egg-info/SOURCES.txt
+[11.197s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot-0.0.1-py3.10.egg-info/PKG-INFO
+[11.198s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot-0.0.1-py3.10.egg-info/dependency_links.txt
+[11.198s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot-0.0.1-py3.10.egg-info/top_level.txt
+[11.198s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot
+[11.198s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/__init__.py
+[11.198s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/msg
+[11.198s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/msg/__init__.py
+[11.198s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/msg/_motor_data_s.c
+[11.198s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/msg/_pwm_s.c
+[11.198s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/msg/_pwm.py
+[11.199s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/msg/_motor_data.py
+[11.199s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/hamma_bot_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[11.199s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/_hamma_bot_s.ep.rosidl_typesupport_fastrtps_c.c
+[11.199s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/_hamma_bot_s.ep.rosidl_typesupport_c.c
+[11.199s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/_hamma_bot_s.ep.rosidl_typesupport_introspection_c.c
+[11.199s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/hamma_bot_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[11.199s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/libhamma_bot__rosidl_generator_py.so
+[11.199s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/hamma_bot_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[11.227s] Listing '/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot'...
+[11.228s] Compiling '/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/__init__.py'...
+[11.228s] Listing '/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/msg'...
+[11.228s] Compiling '/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/msg/__init__.py'...
+[11.228s] Compiling '/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/msg/_motor_data.py'...
+[11.228s] Compiling '/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/msg/_pwm.py'...
+[11.232s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/hamma_bot_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[11.232s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/hamma_bot_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[11.232s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/hamma_bot_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[11.233s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/hamma_bot_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[11.233s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/hamma_bot_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[11.233s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/local/lib/python3.10/dist-packages/hamma_bot/hamma_bot_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[11.233s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/libhamma_bot__rosidl_generator_py.so
+[11.233s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/libhamma_bot__rosidl_generator_py.so" to ""
+[11.233s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/msg/Pwm.idl
+[11.233s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/msg/MotorData.idl
+[11.233s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/msg/Pwm.msg
+[11.234s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/msg/MotorData.msg
+[11.234s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/hamma_bot/twist_to_twiststamped_node
+[11.236s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/hamma_bot/twist_to_twiststamped_node" to ""
+[11.236s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/hamma_bot/joy_twist_node
+[11.239s] -- Set runtime path of "/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/hamma_bot/joy_twist_node" to ""
+[11.239s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/launch
+[11.239s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/launch/simple_joy_control.launch.py
+[11.240s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/launch/navigation_launch.launch.py
+[11.240s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/launch/ackermann_drive_example.launch.py
+[11.240s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/launch/hamma_bot.launch.py
+[11.241s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/config
+[11.241s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/config/costmap_params.yaml
+[11.241s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/config/ackermann_controller.yaml
+[11.241s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/config/mapper_params_online_async.yaml
+[11.241s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/config/slam_toolbox_params.yaml
+[11.242s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/config/nav2_params.yaml
+[11.242s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/config/ekf.yaml
+[11.242s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/urdf
+[11.242s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/urdf/robot_description.urdf
+[11.242s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/worlds
+[11.242s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/worlds/worlds.sdf
+[11.243s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/worlds/empty.sdf
+[11.243s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/worlds/bookstore.sdf
+[11.243s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/rviz
+[11.244s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/rviz/urdf_config.rviz
+[11.244s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/rviz/navigation_config.rviz
+[11.244s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib/hamma_bot/hamma_bot_rtcom.py
+[11.244s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/ament_index/resource_index/package_run_dependencies/hamma_bot
+[11.244s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/ament_index/resource_index/parent_prefix_path/hamma_bot
+[11.244s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/environment/ament_prefix_path.sh
+[11.244s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/environment/ament_prefix_path.dsv
+[11.245s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/environment/path.sh
+[11.245s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/environment/path.dsv
+[11.245s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/local_setup.bash
+[11.245s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/local_setup.sh
+[11.245s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/local_setup.zsh
+[11.245s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/local_setup.dsv
+[11.245s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/package.dsv
+[11.245s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/ament_index/resource_index/packages/hamma_bot
+[11.246s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/export_hamma_bot__rosidl_generator_cExport.cmake
+[11.246s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/export_hamma_bot__rosidl_generator_cExport-noconfig.cmake
+[11.246s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/export_hamma_bot__rosidl_typesupport_fastrtps_cExport.cmake
+[11.246s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/export_hamma_bot__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[11.246s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/export_hamma_bot__rosidl_generator_cppExport.cmake
+[11.246s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/export_hamma_bot__rosidl_typesupport_fastrtps_cppExport.cmake
+[11.246s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/export_hamma_bot__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[11.246s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/hamma_bot__rosidl_typesupport_introspection_cExport.cmake
+[11.247s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/hamma_bot__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[11.247s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/hamma_bot__rosidl_typesupport_cExport.cmake
+[11.247s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/hamma_bot__rosidl_typesupport_cExport-noconfig.cmake
+[11.247s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/hamma_bot__rosidl_typesupport_introspection_cppExport.cmake
+[11.247s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/hamma_bot__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[11.247s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/hamma_bot__rosidl_typesupport_cppExport.cmake
+[11.247s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/hamma_bot__rosidl_typesupport_cppExport-noconfig.cmake
+[11.247s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/export_hamma_bot__rosidl_generator_pyExport.cmake
+[11.247s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/export_hamma_bot__rosidl_generator_pyExport-noconfig.cmake
+[11.248s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/rosidl_cmake-extras.cmake
+[11.248s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/ament_cmake_export_dependencies-extras.cmake
+[11.248s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/ament_cmake_export_include_directories-extras.cmake
+[11.248s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/ament_cmake_export_libraries-extras.cmake
+[11.248s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/ament_cmake_export_targets-extras.cmake
+[11.248s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[11.248s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[11.248s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/hamma_botConfig.cmake
+[11.248s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/cmake/hamma_botConfig-version.cmake
+[11.248s] -- Installing: /home/naor/Desktop/naor/study/Thesis/install/hamma_bot/share/hamma_bot/package.xml
+[11.251s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/hamma_bot' returned '0': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --install /home/naor/Desktop/naor/study/Thesis/build/hamma_bot

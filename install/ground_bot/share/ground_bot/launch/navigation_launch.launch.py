@@ -24,7 +24,7 @@ def generate_launch_description():
     # Get the path to the package and config directory
     pkg_share = FindPackageShare('ground_bot')
     config_dir = os.path.join(pkg_share.find('ground_bot'), 'config')
-    world_file = os.path.join(pkg_share.find('ground_bot'), 'worlds', 'worlds.sdf')
+    world_file = os.path.join(pkg_share.find('ground_bot'), 'worlds', 'empty.sdf')
     # Define the path to our custom SLAM toolbox params
     slam_params_file = os.path.join(config_dir, 'slam_toolbox_params.yaml')
     costmap_params_file = os.path.join(config_dir, 'costmap_params.yaml')
@@ -56,6 +56,7 @@ def generate_launch_description():
             "slam_toolbox",
             "online_async_launch.py",
             "slam_params_file:=" + slam_params_file,
+            "use_sim_time:=True",
         ],
         shell=False,
         output="screen",

@@ -97,16 +97,32 @@ CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/ms
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_motor_data_s.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_py/ground_bot/msg/_motor_data_s.c -o CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_motor_data_s.c.s
 
+CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_roller_data_s.c.o: CMakeFiles/ground_bot__rosidl_generator_py.dir/flags.make
+CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_roller_data_s.c.o: rosidl_generator_py/ground_bot/msg/_roller_data_s.c
+CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_roller_data_s.c.o: CMakeFiles/ground_bot__rosidl_generator_py.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_roller_data_s.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_roller_data_s.c.o -MF CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_roller_data_s.c.o.d -o CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_roller_data_s.c.o -c /home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_py/ground_bot/msg/_roller_data_s.c
+
+CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_roller_data_s.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_roller_data_s.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_py/ground_bot/msg/_roller_data_s.c > CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_roller_data_s.c.i
+
+CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_roller_data_s.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_roller_data_s.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/naor/Desktop/naor/study/Thesis/build/ground_bot/rosidl_generator_py/ground_bot/msg/_roller_data_s.c -o CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_roller_data_s.c.s
+
 # Object files for target ground_bot__rosidl_generator_py
 ground_bot__rosidl_generator_py_OBJECTS = \
 "CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_pwm_s.c.o" \
-"CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_motor_data_s.c.o"
+"CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_motor_data_s.c.o" \
+"CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_roller_data_s.c.o"
 
 # External object files for target ground_bot__rosidl_generator_py
 ground_bot__rosidl_generator_py_EXTERNAL_OBJECTS =
 
 rosidl_generator_py/ground_bot/libground_bot__rosidl_generator_py.so: CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_pwm_s.c.o
 rosidl_generator_py/ground_bot/libground_bot__rosidl_generator_py.so: CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_motor_data_s.c.o
+rosidl_generator_py/ground_bot/libground_bot__rosidl_generator_py.so: CMakeFiles/ground_bot__rosidl_generator_py.dir/rosidl_generator_py/ground_bot/msg/_roller_data_s.c.o
 rosidl_generator_py/ground_bot/libground_bot__rosidl_generator_py.so: CMakeFiles/ground_bot__rosidl_generator_py.dir/build.make
 rosidl_generator_py/ground_bot/libground_bot__rosidl_generator_py.so: /usr/lib/x86_64-linux-gnu/libpython3.10.so
 rosidl_generator_py/ground_bot/libground_bot__rosidl_generator_py.so: libground_bot__rosidl_typesupport_c.so
@@ -121,7 +137,7 @@ rosidl_generator_py/ground_bot/libground_bot__rosidl_generator_py.so: /opt/ros/h
 rosidl_generator_py/ground_bot/libground_bot__rosidl_generator_py.so: /opt/ros/humble/lib/librosidl_runtime_c.so
 rosidl_generator_py/ground_bot/libground_bot__rosidl_generator_py.so: /opt/ros/humble/lib/librcutils.so
 rosidl_generator_py/ground_bot/libground_bot__rosidl_generator_py.so: CMakeFiles/ground_bot__rosidl_generator_py.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C shared library rosidl_generator_py/ground_bot/libground_bot__rosidl_generator_py.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/naor/Desktop/naor/study/Thesis/build/ground_bot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C shared library rosidl_generator_py/ground_bot/libground_bot__rosidl_generator_py.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ground_bot__rosidl_generator_py.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

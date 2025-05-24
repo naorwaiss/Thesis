@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "../rosidl_generator_py/ground_bot/msg/_motor_data_s.c"
   "../rosidl_generator_py/ground_bot/msg/_pwm.py"
   "../rosidl_generator_py/ground_bot/msg/_pwm_s.c"
+  "../rosidl_generator_py/ground_bot/msg/_roller_data.py"
+  "../rosidl_generator_py/ground_bot/msg/_roller_data_s.c"
   "CMakeFiles/ground_bot__py"
 )
 

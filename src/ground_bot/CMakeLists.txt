@@ -31,7 +31,10 @@ ament_target_dependencies(joy_twist rclcpp sensor_msgs geometry_msgs)
 set(msg_files
   "msg/Pwm.msg"
   "msg/MotorData.msg"
+  "msg/RollerData.msg"
 )
+
+
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
   DEPENDENCIES std_msgs

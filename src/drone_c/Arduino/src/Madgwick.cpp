@@ -27,8 +27,6 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
         updateIMU(gx, gy, gz, ax, ay, az);
         return;
     }
-
-    // Convert gyroscope degrees/sec to radians/sec
     gx *= 0.0174533f;
     gy *= 0.0174533f;
     gz *= 0.0174533f;
@@ -75,7 +73,6 @@ void Madgwick::update(float gx, float gy, float gz, float ax, float ay, float az
         q2q3 = q2 * q3;
         q3q3 = q3 * q3;
 
-        // Reference direction of Earth's magnetic field
         hx = mx * q0q0 - _2q0my * q3 + _2q0mz * q2 + mx * q1q1 + _2q1 * my * q2 + _2q1 * mz * q3 - mx * q2q2 - mx * q3q3;
         hy = _2q0mx * q3 + my * q0q0 - _2q0mz * q1 + _2q1mx * q2 - my * q1q1 + my * q2q2 + _2q2 * mz * q3 - my * q3q3;
         _2bx = sqrtf(hx * hx + hy * hy);
@@ -125,11 +122,6 @@ void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float
     float qDot1, qDot2, qDot3, qDot4;
     float _2q0, _2q1, _2q2, _2q3, _4q0, _4q1, _4q2, _8q1, _8q2, q0q0, q1q1, q2q2, q3q3;
 
-    // Convert gyroscope degrees/sec to radians/sec
-    gx *= 0.0174533f;
-    gy *= 0.0174533f;
-    gz *= 0.0174533f;
-
     // Rate of change of quaternion from gyroscope
     qDot1 = 0.5f * (-q1 * gx - q2 * gy - q3 * gz);
     qDot2 = 0.5f * (q0 * gx + q2 * gz - q3 * gy);
@@ -159,7 +151,6 @@ void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float
         q2q2 = q2 * q2;
         q3q3 = q3 * q3;
 
-        // Gradient decent algorithm corrective step
         s0 = _4q0 * q2q2 + _2q2 * ax + _4q0 * q1q1 - _2q1 * ay;
         s1 = _4q1 * q3q3 - _2q3 * ax + 4.0f * q0q0 * q1 - _2q0 * ay - _4q1 + _8q1 * q1q1 + _8q1 * q2q2 + _4q1 * az;
         s2 = 4.0f * q0q0 * q2 + _2q0 * ax + _4q2 * q3q3 - _2q3 * ay - _4q2 + _8q2 * q1q1 + _8q2 * q2q2 + _4q2 * az;
@@ -177,7 +168,6 @@ void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float
         qDot4 -= beta * s3;
     }
 
-    // Integrate rate of change of quaternion to yield quaternion
     q0 += qDot1 * invSampleFreq;
     q1 += qDot2 * invSampleFreq;
     q2 += qDot3 * invSampleFreq;
@@ -193,7 +183,7 @@ void Madgwick::updateIMU(float gx, float gy, float gz, float ax, float ay, float
 }
 
 void Madgwick::madgwick_operation() {
-    updateIMU(_meas->gyroDEG.x, _meas->gyroDEG.y, _meas->gyroDEG.z, _meas->acc_LPF.x, _meas->acc_LPF.y, _meas->acc_LPF.z);
+    updateIMU(_meas->gyroRAD.x, _meas->gyroRAD.y, _meas->gyroRAD.z, _meas->acc.x, _meas->acc.y, _meas->acc.z);
 	_quaternion->x = q0;
 	_quaternion->y = q1;
 	_quaternion->z = q2;
@@ -203,9 +193,6 @@ void Madgwick::madgwick_operation() {
 	_estimated_attitude->yaw = getYaw();
 }
 
-//-------------------------------------------------------------------------------------------
-// Fast inverse square-root
-// See: http://en.wikipedia.org/wiki/Fast_inverse_square_root
 
 float Madgwick::invSqrt(float x) {
     float halfx = 0.5f * x;

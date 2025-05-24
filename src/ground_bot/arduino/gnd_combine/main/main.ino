@@ -42,7 +42,7 @@ AlfredoCRSF crsf;
 gnd_bot gnd_platform(time_sec,right_motor_pwmh_pin, right_motor_dir_pin, left_motor_pwmh_pin, left_motor_dir_pin, right_motor_encoderA_pin, right_motor_encoderB_pin, left_motor_encoderA_pin, left_motor_encoderB_pin);
 roller roller_instance(time_sec, roller_motor_ENA_pin, roller_motor_INA_pin , roller_motor_INB_pin, roller_motor_PWM_pin, DOUT_data, CLK_data);
 ImuMadgwick imu(Wire1, loop_time_hz);
-sender sender_instance(socketSession, &gnd_platform, &roller_instance);
+sender sender_instance(socketSession, &gnd_platform, &roller_instance,&imu);
 
 void onConnect(RTComSession &session) {
     socketSession = &session;
@@ -61,23 +61,22 @@ void setup() {
     Serial.begin(115200);
     // crsfSerial.begin(CRSF_BAUDRATE, SERIAL_8N1);
     // gnd_platform.init();
-    // roller_instance.init_roller();
-    // roller_instance.set_pid_param(10, 0.01, 0.001);
-    // rtcomSocket.begin();
-    // rtcomSocket.onConnection(onConnect);
-    imu.init_imu_orientation();
+    roller_instance.init_roller();
+    roller_instance.set_pid_param(10, 0.01, 0.001);
+    rtcomSocket.begin();
+    rtcomSocket.onConnection(onConnect);
+    // imu.init_imu_orientation();
 }
 
 void loop() {
-    // executed_ch();
+    executed_ch();
     if (loop_time > dt_loop) {
         rtcomSocket.process();
-        imu.imu_operation_process();
         // float omega_dot_cmmand = constrain(map(channels[0], 1000, 2000, -1, 1), -1, 1);
         // float x_dot_cmmand = constrain(map(channels[2], 1000, 2000, -1, 1), -1, 1);
-        // gnd_platform.main(omega_dot_cmmand, x_dot_cmmand);
+        // gnd_platform.main(0.0, 0.0);
         // roller_instance.main_roller();
-        // roller_instance. motor_control(120);
+        roller_instance. motor_control(120);
         loop_time = 0;
     }
 }

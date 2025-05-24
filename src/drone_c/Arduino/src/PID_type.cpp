@@ -2,7 +2,6 @@
 #include "PID_type.h"
 #include "Var_types.h"
 
-#define ALPHA_LPF 0.6f
 attitude_t angle_err;  // Attitude error
 attitude_t rate_err_HPF;
 attitude_t rate_err_LPF;
@@ -84,7 +83,6 @@ PID_out_t PID_rate(attitude_t des_rate, attitude_t actual_rate, float DT) {  // 
 
     // Calculate error
     rate_err = des_rate - actual_rate;  // Probably the best for the Proportional term?
-    Serial.println(DT);
 
     // Calculate P term:
     rate_out.P_term.roll = rate_params.RollP * rate_err.roll;
@@ -100,8 +98,6 @@ PID_out_t PID_rate(attitude_t des_rate, attitude_t actual_rate, float DT) {  // 
     rate_out.D_term.roll = rate_params.RollD * rate_params.Alpha_roll * (rate_err.roll - rate_out.prev_err.roll + rate_out.D_term.roll);
     rate_out.D_term.pitch = rate_params.PitchD * rate_params.Alpha_pitch * (rate_err.pitch - rate_out.prev_err.pitch + rate_out.D_term.pitch);
     rate_out.D_term.yaw = rate_params.YawD * rate_params.Alpha_yaw * (rate_err.yaw - rate_out.prev_err.yaw + rate_out.D_term.yaw);
-    Serial.print(" rate_out.D_term.roll");
-    Serial.println(rate_out.D_term.roll);
 
     // Cap the I term
     rate_out.I_term.roll = constrain(rate_out.I_term.roll, -rate_params.Imax_roll, rate_params.Imax_roll);

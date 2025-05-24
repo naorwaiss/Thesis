@@ -1,40 +1,12 @@
-//=============================================================================================
-// MadgwickAHRS.c
-//=============================================================================================
-//
-// Implementation of Madgwick's IMU and AHRS algorithms.
-// See: http://www.x-io.co.uk/open-source-imu-and-ahrs-algorithms/
-//
-// From the x-io website "Open-source resources available on this website are
-// provided under the GNU General Public Licence unless an alternative licence
-// is provided in source."
-//
-// Date			Author          Notes
-// 29/09/2011	SOH Madgwick    Initial release
-// 02/10/2011	SOH Madgwick	Optimised for reduced CPU load
-// 19/02/2012	SOH Madgwisck	Magnetometer measurement is normalised
-//
-//=============================================================================================
-
-//-------------------------------------------------------------------------------------------
-// Header files
 
 #include "ImuMadgwick.h"
 #include <Arduino.h>
 #include <math.h>
 
-//-------------------------------------------------------------------------------------------
-// Definitions
 
 #define sampleFreqDef   200.0f          // sample frequency in Hz
 #define betaDef         0.9f            // 2 * proportional gain
 
-
-//============================================================================================
-// Functions
-
-//-------------------------------------------------------------------------------------------
-// AHRS algorithm update
 
 ImuMadgwick::ImuMadgwick(TwoWire& wireInstance, double sampleFrequency) 
     : wire(wireInstance)  // Initialize reference in initialization list
