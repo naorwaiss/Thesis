@@ -1,4 +1,3 @@
-
 #include "ImuMadgwick.h"
 #include <Arduino.h>
 #include <math.h>
@@ -255,14 +254,23 @@ int16_t ImuMadgwick::read16bit(uint8_t reg) {
 void ImuMadgwick::init_imu_orientation() {
     wire.begin();
     wire.setClock(400000);
+    
+    // Check if IMU is responding
+    uint8_t whoAmI = readRegister(WHO_AM_I_REG);
+    Serial.print("WHO_AM_I: 0x");
+    Serial.println(whoAmI, HEX);
+    
+    if (whoAmI != 0x42) {  // Expected value for IIM-42652
+        Serial.println("Error: IMU not responding correctly!");
+        return;
+    }
+    
     writeRegister(PWR_MGMT0_REG, 0b00001111);  // GYRO_MODE=11, ACCEL_MODE=11 (Low Noise)
     delay(1);
     writeRegister(GYRO_CONFIG0, 0b00100111);   // FS_SEL=010 (±500 dps), ODR=0111 (200 Hz)
     writeRegister(ACCEL_CONFIG0, 0b01000111);  // FS_SEL=010 (±4g), ODR=0111 (200 Hz)
-    uint8_t whoAmI = readRegister(WHO_AM_I_REG);
-    Serial.print("WHO_AM_I: 0x");
-    Serial.println(whoAmI, HEX);
-    writeRegister(PWR_MGMT0_REG, 0x0F);  // accelerometer and gyroscope on, default ODR
+    
+    Serial.println("IMU initialized successfully");
     delay(100);
 }
 
@@ -274,6 +282,14 @@ void ImuMadgwick::imu_update() {
     int16_t gyroX = read16bit(GYRO_DATA_X1);
     int16_t gyroY = read16bit(GYRO_DATA_X1 + sizeof(int16_t));
     int16_t gyroZ = read16bit(GYRO_DATA_X1 + 2 * sizeof(int16_t));
+
+    // Print raw values for debugging
+    Serial.print("Raw Accel - X: ");
+    Serial.print(accelX);
+    Serial.print(" Y: ");
+    Serial.print(accelY);
+    Serial.print(" Z: ");
+    Serial.println(accelZ);
 
     imu_measurement.gyro.x = gyroX * GYRO_SENS_LSB_TO_DPS;
     imu_measurement.gyro.y = gyroY * GYRO_SENS_LSB_TO_DPS;

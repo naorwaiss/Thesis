@@ -20,10 +20,11 @@
 
 
 //have problem with this pin
-#define roller_motor_INA_pin 36
+#define roller_motor_INA_pin 25
 #define roller_motor_INB_pin 33
 #define roller_motor_PWM_pin 15
-#define roller_motor_ENA_pin 37
+#define roller_motor_ENA_pin 11
+
 #define DOUT_data 14
 #define CLK_data 13
 
@@ -59,24 +60,27 @@ void executed_ch() {
 
 void setup() {
     Serial.begin(115200);
+    Wire1.begin();  // Initialize Wire1 for IMU
+    Wire1.setClock(400000);  // Set I2C clock to 400kHz
+    
     // crsfSerial.begin(CRSF_BAUDRATE, SERIAL_8N1);
     // gnd_platform.init();
     roller_instance.init_roller();
-    roller_instance.set_pid_param(10, 0.01, 0.001);
-    rtcomSocket.begin();
-    rtcomSocket.onConnection(onConnect);
-    // imu.init_imu_orientation();
+    // roller_instance.set_pid_param(10, 0.01, 0.001);
+    // rtcomSocket.begin();
+    // rtcomSocket.onConnection(onConnect);
+    imu.init_imu_orientation();
 }
 
 void loop() {
-    executed_ch();
+    // executed_ch();
     if (loop_time > dt_loop) {
         rtcomSocket.process();
         // float omega_dot_cmmand = constrain(map(channels[0], 1000, 2000, -1, 1), -1, 1);
         // float x_dot_cmmand = constrain(map(channels[2], 1000, 2000, -1, 1), -1, 1);
         // gnd_platform.main(0.0, 0.0);
         // roller_instance.main_roller();
-        roller_instance. motor_control(120);
+        imu.imu_operation_process();
         loop_time = 0;
     }
 }
