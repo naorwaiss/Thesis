@@ -35,6 +35,7 @@ void gnd_bot::set_pid_param(float Kp = 2, float Ki = 0.5, float Kd = 0.1) {
 
 void gnd_bot::get_velocity_prediction(Motor_Data &motor, Encoder &encoder) {
     motor.encoder_read = encoder.read();
+    Serial.println(motor.encoder_read);
     double revolutions = static_cast<double>(motor.encoder_read) / PPR;
     double omega = (revolutions * 2.0 * M_PI) / this->dt_sec;
     motor.xk = motor.xk_1 + (motor.vk_1 * this->dt_sec);
@@ -108,9 +109,10 @@ int gnd_bot::motor_pid_omega(Motor_Data &motor, Encoder &encoder, double dt, uin
 }
 
 void gnd_bot::main(float omega_dot, float x_dot) {
-    get_velocity_prediction(left_motor, left_encoder);
+    open_loop_pwm(1000, right_motor);
     get_velocity_prediction(right_motor, right_encoder);
-    robot.omega_dot_cmmand = omega_dot;
-    robot.x_dot_cmmand = x_dot;
-    get_twist_msg();
+    // get_velocity_prediction(left_motor, left_encoder);
+    // robot.omega_dot_cmmand = omega_dot;
+    // robot.x_dot_cmmand = x_dot;
+    // get_twist_msg();
 }

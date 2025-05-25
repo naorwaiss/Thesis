@@ -64,6 +64,11 @@ static bool _RollerData__cdr_serialize(
     cdr << ros_message->error;
   }
 
+  // Field name: error_sum
+  {
+    cdr << ros_message->error_sum;
+  }
+
   return true;
 }
 
@@ -89,6 +94,11 @@ static bool _RollerData__cdr_deserialize(
   // Field name: error
   {
     cdr >> ros_message->error;
+  }
+
+  // Field name: error_sum
+  {
+    cdr >> ros_message->error_sum;
   }
 
   return true;
@@ -123,6 +133,12 @@ size_t get_serialized_size_ground_bot__msg__RollerData(
   // field.name error
   {
     size_t item_size = sizeof(ros_message->error);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name error_sum
+  {
+    size_t item_size = sizeof(ros_message->error_sum);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -179,6 +195,14 @@ size_t max_serialized_size_ground_bot__msg__RollerData(
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
+  // member: error_sum
+  {
+    size_t array_size = 1;
+
+    last_member_size = array_size * sizeof(uint32_t);
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
 
   size_t ret_val = current_alignment - initial_alignment;
   if (is_plain) {
@@ -188,7 +212,7 @@ size_t max_serialized_size_ground_bot__msg__RollerData(
     using DataType = ground_bot__msg__RollerData;
     is_plain =
       (
-      offsetof(DataType, error) +
+      offsetof(DataType, error_sum) +
       last_member_size
       ) == ret_val;
   }

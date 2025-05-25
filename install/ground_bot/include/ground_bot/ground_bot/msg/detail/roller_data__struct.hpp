@@ -41,6 +41,7 @@ struct RollerData_
       this->tension = 0.0f;
       this->dis_tension = 0.0f;
       this->error = 0.0f;
+      this->error_sum = 0.0f;
     }
   }
 
@@ -53,6 +54,7 @@ struct RollerData_
       this->tension = 0.0f;
       this->dis_tension = 0.0f;
       this->error = 0.0f;
+      this->error_sum = 0.0f;
     }
   }
 
@@ -66,6 +68,9 @@ struct RollerData_
   using _error_type =
     float;
   _error_type error;
+  using _error_sum_type =
+    float;
+  _error_sum_type error_sum;
 
   // setters for named parameter idiom
   Type & set__tension(
@@ -84,6 +89,12 @@ struct RollerData_
     const float & _arg)
   {
     this->error = _arg;
+    return *this;
+  }
+  Type & set__error_sum(
+    const float & _arg)
+  {
+    this->error_sum = _arg;
     return *this;
   }
 
@@ -136,6 +147,9 @@ struct RollerData_
       return false;
     }
     if (this->error != other.error) {
+      return false;
+    }
+    if (this->error_sum != other.error_sum) {
       return false;
     }
     return true;

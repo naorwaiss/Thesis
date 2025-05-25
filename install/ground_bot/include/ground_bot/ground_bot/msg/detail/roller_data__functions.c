@@ -20,6 +20,7 @@ ground_bot__msg__RollerData__init(ground_bot__msg__RollerData * msg)
   // tension
   // dis_tension
   // error
+  // error_sum
   return true;
 }
 
@@ -32,6 +33,7 @@ ground_bot__msg__RollerData__fini(ground_bot__msg__RollerData * msg)
   // tension
   // dis_tension
   // error
+  // error_sum
 }
 
 bool
@@ -52,6 +54,10 @@ ground_bot__msg__RollerData__are_equal(const ground_bot__msg__RollerData * lhs, 
   if (lhs->error != rhs->error) {
     return false;
   }
+  // error_sum
+  if (lhs->error_sum != rhs->error_sum) {
+    return false;
+  }
   return true;
 }
 
@@ -69,6 +75,8 @@ ground_bot__msg__RollerData__copy(
   output->dis_tension = input->dis_tension;
   // error
   output->error = input->error;
+  // error_sum
+  output->error_sum = input->error_sum;
   return true;
 }
 

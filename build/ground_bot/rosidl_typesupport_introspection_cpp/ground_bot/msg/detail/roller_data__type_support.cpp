@@ -37,7 +37,7 @@ void RollerData_fini_function(void * message_memory)
   typed_message->~RollerData();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember RollerData_message_member_array[3] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember RollerData_message_member_array[4] = {
   {
     "tension",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
@@ -88,13 +88,30 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember RollerData_me
     nullptr,  // fetch(index, &value) function pointer
     nullptr,  // assign(index, value) function pointer
     nullptr  // resize(index) function pointer
+  },
+  {
+    "error_sum",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(ground_bot::msg::RollerData, error_sum),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr,  // fetch(index, &value) function pointer
+    nullptr,  // assign(index, value) function pointer
+    nullptr  // resize(index) function pointer
   }
 };
 
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers RollerData_message_members = {
   "ground_bot::msg",  // message namespace
   "RollerData",  // message name
-  3,  // number of fields
+  4,  // number of fields
   sizeof(ground_bot::msg::RollerData),
   RollerData_message_member_array,  // message members
   RollerData_init_function,  // function to initialize message memory (memory has to be allocated)

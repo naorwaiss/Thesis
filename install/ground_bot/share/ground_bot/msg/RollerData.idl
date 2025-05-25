@@ -11,6 +11,8 @@ module ground_bot {
       float dis_tension;
 
       float error;
+
+      float error_sum;
     };
   };
 };

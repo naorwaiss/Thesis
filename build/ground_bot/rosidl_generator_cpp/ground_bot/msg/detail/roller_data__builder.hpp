@@ -21,16 +21,32 @@ namespace msg
 namespace builder
 {
 
+class Init_RollerData_error_sum
+{
+public:
+  explicit Init_RollerData_error_sum(::ground_bot::msg::RollerData & msg)
+  : msg_(msg)
+  {}
+  ::ground_bot::msg::RollerData error_sum(::ground_bot::msg::RollerData::_error_sum_type arg)
+  {
+    msg_.error_sum = std::move(arg);
+    return std::move(msg_);
+  }
+
+private:
+  ::ground_bot::msg::RollerData msg_;
+};
+
 class Init_RollerData_error
 {
 public:
   explicit Init_RollerData_error(::ground_bot::msg::RollerData & msg)
   : msg_(msg)
   {}
-  ::ground_bot::msg::RollerData error(::ground_bot::msg::RollerData::_error_type arg)
+  Init_RollerData_error_sum error(::ground_bot::msg::RollerData::_error_type arg)
   {
     msg_.error = std::move(arg);
-    return std::move(msg_);
+    return Init_RollerData_error_sum(msg_);
   }
 
 private:

@@ -60,15 +60,18 @@ class RollerData(metaclass=Metaclass_RollerData):
         '_tension',
         '_dis_tension',
         '_error',
+        '_error_sum',
     ]
 
     _fields_and_field_types = {
         'tension': 'float',
         'dis_tension': 'float',
         'error': 'float',
+        'error_sum': 'float',
     }
 
     SLOT_TYPES = (
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
@@ -81,6 +84,7 @@ class RollerData(metaclass=Metaclass_RollerData):
         self.tension = kwargs.get('tension', float())
         self.dis_tension = kwargs.get('dis_tension', float())
         self.error = kwargs.get('error', float())
+        self.error_sum = kwargs.get('error_sum', float())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -116,6 +120,8 @@ class RollerData(metaclass=Metaclass_RollerData):
         if self.dis_tension != other.dis_tension:
             return False
         if self.error != other.error:
+            return False
+        if self.error_sum != other.error_sum:
             return False
         return True
 
@@ -168,3 +174,18 @@ class RollerData(metaclass=Metaclass_RollerData):
             assert not (value < -3.402823466e+38 or value > 3.402823466e+38) or math.isinf(value), \
                 "The 'error' field must be a float in [-3.402823466e+38, 3.402823466e+38]"
         self._error = value
+
+    @builtins.property
+    def error_sum(self):
+        """Message field 'error_sum'."""
+        return self._error_sum
+
+    @error_sum.setter
+    def error_sum(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'error_sum' field must be of type 'float'"
+            assert not (value < -3.402823466e+38 or value > 3.402823466e+38) or math.isinf(value), \
+                "The 'error_sum' field must be a float in [-3.402823466e+38, 3.402823466e+38]"
+        self._error_sum = value

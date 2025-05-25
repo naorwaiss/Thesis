@@ -22,6 +22,8 @@ void roller::stopMotor() {
   digitalWrite(INA_PIN, LOW);
   digitalWrite(INB_PIN, LOW);
   analogWrite(PWM_PIN, 0);
+  pid.sum_error = 0;
+  pid.previous_error = 0;
 }
 
 void roller::motor_control(int pwm) {
@@ -46,13 +48,11 @@ void roller::motor_control(int pwm) {
 
 void roller::error_find() {
     float error;
-    error = load_cell.tension - load_cell.dis_tension;
+    error = load_cell.dis_tension - load_cell.tension;
     if (error > 0 && error < load_cell.threshold_tension) {
-        error = 0;
-        load_cell.error = error;
+        load_cell.error = 0.0;
     } else if (error < 0 && error > -load_cell.threshold_tension) {
-        error = 0;
-        load_cell.error = error;
+        load_cell.error = 0.0;
     } else {
         load_cell.error = error;
     }
@@ -64,8 +64,7 @@ void roller::applyMotorControl(float control) {
     int pwmOut = abs(pid.control);
     // if (pwmOut < 50 && pwmOut > 0) pwmOut = 50;
     pwmOut = constrain(pwmOut, 0, 255);
-    Serial.print("pwmOut: ");
-    Serial.println(pwmOut);
+    digitalWrite(ENA_PIN, HIGH);
     if (pid.control > 0 ) {
         digitalWrite(INA_PIN, HIGH);
         digitalWrite(INB_PIN, LOW);
@@ -87,13 +86,12 @@ void roller::set_pid_param(float Kp, float Ki, float Kd) {
 
 float roller::PID_control() {
     float control = 0;
-    pid.integral += load_cell.error * (1 / dt);
-    pid.integral = constrain(pid.integral, -pid.integralMax, pid.integralMax);
-    float derivative = (load_cell.error - pid.previousError) * (1 / dt);
-    pid.previousError += load_cell.error;
-    control = pid.Kp * load_cell.error + pid.Ki * pid.integral + pid.Kd * derivative;
-    // if (abs(control) < 25) control = 0;
-    // if (abs(load_cell.error) < 5) control *= 0.5;    
+    Serial.println(dt,6);
+    pid.sum_error += load_cell.error * (dt);
+    pid.sum_error = constrain(pid.sum_error, -pid.sum_errorMax, pid.sum_errorMax);
+    float derivative = (load_cell.error - pid.previous_error) * (1 / dt);
+    pid.previous_error = load_cell.error;
+    control = pid.Kp * load_cell.error + pid.Ki * pid.sum_error + pid.Kd * derivative;
     return control;
 }
 
@@ -102,7 +100,7 @@ void roller::init_roller() {
     load_cell_sensor.begin(DOUT, CLK);
     analogWriteFrequency(PWM_PIN, 20000);
     init_roller_motor();
-    // stopMotor();
+    stopMotor();
     Serial.println("roller motor initialized");
 }
 
@@ -112,8 +110,6 @@ void roller::main_roller() {
     if (load_cell.tension > -load_cell.threshold_tension && load_cell.tension < load_cell.threshold_tension) load_cell.tension = 0;
     error_find();
     pid.control = PID_control();
-    Serial.print("pid.control: ");
-    Serial.println(pid.control);
     applyMotorControl(pid.control);
 
     

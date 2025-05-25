@@ -18,7 +18,7 @@ class UDPSocketClient(Node):
     def __init__(self):
         super().__init__('udp_socket_client')
         self.client = RTComClient()
-        self.client.connect(address=('192.168.1.198', 8888), reconnect=True, block=True)
+        self.client.connect(address=('192.168.1.177', 8888), reconnect=True, block=True)
 
         # Define ROS 2 Publishers
         
@@ -36,7 +36,7 @@ class UDPSocketClient(Node):
         self.client.on('O', self.wheel_rotation_speed)
         self.client.on('P', self.motor_pwm)
         self.client.on('T', self.odom)
-        self.client.on('R', self.roller_data)
+        self.client.on('r', self.roller_data)
 
 
 
@@ -75,11 +75,13 @@ class UDPSocketClient(Node):
         self.odom_pub.publish(odom)
 
     def roller_data(self, message: bytes):
+        print("roller_data", message)
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
         roller_data = RollerData()
         roller_data.tension = messages_struct_float[0]
         roller_data.dis_tension = messages_struct_float[1]
         roller_data.error = messages_struct_float[2]
+        roller_data.error_sum = messages_struct_float[3]
         self.roller_data_pub.publish(roller_data)
 
     def imu_data(self,message: bytes):

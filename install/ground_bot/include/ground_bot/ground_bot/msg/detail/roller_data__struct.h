@@ -23,6 +23,7 @@ typedef struct ground_bot__msg__RollerData
   float tension;
   float dis_tension;
   float error;
+  float error_sum;
 } ground_bot__msg__RollerData;
 
 // Struct for a sequence of ground_bot__msg__RollerData.

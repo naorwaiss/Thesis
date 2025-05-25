@@ -11,23 +11,22 @@
 #define ODOM_TYPE 'O'
 #define TWIST_TYPE 'T'
 #define LINEAR_VELO 'L'
-#define ROLLER_DATA_TYPE 'R'
+#define ROLLER_DATA_TYPE 'r'
 #define IMU_TYPE 'I'
 
 
 class sender {
-   private:
-    static RTComSession* socketSession;
-    static gnd_bot* my_bot;
-    static roller* my_roller;
-    static ImuMadgwick* my_imu;
+   private: 
+    static gnd_bot* _my_bot;
+    static roller* _my_roller;
+    static RTComSession* _socketSession;
 
 
    public:
-    explicit sender(RTComSession* session, gnd_bot* gnd_instance, roller* roller_instance,ImuMadgwick* imu_instance);
-    static void update_session(RTComSession& newsession);
-    void conver_and_send_data(float* data, size_t size,char type);
+    explicit sender(gnd_bot* gnd_instance, roller* roller_instance);
+    void update_session(RTComSession* newsession);
     void convert_data();
+    void send_data(float *data, uint8_t type);
 };
 
 #endif

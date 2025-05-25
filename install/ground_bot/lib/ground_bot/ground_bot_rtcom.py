@@ -80,6 +80,8 @@ class UDPSocketClient(Node):
         roller_data.tension = messages_struct_float[0]
         roller_data.dis_tension = messages_struct_float[1]
         roller_data.error = messages_struct_float[2]
+        roller_data.error_sum = messages_struct_float[3]
+
         self.roller_data_pub.publish(roller_data)
 
     def imu_data(self,message: bytes):

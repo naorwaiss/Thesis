@@ -77,6 +77,15 @@ bool ground_bot__msg__roller_data__convert_from_py(PyObject * _pymsg, void * _ro
     ros_message->error = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
+  {  // error_sum
+    PyObject * field = PyObject_GetAttrString(_pymsg, "error_sum");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->error_sum = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
 
   return true;
 }
@@ -126,6 +135,17 @@ PyObject * ground_bot__msg__roller_data__convert_to_py(void * raw_ros_message)
     field = PyFloat_FromDouble(ros_message->error);
     {
       int rc = PyObject_SetAttrString(_pymessage, "error", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // error_sum
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->error_sum);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "error_sum", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

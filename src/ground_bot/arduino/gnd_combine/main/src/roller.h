@@ -5,7 +5,7 @@
 #include "HX711.h"
 
 struct load_cell_t {
-    const float dis_tension = 10;
+    float dis_tension = 10;
     const float threshold_tension = 5;
     const long rawEmpty = 162592;
     const float load_ScaleFactor = (200400 - rawEmpty) / 39;
@@ -18,10 +18,10 @@ struct PID {
     float Kp = 10;
     float Ki = 0;
     float Kd = 0;
-    float previousError = 0;
-    float integral = 0;
-    float integralMax = 1000;
+    float sum_error = 0;
     float control = 0;
+    float previous_error = 0;
+    float sum_errorMax = 1000;
 };
 
 class roller {
