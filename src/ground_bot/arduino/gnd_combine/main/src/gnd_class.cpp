@@ -34,6 +34,7 @@ void gnd_bot::set_pid_param(float Kp = 2, float Ki = 0.5, float Kd = 0.1) {
 }
 
 void gnd_bot::get_velocity_prediction(Motor_Data &motor, Encoder &encoder) {
+    /// i think have here some problem with the filter 
     motor.encoder_read = encoder.read();
     Serial.println(motor.encoder_read);
     double revolutions = static_cast<double>(motor.encoder_read) / PPR;

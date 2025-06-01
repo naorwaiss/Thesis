@@ -25,6 +25,7 @@
         "locale": "cpp",
         "map": "cpp",
         "queue": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "cstdint": "cpp"
     }
 }

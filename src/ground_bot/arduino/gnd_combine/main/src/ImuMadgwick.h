@@ -20,6 +20,7 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <math.h>
+#include "var_type.h"
 
 // IMU Register definitions
 #define WHO_AM_I_REG 0x75
@@ -29,35 +30,6 @@
 #define GYRO_CONFIG0 0x4F
 #define ACCEL_CONFIG0 0x50
 #define IIM42652_ADDR 0x68
-
-struct vec3 {
-    float x;
-    float y;
-    float z;
-};
-
-typedef struct
-{
-    float q0;
-    float q1;
-    float q2;
-    float q3;
-} quaternion_t;
-
-
-typedef struct
-{
-    float roll;
-    float pitch;
-    float yaw;
-} atitude_t;
-
-struct imu_data {
-    vec3 accel;
-    vec3 gyro;
-    quaternion_t quaternion;
-    atitude_t atitude;
-};
 
 
 
