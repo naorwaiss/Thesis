@@ -1,0 +1,59 @@
+[0.168s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/hamma_bot': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/hamma_bot -- -j16 -l16
+[0.209s] [  2%] [32mBuilding C object CMakeFiles/hamma_bot__rosidl_generator_c.dir/rosidl_generator_c/hamma_bot/msg/detail/pwm__functions.c.o[0m
+[0.211s] [  4%] Built target hamma_bot__cpp
+[0.212s] [  6%] [32mBuilding C object CMakeFiles/hamma_bot__rosidl_generator_c.dir/rosidl_generator_c/hamma_bot/msg/detail/motor_data__functions.c.o[0m
+[0.213s] [  9%] [32mBuilding CXX object CMakeFiles/twist_to_twiststamped_node.dir/src/twisstump_bridge.cpp.o[0m
+[0.213s] [ 11%] [32mBuilding CXX object CMakeFiles/joy_twist_node.dir/src/joy_twist.cpp.o[0m
+[0.219s] [ 11%] Built target ament_cmake_python_copy_hamma_bot
+[0.236s] [ 16%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/hamma_bot/msg/detail/dds_fastrtps/pwm__type_support.cpp.o[0m
+[0.236s] [ 16%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/hamma_bot/msg/pwm__type_support.cpp.o[0m
+[0.236s] [ 18%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/hamma_bot/msg/motor_data__type_support.cpp.o[0m
+[0.237s] [ 20%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/hamma_bot/msg/detail/dds_fastrtps/motor_data__type_support.cpp.o[0m
+[0.241s] [ 23%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/hamma_bot/msg/detail/pwm__type_support.cpp.o[0m
+[0.241s] [ 25%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/hamma_bot/msg/detail/motor_data__type_support.cpp.o[0m
+[0.280s] [ 27%] [32m[1mLinking C shared library libhamma_bot__rosidl_generator_c.so[0m
+[0.340s] [ 30%] Built target hamma_bot__rosidl_generator_c
+[0.375s] [ 32%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_c.dir/rosidl_typesupport_c/hamma_bot/msg/pwm__type_support.cpp.o[0m
+[0.375s] [ 34%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/hamma_bot/msg/detail/motor_data__type_support_c.cpp.o[0m
+[0.381s] [ 37%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/hamma_bot/msg/detail/pwm__type_support_c.cpp.o[0m
+[0.407s] [ 39%] [32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_c.dir/rosidl_typesupport_c/hamma_bot/msg/motor_data__type_support.cpp.o[0m
+[0.410s] [ 41%] [32mBuilding C object CMakeFiles/hamma_bot__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/hamma_bot/msg/detail/pwm__type_support.c.o[0m
+[0.411s] [ 44%] [32mBuilding C object CMakeFiles/hamma_bot__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/hamma_bot/msg/detail/motor_data__type_support.c.o[0m
+[0.478s] [ 46%] [32m[1mLinking CXX shared library libhamma_bot__rosidl_typesupport_c.so[0m
+[0.492s] [ 48%] [32m[1mLinking C shared library libhamma_bot__rosidl_typesupport_introspection_c.so[0m
+[0.552s] [ 51%] Built target hamma_bot__rosidl_typesupport_introspection_c
+[0.554s] [ 53%] Built target hamma_bot__rosidl_typesupport_c
+[0.599s] [ 55%] [32m[1mLinking CXX shared library libhamma_bot__rosidl_typesupport_cpp.so[0m
+[0.617s] running egg_info
+[0.657s] [ 58%] Built target hamma_bot__rosidl_typesupport_cpp
+[0.657s] writing hamma_bot.egg-info/PKG-INFO
+[0.657s] writing dependency_links to hamma_bot.egg-info/dependency_links.txt
+[0.661s] writing top-level names to hamma_bot.egg-info/top_level.txt
+[0.712s] reading manifest file 'hamma_bot.egg-info/SOURCES.txt'
+[0.713s] writing manifest file 'hamma_bot.egg-info/SOURCES.txt'
+[0.735s] [ 60%] [32m[1mLinking CXX shared library libhamma_bot__rosidl_typesupport_introspection_cpp.so[0m
+[0.757s] [ 60%] Built target ament_cmake_python_build_hamma_bot_egg
+[0.769s] [ 62%] [32m[1mLinking CXX shared library libhamma_bot__rosidl_typesupport_fastrtps_cpp.so[0m
+[0.779s] [ 65%] Built target hamma_bot__rosidl_typesupport_introspection_cpp
+[0.791s] [ 67%] [32m[1mLinking CXX shared library libhamma_bot__rosidl_typesupport_fastrtps_c.so[0m
+[0.857s] [ 69%] Built target hamma_bot__rosidl_typesupport_fastrtps_c
+[0.868s] [ 72%] Built target hamma_bot__rosidl_typesupport_fastrtps_cpp
+[0.891s] [ 72%] Built target hamma_bot
+[0.916s] [ 74%] Built target hamma_bot__py
+[0.941s] [ 76%] [32mBuilding C object CMakeFiles/hamma_bot__rosidl_generator_py.dir/rosidl_generator_py/hamma_bot/msg/_pwm_s.c.o[0m
+[0.941s] [ 79%] [32mBuilding C object CMakeFiles/hamma_bot__rosidl_generator_py.dir/rosidl_generator_py/hamma_bot/msg/_motor_data_s.c.o[0m
+[1.073s] [ 81%] [32m[1mLinking C shared library rosidl_generator_py/hamma_bot/libhamma_bot__rosidl_generator_py.so[0m
+[1.123s] [ 81%] Built target hamma_bot__rosidl_generator_py
+[1.143s] [ 83%] [32mBuilding C object CMakeFiles/hamma_bot__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/hamma_bot/_hamma_bot_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[1.145s] [ 86%] [32mBuilding C object CMakeFiles/hamma_bot__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/hamma_bot/_hamma_bot_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[1.150s] [ 88%] [32mBuilding C object CMakeFiles/hamma_bot__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/hamma_bot/_hamma_bot_s.ep.rosidl_typesupport_c.c.o[0m
+[1.213s] [ 90%] [32m[1mLinking C shared library rosidl_generator_py/hamma_bot/hamma_bot_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[1.214s] [ 93%] [32m[1mLinking C shared library rosidl_generator_py/hamma_bot/hamma_bot_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[1.245s] [ 93%] Built target hamma_bot__rosidl_typesupport_introspection_c__pyext
+[1.247s] [ 93%] Built target hamma_bot__rosidl_typesupport_fastrtps_c__pyext
+[1.264s] [ 95%] [32m[1mLinking C shared library rosidl_generator_py/hamma_bot/hamma_bot_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[1.298s] [ 95%] Built target hamma_bot__rosidl_typesupport_c__pyext
+[6.235s] [ 97%] [32m[1mLinking CXX executable joy_twist_node[0m
+[6.261s] [100%] [32m[1mLinking CXX executable twist_to_twiststamped_node[0m
+[6.516s] [100%] Built target joy_twist_node
+[6.522s] [100%] Built target twist_to_twiststamped_node

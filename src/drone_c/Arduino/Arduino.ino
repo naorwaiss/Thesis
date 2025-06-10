@@ -170,7 +170,7 @@ void loop() {
                                                  q_est, desired_attitude,
                                                  motor_pwm, desired_rate,
                                                  estimated_attitude, estimated_rate,
-                                                 PID_stab_out, PID_rate_out, controller_data);
+                                                 PID_stab_out, PID_rate_out, controller_data,PID_CONSTS);
 
             DRON_COM::send_data();
             send_data_timer = 0;
@@ -358,10 +358,13 @@ void estimated_state_metude() {
     channel_estimated();
     switch (estimated_switch) {
         case 0:  // ekkf
+            Serial.println("ekf");
             return ekf.run_kalman(&estimated_attitude, &q_est);
         case 1:  // compclass
+            Serial.println("compclass");
             return comclass_function();
         case 2:
+            Serial.println("magwick");
             return magwick_filter.madgwick_operation();
         default:
             return ekf.run_kalman(&estimated_attitude, &q_est);

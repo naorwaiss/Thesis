@@ -4,6 +4,8 @@
 #include <Arduino.h>
 #include "Var_types.h"
 
+extern PID_const_t PID_CONSTS;  // Declare as extern in header file
+
 void initializePIDParams(float RrollPID[3] = nullptr, float RpitchPID[3] = nullptr, float RyawPID[3] = nullptr,
                          float Imax_rate[2] = nullptr, float SrollPID[3] = nullptr, float SpitchPID[3] = nullptr,
                          float SyawPID[3] = nullptr, float Imax_stab[2] = nullptr);  // Rate and stabilize modes PID parameters

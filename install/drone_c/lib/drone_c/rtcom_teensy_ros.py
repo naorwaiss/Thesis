@@ -4,7 +4,7 @@ from rclpy.node import Node
 from sensor_msgs.msg import Imu, MagneticField
 from std_msgs.msg import Float32MultiArray, Int32MultiArray
 from geometry_msgs.msg import Quaternion
-from drone_c.msg import Pid, Motors, EulerAngles, ImuFilter
+from drone_c.msg import Pid, Motors, EulerAngles, ImuFilter,PidConsts
 from rtcom import *
 import time
 import math
@@ -33,21 +33,23 @@ class UDPSocketClient(Node):
         self.PID_stab_pub_modifide = self.create_publisher(Pid, 'PID_stab', 10)
         self.PID_rate_pub_modifide = self.create_publisher(Pid, 'PID_rate', 10)
         self.Imu_Filter_Pub = self.create_publisher(ImuFilter, 'imu_filter', 10)
+        self.Pid_consts_pub = self.create_publisher(PidConsts, 'pid_loaded', 10)
 
         # Register callbacks for each message type using RTComClient's `on` method
-        self.client.on('m', self.handle_magnetometer)
-        self.client.on('q', self.handle_quaternion)
-        self.client.on('e', self.handle_euler)
-        self.client.on('p', self.handle_imu)
-        self.client.on('r', self.handle_rc)
-        self.client.on('z', self.handle_desire_rate)
-        self.client.on('w', self.handle_desire_stab)
-        self.client.on('a', self.handle_motor_pwm)
-        self.client.on('n', self.handle_estimated_rate)
-        self.client.on('l', self.handle_pid_stab)
-        self.client.on('b', self.handle_pid_rate)
-        self.client.on('P', self.handel_imu_filter)
-
+        self.client.on('a', self.handle_magnetometer)
+        self.client.on('b', self.handle_imu)
+        self.client.on('c', self.handel_imu_filter)
+        self.client.on('d', self.handle_euler)
+        self.client.on('e', self.handle_rc)
+        self.client.on('f', self.handle_quaternion)
+        self.client.on('g', self.handle_desire_rate)
+        self.client.on('h', self.handle_desire_stab)
+        self.client.on('i', self.handle_motor_pwm)
+        self.client.on('j', self.handle_estimated_rate)
+        self.client.on('k', self.handle_pid_stab)
+        self.client.on('l', self.handle_pid_rate)
+        self.client.on('m', self.handle_pid_consts)
+        # self.client.on(bytes([0x23]), self.handle_pid_consts)
     # Callback methods for specific message types
 
     def handle_magnetometer(self, message: bytes):
@@ -175,6 +177,30 @@ class UDPSocketClient(Node):
         imu_filter_msg.mag_lpf_y = messages_struct_float[10]
         imu_filter_msg.mag_lpf_z = messages_struct_float[11]
         self.Imu_Filter_Pub.publish(imu_filter_msg)
+    
+    def handle_pid_consts(self, message: bytes):
+        messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
+        pid_consts_msg = PidConsts()
+        self.Pid_consts_pub.publish(pid_consts_msg)
+        pid_consts_msg.rate_pitch[0] = messages_struct_float[0]
+        pid_consts_msg.rate_pitch[1] = messages_struct_float[1]
+        pid_consts_msg.rate_pitch[2] = messages_struct_float[2]
+        pid_consts_msg.rate_roll[0] = messages_struct_float[3]
+        pid_consts_msg.rate_roll[1] = messages_struct_float[4]
+        pid_consts_msg.rate_roll[2] = messages_struct_float[5]
+        pid_consts_msg.stablize_pitch[0] = messages_struct_float[6]
+        pid_consts_msg.stablize_pitch[1] = messages_struct_float[7]
+        pid_consts_msg.stablize_pitch[2] = messages_struct_float[8]
+        pid_consts_msg.stablize_roll[0] = messages_struct_float[9]
+        pid_consts_msg.stablize_roll[1] = messages_struct_float[10]
+        pid_consts_msg.stablize_roll[2] = messages_struct_float[11]
+        pid_consts_msg.rate_yaw[0] = messages_struct_float[12]
+        pid_consts_msg.rate_yaw[1] = messages_struct_float[13]
+        pid_consts_msg.rate_yaw[2] = messages_struct_float[14]
+        self.Pid_consts_pub.publish(pid_consts_msg)
+        
+        
+        
 
 
 def main(args=None):

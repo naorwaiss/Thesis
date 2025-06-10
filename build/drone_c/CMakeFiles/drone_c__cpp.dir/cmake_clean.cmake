@@ -16,10 +16,15 @@ file(REMOVE_RECURSE
   "rosidl_generator_cpp/drone_c/msg/detail/pid__struct.hpp"
   "rosidl_generator_cpp/drone_c/msg/detail/pid__traits.hpp"
   "rosidl_generator_cpp/drone_c/msg/detail/pid__type_support.hpp"
+  "rosidl_generator_cpp/drone_c/msg/detail/pid_consts__builder.hpp"
+  "rosidl_generator_cpp/drone_c/msg/detail/pid_consts__struct.hpp"
+  "rosidl_generator_cpp/drone_c/msg/detail/pid_consts__traits.hpp"
+  "rosidl_generator_cpp/drone_c/msg/detail/pid_consts__type_support.hpp"
   "rosidl_generator_cpp/drone_c/msg/euler_angles.hpp"
   "rosidl_generator_cpp/drone_c/msg/imu_filter.hpp"
   "rosidl_generator_cpp/drone_c/msg/motors.hpp"
   "rosidl_generator_cpp/drone_c/msg/pid.hpp"
+  "rosidl_generator_cpp/drone_c/msg/pid_consts.hpp"
 )
 
 # Per-language clean rules from dependency scanning.

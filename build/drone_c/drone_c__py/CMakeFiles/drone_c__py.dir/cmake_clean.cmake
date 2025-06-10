@@ -10,6 +10,8 @@ file(REMOVE_RECURSE
   "../rosidl_generator_py/drone_c/msg/_motors.py"
   "../rosidl_generator_py/drone_c/msg/_motors_s.c"
   "../rosidl_generator_py/drone_c/msg/_pid.py"
+  "../rosidl_generator_py/drone_c/msg/_pid_consts.py"
+  "../rosidl_generator_py/drone_c/msg/_pid_consts_s.c"
   "../rosidl_generator_py/drone_c/msg/_pid_s.c"
   "CMakeFiles/drone_c__py"
 )

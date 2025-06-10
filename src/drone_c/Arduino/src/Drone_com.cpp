@@ -33,6 +33,8 @@ float* PID_rate_data = (float*)calloc(15, sizeof(float));
 uint8_t PID_rate_byte[sizeof(float) * 15];
 float* motor_data = (float*)calloc(4, sizeof(float));
 uint8_t motor_pwm_byte[sizeof(float) * 4];
+float* pid_const_Data = (float*)calloc(15, sizeof(float));
+uint8_t pid_consts_byte[sizeof(float) * 15];
 
 void onConnection(RTComSession& session) {
     Serial.printf("Session created with %s\r\n", session.address.toString());
@@ -54,7 +56,7 @@ void convert_Measurment_to_byte(Measurement_t meas,
                                 quat_t q_est, attitude_t desired_attitude,
                                 motor_t motor_pwm, attitude_t desired_rate,
                                 attitude_t estimated_attitude, attitude_t estimated_rate,
-                                PID_out_t PID_stab_out, PID_out_t PID_rate_out, Controller_s controller_data) {
+                                PID_out_t PID_stab_out, PID_out_t PID_rate_out, Controller_s controller_data, PID_const_t pid_load) {
     imu_data_raw[0] = meas.acc.x;
     imu_data_raw[1] = meas.acc.y;
     imu_data_raw[2] = meas.acc.z;
@@ -108,8 +110,6 @@ void convert_Measurment_to_byte(Measurement_t meas,
     estimated_rate_data[2] = estimated_rate.yaw;
     memcpy(estimated_rate_byte, estimated_rate_data, sizeof(estimated_rate_byte));
 
-
-
     PID_stab_out_data[0] = PID_stab_out.error.pitch;
     PID_stab_out_data[1] = PID_stab_out.error.roll;
     PID_stab_out_data[2] = PID_stab_out.error.yaw;
@@ -162,6 +162,23 @@ void convert_Measurment_to_byte(Measurement_t meas,
     rc_ch_data[6] = controller_data.aux3;
     rc_ch_data[7] = controller_data.aux4;
     memcpy(rc_byte, rc_ch_data, sizeof(rc_byte));
+
+    pid_const_Data[0] = pid_load.defaultRpitchPID[0];
+    pid_const_Data[1] = pid_load.defaultRpitchPID[1];
+    pid_const_Data[2] = pid_load.defaultRpitchPID[2];
+    pid_const_Data[3] = pid_load.defaultRrollPID[0];
+    pid_const_Data[4] = pid_load.defaultRrollPID[1];
+    pid_const_Data[5] = pid_load.defaultRrollPID[2];
+    pid_const_Data[6] = pid_load.defaultSpitchPID[0];
+    pid_const_Data[7] = pid_load.defaultSpitchPID[1];
+    pid_const_Data[8] = pid_load.defaultSpitchPID[2];
+    pid_const_Data[9] = pid_load.defaultSrollPID[0];
+    pid_const_Data[10] = pid_load.defaultSrollPID[1];
+    pid_const_Data[11] = pid_load.defaultSrollPID[2];
+    pid_const_Data[12] = pid_load.defaultRyawPID[0];
+    pid_const_Data[13] = pid_load.defaultRyawPID[1];
+    pid_const_Data[14] = pid_load.defaultRyawPID[2];
+    memcpy(pid_consts_byte, pid_const_Data, sizeof(pid_consts_byte));
 }
 
 void emit_data() {
@@ -177,6 +194,7 @@ void emit_data() {
     socketSession->emitTyped(PID_stab_out_byte, sizeof(PID_stab_out_byte), PID_stab_prase);
     socketSession->emitTyped(PID_rate_byte, sizeof(PID_rate_byte), PID_rate_prase);
     socketSession->emitTyped(motor_pwm_byte, sizeof(motor_pwm_byte), MOTOR_DATA_CONST);
+    socketSession->emitTyped(pid_consts_byte, sizeof(pid_consts_byte), PID_CONSTS_DATA);
 }
 
 void send_data() {

@@ -2,18 +2,20 @@
 #include "Var_types.h"
 #include <Arduino.h>
 
-#define MAG 'm'
-#define P_IMU_RAW 'p'
-#define P_IMU_FILTER 'P'
-#define EUILER 'e'
-#define RC 'r'
-#define Quaternion_n 'q'
-#define D_RATE 'z'
-#define D_ATI 'w'
-#define MOTOR_DATA_CONST 'a'
-#define EST_RATE 'n'
-#define PID_stab_prase 'l'
-#define PID_rate_prase 'b'
+#define MAG 'a'
+#define P_IMU_RAW 'b'
+#define P_IMU_FILTER 'c'
+#define EUILER 'd'
+#define RC 'e'
+#define Quaternion_n 'f'
+#define D_RATE 'g'
+#define D_ATI 'h'
+#define MOTOR_DATA_CONST 'i'
+#define EST_RATE 'j'
+#define PID_stab_prase 'k'
+#define PID_rate_prase 'l'
+#define PID_CONSTS_DATA 'm'
+
 
 #ifndef DRONE_COM_H
 #define DRONE_COM_H
@@ -46,7 +48,8 @@ void convert_Measurment_to_byte(Measurement_t meas,
                                 quat_t q_est, attitude_t desired_attitude,
                                 motor_t motor_pwm, attitude_t desired_rate,
                                 attitude_t estimated_attitude, attitude_t estimated_rate,
-                                PID_out_t PID_stab_out, PID_out_t PID_rate_out, Controller_s controller_data);
+                                PID_out_t PID_stab_out, PID_out_t PID_rate_out, Controller_s controller_data,
+                                PID_const_t pid_load);
 void send_data();
 
 }  // namespace DRON_COM

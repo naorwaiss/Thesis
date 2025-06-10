@@ -1,0 +1,368 @@
+[0.000000] (-) TimerEvent: {}
+[0.000518] (controller) JobQueued: {'identifier': 'controller', 'dependencies': OrderedDict()}
+[0.000607] (drone_c) JobQueued: {'identifier': 'drone_c', 'dependencies': OrderedDict()}
+[0.000650] (hamma_bot) JobQueued: {'identifier': 'hamma_bot', 'dependencies': OrderedDict()}
+[0.000674] (pointcloud_to_laserscan) JobQueued: {'identifier': 'pointcloud_to_laserscan', 'dependencies': OrderedDict()}
+[0.000696] (robot_description) JobQueued: {'identifier': 'robot_description', 'dependencies': OrderedDict()}
+[0.000718] (roller) JobQueued: {'identifier': 'roller', 'dependencies': OrderedDict()}
+[0.000738] (camera_nav) JobQueued: {'identifier': 'camera_nav', 'dependencies': OrderedDict([('pointcloud_to_laserscan', '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan')])}
+[0.000768] (ground_bot) JobQueued: {'identifier': 'ground_bot', 'dependencies': OrderedDict([('pointcloud_to_laserscan', '/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan')])}
+[0.000793] (pointcloud_to_laserscan) JobStarted: {'identifier': 'pointcloud_to_laserscan'}
+[0.005483] (controller) JobStarted: {'identifier': 'controller'}
+[0.009515] (drone_c) JobStarted: {'identifier': 'drone_c'}
+[0.011665] (hamma_bot) JobStarted: {'identifier': 'hamma_bot'}
+[0.014624] (robot_description) JobStarted: {'identifier': 'robot_description'}
+[0.016737] (roller) JobStarted: {'identifier': 'roller'}
+[0.020153] (pointcloud_to_laserscan) JobProgress: {'identifier': 'pointcloud_to_laserscan', 'progress': 'cmake'}
+[0.020950] (pointcloud_to_laserscan) JobProgress: {'identifier': 'pointcloud_to_laserscan', 'progress': 'build'}
+[0.021493] (pointcloud_to_laserscan) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/naor/Desktop/naor/study/Thesis/build/pointcloud_to_laserscan', '--', '-j16', '-l16'], 'cwd': '/home/naor/Desktop/naor/study/Thesis/build/pointcloud_to_laserscan', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('PROFILEHOME', ''), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IL:en'), ('USER', 'naor'), ('GIT_EDITOR', 'nvim'), ('XDG_SESSION_TYPE', 'x11'), ('KONSOLE_VERSION', '211203'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/opt/openvdb_vendor/lib:/opt/ros/humble/lib'), ('HOME', '/home/naor'), ('OLDPWD', '/home/naor/Desktop/naor/study/Thesis/src'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/org.kde.konsole.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('SHELL_SESSION_ID', 'fff9f153946a425b990f3ba19abb3945'), ('GTK_MODULES', 'gail:atk-bridge'), ('KONSOLE_DBUS_SESSION', '/Sessions/3'), ('MANAGERPID', '2293'), ('SYSTEMD_EXEC_PID', '3150'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4028'), ('KONSOLE_DBUS_WINDOW', '/Windows/1'), ('COLCON_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'naor'), ('WINDOWID', '8388615'), ('JOURNAL_STREAM', '8:873'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('COLORFGBG', '15;0'), ('USERNAME', 'naor'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/opt/ros/humble/share/turtlebot3_gazebo/models'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-eabi-10-2020-q4-major/bin:/home/naor/.local/bin:/opt/ros/humble/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-:/snap/bin:/usr/local/go/bin:/opt/flutter/bin:/opt/nvim-linux64/bin'), ('SESSION_MANAGER', 'local/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:@/tmp/.ICE-unix/3131,unix/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:/tmp/.ICE-unix/3131'), ('INVOCATION_ID', '2f05a0d038de41798e5cda0bdb921215'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('KONSOLE_DBUS_SERVICE', ':1.96'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/naor/Desktop/naor/study/Thesis/build/pointcloud_to_laserscan'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers/lib/python3.10/site-packages:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble')]), 'shell': False}
+[0.099847] (-) TimerEvent: {}
+[0.176290] (drone_c) JobProgress: {'identifier': 'drone_c', 'progress': 'cmake'}
+[0.177030] (drone_c) JobProgress: {'identifier': 'drone_c', 'progress': 'build'}
+[0.177744] (drone_c) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/naor/Desktop/naor/study/Thesis/build/drone_c', '--', '-j16', '-l16'], 'cwd': '/home/naor/Desktop/naor/study/Thesis/build/drone_c', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('PROFILEHOME', ''), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IL:en'), ('USER', 'naor'), ('GIT_EDITOR', 'nvim'), ('XDG_SESSION_TYPE', 'x11'), ('KONSOLE_VERSION', '211203'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/opt/openvdb_vendor/lib:/opt/ros/humble/lib'), ('HOME', '/home/naor'), ('OLDPWD', '/home/naor/Desktop/naor/study/Thesis/src'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/org.kde.konsole.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('SHELL_SESSION_ID', 'fff9f153946a425b990f3ba19abb3945'), ('GTK_MODULES', 'gail:atk-bridge'), ('KONSOLE_DBUS_SESSION', '/Sessions/3'), ('MANAGERPID', '2293'), ('SYSTEMD_EXEC_PID', '3150'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4028'), ('KONSOLE_DBUS_WINDOW', '/Windows/1'), ('COLCON_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'naor'), ('WINDOWID', '8388615'), ('JOURNAL_STREAM', '8:873'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('COLORFGBG', '15;0'), ('USERNAME', 'naor'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/opt/ros/humble/share/turtlebot3_gazebo/models'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-eabi-10-2020-q4-major/bin:/home/naor/.local/bin:/opt/ros/humble/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-:/snap/bin:/usr/local/go/bin:/opt/flutter/bin:/opt/nvim-linux64/bin'), ('SESSION_MANAGER', 'local/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:@/tmp/.ICE-unix/3131,unix/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:/tmp/.ICE-unix/3131'), ('INVOCATION_ID', '2f05a0d038de41798e5cda0bdb921215'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('KONSOLE_DBUS_SERVICE', ':1.96'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/naor/Desktop/naor/study/Thesis/build/drone_c'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers/lib/python3.10/site-packages:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble')]), 'shell': False}
+[0.178440] (hamma_bot) JobProgress: {'identifier': 'hamma_bot', 'progress': 'cmake'}
+[0.178959] (hamma_bot) JobProgress: {'identifier': 'hamma_bot', 'progress': 'build'}
+[0.179177] (hamma_bot) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/naor/Desktop/naor/study/Thesis/build/hamma_bot', '--', '-j16', '-l16'], 'cwd': '/home/naor/Desktop/naor/study/Thesis/build/hamma_bot', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('PROFILEHOME', ''), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IL:en'), ('USER', 'naor'), ('GIT_EDITOR', 'nvim'), ('XDG_SESSION_TYPE', 'x11'), ('KONSOLE_VERSION', '211203'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/opt/openvdb_vendor/lib:/opt/ros/humble/lib'), ('HOME', '/home/naor'), ('OLDPWD', '/home/naor/Desktop/naor/study/Thesis/src'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/org.kde.konsole.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('SHELL_SESSION_ID', 'fff9f153946a425b990f3ba19abb3945'), ('GTK_MODULES', 'gail:atk-bridge'), ('KONSOLE_DBUS_SESSION', '/Sessions/3'), ('MANAGERPID', '2293'), ('SYSTEMD_EXEC_PID', '3150'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4028'), ('KONSOLE_DBUS_WINDOW', '/Windows/1'), ('COLCON_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'naor'), ('WINDOWID', '8388615'), ('JOURNAL_STREAM', '8:873'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('COLORFGBG', '15;0'), ('USERNAME', 'naor'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/opt/ros/humble/share/turtlebot3_gazebo/models'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-eabi-10-2020-q4-major/bin:/home/naor/.local/bin:/opt/ros/humble/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-:/snap/bin:/usr/local/go/bin:/opt/flutter/bin:/opt/nvim-linux64/bin'), ('SESSION_MANAGER', 'local/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:@/tmp/.ICE-unix/3131,unix/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:/tmp/.ICE-unix/3131'), ('INVOCATION_ID', '2f05a0d038de41798e5cda0bdb921215'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('KONSOLE_DBUS_SERVICE', ':1.96'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/naor/Desktop/naor/study/Thesis/build/hamma_bot'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers/lib/python3.10/site-packages:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble')]), 'shell': False}
+[0.180469] (robot_description) JobProgress: {'identifier': 'robot_description', 'progress': 'cmake'}
+[0.180617] (robot_description) JobProgress: {'identifier': 'robot_description', 'progress': 'build'}
+[0.180751] (robot_description) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/naor/Desktop/naor/study/Thesis/build/robot_description', '--', '-j16', '-l16'], 'cwd': '/home/naor/Desktop/naor/study/Thesis/build/robot_description', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('PROFILEHOME', ''), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IL:en'), ('USER', 'naor'), ('GIT_EDITOR', 'nvim'), ('XDG_SESSION_TYPE', 'x11'), ('KONSOLE_VERSION', '211203'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/opt/openvdb_vendor/lib:/opt/ros/humble/lib'), ('HOME', '/home/naor'), ('OLDPWD', '/home/naor/Desktop/naor/study/Thesis/src'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/org.kde.konsole.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('SHELL_SESSION_ID', 'fff9f153946a425b990f3ba19abb3945'), ('GTK_MODULES', 'gail:atk-bridge'), ('KONSOLE_DBUS_SESSION', '/Sessions/3'), ('MANAGERPID', '2293'), ('SYSTEMD_EXEC_PID', '3150'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4028'), ('KONSOLE_DBUS_WINDOW', '/Windows/1'), ('COLCON_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'naor'), ('WINDOWID', '8388615'), ('JOURNAL_STREAM', '8:873'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('COLORFGBG', '15;0'), ('USERNAME', 'naor'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/opt/ros/humble/share/turtlebot3_gazebo/models'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-eabi-10-2020-q4-major/bin:/home/naor/.local/bin:/opt/ros/humble/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-:/snap/bin:/usr/local/go/bin:/opt/flutter/bin:/opt/nvim-linux64/bin'), ('SESSION_MANAGER', 'local/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:@/tmp/.ICE-unix/3131,unix/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:/tmp/.ICE-unix/3131'), ('INVOCATION_ID', '2f05a0d038de41798e5cda0bdb921215'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('KONSOLE_DBUS_SERVICE', ':1.96'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/naor/Desktop/naor/study/Thesis/build/robot_description'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers/lib/python3.10/site-packages:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble')]), 'shell': False}
+[0.183598] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 10%] \x1b[32mBuilding CXX object CMakeFiles/pointcloud_to_laserscan_node.dir/rclcpp_components/node_main_pointcloud_to_laserscan_node.cpp.o\x1b[0m\n'}
+[0.183960] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding CXX object CMakeFiles/laserscan_to_pointcloud_node.dir/rclcpp_components/node_main_laserscan_to_pointcloud_node.cpp.o\x1b[0m\n'}
+[0.184280] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/laserscan_to_pointcloud.dir/src/laserscan_to_pointcloud_node.cpp.o\x1b[0m\n'}
+[0.184595] (roller) JobProgress: {'identifier': 'roller', 'progress': 'cmake'}
+[0.185290] (roller) JobProgress: {'identifier': 'roller', 'progress': 'build'}
+[0.185504] (roller) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/naor/Desktop/naor/study/Thesis/build/roller', '--', '-j16', '-l16'], 'cwd': '/home/naor/Desktop/naor/study/Thesis/build/roller', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('PROFILEHOME', ''), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IL:en'), ('USER', 'naor'), ('GIT_EDITOR', 'nvim'), ('XDG_SESSION_TYPE', 'x11'), ('KONSOLE_VERSION', '211203'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/opt/openvdb_vendor/lib:/opt/ros/humble/lib'), ('HOME', '/home/naor'), ('OLDPWD', '/home/naor/Desktop/naor/study/Thesis/src'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/org.kde.konsole.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('SHELL_SESSION_ID', 'fff9f153946a425b990f3ba19abb3945'), ('GTK_MODULES', 'gail:atk-bridge'), ('KONSOLE_DBUS_SESSION', '/Sessions/3'), ('MANAGERPID', '2293'), ('SYSTEMD_EXEC_PID', '3150'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4028'), ('KONSOLE_DBUS_WINDOW', '/Windows/1'), ('COLCON_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'naor'), ('WINDOWID', '8388615'), ('JOURNAL_STREAM', '8:873'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('COLORFGBG', '15;0'), ('USERNAME', 'naor'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/opt/ros/humble/share/turtlebot3_gazebo/models'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-eabi-10-2020-q4-major/bin:/home/naor/.local/bin:/opt/ros/humble/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-:/snap/bin:/usr/local/go/bin:/opt/flutter/bin:/opt/nvim-linux64/bin'), ('SESSION_MANAGER', 'local/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:@/tmp/.ICE-unix/3131,unix/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:/tmp/.ICE-unix/3131'), ('INVOCATION_ID', '2f05a0d038de41798e5cda0bdb921215'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('KONSOLE_DBUS_SERVICE', ':1.96'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/naor/Desktop/naor/study/Thesis/build/roller'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers/lib/python3.10/site-packages:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble')]), 'shell': False}
+[0.199953] (-) TimerEvent: {}
+[0.201790] (drone_c) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.213566] (roller) CommandEnded: {'returncode': 0}
+[0.214288] (roller) JobProgress: {'identifier': 'roller', 'progress': 'install'}
+[0.220855] (hamma_bot) StdoutLine: {'line': b'[  2%] \x1b[32mBuilding C object CMakeFiles/hamma_bot__rosidl_generator_c.dir/rosidl_generator_c/hamma_bot/msg/detail/pwm__functions.c.o\x1b[0m\n'}
+[0.223002] (hamma_bot) StdoutLine: {'line': b'[  4%] Built target hamma_bot__cpp\n'}
+[0.223434] (roller) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/naor/Desktop/naor/study/Thesis/build/roller'], 'cwd': '/home/naor/Desktop/naor/study/Thesis/build/roller', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('PROFILEHOME', ''), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IL:en'), ('USER', 'naor'), ('GIT_EDITOR', 'nvim'), ('XDG_SESSION_TYPE', 'x11'), ('KONSOLE_VERSION', '211203'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/opt/openvdb_vendor/lib:/opt/ros/humble/lib'), ('HOME', '/home/naor'), ('OLDPWD', '/home/naor/Desktop/naor/study/Thesis/src'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/org.kde.konsole.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('SHELL_SESSION_ID', 'fff9f153946a425b990f3ba19abb3945'), ('GTK_MODULES', 'gail:atk-bridge'), ('KONSOLE_DBUS_SESSION', '/Sessions/3'), ('MANAGERPID', '2293'), ('SYSTEMD_EXEC_PID', '3150'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4028'), ('KONSOLE_DBUS_WINDOW', '/Windows/1'), ('COLCON_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'naor'), ('WINDOWID', '8388615'), ('JOURNAL_STREAM', '8:873'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('COLORFGBG', '15;0'), ('USERNAME', 'naor'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/opt/ros/humble/share/turtlebot3_gazebo/models'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-eabi-10-2020-q4-major/bin:/home/naor/.local/bin:/opt/ros/humble/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-:/snap/bin:/usr/local/go/bin:/opt/flutter/bin:/opt/nvim-linux64/bin'), ('SESSION_MANAGER', 'local/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:@/tmp/.ICE-unix/3131,unix/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:/tmp/.ICE-unix/3131'), ('INVOCATION_ID', '2f05a0d038de41798e5cda0bdb921215'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('KONSOLE_DBUS_SERVICE', ':1.96'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/naor/Desktop/naor/study/Thesis/build/roller'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers/lib/python3.10/site-packages:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble')]), 'shell': False}
+[0.224001] (hamma_bot) StdoutLine: {'line': b'[  6%] \x1b[32mBuilding C object CMakeFiles/hamma_bot__rosidl_generator_c.dir/rosidl_generator_c/hamma_bot/msg/detail/motor_data__functions.c.o\x1b[0m\n'}
+[0.224530] (robot_description) CommandEnded: {'returncode': 0}
+[0.224886] (hamma_bot) StdoutLine: {'line': b'[  9%] \x1b[32mBuilding CXX object CMakeFiles/twist_to_twiststamped_node.dir/src/twisstump_bridge.cpp.o\x1b[0m\n'}
+[0.224981] (hamma_bot) StdoutLine: {'line': b'[ 11%] \x1b[32mBuilding CXX object CMakeFiles/joy_twist_node.dir/src/joy_twist.cpp.o\x1b[0m\n'}
+[0.225768] (robot_description) JobProgress: {'identifier': 'robot_description', 'progress': 'install'}
+[0.227071] (robot_description) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/naor/Desktop/naor/study/Thesis/build/robot_description'], 'cwd': '/home/naor/Desktop/naor/study/Thesis/build/robot_description', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('PROFILEHOME', ''), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IL:en'), ('USER', 'naor'), ('GIT_EDITOR', 'nvim'), ('XDG_SESSION_TYPE', 'x11'), ('KONSOLE_VERSION', '211203'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/opt/openvdb_vendor/lib:/opt/ros/humble/lib'), ('HOME', '/home/naor'), ('OLDPWD', '/home/naor/Desktop/naor/study/Thesis/src'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/org.kde.konsole.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('SHELL_SESSION_ID', 'fff9f153946a425b990f3ba19abb3945'), ('GTK_MODULES', 'gail:atk-bridge'), ('KONSOLE_DBUS_SESSION', '/Sessions/3'), ('MANAGERPID', '2293'), ('SYSTEMD_EXEC_PID', '3150'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4028'), ('KONSOLE_DBUS_WINDOW', '/Windows/1'), ('COLCON_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'naor'), ('WINDOWID', '8388615'), ('JOURNAL_STREAM', '8:873'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('COLORFGBG', '15;0'), ('USERNAME', 'naor'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/opt/ros/humble/share/turtlebot3_gazebo/models'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-eabi-10-2020-q4-major/bin:/home/naor/.local/bin:/opt/ros/humble/bin:/usr/lib/ccache:/home/naor/Desktop/naor/work/ardupilot/Tools/autotest:/opt/gcc-arm-none-:/snap/bin:/usr/local/go/bin:/opt/flutter/bin:/opt/nvim-linux64/bin'), ('SESSION_MANAGER', 'local/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:@/tmp/.ICE-unix/3131,unix/naor-ASUS-TUF-Gaming-F15-FX507VV-FX507VV:/tmp/.ICE-unix/3131'), ('INVOCATION_ID', '2f05a0d038de41798e5cda0bdb921215'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('KONSOLE_DBUS_SERVICE', ':1.96'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/naor/Desktop/naor/study/Thesis/build/robot_description'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers/lib/python3.10/site-packages:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble')]), 'shell': False}
+[0.228781] (roller) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.228928] (roller) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/ament_index/resource_index/package_run_dependencies/roller\n'}
+[0.229039] (roller) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/ament_index/resource_index/parent_prefix_path/roller\n'}
+[0.230286] (roller) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/environment/ament_prefix_path.sh\n'}
+[0.230421] (roller) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/environment/ament_prefix_path.dsv\n'}
+[0.230484] (roller) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/environment/path.sh\n'}
+[0.230538] (roller) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/environment/path.dsv\n'}
+[0.230586] (roller) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/local_setup.bash\n'}
+[0.230635] (roller) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/local_setup.sh\n'}
+[0.230684] (roller) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/local_setup.zsh\n'}
+[0.230732] (hamma_bot) StdoutLine: {'line': b'[ 11%] Built target ament_cmake_python_copy_hamma_bot\n'}
+[0.230798] (roller) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/local_setup.dsv\n'}
+[0.231005] (roller) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/package.dsv\n'}
+[0.231089] (roller) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/ament_index/resource_index/packages/roller\n'}
+[0.231153] (roller) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/cmake/rollerConfig.cmake\n'}
+[0.231204] (roller) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/cmake/rollerConfig-version.cmake\n'}
+[0.231252] (roller) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/roller/share/roller/package.xml\n'}
+[0.232475] (roller) CommandEnded: {'returncode': 0}
+[0.233579] (robot_description) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.234589] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/launch\n'}
+[0.234673] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/launch/display.launch.py\n'}
+[0.234730] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/launch/controller.launch.py\n'}
+[0.234781] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/launch/gazebo_bot.launch.py\n'}
+[0.234829] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/config\n'}
+[0.234879] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/config/robot_controllers.yaml\n'}
+[0.234928] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/ament_index/resource_index/package_run_dependencies/robot_description\n'}
+[0.234975] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/ament_index/resource_index/parent_prefix_path/robot_description\n'}
+[0.235023] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/environment/ament_prefix_path.sh\n'}
+[0.235174] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/environment/ament_prefix_path.dsv\n'}
+[0.235255] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/environment/path.sh\n'}
+[0.235319] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/environment/path.dsv\n'}
+[0.235378] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/local_setup.bash\n'}
+[0.235436] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/local_setup.sh\n'}
+[0.235489] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/local_setup.zsh\n'}
+[0.235544] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/local_setup.dsv\n'}
+[0.235595] (robot_description) StdoutLine: {'line': b'-- Installing: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/package.dsv\n'}
+[0.235648] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/ament_index/resource_index/packages/robot_description\n'}
+[0.235700] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/cmake/robot_descriptionConfig.cmake\n'}
+[0.235758] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/cmake/robot_descriptionConfig-version.cmake\n'}
+[0.235813] (robot_description) StdoutLine: {'line': b'-- Up-to-date: /home/naor/Desktop/naor/study/Thesis/install/robot_description/share/robot_description/package.xml\n'}
+[0.247802] (hamma_bot) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/hamma_bot/msg/detail/dds_fastrtps/pwm__type_support.cpp.o\x1b[0m\n'}
+[0.247990] (hamma_bot) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/hamma_bot/msg/pwm__type_support.cpp.o\x1b[0m\n'}
+[0.248376] (hamma_bot) StdoutLine: {'line': b'[ 18%] \x1b[32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/hamma_bot/msg/motor_data__type_support.cpp.o\x1b[0m\n'}
+[0.249014] (hamma_bot) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/hamma_bot/msg/detail/dds_fastrtps/motor_data__type_support.cpp.o\x1b[0m\n'}
+[0.252457] (hamma_bot) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/hamma_bot/msg/detail/pwm__type_support.cpp.o\x1b[0m\n'}
+[0.252589] (hamma_bot) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/hamma_bot/msg/detail/motor_data__type_support.cpp.o\x1b[0m\n'}
+[0.258708] (roller) JobEnded: {'identifier': 'roller', 'rc': 0}
+[0.260081] (robot_description) CommandEnded: {'returncode': 0}
+[0.288207] (robot_description) JobEnded: {'identifier': 'robot_description', 'rc': 0}
+[0.292348] (hamma_bot) StdoutLine: {'line': b'[ 27%] \x1b[32m\x1b[1mLinking C shared library libhamma_bot__rosidl_generator_c.so\x1b[0m\n'}
+[0.300058] (-) TimerEvent: {}
+[0.352298] (hamma_bot) StdoutLine: {'line': b'[ 30%] Built target hamma_bot__rosidl_generator_c\n'}
+[0.387166] (hamma_bot) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_c.dir/rosidl_typesupport_c/hamma_bot/msg/pwm__type_support.cpp.o\x1b[0m\n'}
+[0.387391] (hamma_bot) StdoutLine: {'line': b'[ 34%] \x1b[32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/hamma_bot/msg/detail/motor_data__type_support_c.cpp.o\x1b[0m\n'}
+[0.393218] (hamma_bot) StdoutLine: {'line': b'[ 37%] \x1b[32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/hamma_bot/msg/detail/pwm__type_support_c.cpp.o\x1b[0m\n'}
+[0.400200] (-) TimerEvent: {}
+[0.418571] (hamma_bot) StdoutLine: {'line': b'[ 39%] \x1b[32mBuilding CXX object CMakeFiles/hamma_bot__rosidl_typesupport_c.dir/rosidl_typesupport_c/hamma_bot/msg/motor_data__type_support.cpp.o\x1b[0m\n'}
+[0.421514] (hamma_bot) StdoutLine: {'line': b'[ 41%] \x1b[32mBuilding C object CMakeFiles/hamma_bot__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/hamma_bot/msg/detail/pwm__type_support.c.o\x1b[0m\n'}
+[0.423111] (hamma_bot) StdoutLine: {'line': b'[ 44%] \x1b[32mBuilding C object CMakeFiles/hamma_bot__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/hamma_bot/msg/detail/motor_data__type_support.c.o\x1b[0m\n'}
+[0.489861] (hamma_bot) StdoutLine: {'line': b'[ 46%] \x1b[32m\x1b[1mLinking CXX shared library libhamma_bot__rosidl_typesupport_c.so\x1b[0m\n'}
+[0.490737] (drone_c) StdoutLine: {'line': b'-- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.500310] (-) TimerEvent: {}
+[0.503650] (hamma_bot) StdoutLine: {'line': b'[ 48%] \x1b[32m\x1b[1mLinking C shared library libhamma_bot__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[0.564241] (hamma_bot) StdoutLine: {'line': b'[ 51%] Built target hamma_bot__rosidl_typesupport_introspection_c\n'}
+[0.565946] (hamma_bot) StdoutLine: {'line': b'[ 53%] Built target hamma_bot__rosidl_typesupport_c\n'}
+[0.591003] (drone_c) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.600361] (drone_c) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.600586] (-) TimerEvent: {}
+[0.611041] (hamma_bot) StdoutLine: {'line': b'[ 55%] \x1b[32m\x1b[1mLinking CXX shared library libhamma_bot__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[0.623324] (drone_c) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.628698] (hamma_bot) StdoutLine: {'line': b'running egg_info\n'}
+[0.641531] (drone_c) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.668616] (hamma_bot) StdoutLine: {'line': b'[ 58%] Built target hamma_bot__rosidl_typesupport_cpp\n'}
+[0.668862] (hamma_bot) StdoutLine: {'line': b'writing hamma_bot.egg-info/PKG-INFO\n'}
+[0.668967] (hamma_bot) StdoutLine: {'line': b'writing dependency_links to hamma_bot.egg-info/dependency_links.txt\n'}
+[0.672610] (drone_c) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.672782] (hamma_bot) StdoutLine: {'line': b'writing top-level names to hamma_bot.egg-info/top_level.txt\n'}
+[0.701186] (-) TimerEvent: {}
+[0.723603] (hamma_bot) StdoutLine: {'line': b"reading manifest file 'hamma_bot.egg-info/SOURCES.txt'\n"}
+[0.724778] (hamma_bot) StdoutLine: {'line': b"writing manifest file 'hamma_bot.egg-info/SOURCES.txt'\n"}
+[0.735606] (drone_c) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.740169] (drone_c) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.747014] (hamma_bot) StdoutLine: {'line': b'[ 60%] \x1b[32m\x1b[1mLinking CXX shared library libhamma_bot__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[0.769254] (hamma_bot) StdoutLine: {'line': b'[ 60%] Built target ament_cmake_python_build_hamma_bot_egg\n'}
+[0.781132] (hamma_bot) StdoutLine: {'line': b'[ 62%] \x1b[32m\x1b[1mLinking CXX shared library libhamma_bot__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[0.791009] (hamma_bot) StdoutLine: {'line': b'[ 65%] Built target hamma_bot__rosidl_typesupport_introspection_cpp\n'}
+[0.801287] (-) TimerEvent: {}
+[0.802556] (hamma_bot) StdoutLine: {'line': b'[ 67%] \x1b[32m\x1b[1mLinking CXX shared library libhamma_bot__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[0.869090] (hamma_bot) StdoutLine: {'line': b'[ 69%] Built target hamma_bot__rosidl_typesupport_fastrtps_c\n'}
+[0.879371] (hamma_bot) StdoutLine: {'line': b'[ 72%] Built target hamma_bot__rosidl_typesupport_fastrtps_cpp\n'}
+[0.890691] (drone_c) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.901386] (-) TimerEvent: {}
+[0.903196] (hamma_bot) StdoutLine: {'line': b'[ 72%] Built target hamma_bot\n'}
+[0.927445] (hamma_bot) StdoutLine: {'line': b'[ 74%] Built target hamma_bot__py\n'}
+[0.952834] (hamma_bot) StdoutLine: {'line': b'[ 76%] \x1b[32mBuilding C object CMakeFiles/hamma_bot__rosidl_generator_py.dir/rosidl_generator_py/hamma_bot/msg/_pwm_s.c.o\x1b[0m\n'}
+[0.953087] (hamma_bot) StdoutLine: {'line': b'[ 79%] \x1b[32mBuilding C object CMakeFiles/hamma_bot__rosidl_generator_py.dir/rosidl_generator_py/hamma_bot/msg/_motor_data_s.c.o\x1b[0m\n'}
+[0.963732] (drone_c) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[0.974793] (drone_c) StderrLine: {'line': b'\x1b[31mCMake Error at /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:93 (message):\n'}
+[0.974993] (drone_c) StderrLine: {'line': b"  rosidl_generate_interfaces() the passed file 'Pid_consts.msg' doesn't exist\n"}
+[0.975075] (drone_c) StderrLine: {'line': b'  relative to the CMAKE_CURRENT_SOURCE_DIR\n'}
+[0.975329] (drone_c) StderrLine: {'line': b"  '/home/naor/Desktop/naor/study/Thesis/src/drone_c'\n"}
+[0.975390] (drone_c) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[0.975448] (drone_c) StderrLine: {'line': b'  CMakeLists.txt:29 (rosidl_generate_interfaces)\n'}
+[0.975507] (drone_c) StderrLine: {'line': b'\n'}
+[0.975564] (drone_c) StderrLine: {'line': b'\x1b[0m\n'}
+[0.975619] (drone_c) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.975693] (drone_c) StdoutLine: {'line': b'See also "/home/naor/Desktop/naor/study/Thesis/build/drone_c/CMakeFiles/CMakeOutput.log".\n'}
+[0.984956] (drone_c) StderrLine: {'line': b'gmake: *** [Makefile:1395: cmake_check_build_system] Error 1\n'}
+[0.986956] (drone_c) CommandEnded: {'returncode': 2}
+[1.000201] (drone_c) JobEnded: {'identifier': 'drone_c', 'rc': 2}
+[1.001467] (-) TimerEvent: {}
+[1.084897] (hamma_bot) StdoutLine: {'line': b'[ 81%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/hamma_bot/libhamma_bot__rosidl_generator_py.so\x1b[0m\n'}
+[1.099665] (controller) JobEnded: {'identifier': 'controller', 'rc': 'SIGINT'}
+[1.101548] (-) TimerEvent: {}
+[1.134991] (hamma_bot) StdoutLine: {'line': b'[ 81%] Built target hamma_bot__rosidl_generator_py\n'}
+[1.154970] (hamma_bot) StdoutLine: {'line': b'[ 83%] \x1b[32mBuilding C object CMakeFiles/hamma_bot__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/hamma_bot/_hamma_bot_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[1.156760] (hamma_bot) StdoutLine: {'line': b'[ 86%] \x1b[32mBuilding C object CMakeFiles/hamma_bot__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/hamma_bot/_hamma_bot_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[1.161637] (hamma_bot) StdoutLine: {'line': b'[ 88%] \x1b[32mBuilding C object CMakeFiles/hamma_bot__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/hamma_bot/_hamma_bot_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[1.201679] (-) TimerEvent: {}
+[1.224386] (hamma_bot) StdoutLine: {'line': b'[ 90%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/hamma_bot/hamma_bot_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[1.226102] (hamma_bot) StdoutLine: {'line': b'[ 93%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/hamma_bot/hamma_bot_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[1.256562] (hamma_bot) StdoutLine: {'line': b'[ 93%] Built target hamma_bot__rosidl_typesupport_introspection_c__pyext\n'}
+[1.258536] (hamma_bot) StdoutLine: {'line': b'[ 93%] Built target hamma_bot__rosidl_typesupport_fastrtps_c__pyext\n'}
+[1.275804] (hamma_bot) StdoutLine: {'line': b'[ 95%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/hamma_bot/hamma_bot_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[1.301790] (-) TimerEvent: {}
+[1.310141] (hamma_bot) StdoutLine: {'line': b'[ 95%] Built target hamma_bot__rosidl_typesupport_c__pyext\n'}
+[1.401898] (-) TimerEvent: {}
+[1.502181] (-) TimerEvent: {}
+[1.602492] (-) TimerEvent: {}
+[1.702981] (-) TimerEvent: {}
+[1.803360] (-) TimerEvent: {}
+[1.903678] (-) TimerEvent: {}
+[2.003992] (-) TimerEvent: {}
+[2.104330] (-) TimerEvent: {}
+[2.204665] (-) TimerEvent: {}
+[2.304992] (-) TimerEvent: {}
+[2.405324] (-) TimerEvent: {}
+[2.505676] (-) TimerEvent: {}
+[2.605972] (-) TimerEvent: {}
+[2.644443] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 40%] \x1b[32m\x1b[1mLinking CXX executable laserscan_to_pointcloud_node\x1b[0m\n'}
+[2.706088] (-) TimerEvent: {}
+[2.715782] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 50%] \x1b[32m\x1b[1mLinking CXX executable pointcloud_to_laserscan_node\x1b[0m\n'}
+[2.757696] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 50%] Built target laserscan_to_pointcloud_node\n'}
+[2.806199] (-) TimerEvent: {}
+[2.815120] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 50%] Built target pointcloud_to_laserscan_node\n'}
+[2.906323] (-) TimerEvent: {}
+[3.006601] (-) TimerEvent: {}
+[3.106850] (-) TimerEvent: {}
+[3.207096] (-) TimerEvent: {}
+[3.307382] (-) TimerEvent: {}
+[3.407658] (-) TimerEvent: {}
+[3.507936] (-) TimerEvent: {}
+[3.608220] (-) TimerEvent: {}
+[3.708492] (-) TimerEvent: {}
+[3.808855] (-) TimerEvent: {}
+[3.909219] (-) TimerEvent: {}
+[4.009583] (-) TimerEvent: {}
+[4.109864] (-) TimerEvent: {}
+[4.210123] (-) TimerEvent: {}
+[4.310380] (-) TimerEvent: {}
+[4.410632] (-) TimerEvent: {}
+[4.510872] (-) TimerEvent: {}
+[4.611149] (-) TimerEvent: {}
+[4.711419] (-) TimerEvent: {}
+[4.811658] (-) TimerEvent: {}
+[4.911969] (-) TimerEvent: {}
+[5.012243] (-) TimerEvent: {}
+[5.112579] (-) TimerEvent: {}
+[5.212870] (-) TimerEvent: {}
+[5.313122] (-) TimerEvent: {}
+[5.413359] (-) TimerEvent: {}
+[5.513670] (-) TimerEvent: {}
+[5.613903] (-) TimerEvent: {}
+[5.714136] (-) TimerEvent: {}
+[5.814361] (-) TimerEvent: {}
+[5.914595] (-) TimerEvent: {}
+[6.014894] (-) TimerEvent: {}
+[6.115248] (-) TimerEvent: {}
+[6.215579] (-) TimerEvent: {}
+[6.246920] (hamma_bot) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking CXX executable joy_twist_node\x1b[0m\n'}
+[6.272476] (hamma_bot) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable twist_to_twiststamped_node\x1b[0m\n'}
+[6.315695] (-) TimerEvent: {}
+[6.415951] (-) TimerEvent: {}
+[6.516195] (-) TimerEvent: {}
+[6.527819] (hamma_bot) StdoutLine: {'line': b'[100%] Built target joy_twist_node\n'}
+[6.533720] (hamma_bot) StdoutLine: {'line': b'[100%] Built target twist_to_twiststamped_node\n'}
+[6.542066] (hamma_bot) JobEnded: {'identifier': 'hamma_bot', 'rc': 'SIGINT'}
+[6.616280] (-) TimerEvent: {}
+[6.716496] (-) TimerEvent: {}
+[6.816725] (-) TimerEvent: {}
+[6.916988] (-) TimerEvent: {}
+[7.017218] (-) TimerEvent: {}
+[7.117468] (-) TimerEvent: {}
+[7.217731] (-) TimerEvent: {}
+[7.317967] (-) TimerEvent: {}
+[7.418262] (-) TimerEvent: {}
+[7.518488] (-) TimerEvent: {}
+[7.618861] (-) TimerEvent: {}
+[7.719202] (-) TimerEvent: {}
+[7.819445] (-) TimerEvent: {}
+[7.919719] (-) TimerEvent: {}
+[8.020019] (-) TimerEvent: {}
+[8.078383] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 60%] \x1b[32m\x1b[1mLinking CXX shared library liblaserscan_to_pointcloud.so\x1b[0m\n'}
+[8.120238] (-) TimerEvent: {}
+[8.220527] (-) TimerEvent: {}
+[8.320860] (-) TimerEvent: {}
+[8.421243] (-) TimerEvent: {}
+[8.480644] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 60%] Built target laserscan_to_pointcloud\n'}
+[8.521349] (-) TimerEvent: {}
+[8.523055] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 70%] \x1b[32mBuilding CXX object CMakeFiles/pointcloud_to_laserscan.dir/src/pointcloud_to_laserscan_node.cpp.o\x1b[0m\n'}
+[8.621475] (-) TimerEvent: {}
+[8.721754] (-) TimerEvent: {}
+[8.822017] (-) TimerEvent: {}
+[8.922296] (-) TimerEvent: {}
+[9.022763] (-) TimerEvent: {}
+[9.123038] (-) TimerEvent: {}
+[9.223321] (-) TimerEvent: {}
+[9.323574] (-) TimerEvent: {}
+[9.423836] (-) TimerEvent: {}
+[9.524136] (-) TimerEvent: {}
+[9.624396] (-) TimerEvent: {}
+[9.724665] (-) TimerEvent: {}
+[9.824938] (-) TimerEvent: {}
+[9.925245] (-) TimerEvent: {}
+[10.025630] (-) TimerEvent: {}
+[10.125974] (-) TimerEvent: {}
+[10.226261] (-) TimerEvent: {}
+[10.326490] (-) TimerEvent: {}
+[10.426757] (-) TimerEvent: {}
+[10.527085] (-) TimerEvent: {}
+[10.627435] (-) TimerEvent: {}
+[10.727785] (-) TimerEvent: {}
+[10.828113] (-) TimerEvent: {}
+[10.928448] (-) TimerEvent: {}
+[11.028783] (-) TimerEvent: {}
+[11.129110] (-) TimerEvent: {}
+[11.229476] (-) TimerEvent: {}
+[11.329707] (-) TimerEvent: {}
+[11.430027] (-) TimerEvent: {}
+[11.530371] (-) TimerEvent: {}
+[11.630693] (-) TimerEvent: {}
+[11.730937] (-) TimerEvent: {}
+[11.831309] (-) TimerEvent: {}
+[11.931571] (-) TimerEvent: {}
+[12.031814] (-) TimerEvent: {}
+[12.132084] (-) TimerEvent: {}
+[12.232407] (-) TimerEvent: {}
+[12.332734] (-) TimerEvent: {}
+[12.433063] (-) TimerEvent: {}
+[12.533308] (-) TimerEvent: {}
+[12.633581] (-) TimerEvent: {}
+[12.733935] (-) TimerEvent: {}
+[12.834163] (-) TimerEvent: {}
+[12.934381] (-) TimerEvent: {}
+[13.034620] (-) TimerEvent: {}
+[13.134834] (-) TimerEvent: {}
+[13.235076] (-) TimerEvent: {}
+[13.335306] (-) TimerEvent: {}
+[13.435629] (-) TimerEvent: {}
+[13.535960] (-) TimerEvent: {}
+[13.636292] (-) TimerEvent: {}
+[13.736541] (-) TimerEvent: {}
+[13.836789] (-) TimerEvent: {}
+[13.937128] (-) TimerEvent: {}
+[14.037347] (-) TimerEvent: {}
+[14.137662] (-) TimerEvent: {}
+[14.237992] (-) TimerEvent: {}
+[14.338365] (-) TimerEvent: {}
+[14.438623] (-) TimerEvent: {}
+[14.538939] (-) TimerEvent: {}
+[14.639290] (-) TimerEvent: {}
+[14.739539] (-) TimerEvent: {}
+[14.839882] (-) TimerEvent: {}
+[14.940136] (-) TimerEvent: {}
+[15.040470] (-) TimerEvent: {}
+[15.140729] (-) TimerEvent: {}
+[15.240994] (-) TimerEvent: {}
+[15.341231] (-) TimerEvent: {}
+[15.441476] (-) TimerEvent: {}
+[15.541703] (-) TimerEvent: {}
+[15.547715] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking CXX shared library libpointcloud_to_laserscan.so\x1b[0m\n'}
+[15.641828] (-) TimerEvent: {}
+[15.742081] (-) TimerEvent: {}
+[15.842317] (-) TimerEvent: {}
+[15.942578] (-) TimerEvent: {}
+[15.954033] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 80%] Built target pointcloud_to_laserscan\n'}
+[15.977541] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding CXX object CMakeFiles/dummy_pointcloud_publisher.dir/src/dummy_pointcloud_publisher.cpp.o\x1b[0m\n'}
+[16.042704] (-) TimerEvent: {}
+[16.142914] (-) TimerEvent: {}
+[16.243172] (-) TimerEvent: {}
+[16.343400] (-) TimerEvent: {}
+[16.443653] (-) TimerEvent: {}
+[16.543908] (-) TimerEvent: {}
+[16.644307] (-) TimerEvent: {}
+[16.744568] (-) TimerEvent: {}
+[16.844892] (-) TimerEvent: {}
+[16.945242] (-) TimerEvent: {}
+[17.045493] (-) TimerEvent: {}
+[17.145746] (-) TimerEvent: {}
+[17.246085] (-) TimerEvent: {}
+[17.346332] (-) TimerEvent: {}
+[17.446591] (-) TimerEvent: {}
+[17.546836] (-) TimerEvent: {}
+[17.647188] (-) TimerEvent: {}
+[17.747423] (-) TimerEvent: {}
+[17.847747] (-) TimerEvent: {}
+[17.948084] (-) TimerEvent: {}
+[18.048305] (-) TimerEvent: {}
+[18.148547] (-) TimerEvent: {}
+[18.248772] (-) TimerEvent: {}
+[18.349104] (-) TimerEvent: {}
+[18.449421] (-) TimerEvent: {}
+[18.549683] (-) TimerEvent: {}
+[18.643628] (pointcloud_to_laserscan) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable dummy_pointcloud_publisher\x1b[0m\n'}
+[18.649784] (-) TimerEvent: {}
+[18.749977] (-) TimerEvent: {}
+[18.825529] (pointcloud_to_laserscan) StdoutLine: {'line': b'[100%] Built target dummy_pointcloud_publisher\n'}
+[18.833578] (pointcloud_to_laserscan) JobEnded: {'identifier': 'pointcloud_to_laserscan', 'rc': 'SIGINT'}
+[18.844047] (camera_nav) JobSkipped: {'identifier': 'camera_nav'}
+[18.844124] (ground_bot) JobSkipped: {'identifier': 'ground_bot'}
+[18.844151] (-) EventReactorShutdown: {}

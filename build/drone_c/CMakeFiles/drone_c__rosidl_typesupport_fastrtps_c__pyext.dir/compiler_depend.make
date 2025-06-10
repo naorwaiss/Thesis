@@ -254,8 +254,15 @@ CMakeFiles/drone_c__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py
   rosidl_generator_c/drone_c/msg/detail/motors__functions.h \
   rosidl_generator_c/drone_c/msg/detail/imu_filter__type_support.h \
   rosidl_generator_c/drone_c/msg/detail/imu_filter__struct.h \
-  rosidl_generator_c/drone_c/msg/detail/imu_filter__functions.h
+  rosidl_generator_c/drone_c/msg/detail/imu_filter__functions.h \
+  rosidl_generator_c/drone_c/msg/detail/pid_consts__type_support.h \
+  rosidl_generator_c/drone_c/msg/detail/pid_consts__struct.h \
+  rosidl_generator_c/drone_c/msg/detail/pid_consts__functions.h
 
+
+rosidl_generator_c/drone_c/msg/detail/pid_consts__functions.h:
+
+rosidl_generator_c/drone_c/msg/detail/pid_consts__struct.h:
 
 rosidl_generator_c/drone_c/msg/detail/motors__functions.h:
 
@@ -328,6 +335,8 @@ rosidl_generator_c/drone_c/msg/detail/pid__functions.h:
 /usr/include/python3.10/pycapsule.h:
 
 /usr/include/python3.10/cpython/fileobject.h:
+
+rosidl_generator_c/drone_c/msg/detail/pid_consts__type_support.h:
 
 /usr/include/python3.10/classobject.h:
 

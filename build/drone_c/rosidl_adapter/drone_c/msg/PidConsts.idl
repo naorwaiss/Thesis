@@ -1,0 +1,21 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from drone_c/msg/PidConsts.msg
+// generated code does not contain a copyright notice
+
+
+module drone_c {
+  module msg {
+    typedef float float__3[3];
+    struct PidConsts {
+      float__3 rate_pitch;
+
+      float__3 rate_roll;
+
+      float__3 stablize_pitch;
+
+      float__3 stablize_roll;
+
+      float__3 rate_yaw;
+    };
+  };
+};

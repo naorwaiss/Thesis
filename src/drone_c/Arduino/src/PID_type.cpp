@@ -2,6 +2,9 @@
 #include "PID_type.h"
 #include "Var_types.h"
 
+
+PID_const_t PID_CONSTS;  // Define the global variable
+
 attitude_t angle_err;  // Attitude error
 attitude_t rate_err_HPF;
 attitude_t rate_err_LPF;
@@ -17,16 +20,17 @@ PID_Params_t stab_params;  // PID parameters for stabilization controller
 void initializePIDParams(float RrollPID[3] = nullptr, float RpitchPID[3] = nullptr, float RyawPID[3] = nullptr,
                          float Imax_rate[2] = nullptr, float SrollPID[3] = nullptr, float SpitchPID[3] = nullptr,
                          float SyawPID[3] = nullptr, float Imax_stab[2] = nullptr) {  // Rate mode parameters
-
+    
+    getbot_param(PID_CONSTS);
     const float defaultRrollPID[3] = {1.6, 0.15f, 0.95f};  // DO NOT GO OVER Kd=0.9 !!!! Drone will kill someone!!!
-    const float defaultRpitchPID[3] = {1.6f, 0.15f, 0.95f};
+    const float defaultRpitchPID[3] = {1.8f, 0.15f, 0.95f};
     const float defaultRyawPID[3] = {2.0f, 0.0f, 0.05f};
     const float defaultImax_rate[2] = {100.0f, 100.0f};
 
     // Default STABILIZE mode parameter values
-    const float defaultSrollPID[3] = {10.0f, 0.01f, 0.0f};
-    const float defaultSpitchPID[3] = {9.0f, 0.01f, 0.0f};
-    const float defaultSyawPID[3] = {4.0f, 0.0f, 0.0f};
+    const float defaultSrollPID[3] = {4.0f, 0.00f, 0.0f};
+    const float defaultSpitchPID[3] = {4.0f, 0.00f, 0.0f};
+    const float defaultSyawPID[3] = {2.0f, 0.0f, 0.0f};
     const float defaultImax_stab[2] = {100.0f, 100.0f};
 
     // Assign default values if nullptr is passed

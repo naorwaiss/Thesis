@@ -6,3 +6,5 @@ msg/Motors.idl
 msg/Motors.msg
 msg/Pid.idl
 msg/Pid.msg
+msg/PidConsts.idl
+msg/PidConsts.msg

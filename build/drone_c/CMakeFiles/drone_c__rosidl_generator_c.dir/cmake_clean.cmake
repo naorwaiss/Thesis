@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/motors__functions.c.o.d"
   "CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/pid__functions.c.o"
   "CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/pid__functions.c.o.d"
+  "CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/pid_consts__functions.c.o"
+  "CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/pid_consts__functions.c.o.d"
   "libdrone_c__rosidl_generator_c.pdb"
   "libdrone_c__rosidl_generator_c.so"
   "rosidl_generator_c/drone_c/msg/detail/euler_angles__functions.c"
@@ -25,10 +27,15 @@ file(REMOVE_RECURSE
   "rosidl_generator_c/drone_c/msg/detail/pid__functions.h"
   "rosidl_generator_c/drone_c/msg/detail/pid__struct.h"
   "rosidl_generator_c/drone_c/msg/detail/pid__type_support.h"
+  "rosidl_generator_c/drone_c/msg/detail/pid_consts__functions.c"
+  "rosidl_generator_c/drone_c/msg/detail/pid_consts__functions.h"
+  "rosidl_generator_c/drone_c/msg/detail/pid_consts__struct.h"
+  "rosidl_generator_c/drone_c/msg/detail/pid_consts__type_support.h"
   "rosidl_generator_c/drone_c/msg/euler_angles.h"
   "rosidl_generator_c/drone_c/msg/imu_filter.h"
   "rosidl_generator_c/drone_c/msg/motors.h"
   "rosidl_generator_c/drone_c/msg/pid.h"
+  "rosidl_generator_c/drone_c/msg/pid_consts.h"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,0 +1,24 @@
+[0.169s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/build/drone_c': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/drone_c -- -j16 -l16
+[0.192s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.481s] -- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)
+[0.582s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.591s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.614s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.632s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.663s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.726s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.731s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.881s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.954s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.965s] [31mCMake Error at /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:93 (message):
+[0.965s]   rosidl_generate_interfaces() the passed file 'Pid_consts.msg' doesn't exist
+[0.966s]   relative to the CMAKE_CURRENT_SOURCE_DIR
+[0.966s]   '/home/naor/Desktop/naor/study/Thesis/src/drone_c'
+[0.966s] Call Stack (most recent call first):
+[0.966s]   CMakeLists.txt:29 (rosidl_generate_interfaces)
+[0.966s] 
+[0.966s] [0m
+[0.966s] -- Configuring incomplete, errors occurred!
+[0.966s] See also "/home/naor/Desktop/naor/study/Thesis/build/drone_c/CMakeFiles/CMakeOutput.log".
+[0.976s] gmake: *** [Makefile:1395: cmake_check_build_system] Error 1
+[0.978s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/build/drone_c' returned '2': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/work/capsule_repo/install/teensy_ers:/home/naor/Desktop/naor/work/capsule_repo/install/elers_bridge:/opt/ros/humble /usr/bin/cmake --build /home/naor/Desktop/naor/study/Thesis/build/drone_c -- -j16 -l16

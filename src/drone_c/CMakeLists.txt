@@ -23,6 +23,7 @@ set(msg_files
   "msg/EulerAngles.msg"
   "msg/Motors.msg"
   "msg/ImuFilter.msg"
+  "msg/PidConsts.msg"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}

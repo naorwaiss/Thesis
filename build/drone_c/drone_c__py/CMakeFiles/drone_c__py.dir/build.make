@@ -73,11 +73,13 @@ drone_c__py/CMakeFiles/drone_c__py: rosidl_generator_py/drone_c/msg/_pid.py
 drone_c__py/CMakeFiles/drone_c__py: rosidl_generator_py/drone_c/msg/_euler_angles.py
 drone_c__py/CMakeFiles/drone_c__py: rosidl_generator_py/drone_c/msg/_motors.py
 drone_c__py/CMakeFiles/drone_c__py: rosidl_generator_py/drone_c/msg/_imu_filter.py
+drone_c__py/CMakeFiles/drone_c__py: rosidl_generator_py/drone_c/msg/_pid_consts.py
 drone_c__py/CMakeFiles/drone_c__py: rosidl_generator_py/drone_c/msg/__init__.py
 drone_c__py/CMakeFiles/drone_c__py: rosidl_generator_py/drone_c/msg/_pid_s.c
 drone_c__py/CMakeFiles/drone_c__py: rosidl_generator_py/drone_c/msg/_euler_angles_s.c
 drone_c__py/CMakeFiles/drone_c__py: rosidl_generator_py/drone_c/msg/_motors_s.c
 drone_c__py/CMakeFiles/drone_c__py: rosidl_generator_py/drone_c/msg/_imu_filter_s.c
+drone_c__py/CMakeFiles/drone_c__py: rosidl_generator_py/drone_c/msg/_pid_consts_s.c
 
 rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/lib/rosidl_generator_py/rosidl_generator_py
 rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_generator_py/__init__.py
@@ -96,6 +98,7 @@ rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c: rosid
 rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/drone_c/msg/EulerAngles.idl
 rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/drone_c/msg/Motors.idl
 rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/drone_c/msg/ImuFilter.idl
+rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/drone_c/msg/PidConsts.idl
 rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/std_msgs/msg/Bool.idl
 rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/std_msgs/msg/Byte.idl
 rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/std_msgs/msg/ByteMultiArray.idl
@@ -149,6 +152,9 @@ rosidl_generator_py/drone_c/msg/_motors.py: rosidl_generator_py/drone_c/_drone_c
 rosidl_generator_py/drone_c/msg/_imu_filter.py: rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/drone_c/msg/_imu_filter.py
 
+rosidl_generator_py/drone_c/msg/_pid_consts.py: rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/drone_c/msg/_pid_consts.py
+
 rosidl_generator_py/drone_c/msg/__init__.py: rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/drone_c/msg/__init__.py
 
@@ -164,6 +170,9 @@ rosidl_generator_py/drone_c/msg/_motors_s.c: rosidl_generator_py/drone_c/_drone_
 rosidl_generator_py/drone_c/msg/_imu_filter_s.c: rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/drone_c/msg/_imu_filter_s.c
 
+rosidl_generator_py/drone_c/msg/_pid_consts_s.c: rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/drone_c/msg/_pid_consts_s.c
+
 drone_c__py: drone_c__py/CMakeFiles/drone_c__py
 drone_c__py: rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_c.c
 drone_c__py: rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c
@@ -176,6 +185,8 @@ drone_c__py: rosidl_generator_py/drone_c/msg/_imu_filter_s.c
 drone_c__py: rosidl_generator_py/drone_c/msg/_motors.py
 drone_c__py: rosidl_generator_py/drone_c/msg/_motors_s.c
 drone_c__py: rosidl_generator_py/drone_c/msg/_pid.py
+drone_c__py: rosidl_generator_py/drone_c/msg/_pid_consts.py
+drone_c__py: rosidl_generator_py/drone_c/msg/_pid_consts_s.c
 drone_c__py: rosidl_generator_py/drone_c/msg/_pid_s.c
 drone_c__py: drone_c__py/CMakeFiles/drone_c__py.dir/build.make
 .PHONY : drone_c__py

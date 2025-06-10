@@ -86,6 +86,11 @@ CMakeFiles/drone_c__cpp: rosidl_generator_cpp/drone_c/msg/detail/imu_filter__bui
 CMakeFiles/drone_c__cpp: rosidl_generator_cpp/drone_c/msg/detail/imu_filter__struct.hpp
 CMakeFiles/drone_c__cpp: rosidl_generator_cpp/drone_c/msg/detail/imu_filter__traits.hpp
 CMakeFiles/drone_c__cpp: rosidl_generator_cpp/drone_c/msg/detail/imu_filter__type_support.hpp
+CMakeFiles/drone_c__cpp: rosidl_generator_cpp/drone_c/msg/pid_consts.hpp
+CMakeFiles/drone_c__cpp: rosidl_generator_cpp/drone_c/msg/detail/pid_consts__builder.hpp
+CMakeFiles/drone_c__cpp: rosidl_generator_cpp/drone_c/msg/detail/pid_consts__struct.hpp
+CMakeFiles/drone_c__cpp: rosidl_generator_cpp/drone_c/msg/detail/pid_consts__traits.hpp
+CMakeFiles/drone_c__cpp: rosidl_generator_cpp/drone_c/msg/detail/pid_consts__type_support.hpp
 CMakeFiles/drone_c__cpp: rosidl_generator_cpp/drone_c/msg/rosidl_generator_cpp__visibility_control.hpp
 
 rosidl_generator_cpp/drone_c/msg/pid.hpp: /opt/ros/humble/lib/rosidl_generator_cpp/rosidl_generator_cpp
@@ -107,6 +112,7 @@ rosidl_generator_cpp/drone_c/msg/pid.hpp: rosidl_adapter/drone_c/msg/Pid.idl
 rosidl_generator_cpp/drone_c/msg/pid.hpp: rosidl_adapter/drone_c/msg/EulerAngles.idl
 rosidl_generator_cpp/drone_c/msg/pid.hpp: rosidl_adapter/drone_c/msg/Motors.idl
 rosidl_generator_cpp/drone_c/msg/pid.hpp: rosidl_adapter/drone_c/msg/ImuFilter.idl
+rosidl_generator_cpp/drone_c/msg/pid.hpp: rosidl_adapter/drone_c/msg/PidConsts.idl
 rosidl_generator_cpp/drone_c/msg/pid.hpp: /opt/ros/humble/share/std_msgs/msg/Bool.idl
 rosidl_generator_cpp/drone_c/msg/pid.hpp: /opt/ros/humble/share/std_msgs/msg/Byte.idl
 rosidl_generator_cpp/drone_c/msg/pid.hpp: /opt/ros/humble/share/std_msgs/msg/ByteMultiArray.idl
@@ -199,6 +205,21 @@ rosidl_generator_cpp/drone_c/msg/detail/imu_filter__traits.hpp: rosidl_generator
 rosidl_generator_cpp/drone_c/msg/detail/imu_filter__type_support.hpp: rosidl_generator_cpp/drone_c/msg/pid.hpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/drone_c/msg/detail/imu_filter__type_support.hpp
 
+rosidl_generator_cpp/drone_c/msg/pid_consts.hpp: rosidl_generator_cpp/drone_c/msg/pid.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/drone_c/msg/pid_consts.hpp
+
+rosidl_generator_cpp/drone_c/msg/detail/pid_consts__builder.hpp: rosidl_generator_cpp/drone_c/msg/pid.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/drone_c/msg/detail/pid_consts__builder.hpp
+
+rosidl_generator_cpp/drone_c/msg/detail/pid_consts__struct.hpp: rosidl_generator_cpp/drone_c/msg/pid.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/drone_c/msg/detail/pid_consts__struct.hpp
+
+rosidl_generator_cpp/drone_c/msg/detail/pid_consts__traits.hpp: rosidl_generator_cpp/drone_c/msg/pid.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/drone_c/msg/detail/pid_consts__traits.hpp
+
+rosidl_generator_cpp/drone_c/msg/detail/pid_consts__type_support.hpp: rosidl_generator_cpp/drone_c/msg/pid.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/drone_c/msg/detail/pid_consts__type_support.hpp
+
 drone_c__cpp: CMakeFiles/drone_c__cpp
 drone_c__cpp: rosidl_generator_cpp/drone_c/msg/detail/euler_angles__builder.hpp
 drone_c__cpp: rosidl_generator_cpp/drone_c/msg/detail/euler_angles__struct.hpp
@@ -216,10 +237,15 @@ drone_c__cpp: rosidl_generator_cpp/drone_c/msg/detail/pid__builder.hpp
 drone_c__cpp: rosidl_generator_cpp/drone_c/msg/detail/pid__struct.hpp
 drone_c__cpp: rosidl_generator_cpp/drone_c/msg/detail/pid__traits.hpp
 drone_c__cpp: rosidl_generator_cpp/drone_c/msg/detail/pid__type_support.hpp
+drone_c__cpp: rosidl_generator_cpp/drone_c/msg/detail/pid_consts__builder.hpp
+drone_c__cpp: rosidl_generator_cpp/drone_c/msg/detail/pid_consts__struct.hpp
+drone_c__cpp: rosidl_generator_cpp/drone_c/msg/detail/pid_consts__traits.hpp
+drone_c__cpp: rosidl_generator_cpp/drone_c/msg/detail/pid_consts__type_support.hpp
 drone_c__cpp: rosidl_generator_cpp/drone_c/msg/euler_angles.hpp
 drone_c__cpp: rosidl_generator_cpp/drone_c/msg/imu_filter.hpp
 drone_c__cpp: rosidl_generator_cpp/drone_c/msg/motors.hpp
 drone_c__cpp: rosidl_generator_cpp/drone_c/msg/pid.hpp
+drone_c__cpp: rosidl_generator_cpp/drone_c/msg/pid_consts.hpp
 drone_c__cpp: CMakeFiles/drone_c__cpp.dir/build.make
 .PHONY : drone_c__cpp
 
