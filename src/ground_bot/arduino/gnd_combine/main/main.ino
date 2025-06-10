@@ -77,13 +77,21 @@ void setup() {
 }
 
 void loop() {
-    // executed_ch();
+    executed_ch();
 
     rtcomSocket.process();
     if (loop_time > dt_loop) {
-        roller_instance.main_roller();
-        // if (channels[2] > 1500) roller_instance.main_roller();
-        // else
+        if (channels[2] > 1500){
+            roller_instance.main_roller();
+            Serial.print("tension");
+            Serial.println(roller_instance.load_cell.tension);
+            Serial.print("pid");
+        }
+        else if (channels[2] < 1500) {
+     
+            Serial.println("stop motor");
+            roller_instance.stopMotor();
+        }
         if (rtcomSocket.isSessionConnected(socketSession)) {
             sender_instance.convert_data();
         }

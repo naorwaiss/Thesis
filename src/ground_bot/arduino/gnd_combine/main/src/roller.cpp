@@ -1,6 +1,6 @@
 #include "roller.h"
 
-roller::roller(double dt_sec,uint8_t ENA_ARRIVE, uint8_t INA_PIN_ARRIVE, uint8_t INB_PIN_ARRIVE, uint8_t PWM_PIN_ARRIVE, uint8_t DOUT_ARRIVE, uint8_t CLK_ARRIVE) {
+roller::roller(double dt_sec, uint8_t ENA_ARRIVE, uint8_t INA_PIN_ARRIVE, uint8_t INB_PIN_ARRIVE, uint8_t PWM_PIN_ARRIVE, uint8_t DOUT_ARRIVE, uint8_t CLK_ARRIVE) {
     INA_PIN = INA_PIN_ARRIVE;
     INB_PIN = INB_PIN_ARRIVE;
     PWM_PIN = PWM_PIN_ARRIVE;
@@ -18,54 +18,63 @@ void roller::init_roller_motor() {
 }
 
 void roller::stopMotor() {
-  digitalWrite(ENA_PIN, LOW);
-  digitalWrite(INA_PIN, LOW);
-  digitalWrite(INB_PIN, LOW);
-  analogWrite(PWM_PIN, 0);
-  pid.sum_error = 0;
-  pid.previous_error = 0;
+    digitalWrite(ENA_PIN, LOW);
+    digitalWrite(INA_PIN, LOW);
+    digitalWrite(INB_PIN, LOW);
+    analogWrite(PWM_PIN, 0);
+    pid.sum_error = 0;
+    pid.previous_error = 0;
 }
 
 void roller::motor_control(int pwm) {
     int pwm_const = constrain(pwm, -255, 255);
     int dir = pwm_const > 0 ? 1 : 2;
     switch (dir) {
-    case 1:
-        digitalWrite(ENA_PIN, HIGH);  
-        digitalWrite(INA_PIN, HIGH);  
-        digitalWrite(INB_PIN, LOW);  
-        analogWrite(PWM_PIN, abs(pwm_const));
-        break;
-    case 2:
-        digitalWrite(ENA_PIN, HIGH);  
-        digitalWrite(INA_PIN, LOW);  
-        digitalWrite(INB_PIN, HIGH);  
-        analogWrite(PWM_PIN, abs(pwm_const));
-        break;    
+        case 1:
+            digitalWrite(ENA_PIN, HIGH);
+            digitalWrite(INA_PIN, HIGH);
+            digitalWrite(INB_PIN, LOW);
+            analogWrite(PWM_PIN, abs(pwm_const));
+            break;
+        case 2:
+            digitalWrite(ENA_PIN, HIGH);
+            digitalWrite(INA_PIN, LOW);
+            digitalWrite(INB_PIN, HIGH);
+            analogWrite(PWM_PIN, abs(pwm_const));
+            break;
     }
 }
 
+void roller::direction_find() {
+    if (load_cell.tension > load_cell.dis_tension + load_cell.threshold_tension) {
+        position = Direction_enum::UP;
+    } else if (load_cell.tension < load_cell.dis_tension - load_cell.threshold_tension) {
+        position = Direction_enum::DOWN;
+    } else {
+        position = Direction_enum::MIDDLE;
+    }
+}
 
 void roller::error_find() {
-    float error;
-    error = load_cell.dis_tension - load_cell.tension;
-    if (error > 0 && error < load_cell.threshold_tension) {
-        load_cell.error = 0.0;
-    } else if (error < 0 && error > -load_cell.threshold_tension) {
-        load_cell.error = 0.0;
-    } else {
-        load_cell.error = error;
+    switch (position) {
+        case Direction_enum::UP:
+            load_cell.error = load_cell.tension - load_cell.dis_tension;
+            break;
+        case Direction_enum::DOWN:
+            load_cell.error = load_cell.tension - load_cell.dis_tension;
+            load_cell.error *= 1.75;
+            break;
+        case Direction_enum::MIDDLE:
+            load_cell.error = 0;
+            break;
     }
 }
-
-
 
 void roller::applyMotorControl(float control) {
     int pwmOut = abs(pid.control);
-    // if (pwmOut < 50 && pwmOut > 0) pwmOut = 50;
     pwmOut = constrain(pwmOut, 0, 255);
     digitalWrite(ENA_PIN, HIGH);
-    if (pid.control > 0 ) {
+    if (pid.control > 0) {
         digitalWrite(INA_PIN, HIGH);
         digitalWrite(INB_PIN, LOW);
         analogWrite(PWM_PIN, pwmOut);
@@ -86,7 +95,7 @@ void roller::set_pid_param(float Kp, float Ki, float Kd) {
 
 float roller::PID_control() {
     float control = 0;
-    Serial.println(dt,6);
+    Serial.println(dt, 6);
     pid.sum_error += load_cell.error * (dt);
     pid.sum_error = constrain(pid.sum_error, -pid.sum_errorMax, pid.sum_errorMax);
     float derivative = (load_cell.error - pid.previous_error) * (1 / dt);
@@ -94,7 +103,6 @@ float roller::PID_control() {
     control = pid.Kp * load_cell.error + pid.Ki * pid.sum_error + pid.Kd * derivative;
     return control;
 }
-
 
 void roller::init_roller() {
     load_cell_sensor.begin(DOUT, CLK);
@@ -106,13 +114,9 @@ void roller::init_roller() {
 
 void roller::main_roller() {
     load_cell.raw_Data = load_cell_sensor.get_value();
-    load_cell.tension = (load_cell.raw_Data - load_cell.rawEmpty) / load_cell.load_ScaleFactor;
-    if (load_cell.tension > -load_cell.threshold_tension && load_cell.tension < load_cell.threshold_tension) load_cell.tension = 0;
+    load_cell.tension = constrain(-1*(load_cell.raw_Data - load_cell.rawEmpty) / load_cell.load_ScaleFactor, 0, 50);
+    direction_find();
     error_find();
     pid.control = PID_control();
     applyMotorControl(pid.control);
-
-    
 }
-
-

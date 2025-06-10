@@ -5,9 +5,9 @@
 #include "HX711.h"
 
 struct load_cell_t {
-    float dis_tension = 10;
-    const float threshold_tension = 5;
-    const long rawEmpty = 162592;
+    float dis_tension = 11;
+    const float threshold_tension = 1.5;
+    const long rawEmpty = 2480440;
     const float load_ScaleFactor = (200400 - rawEmpty) / 39;
     float error = 0;
     long raw_Data;
@@ -22,6 +22,12 @@ struct PID {
     float control = 0;
     float previous_error = 0;
     float sum_errorMax = 1000;
+};
+
+enum class Direction_enum : uint8_t {
+    MIDDLE = 0,
+    UP = 1,
+    DOWN = 2,
 };
 
 class roller {
@@ -39,7 +45,8 @@ class roller {
     void applyMotorControl(float control);
     void set_pid_param(float Kp, float Ki, float Kd);
     float PID_control();
-
+    void direction_find();
+    Direction_enum position;
    private:
     uint8_t ENA_PIN;  // motor pin
     uint8_t INA_PIN;  // motor pin
