@@ -187,4 +187,24 @@ typedef struct state_s {
     vec3_t acceleration;
 } state_t;
 
+
+
+// typedef struct PID_const_s {
+//     float defaultRrollPID[3] = {1.6, 0.15f, 0.95f};  // DO NOT GO OVER Kd=0.9 !!!! Drone will kill someone!!!
+//     float defaultRpitchPID[3] = {1.6f, 0.15f, 0.95f};
+//     float defaultRyawPID[3] = {2.0f, 0.0f, 0.05f};
+//     float defaultImax_rate[2] = {100.0f, 100.0f};
+    
+//     // STABILIZE mode parameter values
+//     float defaultSrollPID[3] = {10.0f, 0.01f, 0.0f};
+//     float defaultSpitchPID[3] = {9.0f, 0.01f, 0.0f};
+//     float defaultSyawPID[3] = {4.0f, 0.0f, 0.0f};
+//     float defaultImax_stab[2] = {100.0f, 100.0f};
+
+// } PID_const_t;
+
+
+
 #endif
+
+
