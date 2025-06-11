@@ -2,7 +2,7 @@
 #include "Wire.h"
 #include "src/Var_types.h"
 #include "src/CompClass.h"
-#include "src/Drone_com.h"
+// #include "src/Drone_com.h"
 #include <LSM6.h>
 #include <LIS3MDL.h>
 #include <LPS.h>
@@ -12,6 +12,10 @@
 #include "src/EkfClass.h"
 #include "src/Madgwick.h"
 #include "src/STD_Filter.h"
+#include "src/drone_comclass.h"
+
+// Define the global PID_CONSTS variable
+
 // IMU Data Conversion
 #define POL_GYRO_SENS 17.5 / 1000.0f  // FS = 125
 #define POL_ACC_SENS 0.061 / 1000.0f  // FS = 2g, 0.061 mg/LSB
@@ -66,8 +70,13 @@ EKF ekf(&meas, DT);
 Madgwick magwick_filter(&meas, &estimated_attitude,&q_est,833,0.9);
 STD_Filter std_filter(&meas,833);
 
+// Initialize PID_CONSTS before using it
+PID_const_t PID_CONSTS;
 
+
+Drone_com drone_com(&meas, &q_est, &desired_attitude, &motor_pwm, &desired_rate, &estimated_attitude, &estimated_rate, &PID_stab_out, &PID_rate_out, &controller_data, &PID_CONSTS);
 // timer//
+
 elapsedMicros motor_timer;
 elapsedMicros stab_timer;
 elapsedMicros imu_timer;
@@ -99,7 +108,8 @@ void check_arming_state();
 
 void setup() {
     Serial.begin(115200);
-    DRON_COM::init_com();
+    // DRON_COM::init_com();
+    drone_com.init_com();
     // IMU_init();
 
     // / activate crsf
@@ -110,7 +120,8 @@ void setup() {
         // }
     // }
     // crsf.begin(crsfSerial);
-    initializePIDParams();
+    getbot_param(PID_CONSTS);
+    setPID_params(&PID_CONSTS);
     // GyroMagCalibration();
     motors.Motors_init();
 }
@@ -160,13 +171,8 @@ void loop() {
         }
 
         if (send_data_timer >= SEND_DATA_PERIOD) {
-            DRON_COM::convert_Measurment_to_byte(meas,
-                                                 q_est, desired_attitude,
-                                                 motor_pwm, desired_rate,
-                                                 estimated_attitude, estimated_rate,
-                                                 PID_stab_out, PID_rate_out, controller_data,PID_CONSTS);
-
-            DRON_COM::send_data();
+            drone_com.convert_Measurment_to_byte();
+            drone_com.send_data();
             send_data_timer = 0;
         }
         imu_timer = 0;
