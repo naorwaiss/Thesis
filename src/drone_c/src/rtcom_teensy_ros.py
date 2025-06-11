@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import struct
 import rclpy
 from rclpy.node import Node

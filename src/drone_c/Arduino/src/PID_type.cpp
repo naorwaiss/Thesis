@@ -53,6 +53,7 @@ void setPID_params(PID_const_t* pid_consts) {
     stab_params.Alpha_pitch = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
     stab_params.Alpha_yaw = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
 
+
     // Serial.print("rate_params.RollP: ");
     // Serial.println(rate_params.RollP);
     // Serial.print("rate_params.RollI: ");
@@ -81,8 +82,7 @@ void setPID_params(PID_const_t* pid_consts) {
     // Serial.println(stab_params.YawI);
     // Serial.print("stableize.yawd: ");
     // Serial.println(stab_params.YawD);
-
-    Serial.print("__________________________________________________________");
+    // Serial.print("__________________________________________________________");
 }
 
 PID_out_t PID_rate(attitude_t des_rate, attitude_t actual_rate, float DT) {  // Actual rate will be in deg/s

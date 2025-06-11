@@ -132,7 +132,13 @@
 /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/msg/Motors.msg
 /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/msg/ImuFilter.msg
 /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/msg/PidConsts.msg
+/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/drone_c/rtcom/__init__.py
+/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/drone_c/rtcom/rtcom_client.py
+/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/drone_c/rtcom/utils.py
+/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/drone_c/rtcom/core.py
+/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/drone_c/rtcom/rtcom_server.py
 /home/naor/Desktop/naor/study/Thesis/install/drone_c/lib/drone_c/rtcom_teensy_ros.py
+/home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/launch/drone_launch.launch.py
 /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/ament_index/resource_index/package_run_dependencies/drone_c
 /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/ament_index/resource_index/parent_prefix_path/drone_c
 /home/naor/Desktop/naor/study/Thesis/install/drone_c/share/drone_c/environment/ament_prefix_path.sh

@@ -15,7 +15,9 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
-find_package(ament_cmake_python REQUIRED) # Add this for Python support
+find_package(ament_cmake_python REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
 
 # Define message files
 set(msg_files
@@ -28,16 +30,27 @@ set(msg_files
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
-  DEPENDENCIES std_msgs
+  DEPENDENCIES std_msgs sensor_msgs geometry_msgs
 )
 
-# Install Python modules
-# ament_python_install_package(${PROJECT_NAME})
-
-# Install Python scripts (if any are executable scripts)
-install(PROGRAMS
-  src/rtcom_teensy_ros.py  # Add your Python script here
+# Install the rtcom Python package
+install(DIRECTORY
+  src/rtcom
   DESTINATION lib/${PROJECT_NAME}
+  PATTERN "*.py"
+  PATTERN "__pycache__" EXCLUDE
+)
+
+# Install Python scripts
+install(PROGRAMS
+  src/rtcom_teensy_ros.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+# Install launch files
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}
 )
 
 # If building for testing

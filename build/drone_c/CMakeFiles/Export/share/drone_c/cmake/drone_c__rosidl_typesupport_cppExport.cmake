@@ -54,7 +54,7 @@ endif()
 add_library(drone_c::drone_c__rosidl_typesupport_cpp SHARED IMPORTED)
 
 set_target_properties(drone_c::drone_c__rosidl_typesupport_cpp PROPERTIES
-  INTERFACE_LINK_LIBRARIES "drone_c::drone_c__rosidl_generator_cpp;std_msgs::std_msgs__rosidl_typesupport_cpp;builtin_interfaces::builtin_interfaces__rosidl_typesupport_cpp"
+  INTERFACE_LINK_LIBRARIES "drone_c::drone_c__rosidl_generator_cpp;std_msgs::std_msgs__rosidl_typesupport_cpp;builtin_interfaces::builtin_interfaces__rosidl_typesupport_cpp;sensor_msgs::sensor_msgs__rosidl_typesupport_cpp;geometry_msgs::geometry_msgs__rosidl_typesupport_cpp"
 )
 
 if(CMAKE_VERSION VERSION_LESS 2.8.12)

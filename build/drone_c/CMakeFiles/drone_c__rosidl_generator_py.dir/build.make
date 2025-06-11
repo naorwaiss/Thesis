@@ -158,10 +158,16 @@ rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so: CMakeFiles/drone
 rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so: CMakeFiles/drone_c__rosidl_generator_py.dir/build.make
 rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so: /usr/lib/x86_64-linux-gnu/libpython3.10.so
 rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so: libdrone_c__rosidl_typesupport_c.so
+rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_py.so
+rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_py.so
+rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so: libdrone_c__rosidl_generator_c.so
 rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_py.so
 rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_py.so
-rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so: libdrone_c__rosidl_generator_c.so
 rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_c.so
+rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_c.so
+rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_c.so
+rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
 rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_c.so
 rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_c.so
 rosidl_generator_py/drone_c/libdrone_c__rosidl_generator_py.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_c.so

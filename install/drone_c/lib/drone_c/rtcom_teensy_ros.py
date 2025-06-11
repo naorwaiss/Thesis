@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import struct
 import rclpy
 from rclpy.node import Node
@@ -34,6 +36,14 @@ class UDPSocketClient(Node):
         self.PID_rate_pub_modifide = self.create_publisher(Pid, 'PID_rate', 10)
         self.Imu_Filter_Pub = self.create_publisher(ImuFilter, 'imu_filter', 10)
         self.Pid_consts_pub = self.create_publisher(PidConsts, 'pid_loaded', 10)
+
+        # Create subscription for pid_to_flash with callback
+        self.pid_to_flash_sub = self.create_subscription(
+            PidConsts,
+            'pid_to_flash',
+            self.pid_to_flash_callback,
+            10
+        )
 
         # Register callbacks for each message type using RTComClient's `on` method
         self.client.on('a', self.handle_magnetometer)
@@ -195,6 +205,19 @@ class UDPSocketClient(Node):
         pid_consts_msg.rate_yaw[1] = messages_struct_float[13]
         pid_consts_msg.rate_yaw[2] = messages_struct_float[14]
         self.Pid_consts_pub.publish(pid_consts_msg)
+
+    def pid_to_flash_callback(self, msg: PidConsts):
+        # Convert PidConsts message to bytes and send via RTCom
+        data = []
+        data.extend(msg.rate_pitch)
+        data.extend(msg.rate_roll)
+        data.extend(msg.stablize_pitch)
+        data.extend(msg.stablize_roll)
+        data.extend(msg.rate_yaw)
+        packed_data = struct.pack('f' * len(data), *data)
+        # Convert the packed data to a list of bytes
+        data_bytes = list(packed_data)
+        self.client.emit_typed(data_bytes, 'z')
 
 
 def main(args=None):

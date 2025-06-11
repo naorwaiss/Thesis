@@ -3,7 +3,6 @@
 import sys
 import struct
 import rclpy
-import yaml
 import os
 from rclpy.node import Node
 from PyQt5.QtWidgets import (
@@ -43,7 +42,6 @@ class DroneTunnerWindow(QWidget):
         # Initialize last_new_msg
         self.last_new_msg = None
         self.values_updated = False
-        self.yaml_file = 'pid_values.yaml'
 
         # Message Label with initial color
         self.label = QLabel("Waiting for messages...")
@@ -57,9 +55,9 @@ class DroneTunnerWindow(QWidget):
         self.table.setVerticalHeaderLabels([
             "rate_roll",
             "rate_pitch",
+            "rate_yaw",
             "stable_roll",
             "stable_pitch",
-            "rate_yaw",
         ])
         self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.table.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
@@ -139,19 +137,20 @@ class DroneTunnerWindow(QWidget):
             self.table.setItem(1, 1, QTableWidgetItem(str(msg.rate_pitch[1])))
             self.table.setItem(1, 2, QTableWidgetItem(str(msg.rate_pitch[2])))
 
+            self.table.setItem(2, 0, QTableWidgetItem(str(msg.rate_yaw[0])))
+            self.table.setItem(2, 1, QTableWidgetItem(str(msg.rate_yaw[1])))
+            self.table.setItem(2, 2, QTableWidgetItem(str(msg.rate_yaw[2])))
             # Update stable_roll
-            self.table.setItem(2, 0, QTableWidgetItem(str(msg.stablize_roll[0])))
-            self.table.setItem(2, 1, QTableWidgetItem(str(msg.stablize_roll[1])))
-            self.table.setItem(2, 2, QTableWidgetItem(str(msg.stablize_roll[2])))
+            self.table.setItem(3, 0, QTableWidgetItem(str(msg.stablize_roll[0])))
+            self.table.setItem(3, 1, QTableWidgetItem(str(msg.stablize_roll[1])))
+            self.table.setItem(3, 2, QTableWidgetItem(str(msg.stablize_roll[2])))
 
             # Update stable_pitch
-            self.table.setItem(3, 0, QTableWidgetItem(str(msg.stablize_pitch[0])))
-            self.table.setItem(3, 1, QTableWidgetItem(str(msg.stablize_pitch[1])))
-            self.table.setItem(3, 2, QTableWidgetItem(str(msg.stablize_pitch[2])))
+            self.table.setItem(4, 0, QTableWidgetItem(str(msg.stablize_pitch[0])))
+            self.table.setItem(4, 1, QTableWidgetItem(str(msg.stablize_pitch[1])))
+            self.table.setItem(4, 2, QTableWidgetItem(str(msg.stablize_pitch[2])))
 
-            self.table.setItem(4, 0, QTableWidgetItem(str(msg.rate_yaw[0])))
-            self.table.setItem(4, 1, QTableWidgetItem(str(msg.rate_yaw[1])))
-            self.table.setItem(4, 2, QTableWidgetItem(str(msg.rate_yaw[2])))
+
             self.label.setText("PID values updated!")
             self.set_verification_status(True)
         except Exception as e:

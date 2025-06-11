@@ -22,6 +22,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'drone_tunner = drone_tunner.drone_tunner:main',
         ],
     },
 )
