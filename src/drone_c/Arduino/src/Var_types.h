@@ -226,10 +226,12 @@ inline bool compareMac(uint8_t mac1[6], uint8_t mac2[6]) {
 }
 
 inline uint8_t mac0[6] = {0x04, 0xE9, 0xE5, 0x18, 0xEE, 0x80};  // drone naor
+inline uint8_t mac1[6] = {0x04, 0xE9, 0xE5, 0x18, 0xEE, 0xFC};  // drone naor
+
 
 inline void getbot_param(PID_const_t& myDrone) {
     getMAC(myDrone.mac);
-    if (compareMac(myDrone.mac, mac0)) {
+    if (compareMac(myDrone.mac, mac0) || compareMac(myDrone.mac, mac1)) {
         myDrone.defaultRrollPID = {1.6f, 0.15f, 0.95f};
         myDrone.defaultRpitchPID = {1.6f, 0.15f, 0.95f};
         myDrone.defaultRyawPID = {2.0f, 0.0f, 0.05f};

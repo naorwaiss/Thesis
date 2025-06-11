@@ -28,20 +28,20 @@ void initializePIDParams(float RrollPID[3] = nullptr, float RpitchPID[3] = nullp
     const float defaultImax_rate[2] = {100.0f, 100.0f};
 
     // Default STABILIZE mode parameter values
-    const float defaultSrollPID[3] = {4.0f, 0.00f, 0.0f};
-    const float defaultSpitchPID[3] = {4.0f, 0.00f, 0.0f};
+    const float defaultSrollPID[3] = {8.0f, 0.00f, 0.0f};
+    const float defaultSpitchPID[3] = {8.0f, 0.00f, 0.0f};
     const float defaultSyawPID[3] = {2.0f, 0.0f, 0.0f};
     const float defaultImax_stab[2] = {100.0f, 100.0f};
 
     // Assign default values if nullptr is passed
-    if (RrollPID == nullptr) RrollPID = const_cast<float*>(defaultRrollPID);
-    if (RpitchPID == nullptr) RpitchPID = const_cast<float*>(defaultRpitchPID);
-    if (RyawPID == nullptr) RyawPID = const_cast<float*>(defaultRyawPID);
-    if (Imax_rate == nullptr) Imax_rate = const_cast<float*>(defaultImax_rate);
-    if (SrollPID == nullptr) SrollPID = const_cast<float*>(defaultSrollPID);
-    if (SpitchPID == nullptr) SpitchPID = const_cast<float*>(defaultSpitchPID);
-    if (SyawPID == nullptr) SyawPID = const_cast<float*>(defaultSyawPID);
-    if (Imax_stab == nullptr) Imax_stab = const_cast<float*>(defaultImax_stab);
+    if (RrollPID == nullptr) RrollPID = PID_CONSTS.defaultRrollPID.data();
+    if (RpitchPID == nullptr) RpitchPID = PID_CONSTS.defaultRpitchPID.data();
+    if (RyawPID == nullptr) RyawPID = PID_CONSTS.defaultRyawPID.data();
+    if (Imax_rate == nullptr) Imax_rate = PID_CONSTS.defaultImax_rate.data();
+    if (SrollPID == nullptr) SrollPID = PID_CONSTS.defaultSrollPID.data();
+    if (SpitchPID == nullptr) SpitchPID = PID_CONSTS.defaultSpitchPID.data();
+    if (SyawPID == nullptr) SyawPID = PID_CONSTS.defaultSyawPID.data();
+    if (Imax_stab == nullptr) Imax_stab = PID_CONSTS.defaultImax_stab.data();
 
     rate_params.RollP = RrollPID[0];
     rate_params.RollI = RrollPID[1];

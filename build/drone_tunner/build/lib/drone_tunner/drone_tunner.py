@@ -13,20 +13,21 @@ from drone_c.msg import PidConsts
 
 
 class ROS2Listener(QObject):
-    message_received = pyqtSignal(str)
+    message_received = pyqtSignal(object)  # Signal to emit the received message
 
     def __init__(self, node):
         super().__init__()
         self.node = node
         self.subscription = self.node.create_subscription(
-            String,
-            'chatter',
+            PidConsts,
+            'pid_loaded',
             self.listener_callback,
             10
         )
 
     def listener_callback(self, msg):
-        self.message_received.emit(msg.data)
+        # Emit the entire message object
+        self.message_received.emit(msg)
 
 
 class DroneTunnerWindow(QWidget):
@@ -38,13 +39,14 @@ class DroneTunnerWindow(QWidget):
         self.label = QLabel("Waiting for messages...")
 
         # PID Table
-        self.table = QTableWidget(4, 3)  # 4 rows, 3 columns
+        self.table = QTableWidget(5, 3)  # 4 rows, 3 columns
         self.table.setHorizontalHeaderLabels(["P Gain", "I Gain", "D Gain"])
         self.table.setVerticalHeaderLabels([
             "rate_roll",
             "rate_pitch",
             "stable_roll",
-            "stable_pitch"
+            "stable_pitch",
+            "rate_yaw",
         ])
         self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.table.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
@@ -65,7 +67,35 @@ class DroneTunnerWindow(QWidget):
         self.listener.message_received.connect(self.update_label)
 
     def update_label(self, msg):
-        self.label.setText(f"Received: {msg}")
+        
+        # Update rate_roll
+        self.table.setItem(0, 0, QTableWidgetItem(str(msg.rate_roll[0])))
+        self.table.setItem(0, 1, QTableWidgetItem(str(msg.rate_roll[1])))
+        self.table.setItem(0, 2, QTableWidgetItem(str(msg.rate_roll[2])))
+        
+        # Update rate_pitch
+        self.table.setItem(1, 0, QTableWidgetItem(str(msg.rate_pitch[0])))
+        self.table.setItem(1, 1, QTableWidgetItem(str(msg.rate_pitch[1])))
+        self.table.setItem(1, 2, QTableWidgetItem(str(msg.rate_pitch[2])))
+        
+        # Update stable_roll
+        self.table.setItem(2, 0, QTableWidgetItem(str(msg.stablize_roll[0])))
+        self.table.setItem(2, 1, QTableWidgetItem(str(msg.stablize_roll[1])))
+        self.table.setItem(2, 2, QTableWidgetItem(str(msg.stablize_roll[2])))
+        
+        # Update stable_pitch
+        self.table.setItem(3, 0, QTableWidgetItem(str(msg.stablize_pitch[0])))
+        self.table.setItem(3, 1, QTableWidgetItem(str(msg.stablize_pitch[1])))
+        self.table.setItem(3, 2, QTableWidgetItem(str(msg.stablize_pitch[2])))
+        
+        self.table.setItem(4, 0, QTableWidgetItem(str(msg.rate_yaw[0])))
+        self.table.setItem(4, 1, QTableWidgetItem(str(msg.rate_yaw[1])))
+        self.table.setItem(4, 2, QTableWidgetItem(str(msg.rate_yaw[2])))
+
+
+
+
+        self.label.setText("PID values updated!")
 
 
 def main(args=None):

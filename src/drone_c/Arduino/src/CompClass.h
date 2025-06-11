@@ -15,10 +15,9 @@
 #define LOW_MOTION 0.15f    // Slightly lower than 0.2f
 #define HIGH_MOTION 1.0f    // Lower than 1.5f to activate high correction sooner
 
-#define HIGH_BETA 0.6f // Rely more on accelerometer
-#define LOW_BETA 0.3f // Rely more on gyroscope
-#define DEFAULT_BETA 0.4f
-#define QUAT_THRESH 0.05f
+#define HIGH_BETA 0.65f // Rely more on accelerometer
+#define LOW_BETA 0.65f // Rely more on gyroscope
+#define DEFAULT_BETA 0.65f   
 
 // Filter Frequencies:
 // #define ACC_LPF_FREQ 80.0f   // Increase from 10.0f

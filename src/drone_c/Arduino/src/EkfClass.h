@@ -6,7 +6,7 @@
 #include <Eigen/LU>
 
 // #define P_const 0.0008f
-#define P_const 0.01f
+#define P_const 10.0f
 
 #define Q_const (0.07f * sqrt(400))
 #define R_const (0.00009f * sqrt(400))

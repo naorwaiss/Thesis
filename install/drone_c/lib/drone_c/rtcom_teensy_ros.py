@@ -4,7 +4,7 @@ from rclpy.node import Node
 from sensor_msgs.msg import Imu, MagneticField
 from std_msgs.msg import Float32MultiArray, Int32MultiArray
 from geometry_msgs.msg import Quaternion
-from drone_c.msg import Pid, Motors, EulerAngles, ImuFilter,PidConsts
+from drone_c.msg import Pid, Motors, EulerAngles, ImuFilter, PidConsts
 from rtcom import *
 import time
 import math
@@ -49,8 +49,6 @@ class UDPSocketClient(Node):
         self.client.on('k', self.handle_pid_stab)
         self.client.on('l', self.handle_pid_rate)
         self.client.on('m', self.handle_pid_consts)
-        # self.client.on(bytes([0x23]), self.handle_pid_consts)
-    # Callback methods for specific message types
 
     def handle_magnetometer(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
@@ -177,11 +175,10 @@ class UDPSocketClient(Node):
         imu_filter_msg.mag_lpf_y = messages_struct_float[10]
         imu_filter_msg.mag_lpf_z = messages_struct_float[11]
         self.Imu_Filter_Pub.publish(imu_filter_msg)
-    
+
     def handle_pid_consts(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
         pid_consts_msg = PidConsts()
-        self.Pid_consts_pub.publish(pid_consts_msg)
         pid_consts_msg.rate_pitch[0] = messages_struct_float[0]
         pid_consts_msg.rate_pitch[1] = messages_struct_float[1]
         pid_consts_msg.rate_pitch[2] = messages_struct_float[2]
@@ -198,9 +195,6 @@ class UDPSocketClient(Node):
         pid_consts_msg.rate_yaw[1] = messages_struct_float[13]
         pid_consts_msg.rate_yaw[2] = messages_struct_float[14]
         self.Pid_consts_pub.publish(pid_consts_msg)
-        
-        
-        
 
 
 def main(args=None):

@@ -100,18 +100,18 @@ void check_arming_state();
 void setup() {
     Serial.begin(115200);
     DRON_COM::init_com();
-    IMU_init();
+    // IMU_init();
 
     // / activate crsf
-    crsfSerial.begin(CRSF_BAUDRATE, SERIAL_8N1);
-    if (!crsfSerial) {
-        while (1) {
-            Serial.println("Invalid crsfSerial configuration");
-        }
-    }
-    crsf.begin(crsfSerial);
+    // crsfSerial.begin(CRSF_BAUDRATE, SERIAL_8N1);
+    // if (!crsfSerial) {
+        // while (1) {
+            // Serial.println("Invalid crsfSerial configuration");
+        // }
+    // }
+    // crsf.begin(crsfSerial);
     initializePIDParams();
-    GyroMagCalibration();
+    // GyroMagCalibration();
     motors.Motors_init();
 }
 
@@ -119,17 +119,14 @@ void setup() {
 
 void loop() {
     // Update ELRS data: Reading from the receiver and updating controller_data variable.
-    update_controller();
+    // update_controller();
     // Check arming:
     check_arming_state();
-
-    // Update the measurement:
     if (imu_timer >= IMU_PERIOD) {
         actual_dt = (double)imu_timer / 1000000.0f;
-        Update_Measurement();
-        // comp_filter.InitialFiltering(&meas);
-        std_filter.all_filter();
-        estimated_state_metude();
+        // Update_Measurement();
+        // std_filter.all_filter();
+        // estimated_state_metude();
 
         if (is_armed) {
             // Get Actual rates:
@@ -149,10 +146,7 @@ void loop() {
                 stab_timer = 0;
             } else if (controller_data.aux1 < 1500) {  // Acro mode:
                 mapping_controller('r');
-                // Serial.println("acro ");
             }
-
-            // Set the motor PWM:
             if ((controller_data.throttle > 1000) && (motor_timer >= PWM_PERIOD_1)) {
                 t_PID_r = (float)motor_timer / 1000000.0f;
                 PID_rate_out = PID_rate(desired_rate, estimated_rate, t_PID_r);
@@ -314,9 +308,9 @@ void mapping_controller(char state) {
 
 void resetMicrocontroller() {
     // Trigger a software reset
-    if (controller_data.aux3 > 1500) {
-        SCB_AIRCR = 0x05FA0004;
+    if (controller_data.aux3 > 1700) {
         Serial.println(" reset ");
+        SCB_AIRCR = 0x05FA0004;
     }
 }
 
@@ -339,7 +333,7 @@ void check_arming_state() {
 }
 
 void comclass_function() {
-    comp_filter.UpdateQ(&meas, actual_dt / 2);
+    comp_filter.UpdateQ(&meas, DT);
     comp_filter.GetEulerRPYdeg(&estimated_attitude, meas.initial_heading);
     comp_filter.GetQuaternion(&q_est);
 }

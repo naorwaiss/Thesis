@@ -10,7 +10,7 @@ RTComSession* socketSession = nullptr;
 float* imu_data_raw = (float*)calloc(6, sizeof(float));
 uint8_t imu_byte_raw[sizeof(float) * 6];
 float* imu_data_filter = (float*)calloc(12, sizeof(float));
-uint8_t imu_byte_filter[sizeof(float) * 12];
+uint8_t imu_byte_filter[sizeof(float) * 12];/
 float* mag_data = (float*)calloc(3, sizeof(float));
 uint8_t mag_byte[sizeof(float) * 3];
 float* euler_data = (float*)calloc(3, sizeof(float));
@@ -35,17 +35,27 @@ float* motor_data = (float*)calloc(4, sizeof(float));
 uint8_t motor_pwm_byte[sizeof(float) * 4];
 float* pid_const_Data = (float*)calloc(15, sizeof(float));
 uint8_t pid_consts_byte[sizeof(float) * 15];
+float* pid_const_Data_arrive = (float*)calloc(15, sizeof(float));
 
 void onConnection(RTComSession& session) {
     Serial.printf("Session created with %s\r\n", session.address.toString());
     socketSession = &session;
     Serial.print("connect");
 
-    session.onReceive([](const uint8_t* bytes, size_t size) {
-        char data[size + 1] = {0};
-        memcpy(data, bytes, size);
+    session.on(PID_CONSTS_RETURN, [](const uint8_t* bytes, size_t size) {
+        if (socketSession == nullptr || size != sizeof(float) * 15) {
+            Serial.print("problem at the pid arraive");
+           } else {
+            memcpy(pid_const_Data_arrive, bytes, sizeof(float) * 15);
+            for (size_t i = 0; i < 15; i++) {
+                Serial.printf("pid_const_Data[%d] = %f\r\n", i, pid_const_Data_arrive[i]);
+            }
+        }
     });
 }
+
+
+
 
 void init_com() {
     DRON_COM::rtcomSocket.begin();
@@ -194,6 +204,10 @@ void emit_data() {
     socketSession->emitTyped(PID_stab_out_byte, sizeof(PID_stab_out_byte), PID_stab_prase);
     socketSession->emitTyped(PID_rate_byte, sizeof(PID_rate_byte), PID_rate_prase);
     socketSession->emitTyped(motor_pwm_byte, sizeof(motor_pwm_byte), MOTOR_DATA_CONST);
+}
+
+
+void emit_pid_consts_feedback() {
     socketSession->emitTyped(pid_consts_byte, sizeof(pid_consts_byte), PID_CONSTS_DATA);
 }
 
