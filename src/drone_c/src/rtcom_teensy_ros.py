@@ -208,6 +208,13 @@ class UDPSocketClient(Node):
 
     def pid_to_flash_callback(self, msg: PidConsts):
         # Convert PidConsts message to bytes and send via RTCom
+        try:
+            self.send_pid_consts(msg)
+        except Exception as e:
+            self.get_logger().error(f"Failed to send PID constants: {e}")
+            return
+            
+    def send_pid_consts(self, msg: PidConsts):
         data = []
         data.extend(msg.rate_pitch)
         data.extend(msg.rate_roll)

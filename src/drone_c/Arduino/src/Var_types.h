@@ -6,6 +6,7 @@
 #include <array>
 
 #define ESC_FREQUENCY 500  // Frequency of the ESCs
+#define STAB_FREQUENCY ESC_FREQUENCY / 2  // Frequency of the STAB
 
 static const float SAMPLE_RATE = 833.0f;
 static const float DT = 1.0f / SAMPLE_RATE;
@@ -232,12 +233,12 @@ inline uint8_t mac2[6] = {0x04, 0xE9, 0xE5, 0x19, 0x2B, 0x2D};  // drone amit
 inline void getbot_param(PID_const_t& myDrone) {
     getMAC(myDrone.mac);
     if (compareMac(myDrone.mac, mac0) || compareMac(myDrone.mac, mac1)) {
-        myDrone.defaultRrollPID = {1.6f, 0.15f, 0.95f};
-        myDrone.defaultRpitchPID = {1.6f, 0.15f, 0.95f};
+        myDrone.defaultRrollPID = {1.35f, 0.01f, 0.6f};
+        myDrone.defaultRpitchPID = {1.35f, 0.01f, 0.6f};
         myDrone.defaultRyawPID = {2.0f, 0.0f, 0.05f};
         myDrone.defaultImax_rate = {100.0f, 100.0f};
-        myDrone.defaultSrollPID = {10.0f, 0.01f, 0.0f};
-        myDrone.defaultSpitchPID = {9.0f, 0.01f, 0.0f};
+        myDrone.defaultSrollPID = {12.5f, 0.4f, 0.0f};
+        myDrone.defaultSpitchPID = {12.5f, 0.4f, 0.0f};
         myDrone.defaultSyawPID = {4.0f, 0.0f, 0.0f};
         myDrone.defaultImax_stab = {100.0f, 100.0f};
         return;
@@ -246,8 +247,8 @@ inline void getbot_param(PID_const_t& myDrone) {
         myDrone.defaultRpitchPID = {1.6f, 0.15f, 0.95f};
         myDrone.defaultRyawPID = {2.0f, 0.0f, 0.05f};
         myDrone.defaultImax_rate = {100.0f, 100.0f};
-        myDrone.defaultSrollPID = {10.0f, 0.01f, 0.0f};
-        myDrone.defaultSpitchPID = {9.0f, 0.01f, 0.0f};
+        myDrone.defaultSrollPID = {4.0f, 0.01f, 0.0f};
+        myDrone.defaultSpitchPID = {4.0f, 0.01f, 0.0f};
         myDrone.defaultSyawPID = {4.0f, 0.0f, 0.0f};
         myDrone.defaultImax_stab = {100.0f, 100.0f};
         return;

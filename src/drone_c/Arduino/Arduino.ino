@@ -66,13 +66,7 @@ attitude_t estimated_attitude;
 attitude_t estimated_rate;
 PID_out_t PID_stab_out;
 PID_out_t PID_rate_out;
-EKF ekf(&meas, DT);
-Madgwick magwick_filter(&meas, &estimated_attitude,&q_est,833,0.9);
-STD_Filter std_filter(&meas,833);
-
-// Initialize PID_CONSTS before using it
 PID_const_t PID_CONSTS;
-
 
 Drone_com drone_com(&meas, &q_est, &desired_attitude, &motor_pwm, &desired_rate, &estimated_attitude, &estimated_rate, &PID_stab_out, &PID_rate_out, &controller_data, &PID_CONSTS);
 // timer//
@@ -82,10 +76,16 @@ elapsedMicros stab_timer;
 elapsedMicros imu_timer;
 elapsedMicros send_data_timer;
 
-const unsigned long STAB_PERIOD = 1000000 / (ESC_FREQUENCY / 2);  // 300 Hz period in microseconds
-const unsigned long PWM_PERIOD_1 = 1000000 / ESC_FREQUENCY;       // 1,000,000 us / frequency in Hz
+elapsedMicros estimated_filter_timer;
+
+const unsigned long STAB_PERIOD = 1000000 / STAB_FREQUENCY;  // 300 Hz period in microseconds
+const unsigned long MOTOR_PERIOD = 1000000 / ESC_FREQUENCY;  // 1,000,000 us / frequency in Hz
 const unsigned long IMU_PERIOD = 1000000 / SAMPLE_RATE;
 const unsigned long SEND_DATA_PERIOD = 1000000 / 50;
+
+EKF ekf(&meas, 1 / STAB_FREQUENCY);
+Madgwick magwick_filter(&meas, &estimated_attitude, &q_est, STAB_FREQUENCY, 0.8);
+STD_Filter std_filter(&meas, SAMPLE_RATE);
 
 double t_PID_s = 0.0f;
 double t_PID_r = 0.0f;
@@ -135,13 +135,17 @@ void loop() {
         actual_dt = (double)imu_timer / 1000000.0f;
         Update_Measurement();
         std_filter.all_filter();
-        estimated_state_metude();
+
+        if (estimated_filter_timer >= STAB_PERIOD) {
+            estimated_state_metude();
+            estimated_filter_timer = 0;
+        }
 
         if (is_armed) {
             // Get Actual rates:
-            estimated_rate.roll = meas.gyro_LPF.x;
-            estimated_rate.pitch = meas.gyro_LPF.y;
-            estimated_rate.yaw = meas.gyro_LPF.z;
+            estimated_rate.roll = meas.gyroDEG.x;
+            estimated_rate.pitch = meas.gyroDEG.y;
+            estimated_rate.yaw = meas.gyroDEG.z;
 
             if ((controller_data.aux1 > 1500) && (stab_timer >= STAB_PERIOD)) {  // Stabilize mode:
                 // Calculating dt for the PID- in seconds:
@@ -156,7 +160,7 @@ void loop() {
             } else if (controller_data.aux1 < 1500) {  // Acro mode:
                 mapping_controller('r');
             }
-            if ((controller_data.throttle > 1000) && (motor_timer >= PWM_PERIOD_1)) {
+            if ((controller_data.throttle > 1000) && (motor_timer >= MOTOR_PERIOD)) {
                 t_PID_r = (float)motor_timer / 1000000.0f;
                 PID_rate_out = PID_rate(desired_rate, estimated_rate, t_PID_r);
                 motors.Motor_Mix(PID_rate_out.PID_ret, controller_data.throttle);
@@ -213,10 +217,6 @@ void Update_Measurement() {
     if (abs(meas.mag.z < IMU_THRESHOLD)) {
         meas.mag.z = 0;
     }
-
-    // meas.baro_data.pressure = baro.readPressureMillibars();
-    // meas.baro_data.temperature = baro.readTemperatureC();
-    // meas.baro_data.asl = baro.pressureToAltitudeMeters(meas.baro_data.pressure);
 }
 
 void GyroMagCalibration() {
@@ -244,7 +244,7 @@ void GyroMagCalibration() {
     // meas.acc_bias.z += 1.0f; //  Adding back 1g, so the bias will remove only noise around 1g.
 
     Serial.println("Finished Gyro calibration");
-    delay(2000);
+    delay(1000);
 }
 
 void update_controller() {
@@ -276,9 +276,15 @@ void IMU_init() {
         while (1);
     }
 
-    IMU.enableDefault();                       // 1.66 kHz, 2g, 245 dps
-    IMU.writeReg(LSM6::CTRL2_G, 0b01110100);   // 0b1010 for ODR 1.66 kHz, 0b0000 for 500 dps range
-    IMU.writeReg(LSM6::CTRL1_XL, 0b01110010);  // 0b1010 for ODR 1.66 kHz, 0b0000 for 2g range with  ODR/10 filter
+    IMU.enableDefault();  // 1.66 kHz, 2g, 245 dps
+    // These configurations are based on tables 44,45,47,48 in the datasheet https://www.pololu.com/file/0J1899/lsm6dso.pdf
+    IMU.writeReg(LSM6::CTRL2_G, 0b01110000);  // 0b1010 for ODR 833 Hz, 0b0000 for 250 dps range. No internal filter
+    IMU.writeReg(LSM6::CTRL4_C, 0b00000010);  // Set LPF1_SEL_G bit to 1
+    IMU.writeReg(LSM6::CTRL6_C, 0b00000110);  // Set gyroscope LPF1 bandwidth to ~96.6 Hz (closest to ODR/10)
+
+    IMU.writeReg(LSM6::CTRL1_XL, 0b01110010);  // 0b1010 for ODR 833 Hz, 0b0000 for 2g range. No internal filter.
+    IMU.writeReg(LSM6::CTRL8_XL, 0b0000010);   // HPCF_XL[2:0] = 001 for ODR/10
+
     mag.enableDefault();
     mag.writeReg(LIS3MDL::CTRL_REG1, 0b11111010);  // 1 KHz, high performance mode
     mag.writeReg(LIS3MDL::CTRL_REG2, 0x10);        // +- 4 gauss
@@ -299,11 +305,13 @@ void controller_trheshold() {
 void mapping_controller(char state) {
     controller_trheshold();
     if (state == 's') {  // Mapping the controller input into desired angle:
+        Serial.println("stablize");
         desired_attitude.roll = map(controller_data.roll, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_ANGLE, MAX_ANGLE);
         desired_attitude.pitch = map(controller_data.pitch, CONTROLLER_MIN, CONTROLLER_MAX, MAX_ANGLE, -MAX_ANGLE);
         desired_attitude.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_ANGLE, -MAX_ANGLE);  // cahnge here
         /// neeed to remove or change the constrain here -> not limit the yaw
     } else if (state == 'r') {  // Mapping the controller input into desired rate:
+        Serial.println("rate");
         desired_rate.roll = map(controller_data.roll, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_RATE, MAX_RATE);
         desired_rate.pitch = map(controller_data.pitch, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_RATE, MAX_RATE);
         desired_rate.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_RATE, -MAX_RATE);

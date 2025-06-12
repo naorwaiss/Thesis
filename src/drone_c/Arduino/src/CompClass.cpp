@@ -12,16 +12,12 @@ void CompFilter::UpdateQ(Measurement_t* meas, float dt) {
 
     // Initial Filtering - Not a must nut it helps.
     // InitialFiltering(meas);
-    vec3_t gyro_lpf_rad;
-    gyro_lpf_rad.x = meas->gyro_LPF.x * deg2rad;
-    gyro_lpf_rad.y = meas->gyro_LPF.y * deg2rad;
-    gyro_lpf_rad.z = meas->gyro_LPF.z * deg2rad;
 
     // Model based time propagation
-    qDot1 = 0.5f * (-q.x * gyro_lpf_rad.x - q.y * gyro_lpf_rad.y - q.z * gyro_lpf_rad.z);
-    qDot2 = 0.5f * (q.w * gyro_lpf_rad.x + q.y * gyro_lpf_rad.z - q.z * gyro_lpf_rad.y);
-    qDot3 = 0.5f * (q.w * gyro_lpf_rad.y - q.x * gyro_lpf_rad.z + q.z * gyro_lpf_rad.x);
-    qDot4 = 0.5f * (q.w * gyro_lpf_rad.z + q.x * gyro_lpf_rad.y - q.y * gyro_lpf_rad.x);
+    qDot1 = 0.5f * (-q.x * meas->gyroRAD.x - q.y * meas->gyroRAD.y - q.z * meas->gyroRAD.z);
+    qDot2 = 0.5f * (q.w * meas->gyroRAD.x + q.y * meas->gyroRAD.z - q.z * meas->gyroRAD.y);
+    qDot3 = 0.5f * (q.w * meas->gyroRAD.y - q.x * meas->gyroRAD.z + q.z * meas->gyroRAD.x);
+    qDot4 = 0.5f * (q.w * meas->gyroRAD.z + q.x * meas->gyroRAD.y - q.y * meas->gyroRAD.x);
     // qDot1 = 0.5f * (-q.x * meas->gyro_HPF.x - q.y * meas->gyro_HPF.y - q.z * meas->gyro_HPF.z);
     // qDot2 = 0.5f * (q.w * meas->gyro_HPF.x + q.y * meas->gyro_HPF.z - q.z * meas->gyro_HPF.y);
     // qDot3 = 0.5f * (q.w * meas->gyro_HPF.y - q.x * meas->gyro_HPF.z + q.z * meas->gyro_HPF.x);
@@ -30,12 +26,12 @@ void CompFilter::UpdateQ(Measurement_t* meas, float dt) {
     float BETA = calculateDynamicBeta(*meas);
     // float BETA = DEFAULT_BETA;
 
-    if (!(meas->acc_LPF.x == 0.0 && meas->acc_LPF.y == 0.0 && meas->acc_LPF.z == 0.0)) {
+    if (!(meas->acc.x == 0.0 && meas->acc.y == 0.0 && meas->acc.z == 0.0)) {
         // Normalise accelerometer measurement
-        recipNorm = invSqrt(meas->acc_LPF.x * meas->acc_LPF.x + meas->acc_LPF.y * meas->acc_LPF.y + meas->acc_LPF.z * meas->acc_LPF.z);
-        meas->acc_LPF.x *= recipNorm;
-        meas->acc_LPF.y *= recipNorm;
-        meas->acc_LPF.z *= recipNorm;
+        recipNorm = invSqrt(meas->acc.x * meas->acc.x + meas->acc.y * meas->acc.y + meas->acc.z * meas->acc.z);
+        meas->acc.x *= recipNorm;
+        meas->acc.y *= recipNorm;
+        meas->acc.z *= recipNorm;
 
         // Auxiliary variables to avoid repeated arithmetic
         _2qw = 2.0f * q.w;
@@ -53,10 +49,10 @@ void CompFilter::UpdateQ(Measurement_t* meas, float dt) {
         qzqz = q.z * q.z;
 
         // Gradient decent algorithm corrective step
-        s0 = _4qw * qyqy + _2qy * meas->acc_LPF.x + _4qw * qxqx - _2qx * meas->acc_LPF.y;
-        s1 = _4qx * qzqz - _2qz * meas->acc_LPF.x + 4.0f * qwqw * q.x - _2qw * meas->acc_LPF.y - _4qx + _8qx * qxqx + _8qx * qyqy + _4qx * meas->acc_LPF.z;
-        s2 = 4.0f * qwqw * q.y + _2qw * meas->acc_LPF.x + _4qy * qzqz - _2qz * meas->acc_LPF.y - _4qy + _8qy * qxqx + _8qy * qyqy + _4qy * meas->acc_LPF.z;
-        s3 = 4.0f * qxqx * q.z - _2qx * meas->acc_LPF.x + 4.0f * qyqy * q.z - _2qy * meas->acc_LPF.y;
+        s0 = _4qw * qyqy + _2qy * meas->acc.x + _4qw * qxqx - _2qx * meas->acc.y;
+        s1 = _4qx * qzqz - _2qz * meas->acc.x + 4.0f * qwqw * q.x - _2qw * meas->acc.y - _4qx + _8qx * qxqx + _8qx * qyqy + _4qx * meas->acc.z;
+        s2 = 4.0f * qwqw * q.y + _2qw * meas->acc.x + _4qy * qzqz - _2qz * meas->acc.y - _4qy + _8qy * qxqx + _8qy * qyqy + _4qy * meas->acc.z;
+        s3 = 4.0f * qxqx * q.z - _2qx * meas->acc.x + 4.0f * qyqy * q.z - _2qy * meas->acc.y;
 
         recipNorm = invSqrt(s0 * s0 + s1 * s1 + s2 * s2 + s3 * s3);  // normalise step magnitude
         s0 *= recipNorm;
@@ -71,19 +67,19 @@ void CompFilter::UpdateQ(Measurement_t* meas, float dt) {
         qDot4 -= BETA * s3;
     }
     // if(USE_MAG &&( meas->mag_LPF.x != 0.0 && meas->mag_LPF.y != 0.0 && meas->mag_LPF.z != 0.0) && (gyroNorm < HIGH_MOTION)){ // Try to check if it works better only when gyro norm is low
-    if (USE_MAG && (meas->mag_LPF.x != 0.0 && meas->mag_LPF.y != 0.0 && meas->mag_LPF.z != 0.0) && (gyroNorm < HIGH_MOTION)) {
+    if (USE_MAG && (meas->mag.x != 0.0 && meas->mag.y != 0.0 && meas->mag.z != 0.0) && (accNorm < HIGH_MOTION)) {
         // if(USE_MAG &&( meas->mag_LPF.x != 0.0 && meas->mag_LPF.y != 0.0 && meas->mag_LPF.z != 0.0)){
 
         // Normalise magnetometer measurement
-        recipNorm = invSqrt(meas->mag_LPF.x * meas->mag_LPF.x + meas->mag_LPF.y * meas->mag_LPF.y + meas->mag_LPF.z * meas->mag_LPF.z);
-        meas->mag_LPF.x *= recipNorm;
-        meas->mag_LPF.y *= recipNorm;
-        meas->mag_LPF.z *= recipNorm;
+        recipNorm = invSqrt(meas->mag.x * meas->mag.x + meas->mag.y * meas->mag.y + meas->mag.z * meas->mag.z);
+        meas->mag.x *= recipNorm;
+        meas->mag.y *= recipNorm;
+        meas->mag.z *= recipNorm;
 
-        _2qwmx = 2.0f * q.w * meas->mag_LPF.x;
-        _2qwmy = 2.0f * q.w * meas->mag_LPF.y;
-        _2qwmz = 2.0f * q.w * meas->mag_LPF.z;
-        _2qxmx = 2.0f * q.x * meas->mag_LPF.x;
+        _2qwmx = 2.0f * q.w * meas->mag.x;
+        _2qwmy = 2.0f * q.w * meas->mag.y;
+        _2qwmz = 2.0f * q.w * meas->mag.z;
+        _2qxmx = 2.0f * q.x * meas->mag.x;
         _2q0 = 2.0f * q.w;
         _2q1 = 2.0f * q.x;
         _2q2 = 2.0f * q.y;
@@ -104,10 +100,10 @@ void CompFilter::UpdateQ(Measurement_t* meas, float dt) {
         q3q3 = q.z * q.z;
 
         // Reference direction of Earth's magnetic field
-        hx = meas->mag_LPF.x * q0q0 - _2qwmy * q.z + _2qwmz * q.y + meas->mag_LPF.x * q1q1 + _2qxmx * q.y + meas->mag_LPF.x * q2q2 - meas->mag_LPF.x * q3q3;
-        hy = _2qwmx * q.z + meas->mag_LPF.y * q0q0 - _2qwmz * q.x + _2q0 * meas->mag_LPF.y * q1q1 - meas->mag_LPF.y * q2q2 + meas->mag_LPF.y * q3q3 + _2qxmx * q.z;
+        hx = meas->mag.x * q0q0 - _2qwmy * q.z + _2qwmz * q.y + meas->mag.x * q1q1 + _2qxmx * q.y + meas->mag.x * q2q2 - meas->mag.x * q3q3;
+        hy = _2qwmx * q.z + meas->mag.y * q0q0 - _2qwmz * q.x + _2q0 * meas->mag.y * q1q1 - meas->mag.y * q2q2 + meas->mag.y * q3q3 + _2qxmx * q.z;
         _2bx = sqrtf(hx * hx + hy * hy);
-        _2bz = -_2qwmx * q.y + _2q0 * meas->mag_LPF.z * q1q1 + _2q0 * meas->mag_LPF.z * q2q2 + meas->mag_LPF.z * q3q3 + _2qxmx * q.y - meas->mag_LPF.z * q0q0;
+        _2bz = -_2qwmx * q.y + _2q0 * meas->mag.z * q1q1 + _2q0 * meas->mag.z * q2q2 + meas->mag.z * q3q3 + _2qxmx * q.y - meas->mag.z * q0q0;
         _4bx = 2.0f * _2bx;
         _4bz = 2.0f * _2bz;
 
@@ -115,7 +111,7 @@ void CompFilter::UpdateQ(Measurement_t* meas, float dt) {
         s0 = -_2bz * q.y * (_2bx * (0.5f - q2q2 - q3q3) + _2bz * (q1q3 - q0q2) - meas->mag_LPF.z) + (-_2bx * q.z + _2bz * q.x) * (_2bx * (q1q2 - q0q3) + _2bz * (q0q1 + q2q3) - meas->mag_LPF.x);
         s1 = -4.0f * q.x * (1 - 2.0f * q1q1 - 2.0f * q2q2 - meas->mag_LPF.z) + _2bz * q.z * (_2bx * (0.5f - q2q2 - q3q3) + _2bz * (q1q3 - q0q2) - meas->mag_LPF.z) + (_2bx * q.y + _2bz * q.x) * (_2bx * (q1q2 - q0q3) + _2bz * (q0q1 + q2q3) - meas->mag_LPF.x);
         s2 = -4.0f * q.y * (1 - 2.0f * q1q1 - 2.0f * q2q2 - meas->mag_LPF.z) + (-_2bx * q.y + _2bz * q.x) * (_2bx * (0.5f - q2q2 - q3q3) + _2bz * (q1q3 - q0q2) - meas->mag_LPF.z) + (_2bx * q.z + _2bz * q.x) * (_2bx * (q1q2 - q0q3) + _2bz * (q0q1 + q2q3) - meas->mag_LPF.x);
-        s3 = (-_4bx * q.y * (2.0f * q1q2 - _2q0q3 - meas->mag_LPF.z) + _4bz * q.z * (2.0f * q1q3 - _2q0q2 - meas->mag_LPF.x) - _4bx * q.x * (2.0f * q2q3 - _2q0q1 - meas->mag_LPF.y)) + (-_4bx * q.z + _4bz * q.x) * (_4bx * (0.5f - q2q2 - q3q3) + _4bz * (q1q3 - q0q2) - meas->mag_LPF.x);
+        s3 = (-_4bx * q.y * (2.0f * q1q2 - _2q0q3 - meas->mag.z) + _4bz * q.z * (2.0f * q1q3 - _2q0q2 - meas->mag.x) - _4bx * q.x * (2.0f * q2q3 - _2q0q1 - meas->mag.y)) + (-_4bx * q.z + _4bz * q.x) * (_4bx * (0.5f - q2q2 - q3q3) + _4bz * (q1q3 - q0q2) - meas->mag.x);
         recipNorm = invSqrt(s0 * s0 + s1 * s1 + s2 * s2 + s3 * s3);  // normalise step magnitude
         s0 *= recipNorm;
         s1 *= recipNorm;
@@ -213,54 +209,17 @@ void CompFilter::estimatedGravityDir(float* gx, float* gy, float* gz) {
 
 float CompFilter::calculateDynamicBeta(Measurement_t meas) {
     // Compute the norm (magnitude) of the gyroscope vector
-    gyroNorm = sqrtf(meas.gyro_LPF.x * meas.gyro_LPF.x +
-                     meas.gyro_LPF.y * meas.gyro_LPF.y +
-                     meas.gyro_LPF.z * meas.gyro_LPF.z) *
+    accNorm = sqrtf(meas.acc.x * meas.acc.x +
+                     meas.acc.y * meas.acc.y +
+                     meas.acc.z * meas.acc.z) *
                deg2rad;
     // Adapt Beta based on gyroscope norm
-    if (gyroNorm < LOW_MOTION) {
-        // System is likely stable or slow-moving, increase Beta for more correction
-        // Serial.println("Low Motion");
+    if (accNorm < LOW_MOTION) {
         return HIGH_BETA;
-    } else if (gyroNorm > HIGH_MOTION) {
-        // System is moving fast, reduce Beta to rely more on gyroscope
-        // Serial.println("High Motion");
+    } else if (accNorm > HIGH_MOTION) {
         return LOW_BETA;
     } else {
-        // Default case, normal correction
-        // Serial.println("Default Motion");
         return DEFAULT_BETA;
     }
 }
 
-// void CompFilter::InitialFiltering(Measurement_t* meas) {
-//     // meas->acc_LPF.x = (1 - ALPHA_ACC_LPF) * meas->acc.x + ALPHA_ACC_LPF * meas->acc_LPF.x;
-//     // meas->acc_LPF.y = (1 - ALPHA_ACC_LPF) * meas->acc.y + ALPHA_ACC_LPF * meas->acc_LPF.y;
-//     // meas->acc_LPF.z = (1 - ALPHA_ACC_LPF) * meas->acc.z + ALPHA_ACC_LPF * meas->acc_LPF.z;
-
-//     meas->acc_LPF.y = ALPHA_ACC_LPF * meas->acc.y + (1 - ALPHA_ACC_LPF) * meas->acc_LPF.y;
-//     meas->acc_LPF.x = ALPHA_ACC_LPF * meas->acc.x + (1 - ALPHA_ACC_LPF) * meas->acc_LPF.x;
-//     meas->acc_LPF.z = ALPHA_ACC_LPF * meas->acc.z + (1 - ALPHA_ACC_LPF) * meas->acc_LPF.z;
-
-//     // Apply High-pass Filter to Gyro - > RAD. Used for the filter
-
-//     meas->gyro_HPF.x = ALPHA_HPF * (meas->gyro_HPF.x + meas->gyroRAD.x - gyroPrev.x);
-//     meas->gyro_HPF.y = ALPHA_HPF * (meas->gyro_HPF.y + meas->gyroRAD.y - gyroPrev.y);
-//     meas->gyro_HPF.z = ALPHA_HPF * (meas->gyro_HPF.z + meas->gyroRAD.z - gyroPrev.z);
-
-//     gyroPrev.x = meas->gyroRAD.x;
-//     gyroPrev.y = meas->gyroRAD.y;
-//     gyroPrev.z = meas->gyroRAD.z;
-
-//     // Apply Low-pass Filter to Gyro - > DEG. Used for acro
-//     meas->gyro_LPF.x = ALPHA_GYRO_LPF * meas->gyroDEG.x + (1 - ALPHA_GYRO_LPF) * meas->gyro_LPF.x;
-//     meas->gyro_LPF.y = ALPHA_GYRO_LPF * meas->gyroDEG.y + (1 - ALPHA_GYRO_LPF) * meas->gyro_LPF.y;
-//     meas->gyro_LPF.z = ALPHA_GYRO_LPF * meas->gyroDEG.z + (1 - ALPHA_GYRO_LPF) * meas->gyro_LPF.z;
-
-//     if (USE_MAG) {
-//         // Apply Low-pass Filter to Mag
-//         meas->mag_LPF.x = (1 - ALPHA_MAG_LPF) * meas->mag.x + ALPHA_MAG_LPF * meas->mag_LPF.x;
-//         meas->mag_LPF.y = (1 - ALPHA_MAG_LPF) * meas->mag.y + ALPHA_MAG_LPF * meas->mag_LPF.y;
-//         meas->mag_LPF.z = (1 - ALPHA_MAG_LPF) * meas->mag.z + ALPHA_MAG_LPF * meas->mag_LPF.z;
-//     }
-// }

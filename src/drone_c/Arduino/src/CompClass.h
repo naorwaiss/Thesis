@@ -13,11 +13,11 @@
 // #define LOW_MOTION 0.2f
 // #define HIGH_MOTION 1.5f
 #define LOW_MOTION 0.15f    // Slightly lower than 0.2f
-#define HIGH_MOTION 1.0f    // Lower than 1.5f to activate high correction sooner
+#define HIGH_MOTION 1.2f    // Lower than 1.5f to activate high correction sooner
 
-#define HIGH_BETA 0.65f // Rely more on accelerometer
-#define LOW_BETA 0.65f // Rely more on gyroscope
-#define DEFAULT_BETA 0.65f   
+#define HIGH_BETA 0.9f // Rely more on accelerometer
+#define LOW_BETA 0.1f // Rely more on gyroscope
+#define DEFAULT_BETA 0.7f   
 
 // Filter Frequencies:
 // #define ACC_LPF_FREQ 80.0f   // Increase from 10.0f
@@ -47,7 +47,7 @@ class CompFilter {
         vec3_t accFiltered = {0.0, 0.0, 0.0};
         vec3_t gyroFiltered = {0.0, 0.0, 0.0};
         vec3_t magFiltered = {0.0, 0.0, 0.0};
-        float gyroNorm = 0.0;
+        float accNorm = 0.0;
         float drift = 0.0;
         float driftRate = 0.005;
         float gravX , gravY, gravZ; // Unit vector in the direction of the estimated gravity

@@ -28,7 +28,7 @@ void STD_Filter::gyro_high_pass_filter() {
 }
 
 void STD_Filter::all_filter() {
-    acc_low_pass_filter();
-    gyro_low_pass_filter();
+    // acc_low_pass_filter();
+    // gyro_low_pass_filter();
     gyro_high_pass_filter();
 }

@@ -54,35 +54,37 @@ void setPID_params(PID_const_t* pid_consts) {
     stab_params.Alpha_yaw = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
 
 
-    // Serial.print("rate_params.RollP: ");
-    // Serial.println(rate_params.RollP);
-    // Serial.print("rate_params.RollI: ");
-    // Serial.println(rate_params.RollI);
-    // Serial.print("rate_params.RollD: ");
-    // Serial.println(rate_params.RollD);
-    // Serial.print("rate_params.PitchP: ");
-    // Serial.println(rate_params.PitchP);
-    // Serial.print("rate_params.PitchI: ");
-    // Serial.println(rate_params.PitchI);
-    // Serial.print("rate_params.YawP: ");
-    // Serial.println(rate_params.YawP);
-    // Serial.print("stableize.rollp: ");
-    // Serial.println(stab_params.RollP);
-    // Serial.print("stableize.rolli: ");
-    // Serial.println(stab_params.RollI);
-    // Serial.print("stableize.rolld: ");
-    // Serial.println(stab_params.RollD);
-    // Serial.print("stableize.pitchp: ");
-    // Serial.println(stab_params.PitchP);
-    // Serial.print("stableize.pitchi: ");
-    // Serial.println(stab_params.PitchI);
-    // Serial.print("stableize.yawp: ");
-    // Serial.println(stab_params.YawP);
-    // Serial.print("stableize.yawi: ");
-    // Serial.println(stab_params.YawI);
-    // Serial.print("stableize.yawd: ");
-    // Serial.println(stab_params.YawD);
-    // Serial.print("__________________________________________________________");
+    Serial.print("rate_params.RollP: ");
+    Serial.println(rate_params.RollP);
+    Serial.print("rate_params.RollI: ");
+    Serial.println(rate_params.RollI);
+    Serial.print("rate_params.RollD: ");
+    Serial.println(rate_params.RollD);
+    Serial.print("rate_params.PitchP: ");
+    Serial.println(rate_params.PitchP);
+    Serial.print("rate_params.PitchI: ");
+    Serial.println(rate_params.PitchI);
+    Serial.print("rate_params.YawP: ");
+    Serial.println(rate_params.YawP);
+    Serial.print("stableize.rollp: ");
+    Serial.println(stab_params.RollP);
+    Serial.print("stableize.rolli: ");
+    Serial.println(stab_params.RollI);
+    Serial.print("stableize.rolld: ");
+    Serial.println(stab_params.RollD);
+    Serial.print("stableize.pitchp: ");
+    Serial.println(stab_params.PitchP);
+    Serial.print("stableize.pitchi: ");
+    Serial.println(stab_params.PitchI);
+    Serial.print("stableize.pitchd: ");
+    Serial.println(stab_params.PitchD);
+    Serial.print("stableize.yawp: ");
+    Serial.println(stab_params.YawP);
+    Serial.print("stableize.yawi: ");
+    Serial.println(stab_params.YawI);
+    Serial.print("stableize.yawd: ");
+    Serial.println(stab_params.YawD);
+    Serial.print("__________________________________________________________");
 }
 
 PID_out_t PID_rate(attitude_t des_rate, attitude_t actual_rate, float DT) {  // Actual rate will be in deg/s

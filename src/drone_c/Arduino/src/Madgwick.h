@@ -11,12 +11,13 @@ class Madgwick {
     float q1;
     float q2;
     float q3;  // quaternion of sensor frame relative to auxiliary frame
-    float invSampleFreq;
+    float _dt_sec;
     float roll;
     float pitch;
     float yaw;
     char anglesComputed;
     void computeAngles();
+    void set_zero(float ati, float thrshold);
     quat_t* _quaternion;
     Measurement_t* _meas;
     attitude_t* _estimated_attitude;
@@ -27,8 +28,7 @@ class Madgwick {
     // Function declarations
    public:
     Madgwick(Measurement_t* meas_data, attitude_t* estimated_attitude, quat_t* quaternion, float sampleFreq, float beta);
-    void begin(float sampleFrequency) { invSampleFreq = 1.0f / sampleFrequency; }
-    void update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz);
+    void begin(float sampleFrequency) { _dt_sec = 1.0f / sampleFrequency; }
     void updateIMU(float gx, float gy, float gz, float ax, float ay, float az);
     void madgwick_operation();
 

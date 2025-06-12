@@ -5,6 +5,8 @@ float delta_t = 0;
 
 EKF::EKF(Measurement_t* meas_data, float dt) {
     meas = meas_data;
+    R(2,2) *= 5.0;
+    Q(2,2) *= 0.5;
     delta_t = dt;
 }
 
@@ -12,8 +14,10 @@ void EKF::pre_kalman_filter() {
     // InitialFiltering();
 
     // Calculate pitch and roll from accelerometer
-    float pitch = atan2(meas->acc_LPF.y, sqrt(meas->acc_LPF.x * meas->acc_LPF.x + meas->acc_LPF.z * meas->acc_LPF.z));
-    float roll = atan2(-meas->acc_LPF.x, meas->acc_LPF.z);
+    // float pitch = atan2(meas->acc_LPF.y, sqrt(meas->acc_LPF.x * meas->acc_LPF.x + meas->acc_LPF.z * meas->acc_LPF.z));
+    // float roll = atan2(-meas->acc_LPF.x, meas->acc_LPF.z);
+    float pitch = atan2(meas->acc.y, sqrt(meas->acc.x * meas->acc.x + meas->acc.z * meas->acc.z));
+    float roll = atan2(-meas->acc.x, meas->acc.z);
 
     // Improved tilt compensation for magnetometer
     float sin_roll = sin(roll);
@@ -34,9 +38,9 @@ void EKF::pre_kalman_filter() {
 
     // Serial.println(yaw);
 
-    gyro_input(0) = meas->gyro_LPF.x;
-    gyro_input(1) = meas->gyro_LPF.y;
-    gyro_input(2) = meas->gyro_LPF.z;
+    gyro_input(0) = meas->gyroRAD.x;
+    gyro_input(1) = meas->gyroRAD.y;
+    gyro_input(2) = meas->gyroRAD.z;
 
     // euler angle base on measerment
     euler_data(0) = roll;
@@ -50,7 +54,7 @@ attitude_t EKF::kalman3D(Vector3f gyro_sample, Vector3f euler_data) {
 
     // Time update - integrate gyro rates with special handling for yaw
     // Vector3f angle_increment = 0.5f * (1.0f / SAMPLE_RATE) * (gyro + prev_gyro);
-    Vector3f angle_increment = 0.5f * (1.0f / SAMPLE_RATE) * (gyro_sample - prev_gyro);
+    Vector3f angle_increment = (1.0f / SAMPLE_RATE) * gyro_sample;
 
     // Update state with gyro data
     state(0) += angle_increment(0);  // Roll
@@ -61,17 +65,45 @@ attitude_t EKF::kalman3D(Vector3f gyro_sample, Vector3f euler_data) {
 
     // Update error covariance matrix
     // Make yaw component of Q higher to trust gyro more for yaw
-    Matrix3f Q_adjusted = Q;
-    Q_adjusted(2, 2) = Q_const * 1.5f;  // Increase process noise for yaw
 
-    P = P + Q_adjusted * (1.0f / SAMPLE_RATE);
+    P = P + Q * (1.0f / SAMPLE_RATE);
 
     // Measurement update
     // Make yaw component of R higher to trust magnetometer less
-    Matrix3f R_adjusted = R;
-    R_adjusted(2, 2) = R_const * 5.0f;  // Increase measurement noise for yaw
+    
+    // float acc_magnitude = sqrt(pow(meas->acc_LPF.x,2) +pow(meas->acc_LPF.y,2) +pow(meas->acc_LPF.z,2));
+    // if (acc_magnitude > 1.5){
+    //     R *= acc_magnitude/1.5;
+    //     Serial.println("naor");
+    // } // If the accelerometer is larger than 1g 
+    // // else{
+    // //     Serial.println("amit");
+    // //     R *= 0.99;
+    // // }
+    
+    Serial.println("R_matrix");
+    for (size_t i = 0; i < 3; i++)
+    {
+        for (size_t j = 0; j < 3; j++)
+        {
+            Serial.print(R(i,j));
+            Serial.print(" ");
+        }
+        Serial.println();
+    }
+    Serial.println("***********************8");
+    Serial.println("Q_matrix");
+    for (size_t i = 0; i < 3; i++)
+    {
+        for (size_t j = 0; j < 3; j++)
+        {
+            Serial.print(Q(i,j));
+            Serial.print(" ");
+        }
+        Serial.println();
+    }
 
-    Matrix3f S = P + R_adjusted;
+    Matrix3f S = P + R;
     Matrix3f K = P * S.inverse();
 
     // Calculate yaw error, handling the 180/-180 discontinuity
