@@ -108,21 +108,19 @@ void check_arming_state();
 
 void setup() {
     Serial.begin(115200);
-    // DRON_COM::init_com();
     drone_com.init_com();
-    // IMU_init();
+    IMU_init();
 
-    // / activate crsf
-    // crsfSerial.begin(CRSF_BAUDRATE, SERIAL_8N1);
-    // if (!crsfSerial) {
-        // while (1) {
-            // Serial.println("Invalid crsfSerial configuration");
-        // }
-    // }
-    // crsf.begin(crsfSerial);
+    crsfSerial.begin(CRSF_BAUDRATE, SERIAL_8N1);
+    if (!crsfSerial) {
+        while (1) {
+            Serial.println("Invalid crsfSerial configuration");
+        }
+    }
+    crsf.begin(crsfSerial);
     getbot_param(PID_CONSTS);
     setPID_params(&PID_CONSTS);
-    // GyroMagCalibration();
+    GyroMagCalibration();
     motors.Motors_init();
 }
 
@@ -130,14 +128,14 @@ void setup() {
 
 void loop() {
     // Update ELRS data: Reading from the receiver and updating controller_data variable.
-    // update_controller();
+    update_controller();
     // Check arming:
     check_arming_state();
     if (imu_timer >= IMU_PERIOD) {
         actual_dt = (double)imu_timer / 1000000.0f;
-        // Update_Measurement();
-        // std_filter.all_filter();
-        // estimated_state_metude();
+        Update_Measurement();
+        std_filter.all_filter();
+        estimated_state_metude();
 
         if (is_armed) {
             // Get Actual rates:

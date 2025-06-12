@@ -1,16 +1,13 @@
 #!/usr/bin/env python3
 
 import sys
-import struct
 import rclpy
-import os
 from rclpy.node import Node
 from PyQt5.QtWidgets import (
     QApplication, QLabel, QWidget, QVBoxLayout,
     QTableWidget, QTableWidgetItem, QHBoxLayout, QHeaderView, QPushButton
 )
 from PyQt5.QtCore import QTimer, pyqtSignal, QObject
-
 from drone_c.msg import PidConsts
 
 
@@ -61,10 +58,8 @@ class DroneTunnerWindow(QWidget):
         ])
         self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.table.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
-
-        # Create verification status indicator
         self.verification_status = QLabel()
-        self.verification_status.setFixedSize(20, 20)  # Set fixed size for the indicator
+        self.verification_status.setFixedSize(20, 20)
         self.verification_status.setStyleSheet("background-color: gray; border-radius: 10px;")
 
         # Create horizontal layout for status and button
@@ -131,25 +126,18 @@ class DroneTunnerWindow(QWidget):
             self.table.setItem(0, 0, QTableWidgetItem(str(msg.rate_roll[0])))
             self.table.setItem(0, 1, QTableWidgetItem(str(msg.rate_roll[1])))
             self.table.setItem(0, 2, QTableWidgetItem(str(msg.rate_roll[2])))
-
-            # Update rate_pitch
             self.table.setItem(1, 0, QTableWidgetItem(str(msg.rate_pitch[0])))
             self.table.setItem(1, 1, QTableWidgetItem(str(msg.rate_pitch[1])))
             self.table.setItem(1, 2, QTableWidgetItem(str(msg.rate_pitch[2])))
-
             self.table.setItem(2, 0, QTableWidgetItem(str(msg.rate_yaw[0])))
             self.table.setItem(2, 1, QTableWidgetItem(str(msg.rate_yaw[1])))
             self.table.setItem(2, 2, QTableWidgetItem(str(msg.rate_yaw[2])))
-            # Update stable_roll
             self.table.setItem(3, 0, QTableWidgetItem(str(msg.stablize_roll[0])))
             self.table.setItem(3, 1, QTableWidgetItem(str(msg.stablize_roll[1])))
             self.table.setItem(3, 2, QTableWidgetItem(str(msg.stablize_roll[2])))
-
-            # Update stable_pitch
             self.table.setItem(4, 0, QTableWidgetItem(str(msg.stablize_pitch[0])))
             self.table.setItem(4, 1, QTableWidgetItem(str(msg.stablize_pitch[1])))
             self.table.setItem(4, 2, QTableWidgetItem(str(msg.stablize_pitch[2])))
-
 
             self.label.setText("PID values updated!")
             self.set_verification_status(True)
