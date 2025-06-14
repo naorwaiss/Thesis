@@ -1,3 +1,4 @@
+from drone_c.msg._drone_header import DroneHeader  # noqa: F401
 from drone_c.msg._euler_angles import EulerAngles  # noqa: F401
 from drone_c.msg._imu_filter import ImuFilter  # noqa: F401
 from drone_c.msg._motors import Motors  # noqa: F401

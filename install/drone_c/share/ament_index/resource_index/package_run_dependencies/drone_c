@@ -1,1 +1,1 @@
-rclcpp;std_msgs;rosidl_default_runtime;sensor_msgs;geometry_msgs;rtcom_teensy_ros;ament_lint_auto;ament_lint_common
+rclcpp;std_msgs;rosidl_default_runtime;sensor_msgs;geometry_msgs;rtcom_teensy_ros;ament_index_python;ament_lint_auto;ament_lint_common

@@ -193,7 +193,6 @@ typedef struct state_s {
 /////// pid config
 
 typedef struct {
-    uint8_t mac[6];
     std::array<float, 3> defaultRrollPID;  // DO NOT GO OVER Kd=0.9 !!!! Drone will kill someone!!!
     std::array<float, 3> defaultRpitchPID;
     std::array<float, 3> defaultRyawPID;
@@ -205,6 +204,24 @@ typedef struct {
     std::array<float, 3> defaultSyawPID;
     std::array<float, 2> defaultImax_stab;
 } PID_const_t;
+
+enum class DroneMode {
+    MODE_RATE = 1,
+    MODE_STABILIZE = 2,
+};
+enum class DroneFilter {
+    COMPCLASS = 1,
+    MADGWICK = 2,
+    KALMAN = 3,
+};
+
+
+typedef struct {
+    uint8_t mac[6];
+    char name[10];
+    DroneMode drone_mode = DroneMode::MODE_RATE;
+    DroneFilter filter_mode = DroneFilter::COMPCLASS;
+} Drone_Data_t;
 
 inline void getMAC(uint8_t* pMacAddress) {
     for (uint8_t i = 0; i < 2; i++)
@@ -228,29 +245,29 @@ inline bool compareMac(uint8_t mac1[6], uint8_t mac2[6]) {
 
 inline uint8_t mac0[6] = {0x04, 0xE9, 0xE5, 0x18, 0xEE, 0x80};  // drone naor
 inline uint8_t mac1[6] = {0x04, 0xE9, 0xE5, 0x18, 0xEE, 0xFC};  // drone naor
-inline uint8_t mac2[6] = {0x04, 0xE9, 0xE5, 0x19, 0x2B, 0x2D};  // drone amit
+inline uint8_t mac2[6] = {0x04, 0xE9, 0xE5, 0x19, 0x2B, 0x2D};  // drone amit - > pid not set yet
 
-inline void getbot_param(PID_const_t& myDrone) {
+inline void getbot_param(PID_const_t& myDrone_PID, Drone_Data_t& myDrone) {
     getMAC(myDrone.mac);
     if (compareMac(myDrone.mac, mac0) || compareMac(myDrone.mac, mac1)) {
-        myDrone.defaultRrollPID = {1.35f, 0.01f, 0.6f};
-        myDrone.defaultRpitchPID = {1.35f, 0.01f, 0.6f};
-        myDrone.defaultRyawPID = {2.0f, 0.0f, 0.05f};
-        myDrone.defaultImax_rate = {100.0f, 100.0f};
-        myDrone.defaultSrollPID = {12.5f, 0.4f, 0.0f};
-        myDrone.defaultSpitchPID = {12.5f, 0.4f, 0.0f};
-        myDrone.defaultSyawPID = {4.0f, 0.0f, 0.0f};
-        myDrone.defaultImax_stab = {100.0f, 100.0f};
+        myDrone_PID.defaultRrollPID = {1.35f, 0.01f, 0.6f};
+        myDrone_PID.defaultRpitchPID = {1.35f, 0.01f, 0.6f};
+        myDrone_PID.defaultRyawPID = {2.0f, 0.0f, 0.05f};
+        myDrone_PID.defaultImax_rate = {100.0f, 100.0f};
+        myDrone_PID.defaultSrollPID = {12.5f, 0.4f, 0.0f};
+        myDrone_PID.defaultSpitchPID = {12.5f, 0.4f, 0.0f};
+        myDrone_PID.defaultSyawPID = {4.0f, 0.0f, 0.0f};
+        myDrone_PID.defaultImax_stab = {100.0f, 100.0f};
         return;
     } else if (compareMac(myDrone.mac, mac2) ) {
-        myDrone.defaultRrollPID = {1.6f, 0.15f, 0.95f};
-        myDrone.defaultRpitchPID = {1.6f, 0.15f, 0.95f};
-        myDrone.defaultRyawPID = {2.0f, 0.0f, 0.05f};
-        myDrone.defaultImax_rate = {100.0f, 100.0f};
-        myDrone.defaultSrollPID = {4.0f, 0.01f, 0.0f};
-        myDrone.defaultSpitchPID = {4.0f, 0.01f, 0.0f};
-        myDrone.defaultSyawPID = {4.0f, 0.0f, 0.0f};
-        myDrone.defaultImax_stab = {100.0f, 100.0f};
+        myDrone_PID.defaultRrollPID = {1.35f, 0.01f, 0.6f};
+        myDrone_PID.defaultRpitchPID = {1.35f, 0.01f, 0.6f};
+        myDrone_PID.defaultRyawPID = {2.0f, 0.0f, 0.05f};
+        myDrone_PID.defaultImax_rate = {100.0f, 100.0f};
+        myDrone_PID.defaultSrollPID = {12.5f, 0.4f, 0.0f};
+        myDrone_PID.defaultSpitchPID = {12.5f, 0.4f, 0.0f};
+        myDrone_PID.defaultSyawPID = {4.0f, 0.0f, 0.0f};
+        myDrone_PID.defaultImax_stab = {100.0f, 100.0f};
         return;
     } else {
         while (1) {

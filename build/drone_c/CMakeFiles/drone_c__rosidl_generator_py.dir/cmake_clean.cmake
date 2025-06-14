@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/drone_c__rosidl_generator_py.dir/rosidl_generator_py/drone_c/msg/_drone_header_s.c.o"
+  "CMakeFiles/drone_c__rosidl_generator_py.dir/rosidl_generator_py/drone_c/msg/_drone_header_s.c.o.d"
   "CMakeFiles/drone_c__rosidl_generator_py.dir/rosidl_generator_py/drone_c/msg/_euler_angles_s.c.o"
   "CMakeFiles/drone_c__rosidl_generator_py.dir/rosidl_generator_py/drone_c/msg/_euler_angles_s.c.o.d"
   "CMakeFiles/drone_c__rosidl_generator_py.dir/rosidl_generator_py/drone_c/msg/_imu_filter_s.c.o"

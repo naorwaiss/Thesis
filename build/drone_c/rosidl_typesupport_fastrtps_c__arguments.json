@@ -7,7 +7,8 @@
     "/home/naor/Desktop/naor/study/Thesis/build/drone_c/rosidl_adapter/drone_c:msg/EulerAngles.idl",
     "/home/naor/Desktop/naor/study/Thesis/build/drone_c/rosidl_adapter/drone_c:msg/Motors.idl",
     "/home/naor/Desktop/naor/study/Thesis/build/drone_c/rosidl_adapter/drone_c:msg/ImuFilter.idl",
-    "/home/naor/Desktop/naor/study/Thesis/build/drone_c/rosidl_adapter/drone_c:msg/PidConsts.idl"
+    "/home/naor/Desktop/naor/study/Thesis/build/drone_c/rosidl_adapter/drone_c:msg/PidConsts.idl",
+    "/home/naor/Desktop/naor/study/Thesis/build/drone_c/rosidl_adapter/drone_c:msg/DroneHeader.idl"
   ],
   "ros_interface_dependencies": [
     "std_msgs:/opt/ros/humble/share/std_msgs/msg/Bool.idl",
@@ -115,6 +116,7 @@
     "/home/naor/Desktop/naor/study/Thesis/build/drone_c/rosidl_adapter/drone_c/msg/Motors.idl",
     "/home/naor/Desktop/naor/study/Thesis/build/drone_c/rosidl_adapter/drone_c/msg/ImuFilter.idl",
     "/home/naor/Desktop/naor/study/Thesis/build/drone_c/rosidl_adapter/drone_c/msg/PidConsts.idl",
+    "/home/naor/Desktop/naor/study/Thesis/build/drone_c/rosidl_adapter/drone_c/msg/DroneHeader.idl",
     "/opt/ros/humble/share/std_msgs/msg/Bool.idl",
     "/opt/ros/humble/share/std_msgs/msg/Byte.idl",
     "/opt/ros/humble/share/std_msgs/msg/ByteMultiArray.idl",

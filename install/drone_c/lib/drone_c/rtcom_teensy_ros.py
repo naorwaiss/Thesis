@@ -6,7 +6,7 @@ from rclpy.node import Node
 from sensor_msgs.msg import Imu, MagneticField
 from std_msgs.msg import Float32MultiArray, Int32MultiArray
 from geometry_msgs.msg import Quaternion
-from drone_c.msg import Pid, Motors, EulerAngles, ImuFilter, PidConsts
+from drone_c.msg import Pid, Motors, EulerAngles, ImuFilter, PidConsts , DroneHeader
 from rtcom import *
 import time
 import math
@@ -36,7 +36,7 @@ class UDPSocketClient(Node):
         self.PID_rate_pub_modifide = self.create_publisher(Pid, 'PID_rate', 10)
         self.Imu_Filter_Pub = self.create_publisher(ImuFilter, 'imu_filter', 10)
         self.Pid_consts_pub = self.create_publisher(PidConsts, 'pid_loaded', 10)
-
+        self.drone_header_pub = self.create_publisher(DroneHeader, 'drone_header', 10)
         # Create subscription for pid_to_flash with callback
         self.pid_to_flash_sub = self.create_subscription(
             PidConsts,
@@ -59,6 +59,8 @@ class UDPSocketClient(Node):
         self.client.on('k', self.handle_pid_stab)
         self.client.on('l', self.handle_pid_rate)
         self.client.on('m', self.handle_pid_consts)
+        self.client.on('n', self.handle_drone_header)
+
 
     def handle_magnetometer(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
@@ -208,6 +210,13 @@ class UDPSocketClient(Node):
 
     def pid_to_flash_callback(self, msg: PidConsts):
         # Convert PidConsts message to bytes and send via RTCom
+        try:
+            self.send_pid_consts(msg)
+        except Exception as e:
+            self.get_logger().error(f"Failed to send PID constants: {e}")
+            return
+            
+    def send_pid_consts(self, msg: PidConsts):
         data = []
         data.extend(msg.rate_pitch)
         data.extend(msg.rate_roll)
@@ -218,7 +227,13 @@ class UDPSocketClient(Node):
         # Convert the packed data to a list of bytes
         data_bytes = list(packed_data)
         self.client.emit_typed(data_bytes, 'z')
-
+    
+    def handle_drone_header(self, message: bytes):
+        messages_struct_int = struct.unpack("i" * (len(message) // INT_SIZE), message)
+        drone_header_msg = DroneHeader()
+        drone_header_msg.drone_mode = messages_struct_int[0]
+        drone_header_msg.filter_mode = messages_struct_int[1]
+        self.drone_header_pub.publish(drone_header_msg) 
 
 def main(args=None):
     rclpy.init(args=args)

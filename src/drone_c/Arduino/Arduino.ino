@@ -67,15 +67,15 @@ attitude_t estimated_rate;
 PID_out_t PID_stab_out;
 PID_out_t PID_rate_out;
 PID_const_t PID_CONSTS;
-
-Drone_com drone_com(&meas, &q_est, &desired_attitude, &motor_pwm, &desired_rate, &estimated_attitude, &estimated_rate, &PID_stab_out, &PID_rate_out, &controller_data, &PID_CONSTS);
-// timer//
+Drone_Data_t drone_data_header;
+Drone_com drone_com(&meas, &q_est, &desired_attitude, &motor_pwm, 
+    &desired_rate, &estimated_attitude, &estimated_rate, &PID_stab_out, &PID_rate_out,
+    &controller_data, &PID_CONSTS,&drone_data_header);
 
 elapsedMicros motor_timer;
 elapsedMicros stab_timer;
 elapsedMicros imu_timer;
 elapsedMicros send_data_timer;
-
 elapsedMicros estimated_filter_timer;
 
 const unsigned long STAB_PERIOD = 1000000 / STAB_FREQUENCY;  // 300 Hz period in microseconds
@@ -90,7 +90,7 @@ STD_Filter std_filter(&meas, SAMPLE_RATE);
 double t_PID_s = 0.0f;
 double t_PID_r = 0.0f;
 float actual_dt = 0.0f;
-int estimated_switch;
+
 
 /*
 ------------------------------------------ Global Variables ------------------------------------------
@@ -118,7 +118,7 @@ void setup() {
         }
     }
     crsf.begin(crsfSerial);
-    getbot_param(PID_CONSTS);
+    getbot_param(PID_CONSTS, drone_data_header);
     setPID_params(&PID_CONSTS);
     GyroMagCalibration();
     motors.Motors_init();
@@ -150,15 +150,16 @@ void loop() {
             if ((controller_data.aux1 > 1500) && (stab_timer >= STAB_PERIOD)) {  // Stabilize mode:
                 // Calculating dt for the PID- in seconds:
                 t_PID_s = (double)stab_timer / 1000000.0f;
-                mapping_controller('s');
-                // Serial.println("stablize ");
+                drone_data_header.drone_mode = DroneMode::MODE_STABILIZE;
+                mapping_controller();
                 PID_stab_out = PID_stab(desired_attitude, estimated_attitude, t_PID_s);
                 PID_stab_out.PID_ret.pitch = -1 * PID_stab_out.PID_ret.pitch;
                 desired_rate = PID_stab_out.PID_ret;
                 desired_rate.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_RATE, -MAX_RATE);
                 stab_timer = 0;
             } else if (controller_data.aux1 < 1500) {  // Acro mode:
-                mapping_controller('r');
+                drone_data_header.drone_mode = DroneMode::MODE_RATE;
+                mapping_controller();
             }
             if ((controller_data.throttle > 1000) && (motor_timer >= MOTOR_PERIOD)) {
                 t_PID_r = (float)motor_timer / 1000000.0f;
@@ -302,19 +303,25 @@ void controller_trheshold() {
     }
 }
 
-void mapping_controller(char state) {
+void mapping_controller() {
     controller_trheshold();
-    if (state == 's') {  // Mapping the controller input into desired angle:
+    switch (drone_data_header.drone_mode)  // This switch statement is a placeholder for any specific conditions you might want to check.
+    {
+    case DroneMode::MODE_STABILIZE:
         Serial.println("stablize");
         desired_attitude.roll = map(controller_data.roll, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_ANGLE, MAX_ANGLE);
         desired_attitude.pitch = map(controller_data.pitch, CONTROLLER_MIN, CONTROLLER_MAX, MAX_ANGLE, -MAX_ANGLE);
         desired_attitude.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_ANGLE, -MAX_ANGLE);  // cahnge here
-        /// neeed to remove or change the constrain here -> not limit the yaw
-    } else if (state == 'r') {  // Mapping the controller input into desired rate:
+        break;
+    case DroneMode::MODE_RATE:
         Serial.println("rate");
         desired_rate.roll = map(controller_data.roll, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_RATE, MAX_RATE);
         desired_rate.pitch = map(controller_data.pitch, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_RATE, MAX_RATE);
         desired_rate.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_RATE, -MAX_RATE);
+        break;
+    
+    default:
+        break;
     }
 }
 
@@ -352,24 +359,24 @@ void comclass_function() {
 
 void channel_estimated() {
     if (controller_data.aux4 > 1700) {
-        estimated_switch = 0;
+        drone_data_header.filter_mode = DroneFilter::KALMAN;
     } else if (controller_data.aux4 < 1100) {
-        estimated_switch = 1;
+        drone_data_header.filter_mode = DroneFilter::COMPCLASS;
     } else {
-        estimated_switch = 2;
+        drone_data_header.filter_mode = DroneFilter::MADGWICK;
     }
 }
 
 void estimated_state_metude() {
     channel_estimated();
-    switch (estimated_switch) {
-        case 0:  // ekkf
+    switch (drone_data_header.filter_mode) {
+        case DroneFilter::KALMAN:
             Serial.println("ekf");
             return ekf.run_kalman(&estimated_attitude, &q_est);
-        case 1:  // compclass
+        case DroneFilter::COMPCLASS:
             Serial.println("compclass");
             return comclass_function();
-        case 2:
+        case DroneFilter::MADGWICK:
             Serial.println("magwick");
             return magwick_filter.madgwick_operation();
         default:

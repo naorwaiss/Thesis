@@ -5,6 +5,7 @@ drone_c.egg-info/SOURCES.txt
 drone_c.egg-info/dependency_links.txt
 drone_c.egg-info/top_level.txt
 drone_c/msg/__init__.py
+drone_c/msg/_drone_header.py
 drone_c/msg/_euler_angles.py
 drone_c/msg/_imu_filter.py
 drone_c/msg/_motors.py

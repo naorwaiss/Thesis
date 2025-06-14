@@ -1,3 +1,5 @@
+msg/DroneHeader.idl
+msg/DroneHeader.msg
 msg/EulerAngles.idl
 msg/EulerAngles.msg
 msg/ImuFilter.idl

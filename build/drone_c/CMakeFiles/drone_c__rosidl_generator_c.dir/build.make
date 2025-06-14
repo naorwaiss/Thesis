@@ -87,6 +87,7 @@ rosidl_generator_c/drone_c/msg/pid.h: rosidl_adapter/drone_c/msg/EulerAngles.idl
 rosidl_generator_c/drone_c/msg/pid.h: rosidl_adapter/drone_c/msg/Motors.idl
 rosidl_generator_c/drone_c/msg/pid.h: rosidl_adapter/drone_c/msg/ImuFilter.idl
 rosidl_generator_c/drone_c/msg/pid.h: rosidl_adapter/drone_c/msg/PidConsts.idl
+rosidl_generator_c/drone_c/msg/pid.h: rosidl_adapter/drone_c/msg/DroneHeader.idl
 rosidl_generator_c/drone_c/msg/pid.h: /opt/ros/humble/share/std_msgs/msg/Bool.idl
 rosidl_generator_c/drone_c/msg/pid.h: /opt/ros/humble/share/std_msgs/msg/Byte.idl
 rosidl_generator_c/drone_c/msg/pid.h: /opt/ros/humble/share/std_msgs/msg/ByteMultiArray.idl
@@ -237,6 +238,18 @@ rosidl_generator_c/drone_c/msg/detail/pid_consts__struct.h: rosidl_generator_c/d
 rosidl_generator_c/drone_c/msg/detail/pid_consts__type_support.h: rosidl_generator_c/drone_c/msg/pid.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/drone_c/msg/detail/pid_consts__type_support.h
 
+rosidl_generator_c/drone_c/msg/drone_header.h: rosidl_generator_c/drone_c/msg/pid.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/drone_c/msg/drone_header.h
+
+rosidl_generator_c/drone_c/msg/detail/drone_header__functions.h: rosidl_generator_c/drone_c/msg/pid.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/drone_c/msg/detail/drone_header__functions.h
+
+rosidl_generator_c/drone_c/msg/detail/drone_header__struct.h: rosidl_generator_c/drone_c/msg/pid.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/drone_c/msg/detail/drone_header__struct.h
+
+rosidl_generator_c/drone_c/msg/detail/drone_header__type_support.h: rosidl_generator_c/drone_c/msg/pid.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/drone_c/msg/detail/drone_header__type_support.h
+
 rosidl_generator_c/drone_c/msg/detail/pid__functions.c: rosidl_generator_c/drone_c/msg/pid.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/drone_c/msg/detail/pid__functions.c
 
@@ -251,6 +264,9 @@ rosidl_generator_c/drone_c/msg/detail/imu_filter__functions.c: rosidl_generator_
 
 rosidl_generator_c/drone_c/msg/detail/pid_consts__functions.c: rosidl_generator_c/drone_c/msg/pid.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/drone_c/msg/detail/pid_consts__functions.c
+
+rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c: rosidl_generator_c/drone_c/msg/pid.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c
 
 CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/pid__functions.c.o: CMakeFiles/drone_c__rosidl_generator_c.dir/flags.make
 CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/pid__functions.c.o: rosidl_generator_c/drone_c/msg/detail/pid__functions.c
@@ -322,13 +338,28 @@ CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/pid_consts__functions.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/naor/Desktop/naor/study/Thesis/build/drone_c/rosidl_generator_c/drone_c/msg/detail/pid_consts__functions.c -o CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/pid_consts__functions.c.s
 
+CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c.o: CMakeFiles/drone_c__rosidl_generator_c.dir/flags.make
+CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c.o: rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c
+CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c.o: CMakeFiles/drone_c__rosidl_generator_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/naor/Desktop/naor/study/Thesis/build/drone_c/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c.o -MF CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c.o.d -o CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c.o -c /home/naor/Desktop/naor/study/Thesis/build/drone_c/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c
+
+CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/naor/Desktop/naor/study/Thesis/build/drone_c/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c > CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c.i
+
+CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/naor/Desktop/naor/study/Thesis/build/drone_c/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c -o CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c.s
+
 # Object files for target drone_c__rosidl_generator_c
 drone_c__rosidl_generator_c_OBJECTS = \
 "CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/pid__functions.c.o" \
 "CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/euler_angles__functions.c.o" \
 "CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/motors__functions.c.o" \
 "CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/imu_filter__functions.c.o" \
-"CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/pid_consts__functions.c.o"
+"CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/pid_consts__functions.c.o" \
+"CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c.o"
 
 # External object files for target drone_c__rosidl_generator_c
 drone_c__rosidl_generator_c_EXTERNAL_OBJECTS =
@@ -338,6 +369,7 @@ libdrone_c__rosidl_generator_c.so: CMakeFiles/drone_c__rosidl_generator_c.dir/ro
 libdrone_c__rosidl_generator_c.so: CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/motors__functions.c.o
 libdrone_c__rosidl_generator_c.so: CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/imu_filter__functions.c.o
 libdrone_c__rosidl_generator_c.so: CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/pid_consts__functions.c.o
+libdrone_c__rosidl_generator_c.so: CMakeFiles/drone_c__rosidl_generator_c.dir/rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c.o
 libdrone_c__rosidl_generator_c.so: CMakeFiles/drone_c__rosidl_generator_c.dir/build.make
 libdrone_c__rosidl_generator_c.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_c.so
 libdrone_c__rosidl_generator_c.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
@@ -346,7 +378,7 @@ libdrone_c__rosidl_generator_c.so: /opt/ros/humble/lib/libbuiltin_interfaces__ro
 libdrone_c__rosidl_generator_c.so: /opt/ros/humble/lib/librosidl_runtime_c.so
 libdrone_c__rosidl_generator_c.so: /opt/ros/humble/lib/librcutils.so
 libdrone_c__rosidl_generator_c.so: CMakeFiles/drone_c__rosidl_generator_c.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/naor/Desktop/naor/study/Thesis/build/drone_c/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C shared library libdrone_c__rosidl_generator_c.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/naor/Desktop/naor/study/Thesis/build/drone_c/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C shared library libdrone_c__rosidl_generator_c.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/drone_c__rosidl_generator_c.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -357,6 +389,10 @@ CMakeFiles/drone_c__rosidl_generator_c.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/drone_c__rosidl_generator_c.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/drone_c__rosidl_generator_c.dir/clean
 
+CMakeFiles/drone_c__rosidl_generator_c.dir/depend: rosidl_generator_c/drone_c/msg/detail/drone_header__functions.c
+CMakeFiles/drone_c__rosidl_generator_c.dir/depend: rosidl_generator_c/drone_c/msg/detail/drone_header__functions.h
+CMakeFiles/drone_c__rosidl_generator_c.dir/depend: rosidl_generator_c/drone_c/msg/detail/drone_header__struct.h
+CMakeFiles/drone_c__rosidl_generator_c.dir/depend: rosidl_generator_c/drone_c/msg/detail/drone_header__type_support.h
 CMakeFiles/drone_c__rosidl_generator_c.dir/depend: rosidl_generator_c/drone_c/msg/detail/euler_angles__functions.c
 CMakeFiles/drone_c__rosidl_generator_c.dir/depend: rosidl_generator_c/drone_c/msg/detail/euler_angles__functions.h
 CMakeFiles/drone_c__rosidl_generator_c.dir/depend: rosidl_generator_c/drone_c/msg/detail/euler_angles__struct.h
@@ -377,6 +413,7 @@ CMakeFiles/drone_c__rosidl_generator_c.dir/depend: rosidl_generator_c/drone_c/ms
 CMakeFiles/drone_c__rosidl_generator_c.dir/depend: rosidl_generator_c/drone_c/msg/detail/pid_consts__functions.h
 CMakeFiles/drone_c__rosidl_generator_c.dir/depend: rosidl_generator_c/drone_c/msg/detail/pid_consts__struct.h
 CMakeFiles/drone_c__rosidl_generator_c.dir/depend: rosidl_generator_c/drone_c/msg/detail/pid_consts__type_support.h
+CMakeFiles/drone_c__rosidl_generator_c.dir/depend: rosidl_generator_c/drone_c/msg/drone_header.h
 CMakeFiles/drone_c__rosidl_generator_c.dir/depend: rosidl_generator_c/drone_c/msg/euler_angles.h
 CMakeFiles/drone_c__rosidl_generator_c.dir/depend: rosidl_generator_c/drone_c/msg/imu_filter.h
 CMakeFiles/drone_c__rosidl_generator_c.dir/depend: rosidl_generator_c/drone_c/msg/motors.h

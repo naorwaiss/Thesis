@@ -26,6 +26,7 @@ set(msg_files
   "msg/Motors.msg"
   "msg/ImuFilter.msg"
   "msg/PidConsts.msg"
+  "msg/DroneHeader.msg"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
@@ -52,6 +53,12 @@ install(DIRECTORY
   launch
   DESTINATION share/${PROJECT_NAME}
 )
+
+install(DIRECTORY
+  plotjuggler
+  DESTINATION share/${PROJECT_NAME}
+)
+
 
 # If building for testing
 if(BUILD_TESTING)

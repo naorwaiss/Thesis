@@ -40,6 +40,9 @@ class DroneTunnerWindow(QWidget):
         self.last_new_msg = None
         self.values_updated = False
 
+        # Create header widget
+        self.header = DroneHeader(node)
+
         # Message Label with initial color
         self.label = QLabel("Waiting for messages...")
         self.label.setStyleSheet("color: black;")  # Initial color
@@ -74,6 +77,7 @@ class DroneTunnerWindow(QWidget):
 
         # Layout
         layout = QVBoxLayout()
+        layout.addWidget(self.header)  # Add header at the top
         layout.addWidget(self.table)
         layout.addWidget(self.label)
         layout.addLayout(status_layout)
@@ -172,6 +176,37 @@ class DroneTunnerWindow(QWidget):
         except ValueError as e:
             self.label.setText(f"Error: {str(e)}")
             self.set_verification_status(False)
+
+
+class DroneHeader(QWidget):
+    def __init__(self, node):
+        super().__init__()
+        self.setWindowTitle("Drone Header")
+        
+        main_layout = QHBoxLayout()
+        
+        name_layout = QVBoxLayout()
+        name_label = QLabel("Drone Name:")
+        self.name_value = QLabel("Unknown")
+        name_layout.addWidget(name_label)
+        name_layout.addWidget(self.name_value)
+        mode_layout = QVBoxLayout()
+        mode_label = QLabel("Drone Mode:")
+        self.mode_value = QLabel("Unknown")
+        mode_layout.addWidget(mode_label)
+        mode_layout.addWidget(self.mode_value)
+        filter_layout = QVBoxLayout()
+        filter_label = QLabel("Filter:")
+        self.filter_value = QLabel("Unknown")
+        filter_layout.addWidget(filter_label)
+        filter_layout.addWidget(self.filter_value)
+        main_layout.addLayout(name_layout)
+        main_layout.addLayout(mode_layout)
+        main_layout.addLayout(filter_layout)
+        
+        # Set the main layout
+        self.setLayout(main_layout)
+        self.node = node
 
 
 def main(args=None):

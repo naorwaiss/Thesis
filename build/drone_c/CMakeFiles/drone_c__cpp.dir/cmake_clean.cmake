@@ -1,5 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/drone_c__cpp"
+  "rosidl_generator_cpp/drone_c/msg/detail/drone_header__builder.hpp"
+  "rosidl_generator_cpp/drone_c/msg/detail/drone_header__struct.hpp"
+  "rosidl_generator_cpp/drone_c/msg/detail/drone_header__traits.hpp"
+  "rosidl_generator_cpp/drone_c/msg/detail/drone_header__type_support.hpp"
   "rosidl_generator_cpp/drone_c/msg/detail/euler_angles__builder.hpp"
   "rosidl_generator_cpp/drone_c/msg/detail/euler_angles__struct.hpp"
   "rosidl_generator_cpp/drone_c/msg/detail/euler_angles__traits.hpp"
@@ -20,6 +24,7 @@ file(REMOVE_RECURSE
   "rosidl_generator_cpp/drone_c/msg/detail/pid_consts__struct.hpp"
   "rosidl_generator_cpp/drone_c/msg/detail/pid_consts__traits.hpp"
   "rosidl_generator_cpp/drone_c/msg/detail/pid_consts__type_support.hpp"
+  "rosidl_generator_cpp/drone_c/msg/drone_header.hpp"
   "rosidl_generator_cpp/drone_c/msg/euler_angles.hpp"
   "rosidl_generator_cpp/drone_c/msg/imu_filter.hpp"
   "rosidl_generator_cpp/drone_c/msg/motors.hpp"

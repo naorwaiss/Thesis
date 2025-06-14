@@ -80,6 +80,7 @@ rosidl_typesupport_cpp/drone_c/msg/pid__type_support.cpp: rosidl_adapter/drone_c
 rosidl_typesupport_cpp/drone_c/msg/pid__type_support.cpp: rosidl_adapter/drone_c/msg/Motors.idl
 rosidl_typesupport_cpp/drone_c/msg/pid__type_support.cpp: rosidl_adapter/drone_c/msg/ImuFilter.idl
 rosidl_typesupport_cpp/drone_c/msg/pid__type_support.cpp: rosidl_adapter/drone_c/msg/PidConsts.idl
+rosidl_typesupport_cpp/drone_c/msg/pid__type_support.cpp: rosidl_adapter/drone_c/msg/DroneHeader.idl
 rosidl_typesupport_cpp/drone_c/msg/pid__type_support.cpp: /opt/ros/humble/share/std_msgs/msg/Bool.idl
 rosidl_typesupport_cpp/drone_c/msg/pid__type_support.cpp: /opt/ros/humble/share/std_msgs/msg/Byte.idl
 rosidl_typesupport_cpp/drone_c/msg/pid__type_support.cpp: /opt/ros/humble/share/std_msgs/msg/ByteMultiArray.idl
@@ -185,6 +186,9 @@ rosidl_typesupport_cpp/drone_c/msg/imu_filter__type_support.cpp: rosidl_typesupp
 rosidl_typesupport_cpp/drone_c/msg/pid_consts__type_support.cpp: rosidl_typesupport_cpp/drone_c/msg/pid__type_support.cpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_cpp/drone_c/msg/pid_consts__type_support.cpp
 
+rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp: rosidl_typesupport_cpp/drone_c/msg/pid__type_support.cpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp
+
 CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/pid__type_support.cpp.o: CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/flags.make
 CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/pid__type_support.cpp.o: rosidl_typesupport_cpp/drone_c/msg/pid__type_support.cpp
 CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/pid__type_support.cpp.o: CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/compiler_depend.ts
@@ -255,13 +259,28 @@ CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/ms
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/pid_consts__type_support.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/naor/Desktop/naor/study/Thesis/build/drone_c/rosidl_typesupport_cpp/drone_c/msg/pid_consts__type_support.cpp -o CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/pid_consts__type_support.cpp.s
 
+CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp.o: CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/flags.make
+CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp.o: rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp
+CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp.o: CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/naor/Desktop/naor/study/Thesis/build/drone_c/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp.o -MF CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp.o.d -o CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp.o -c /home/naor/Desktop/naor/study/Thesis/build/drone_c/rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp
+
+CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/naor/Desktop/naor/study/Thesis/build/drone_c/rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp > CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp.i
+
+CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/naor/Desktop/naor/study/Thesis/build/drone_c/rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp -o CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp.s
+
 # Object files for target drone_c__rosidl_typesupport_cpp
 drone_c__rosidl_typesupport_cpp_OBJECTS = \
 "CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/pid__type_support.cpp.o" \
 "CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/euler_angles__type_support.cpp.o" \
 "CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/motors__type_support.cpp.o" \
 "CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/imu_filter__type_support.cpp.o" \
-"CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/pid_consts__type_support.cpp.o"
+"CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/pid_consts__type_support.cpp.o" \
+"CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp.o"
 
 # External object files for target drone_c__rosidl_typesupport_cpp
 drone_c__rosidl_typesupport_cpp_EXTERNAL_OBJECTS =
@@ -271,6 +290,7 @@ libdrone_c__rosidl_typesupport_cpp.so: CMakeFiles/drone_c__rosidl_typesupport_cp
 libdrone_c__rosidl_typesupport_cpp.so: CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/motors__type_support.cpp.o
 libdrone_c__rosidl_typesupport_cpp.so: CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/imu_filter__type_support.cpp.o
 libdrone_c__rosidl_typesupport_cpp.so: CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/pid_consts__type_support.cpp.o
+libdrone_c__rosidl_typesupport_cpp.so: CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp.o
 libdrone_c__rosidl_typesupport_cpp.so: CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/build.make
 libdrone_c__rosidl_typesupport_cpp.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_cpp.so
 libdrone_c__rosidl_typesupport_cpp.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_cpp.so
@@ -281,7 +301,7 @@ libdrone_c__rosidl_typesupport_cpp.so: /opt/ros/humble/lib/librosidl_typesupport
 libdrone_c__rosidl_typesupport_cpp.so: /opt/ros/humble/lib/librosidl_runtime_c.so
 libdrone_c__rosidl_typesupport_cpp.so: /opt/ros/humble/lib/librcutils.so
 libdrone_c__rosidl_typesupport_cpp.so: CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/naor/Desktop/naor/study/Thesis/build/drone_c/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX shared library libdrone_c__rosidl_typesupport_cpp.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/naor/Desktop/naor/study/Thesis/build/drone_c/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX shared library libdrone_c__rosidl_typesupport_cpp.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -292,6 +312,7 @@ CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/clean
 
+CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/depend: rosidl_typesupport_cpp/drone_c/msg/drone_header__type_support.cpp
 CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/depend: rosidl_typesupport_cpp/drone_c/msg/euler_angles__type_support.cpp
 CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/depend: rosidl_typesupport_cpp/drone_c/msg/imu_filter__type_support.cpp
 CMakeFiles/drone_c__rosidl_typesupport_cpp.dir/depend: rosidl_typesupport_cpp/drone_c/msg/motors__type_support.cpp

@@ -71,6 +71,7 @@ CMakeFiles/drone_c: /home/naor/Desktop/naor/study/Thesis/src/drone_c/msg/EulerAn
 CMakeFiles/drone_c: /home/naor/Desktop/naor/study/Thesis/src/drone_c/msg/Motors.msg
 CMakeFiles/drone_c: /home/naor/Desktop/naor/study/Thesis/src/drone_c/msg/ImuFilter.msg
 CMakeFiles/drone_c: /home/naor/Desktop/naor/study/Thesis/src/drone_c/msg/PidConsts.msg
+CMakeFiles/drone_c: /home/naor/Desktop/naor/study/Thesis/src/drone_c/msg/DroneHeader.msg
 CMakeFiles/drone_c: /opt/ros/humble/share/std_msgs/msg/Bool.idl
 CMakeFiles/drone_c: /opt/ros/humble/share/std_msgs/msg/Byte.idl
 CMakeFiles/drone_c: /opt/ros/humble/share/std_msgs/msg/ByteMultiArray.idl

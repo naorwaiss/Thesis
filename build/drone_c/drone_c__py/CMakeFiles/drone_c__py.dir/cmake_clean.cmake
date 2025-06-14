@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "../rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_fastrtps_c.c"
   "../rosidl_generator_py/drone_c/_drone_c_s.ep.rosidl_typesupport_introspection_c.c"
   "../rosidl_generator_py/drone_c/msg/__init__.py"
+  "../rosidl_generator_py/drone_c/msg/_drone_header.py"
+  "../rosidl_generator_py/drone_c/msg/_drone_header_s.c"
   "../rosidl_generator_py/drone_c/msg/_euler_angles.py"
   "../rosidl_generator_py/drone_c/msg/_euler_angles_s.c"
   "../rosidl_generator_py/drone_c/msg/_imu_filter.py"

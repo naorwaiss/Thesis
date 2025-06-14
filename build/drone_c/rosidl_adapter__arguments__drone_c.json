@@ -5,6 +5,7 @@
     "/home/naor/Desktop/naor/study/Thesis/src/drone_c:msg/EulerAngles.msg",
     "/home/naor/Desktop/naor/study/Thesis/src/drone_c:msg/Motors.msg",
     "/home/naor/Desktop/naor/study/Thesis/src/drone_c:msg/ImuFilter.msg",
-    "/home/naor/Desktop/naor/study/Thesis/src/drone_c:msg/PidConsts.msg"
+    "/home/naor/Desktop/naor/study/Thesis/src/drone_c:msg/PidConsts.msg",
+    "/home/naor/Desktop/naor/study/Thesis/src/drone_c:msg/DroneHeader.msg"
   ]
 }
