@@ -229,11 +229,14 @@ class UDPSocketClient(Node):
         self.client.emit_typed(data_bytes, 'z')
     
     def handle_drone_header(self, message: bytes):
-        messages_struct_int = struct.unpack("i" * (len(message) // INT_SIZE), message)
         drone_header_msg = DroneHeader()
-        drone_header_msg.drone_mode = messages_struct_int[7]
-        drone_header_msg.filter_mode = messages_struct_int[8]
+        # Unpack the first 6 bytes as unsigned chars (uint8_t)
+        mac_bytes = struct.unpack('6B', message[:6])
+        drone_header_msg.mac_adress = mac_bytes
+        drone_header_msg.drone_mode = struct.unpack('B', message[6:7])[0]
+        drone_header_msg.drone_filter = struct.unpack('B', message[7:8])[0]
         self.drone_header_pub.publish(drone_header_msg) 
+        
 
 def main(args=None):
     rclpy.init(args=args)

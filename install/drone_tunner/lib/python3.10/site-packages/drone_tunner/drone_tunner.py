@@ -8,7 +8,11 @@ from PyQt5.QtWidgets import (
     QTableWidget, QTableWidgetItem, QHBoxLayout, QHeaderView, QPushButton
 )
 from PyQt5.QtCore import QTimer, pyqtSignal, QObject
-from drone_c.msg import PidConsts
+from drone_c.msg import PidConsts, DroneHeader
+from std_msgs.msg import String
+
+import yaml
+
 
 
 class ROS2Listener(QObject):
@@ -25,6 +29,7 @@ class ROS2Listener(QObject):
             10
         )
         self.pid_to_flash_pub = self.node.create_publisher(PidConsts, 'pid_to_flash', 10)
+
 
     def listener_callback(self, msg):
         # Emit the entire message object
@@ -181,33 +186,57 @@ class DroneTunnerWindow(QWidget):
 class DroneHeader(QWidget):
     def __init__(self, node):
         super().__init__()
+        self.node = node  # Store node reference first
+        
+        # Initialize subscription
+        self.drone_mac_sub = self.node.create_subscription(
+            DroneHeader,  # Using String message type
+            'drone_header',
+            self.drone_header_callback,
+            10
+        )
+        self.node.get_logger().info('DroneHeader subscription created to /drone_header')
+        
+        # Initialize variables
+        self.drone_mac = None
+        self.drone_mode = None
+        self.drone_filter = None
+        
         self.setWindowTitle("Drone Header")
         
+        # Create layouts
         main_layout = QHBoxLayout()
         
-        name_layout = QVBoxLayout()
-        name_label = QLabel("Drone Name:")
-        self.name_value = QLabel("Unknown")
-        name_layout.addWidget(name_label)
-        name_layout.addWidget(self.name_value)
+        # Mode layout
         mode_layout = QVBoxLayout()
         mode_label = QLabel("Drone Mode:")
         self.mode_value = QLabel("Unknown")
         mode_layout.addWidget(mode_label)
         mode_layout.addWidget(self.mode_value)
+        
+        # Filter layout
         filter_layout = QVBoxLayout()
         filter_label = QLabel("Filter:")
         self.filter_value = QLabel("Unknown")
         filter_layout.addWidget(filter_label)
         filter_layout.addWidget(self.filter_value)
-        main_layout.addLayout(name_layout)
+        
+        # Name layout
+        name_layout = QVBoxLayout()
+        name_label = QLabel("Drone Name:")
+        self.name_value = QLabel("Unknown")
+        name_layout.addWidget(name_label)
+        name_layout.addWidget(self.name_value)
+        
+        # Add layouts to main layout in desired order
         main_layout.addLayout(mode_layout)
         main_layout.addLayout(filter_layout)
+        main_layout.addLayout(name_layout)
         
-        # Set the main layout
         self.setLayout(main_layout)
-        self.node = node
-
+    
+    def drone_header_callback(self, msg):
+        print(msg)
 
 def main(args=None):
     rclpy.init(args=args)

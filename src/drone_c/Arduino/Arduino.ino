@@ -103,43 +103,42 @@ float actual_dt = 0.0f;
 // Function prototypes
 void GyroMagCalibration();
 void IMU_init();
-void mapping_controller(char);
 void check_arming_state();
 
 void setup() {
     Serial.begin(115200);
     drone_com.init_com();
-    IMU_init();
+    // IMU_init();
 
-    crsfSerial.begin(CRSF_BAUDRATE, SERIAL_8N1);
-    if (!crsfSerial) {
-        while (1) {
-            Serial.println("Invalid crsfSerial configuration");
-        }
-    }
-    crsf.begin(crsfSerial);
+    // crsfSerial.begin(CRSF_BAUDRATE, SERIAL_8N1);
+    // if (!crsfSerial) {
+        // while (1) {
+            // Serial.println("Invalid crsfSerial configuration");
+        // }
+    // }
+    // crsf.begin(crsfSerial);
     getbot_param(PID_CONSTS, drone_data_header);
     setPID_params(&PID_CONSTS);
-    GyroMagCalibration();
-    motors.Motors_init();
+    // GyroMagCalibration();
+    // motors.Motors_init();
 }
 
 ////////////////////////////////////////////////////////////////////////
 
 void loop() {
     // Update ELRS data: Reading from the receiver and updating controller_data variable.
-    update_controller();
+    // update_controller();
     // Check arming:
     check_arming_state();
     if (imu_timer >= IMU_PERIOD) {
         actual_dt = (double)imu_timer / 1000000.0f;
-        Update_Measurement();
-        std_filter.all_filter();
+        // Update_Measurement();
+        // std_filter.all_filter();
 
-        if (estimated_filter_timer >= STAB_PERIOD) {
-            estimated_state_metude();
-            estimated_filter_timer = 0;
-        }
+        // if (estimated_filter_timer >= STAB_PERIOD) {
+            // estimated_state_metude();
+            // estimated_filter_timer = 0;
+        // }
 
         if (is_armed) {
             // Get Actual rates:

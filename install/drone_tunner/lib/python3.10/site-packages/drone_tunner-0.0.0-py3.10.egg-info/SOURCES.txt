@@ -8,6 +8,7 @@ setup.py
 ../../build/drone_tunner/drone_tunner.egg-info/requires.txt
 ../../build/drone_tunner/drone_tunner.egg-info/top_level.txt
 ../../build/drone_tunner/drone_tunner.egg-info/zip-safe
+config/drone_mac.yaml
 drone_tunner/__init__.py
 drone_tunner/drone_tunner.py
 resource/drone_tunner

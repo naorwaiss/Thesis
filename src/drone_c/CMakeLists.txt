@@ -54,6 +54,7 @@ install(DIRECTORY
   DESTINATION share/${PROJECT_NAME}
 )
 
+
 install(DIRECTORY
   plotjuggler
   DESTINATION share/${PROJECT_NAME}

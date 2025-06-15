@@ -8,7 +8,159 @@ from PyQt5.QtWidgets import (
     QTableWidget, QTableWidgetItem, QHBoxLayout, QHeaderView, QPushButton
 )
 from PyQt5.QtCore import QTimer, pyqtSignal, QObject
-from drone_c.msg import PidConsts
+from drone_c.msg import PidConsts, DroneHeader
+from std_msgs.msg import String
+import struct
+
+import yaml
+import os
+
+
+class DroneConfigYaml:
+    """
+    Class to load and manage the drone configuration from multiple YAML files.
+    Provides methods to access different configuration parameters for drone filters and modes.
+    """
+
+    def __init__(self):
+        self.drone_config = None
+        self.drone_config = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config', 'drone_config.yaml')
+        self.second_config = None
+        self.drone_mac = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config', 'drone_mac.yaml')
+        self.load_configs()
+
+    def load_configs(self):
+        """
+        Load configuration files and validate their contents.
+        The second config file is optional.
+        """
+        try:
+            # Load first config (required)
+            with open(self.drone_config, 'r') as file:
+                self.drone_config = yaml.safe_load(file)
+
+            # Try to load second config (optional)
+            try:
+                with open(self.drone_mac, 'r') as file:
+                    self.drone_mac = yaml.safe_load(file)
+            except FileNotFoundError:
+                print(f"Warning: Second configuration file not found at {self.drone_mac}")
+                self.drone_mac = None
+
+            # Validate configs
+            if not self.validate_configs():
+                raise ValueError("Configuration validation failed")
+
+        except FileNotFoundError as e:
+            raise FileNotFoundError(f"Required configuration file not found: {str(e)}")
+        except yaml.YAMLError as e:
+            raise ValueError(f"Error parsing YAML file: {str(e)}")
+
+    def validate_configs(self):
+        """
+        Validate that configuration files are loaded correctly and contain required fields.
+        The second config file is optional.
+
+        Returns:
+            bool: True if validation passes, False otherwise
+        """
+        try:
+            # Check if first config is loaded and has required fields
+            if not self.drone_config:
+                print("Error: First configuration file is empty")
+                return False
+
+            if 'drone_filter' not in self.drone_config or 'drone_mode' not in self.drone_config:
+                print("Error: First configuration missing required fields (drone_filter or drone_mode)")
+                return False
+
+            if not self.drone_mac:
+                print("Error: Second configuration file is empty")
+                return False
+            return True
+
+        except Exception as e:
+            print(f"Error during configuration validation: {str(e)}")
+            return False
+
+    def get_drone_name(self, mac_adress) -> str:
+        """
+        Get the drone name from the MAC address.
+        """
+        try:
+            if not self.drone_mac:
+                return None
+                
+            # Convert numpy array to list if needed
+            if hasattr(mac_adress, 'tolist'):
+                mac_bytes = mac_adress.tolist()
+            else:
+                mac_bytes = mac_adress
+                
+            # Look for matching MAC address
+            for drone_name, drone_info in self.drone_mac.items():
+                if 'mac_adress' in drone_info:
+                    # Convert stored MAC address to list if it's not already
+                    stored_mac = drone_info['mac_adress']
+                    if hasattr(stored_mac, 'tolist'):
+                        stored_mac = stored_mac.tolist()
+                    
+                    # Compare the MAC addresses
+                    if stored_mac == mac_bytes:
+                        return drone_name
+            return None
+            
+        except Exception as e:
+            print(f"Error getting drone name: {str(e)}")
+            return None
+
+    def get_mode_name(self, mode_value) -> str:
+        """
+        Get the mode name from its numeric value.
+        
+        Args:
+            mode_value (int): The numeric mode value
+            
+        Returns:
+            str: The mode name if found, None otherwise
+        """
+        try:
+            if not self.drone_config or 'drone_mode' not in self.drone_config:
+                return None
+                
+            # Look for matching mode value
+            for mode_name, value in self.drone_config['drone_mode'].items():
+                if value == mode_value:
+                    return mode_name
+            return None
+            
+        except Exception as e:
+            print(f"Error getting mode name: {str(e)}")
+            return None
+
+    def get_filter_name(self, filter_value) -> str:
+        """
+        Get the filter name from its numeric value.
+        
+        Args:
+            filter_value (int): The numeric filter value
+            
+        Returns:
+            str: The filter name if found, None otherwise
+        """
+        try:
+            if not self.drone_config or 'drone_filter' not in self.drone_config:
+                return None
+                
+            # Look for matching filter value
+            for filter_name, value in self.drone_config['drone_filter'].items():
+                if value == filter_value:
+                    return filter_name
+            return None
+            
+        except Exception as e:
+            print(f"Error getting filter name: {str(e)}")
+            return None
 
 
 class ROS2Listener(QObject):
@@ -31,6 +183,93 @@ class ROS2Listener(QObject):
         self.message_received.emit(msg)
 
 
+class DroneHeaderWidget(QWidget):
+    def __init__(self, node, drone_config):
+        super().__init__()
+        self.node = node  # Store node reference first
+        self.drone_config = drone_config  # Store drone_config reference
+        
+        # Initialize subscription
+        self.drone_mac_sub = self.node.create_subscription(
+            DroneHeader,  # Using String message type
+            'drone_header',
+            self.drone_header_callback,
+            10
+        )
+        self.node.get_logger().info('DroneHeader subscription created to /drone_header')
+        
+        # Initialize variables
+        self.drone_mac = None
+        self.drone_mac_prev = None
+        self.drone_mode = None
+        self.drone_filter = None
+        self.drone_name = None
+
+        self.setWindowTitle("Drone Header")
+        
+        # Create layouts
+        main_layout = QHBoxLayout()
+        
+        # Mode layout
+        mode_layout = QVBoxLayout()
+        mode_label = QLabel("Drone Mode:")
+        self.mode_value = QLabel("Unknown")
+        mode_layout.addWidget(mode_label)
+        mode_layout.addWidget(self.mode_value)
+        
+        # Filter layout
+        filter_layout = QVBoxLayout()
+        filter_label = QLabel("Filter:")
+        self.filter_value = QLabel("Unknown")
+        filter_layout.addWidget(filter_label)
+        filter_layout.addWidget(self.filter_value)
+        
+        # Name layout
+        name_layout = QVBoxLayout()
+        name_label = QLabel("Drone Name:")
+        self.name_value = QLabel("Unknown")
+        name_layout.addWidget(name_label)
+        name_layout.addWidget(self.name_value)
+        
+        # Add layouts to main layout in desired order
+        main_layout.addLayout(mode_layout)
+        main_layout.addLayout(filter_layout)
+        main_layout.addLayout(name_layout)
+        
+        self.setLayout(main_layout)
+
+    def drone_header_callback(self, msg):
+        self.drone_mac = msg.mac_adress
+        self.drone_mode = msg.drone_mode
+        self.drone_filter = msg.drone_filter
+        
+        # Get names from config if available
+        try:
+            if self.drone_config:
+                # Get drone name
+                if self.drone_config.drone_mac:
+                    self.drone_name = self.drone_config.get_drone_name(self.drone_mac)
+                
+                # Get mode name
+                mode_name = self.drone_config.get_mode_name(self.drone_mode)
+                if mode_name:
+                    self.drone_mode = mode_name
+                
+                # Get filter name
+                filter_name = self.drone_config.get_filter_name(self.drone_filter)
+                if filter_name:
+                    self.drone_filter = filter_name
+                    
+        except Exception as e:
+            print(f"Error getting names from config: {str(e)}")
+            self.drone_name = None
+        
+        # Update UI labels
+        self.mode_value.setText(str(self.drone_mode))
+        self.filter_value.setText(str(self.drone_filter))
+        self.name_value.setText(str(self.drone_name if self.drone_name else self.drone_mac))
+
+
 class DroneTunnerWindow(QWidget):
     def __init__(self, node):
         super().__init__()
@@ -41,8 +280,8 @@ class DroneTunnerWindow(QWidget):
         self.values_updated = False
 
         # Create header widget
-        self.header = DroneHeader(node)
-
+        self.drone_config = DroneConfigYaml()
+        self.header = DroneHeaderWidget(node, self.drone_config)
         # Message Label with initial color
         self.label = QLabel("Waiting for messages...")
         self.label.setStyleSheet("color: black;")  # Initial color
@@ -178,41 +417,9 @@ class DroneTunnerWindow(QWidget):
             self.set_verification_status(False)
 
 
-class DroneHeader(QWidget):
-    def __init__(self, node):
-        super().__init__()
-        self.setWindowTitle("Drone Header")
-        
-        main_layout = QHBoxLayout()
-        
-        name_layout = QVBoxLayout()
-        name_label = QLabel("Drone Name:")
-        self.name_value = QLabel("Unknown")
-        name_layout.addWidget(name_label)
-        name_layout.addWidget(self.name_value)
-        mode_layout = QVBoxLayout()
-        mode_label = QLabel("Drone Mode:")
-        self.mode_value = QLabel("Unknown")
-        mode_layout.addWidget(mode_label)
-        mode_layout.addWidget(self.mode_value)
-        filter_layout = QVBoxLayout()
-        filter_label = QLabel("Filter:")
-        self.filter_value = QLabel("Unknown")
-        filter_layout.addWidget(filter_label)
-        filter_layout.addWidget(self.filter_value)
-        main_layout.addLayout(name_layout)
-        main_layout.addLayout(mode_layout)
-        main_layout.addLayout(filter_layout)
-        
-        # Set the main layout
-        self.setLayout(main_layout)
-        self.node = node
-
-
 def main(args=None):
     rclpy.init(args=args)
     node = rclpy.create_node('drone_tunner_gui_node')
-
     app = QApplication(sys.argv)
     gui = DroneTunnerWindow(node)
 
