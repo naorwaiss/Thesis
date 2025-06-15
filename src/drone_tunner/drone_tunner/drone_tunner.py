@@ -14,6 +14,7 @@ import struct
 
 import yaml
 import os
+from ament_index_python.packages import get_package_share_directory
 
 
 class DroneConfigYaml:
@@ -24,9 +25,7 @@ class DroneConfigYaml:
 
     def __init__(self):
         self.drone_config = None
-        self.drone_config = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config', 'drone_config.yaml')
-        self.second_config = None
-        self.drone_mac = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config', 'drone_mac.yaml')
+        self.drone_mac = None
         self.load_configs()
 
     def load_configs(self):
@@ -35,6 +34,13 @@ class DroneConfigYaml:
         The second config file is optional.
         """
         try:
+            # Get package share directory
+            package_share_dir = get_package_share_directory('drone_tunner')
+            
+            # Set paths to config files
+            self.drone_config = os.path.join(package_share_dir, 'config', 'drone_config.yaml')
+            self.drone_mac = os.path.join(package_share_dir, 'config', 'drone_mac.yaml')
+
             # Load first config (required)
             with open(self.drone_config, 'r') as file:
                 self.drone_config = yaml.safe_load(file)
