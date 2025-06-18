@@ -1,0 +1,35 @@
+[0.881s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/src/controller': PYTHONPATH=/home/naor/Desktop/naor/study/Thesis/build/controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/naor/Desktop/naor/study/Thesis/install/controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/controller build --build-base /home/naor/Desktop/naor/study/Thesis/build/controller/build install --record /home/naor/Desktop/naor/study/Thesis/build/controller/install.log --single-version-externally-managed install_data
+[1.177s] running egg_info
+[1.197s] writing ../../build/controller/controller.egg-info/PKG-INFO
+[1.197s] writing dependency_links to ../../build/controller/controller.egg-info/dependency_links.txt
+[1.197s] writing entry points to ../../build/controller/controller.egg-info/entry_points.txt
+[1.197s] writing requirements to ../../build/controller/controller.egg-info/requires.txt
+[1.197s] writing top-level names to ../../build/controller/controller.egg-info/top_level.txt
+[1.236s] reading manifest file '../../build/controller/controller.egg-info/SOURCES.txt'
+[1.236s] adding license file 'LICENSE'
+[1.237s] writing manifest file '../../build/controller/controller.egg-info/SOURCES.txt'
+[1.238s] running build
+[1.238s] running build_py
+[1.238s] copying controller/__init__.py -> /home/naor/Desktop/naor/study/Thesis/build/controller/build/lib/controller
+[1.238s] copying controller/controller_udp_ros.py -> /home/naor/Desktop/naor/study/Thesis/build/controller/build/lib/controller
+[1.239s] copying controller/rtcom/__init__.py -> /home/naor/Desktop/naor/study/Thesis/build/controller/build/lib/controller/rtcom
+[1.239s] copying controller/rtcom/rtcom_client.py -> /home/naor/Desktop/naor/study/Thesis/build/controller/build/lib/controller/rtcom
+[1.239s] copying controller/rtcom/utils.py -> /home/naor/Desktop/naor/study/Thesis/build/controller/build/lib/controller/rtcom
+[1.239s] copying controller/rtcom/core.py -> /home/naor/Desktop/naor/study/Thesis/build/controller/build/lib/controller/rtcom
+[1.239s] copying controller/rtcom/rtcom_server.py -> /home/naor/Desktop/naor/study/Thesis/build/controller/build/lib/controller/rtcom
+[1.240s] running install
+[1.245s] running install_lib
+[1.259s] copying /home/naor/Desktop/naor/study/Thesis/build/controller/build/lib/controller/controller_udp_ros.py -> /home/naor/Desktop/naor/study/Thesis/install/controller/lib/python3.10/site-packages/controller
+[1.260s] byte-compiling /home/naor/Desktop/naor/study/Thesis/install/controller/lib/python3.10/site-packages/controller/controller_udp_ros.py to controller_udp_ros.cpython-310.pyc
+[1.260s] running install_data
+[1.260s] copying resource/controller -> /home/naor/Desktop/naor/study/Thesis/install/controller/share/ament_index/resource_index/packages
+[1.261s] copying package.xml -> /home/naor/Desktop/naor/study/Thesis/install/controller/share/controller
+[1.261s] copying launch/joys.launch.py -> /home/naor/Desktop/naor/study/Thesis/install/controller/share/controller/launch
+[1.261s] copying config/joystick_config.yaml -> /home/naor/Desktop/naor/study/Thesis/install/controller/share/controller/config
+[1.261s] running install_egg_info
+[1.276s] removing '/home/naor/Desktop/naor/study/Thesis/install/controller/lib/python3.10/site-packages/controller-0.0.0-py3.10.egg-info' (and everything under it)
+[1.276s] Copying ../../build/controller/controller.egg-info to /home/naor/Desktop/naor/study/Thesis/install/controller/lib/python3.10/site-packages/controller-0.0.0-py3.10.egg-info
+[1.276s] running install_scripts
+[1.391s] Installing controller_udp_ros script to /home/naor/Desktop/naor/study/Thesis/install/controller/lib/controller
+[1.392s] writing list of installed files to '/home/naor/Desktop/naor/study/Thesis/build/controller/install.log'
+[1.424s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/src/controller' returned '0': PYTHONPATH=/home/naor/Desktop/naor/study/Thesis/build/controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/naor/Desktop/naor/study/Thesis/install/controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/controller build --build-base /home/naor/Desktop/naor/study/Thesis/build/controller/build install --record /home/naor/Desktop/naor/study/Thesis/build/controller/install.log --single-version-externally-managed install_data

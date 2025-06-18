@@ -1,0 +1,17 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from drone_c/msg/DroneHeader.msg
+// generated code does not contain a copyright notice
+
+
+module drone_c {
+  module msg {
+    typedef int32 int32__6[6];
+    struct DroneHeader {
+      int32__6 mac_adress;
+
+      int32 drone_mode;
+
+      int32 drone_filter;
+    };
+  };
+};

@@ -1,0 +1,233 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-1868c7bc9c333dd151e3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				},
+				{
+					"build" : "drone_c__py",
+					"jsonFile" : "directory-drone_c__py-e52024c25b87a3bed3b1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/naor/Desktop/naor/study/Thesis/build/drone_c/drone_c__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "drone_c",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_drone_c_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_drone_c_egg-f826b35964dfe972cff5.json",
+					"name" : "ament_cmake_python_build_drone_c_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_drone_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_drone_c-5900b94f7f08e7fd6c72.json",
+					"name" : "ament_cmake_python_copy_drone_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "drone_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-drone_c-d30f190f25c0d847d9b9.json",
+					"name" : "drone_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "drone_c__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-drone_c__cpp-a27e22f622b4fef78072.json",
+					"name" : "drone_c__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "drone_c__py::@fde9eaa326123d7913a0",
+					"jsonFile" : "target-drone_c__py-28eab84ce6d385929e83.json",
+					"name" : "drone_c__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "drone_c__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-drone_c__rosidl_generator_c-f0ae176a06742a8b6b1b.json",
+					"name" : "drone_c__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "drone_c__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-drone_c__rosidl_generator_py-43f583ce7ea99927aef5.json",
+					"name" : "drone_c__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "drone_c__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-drone_c__rosidl_typesupport_c-c37a0b36b37915ef1df5.json",
+					"name" : "drone_c__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "drone_c__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-drone_c__rosidl_typesupport_c__pyext-fd6786f909e3967087e1.json",
+					"name" : "drone_c__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "drone_c__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-drone_c__rosidl_typesupport_cpp-90f6ff19a7e5a6cbc939.json",
+					"name" : "drone_c__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "drone_c__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-drone_c__rosidl_typesupport_fastrtps_c-97e2c38cb3d074732e18.json",
+					"name" : "drone_c__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "drone_c__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-drone_c__rosidl_typesupport_fastrtps_c__pyext-5fd3c3589a725a7f86fc.json",
+					"name" : "drone_c__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "drone_c__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-drone_c__rosidl_typesupport_fastrtps_cpp-04af6de41ecfe71c3a68.json",
+					"name" : "drone_c__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "drone_c__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-drone_c__rosidl_typesupport_introspection_c-75151e78939907bd2da1.json",
+					"name" : "drone_c__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "drone_c__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-drone_c__rosidl_typesupport_introspection_c__pyext-58a08e4bda3cf8341e98.json",
+					"name" : "drone_c__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "drone_c__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-drone_c__rosidl_typesupport_introspection_cpp-3df368c8931465ae94f2.json",
+					"name" : "drone_c__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "drone_c_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-drone_c_uninstall-de8a99ae08dd9ce4bbab.json",
+					"name" : "drone_c_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-e57c2a9ff71adfc58d89.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/naor/Desktop/naor/study/Thesis/build/drone_c",
+		"source" : "/home/naor/Desktop/naor/study/Thesis/src/drone_c"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

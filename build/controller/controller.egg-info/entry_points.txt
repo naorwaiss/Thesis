@@ -1,0 +1,2 @@
+[console_scripts]
+controller_udp_ros = controller.controller_udp_ros:main

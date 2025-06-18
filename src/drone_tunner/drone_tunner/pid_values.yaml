@@ -1,0 +1,5 @@
+rate_roll: [0.0, 0.0, 0.0]
+rate_pitch: [0.0, 0.0, 0.0]
+stablize_roll: [0.0, 0.0, 0.0]
+stablize_pitch: [0.0, 0.0, 0.0]
+rate_yaw: [0.0, 0.0, 0.0] 

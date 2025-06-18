@@ -1,0 +1,27 @@
+[0.761s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/src/drone_tunner': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/study/Thesis/install/drone_c:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/robot_description:/home/naor/Desktop/naor/study/Thesis/install/ground_bot:/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan:/home/naor/Desktop/naor/study/Thesis/install/hamma_bot LD_LIBRARY_PATH=/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib:/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib:/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/lib:/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/opt/openvdb_vendor/lib:/opt/ros/humble/lib PYTHONPATH=/home/naor/Desktop/naor/study/Thesis/build/drone_tunner/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/naor/Desktop/naor/study/Thesis/install/drone_tunner/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/drone_tunner build --build-base /home/naor/Desktop/naor/study/Thesis/build/drone_tunner/build install --record /home/naor/Desktop/naor/study/Thesis/build/drone_tunner/install.log --single-version-externally-managed install_data
+[0.972s] running egg_info
+[0.986s] writing ../../build/drone_tunner/drone_tunner.egg-info/PKG-INFO
+[0.987s] writing dependency_links to ../../build/drone_tunner/drone_tunner.egg-info/dependency_links.txt
+[0.987s] writing entry points to ../../build/drone_tunner/drone_tunner.egg-info/entry_points.txt
+[0.987s] writing requirements to ../../build/drone_tunner/drone_tunner.egg-info/requires.txt
+[0.987s] writing top-level names to ../../build/drone_tunner/drone_tunner.egg-info/top_level.txt
+[1.015s] reading manifest file '../../build/drone_tunner/drone_tunner.egg-info/SOURCES.txt'
+[1.016s] writing manifest file '../../build/drone_tunner/drone_tunner.egg-info/SOURCES.txt'
+[1.016s] running build
+[1.016s] running build_py
+[1.016s] copying drone_tunner/__init__.py -> /home/naor/Desktop/naor/study/Thesis/build/drone_tunner/build/lib/drone_tunner
+[1.016s] copying drone_tunner/drone_tunner.py -> /home/naor/Desktop/naor/study/Thesis/build/drone_tunner/build/lib/drone_tunner
+[1.017s] running install
+[1.021s] running install_lib
+[1.039s] running install_data
+[1.039s] copying resource/drone_tunner -> /home/naor/Desktop/naor/study/Thesis/install/drone_tunner/share/ament_index/resource_index/packages
+[1.039s] copying package.xml -> /home/naor/Desktop/naor/study/Thesis/install/drone_tunner/share/drone_tunner
+[1.039s] copying config/drone_mac.yaml -> /home/naor/Desktop/naor/study/Thesis/install/drone_tunner/share/drone_tunner/config
+[1.039s] copying config/drone_config.yaml -> /home/naor/Desktop/naor/study/Thesis/install/drone_tunner/share/drone_tunner/config
+[1.039s] running install_egg_info
+[1.059s] removing '/home/naor/Desktop/naor/study/Thesis/install/drone_tunner/lib/python3.10/site-packages/drone_tunner-0.0.0-py3.10.egg-info' (and everything under it)
+[1.059s] Copying ../../build/drone_tunner/drone_tunner.egg-info to /home/naor/Desktop/naor/study/Thesis/install/drone_tunner/lib/python3.10/site-packages/drone_tunner-0.0.0-py3.10.egg-info
+[1.060s] running install_scripts
+[1.179s] Installing drone_tunner script to /home/naor/Desktop/naor/study/Thesis/install/drone_tunner/lib/drone_tunner
+[1.179s] writing list of installed files to '/home/naor/Desktop/naor/study/Thesis/build/drone_tunner/install.log'
+[1.204s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/src/drone_tunner' returned '0': CMAKE_PREFIX_PATH=/home/naor/Desktop/naor/study/Thesis/install/drone_c:/home/naor/Desktop/naor/study/Thesis/install/roller:/home/naor/Desktop/naor/study/Thesis/install/robot_description:/home/naor/Desktop/naor/study/Thesis/install/ground_bot:/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan:/home/naor/Desktop/naor/study/Thesis/install/hamma_bot LD_LIBRARY_PATH=/home/naor/Desktop/naor/study/Thesis/install/drone_c/lib:/home/naor/Desktop/naor/study/Thesis/install/ground_bot/lib:/home/naor/Desktop/naor/study/Thesis/install/pointcloud_to_laserscan/lib:/home/naor/Desktop/naor/study/Thesis/install/hamma_bot/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/opt/openvdb_vendor/lib:/opt/ros/humble/lib PYTHONPATH=/home/naor/Desktop/naor/study/Thesis/build/drone_tunner/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/naor/Desktop/naor/study/Thesis/install/drone_tunner/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/drone_tunner build --build-base /home/naor/Desktop/naor/study/Thesis/build/drone_tunner/build install --record /home/naor/Desktop/naor/study/Thesis/build/drone_tunner/install.log --single-version-externally-managed install_data
