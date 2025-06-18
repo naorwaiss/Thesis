@@ -1,4 +1,6 @@
 from setuptools import find_packages, setup
+import os
+from glob import glob
 
 package_name = 'controller'
 
@@ -11,7 +13,8 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         # Include the launch files
-        ('share/' + package_name + '/launch', ['launch/joystick_launch.py']),
+        ('share/' + package_name + '/launch', ['launch/joys.launch.py']),
+        ('share/' + package_name + '/config', ['config/joystick_config.yaml']),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -21,7 +24,7 @@ setup(
     license='Apache-2.0',
     entry_points={
         'console_scripts': [
+            'controller_udp_ros = controller.controller_udp_ros:main',
         ],
     },
 )
-
