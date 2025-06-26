@@ -18,8 +18,8 @@ def generate_launch_description():
         description='Launch PlotJuggler with the configuration file'
     )
 
-    # Create the nodes
     rtcom_node = Node(
+        #comunication betwwen the ros2 and the teensy
         package='drone_c',
         executable='rtcom_teensy_ros.py',
         name='rtcom_teensy_ros',
@@ -27,6 +27,7 @@ def generate_launch_description():
     )
 
     drone_tunner_node = Node(
+        #a qt applicatino base ros2 that allow tuning the drone parameters
         package='drone_tunner',
         executable='drone_tunner',
         name='drone_tunner',
@@ -34,6 +35,7 @@ def generate_launch_description():
     )
 
     plotjuggler_node = Node(
+        #a tool for visulizing the drone data
         package='plotjuggler',
         executable='plotjuggler',
         name='plotjuggler',

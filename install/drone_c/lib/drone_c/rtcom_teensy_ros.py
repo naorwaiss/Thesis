@@ -26,7 +26,7 @@ class UDPSocketClient(Node):
         self.mag_pub = self.create_publisher(MagneticField, 'magnetometer_data', 10)
         self.quaternion_pub = self.create_publisher(Quaternion, 'quaternion_data', 10)
         self.euler_pub = self.create_publisher(EulerAngles, 'euler_angles_data', 10)
-        self.imu_pub_pololu = self.create_publisher(Imu, 'pololu_imu_data', 10)
+        self.imu_data = self.create_publisher(Imu, 'imu_data', 10)
         self.rc_pub = self.create_publisher(Int32MultiArray, 'rc_channel_data', 10)
         self.desire_rate_pub = self.create_publisher(Float32MultiArray, 'desire_rate', 10)
         self.desire_stab_pub = self.create_publisher(Float32MultiArray, 'desire_stab', 10)
@@ -96,7 +96,11 @@ class UDPSocketClient(Node):
         imu_msg.angular_velocity.x = messages_struct_float[3]
         imu_msg.angular_velocity.y = messages_struct_float[4]
         imu_msg.angular_velocity.z = messages_struct_float[5]
-        self.imu_pub_pololu.publish(imu_msg)
+        # imu_msg.orientation.x = self.quaternion_msg.x
+        # imu_msg.orientation.y = self.quaternion_msg.y
+        # imu_msg.orientation.z = self.quaternion_msg.z
+        # imu_msg.orientation.w = self.quaternion_msg.w
+        self.imu_data.publish(imu_msg)
 
     def handle_rc(self, message: bytes):
         message_struct_int = struct.unpack("i" * (len(message) // INT_SIZE), message)
@@ -224,13 +228,11 @@ class UDPSocketClient(Node):
         data.extend(msg.stablize_roll)
         data.extend(msg.rate_yaw)
         packed_data = struct.pack('f' * len(data), *data)
-        # Convert the packed data to a list of bytes
         data_bytes = list(packed_data)
         self.client.emit_typed(data_bytes, 'z')
     
     def handle_drone_header(self, message: bytes):
         drone_header_msg = DroneHeader()
-        # Unpack the first 6 bytes as unsigned chars (uint8_t)
         mac_bytes = struct.unpack('6B', message[:6])
         drone_header_msg.mac_adress = mac_bytes
         drone_header_msg.drone_mode = struct.unpack('B', message[6:7])[0]

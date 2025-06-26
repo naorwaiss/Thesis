@@ -150,7 +150,7 @@ void loop() {
                 t_PID_s = (double)stab_timer / 1000000.0f;
                 drone_data_header.drone_mode = DroneMode::MODE_STABILIZE;
                 mapping_controller();
-                PID_stab_out = PID_stab(desired_attitude, estimated_attitude, t_PID_s);
+                PID_stab_out = PID_stab(desired_attitude, estimated_attitude, estimated_rate, t_PID_s);
                 PID_stab_out.PID_ret.pitch = -1 * PID_stab_out.PID_ret.pitch;
                 desired_rate = PID_stab_out.PID_ret;
                 desired_rate.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_RATE, -MAX_RATE);
