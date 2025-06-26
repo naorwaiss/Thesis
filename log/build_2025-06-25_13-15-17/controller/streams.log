@@ -1,0 +1,33 @@
+[0.728s] Invoking command in '/home/naor/Desktop/naor/study/Thesis/src/controller': PYTHONPATH=/home/naor/Desktop/naor/study/Thesis/build/controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/naor/Desktop/naor/study/Thesis/install/controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/controller build --build-base /home/naor/Desktop/naor/study/Thesis/build/controller/build install --record /home/naor/Desktop/naor/study/Thesis/build/controller/install.log --single-version-externally-managed install_data
+[0.918s] running egg_info
+[0.929s] writing ../../build/controller/controller.egg-info/PKG-INFO
+[0.930s] writing dependency_links to ../../build/controller/controller.egg-info/dependency_links.txt
+[0.930s] writing entry points to ../../build/controller/controller.egg-info/entry_points.txt
+[0.930s] writing requirements to ../../build/controller/controller.egg-info/requires.txt
+[0.930s] writing top-level names to ../../build/controller/controller.egg-info/top_level.txt
+[0.956s] reading manifest file '../../build/controller/controller.egg-info/SOURCES.txt'
+[0.956s] adding license file 'LICENSE'
+[0.957s] writing manifest file '../../build/controller/controller.egg-info/SOURCES.txt'
+[0.957s] running build
+[0.957s] running build_py
+[0.957s] copying controller/__init__.py -> /home/naor/Desktop/naor/study/Thesis/build/controller/build/lib/controller
+[0.957s] copying controller/controller_udp_ros.py -> /home/naor/Desktop/naor/study/Thesis/build/controller/build/lib/controller
+[0.958s] copying controller/rtcom/__init__.py -> /home/naor/Desktop/naor/study/Thesis/build/controller/build/lib/controller/rtcom
+[0.958s] copying controller/rtcom/rtcom_client.py -> /home/naor/Desktop/naor/study/Thesis/build/controller/build/lib/controller/rtcom
+[0.958s] copying controller/rtcom/utils.py -> /home/naor/Desktop/naor/study/Thesis/build/controller/build/lib/controller/rtcom
+[0.958s] copying controller/rtcom/core.py -> /home/naor/Desktop/naor/study/Thesis/build/controller/build/lib/controller/rtcom
+[0.959s] copying controller/rtcom/rtcom_server.py -> /home/naor/Desktop/naor/study/Thesis/build/controller/build/lib/controller/rtcom
+[0.959s] running install
+[0.962s] running install_lib
+[0.975s] running install_data
+[0.975s] copying resource/controller -> /home/naor/Desktop/naor/study/Thesis/install/controller/share/ament_index/resource_index/packages
+[0.975s] copying package.xml -> /home/naor/Desktop/naor/study/Thesis/install/controller/share/controller
+[0.975s] copying launch/joys.launch.py -> /home/naor/Desktop/naor/study/Thesis/install/controller/share/controller/launch
+[0.975s] copying config/joystick_config.yaml -> /home/naor/Desktop/naor/study/Thesis/install/controller/share/controller/config
+[0.976s] running install_egg_info
+[0.988s] removing '/home/naor/Desktop/naor/study/Thesis/install/controller/lib/python3.10/site-packages/controller-0.0.0-py3.10.egg-info' (and everything under it)
+[0.989s] Copying ../../build/controller/controller.egg-info to /home/naor/Desktop/naor/study/Thesis/install/controller/lib/python3.10/site-packages/controller-0.0.0-py3.10.egg-info
+[0.989s] running install_scripts
+[1.089s] Installing controller_udp_ros script to /home/naor/Desktop/naor/study/Thesis/install/controller/lib/controller
+[1.089s] writing list of installed files to '/home/naor/Desktop/naor/study/Thesis/build/controller/install.log'
+[1.110s] Invoked command in '/home/naor/Desktop/naor/study/Thesis/src/controller' returned '0': PYTHONPATH=/home/naor/Desktop/naor/study/Thesis/build/controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/naor/Desktop/naor/study/Thesis/install/controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/controller build --build-base /home/naor/Desktop/naor/study/Thesis/build/controller/build install --record /home/naor/Desktop/naor/study/Thesis/build/controller/install.log --single-version-externally-managed install_data
