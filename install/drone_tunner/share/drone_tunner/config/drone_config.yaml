@@ -1,8 +1,0 @@
-drone_filter:
-  compclass: 1
-  magdwick: 2
-  kalman: 3
-
-drone_mode:
-  acro: 1
-  stablize: 2

@@ -1,5 +1,0 @@
-joystick_config:
-  - name: "Logitech Extreme 3D pro"
-    node_name: "joystick_drone"
-
-

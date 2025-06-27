@@ -21,10 +21,11 @@ class UDPSocketClient(Node):
         self.client = RTComClient()
         time.sleep(0.05)  # Add small delay before connection
         self.client.connect(address=('192.168.1.199', 8888), reconnect=True, block=True)
+        self.quaternion_data = [0.0, 0.0, 0.0, 0.0]
 
         # Define ROS 2 Publishers
         self.mag_pub = self.create_publisher(MagneticField, 'magnetometer_data', 10)
-        self.quaternion_pub = self.create_publisher(Quaternion, 'quaternion_data', 10)
+        # self.quaternion_pub = self.create_publisher(Quaternion, 'quaternion_data', 10)
         self.euler_pub = self.create_publisher(EulerAngles, 'euler_angles_data', 10)
         self.imu_data = self.create_publisher(Imu, 'imu_data', 10)
         self.rc_pub = self.create_publisher(Int32MultiArray, 'rc_channel_data', 10)
@@ -72,12 +73,10 @@ class UDPSocketClient(Node):
 
     def handle_quaternion(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
-        quaternion_msg = Quaternion()
-        quaternion_msg.x = messages_struct_float[0]
-        quaternion_msg.y = messages_struct_float[1]
-        quaternion_msg.z = messages_struct_float[2]
-        quaternion_msg.w = messages_struct_float[3]
-        self.quaternion_pub.publish(quaternion_msg)
+        self.quaternion_data[0] = messages_struct_float[0]
+        self.quaternion_data[1] = messages_struct_float[1]
+        self.quaternion_data[2] = messages_struct_float[2]
+        self.quaternion_data[3] = messages_struct_float[3]
 
     def handle_euler(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
@@ -96,10 +95,10 @@ class UDPSocketClient(Node):
         imu_msg.angular_velocity.x = messages_struct_float[3]
         imu_msg.angular_velocity.y = messages_struct_float[4]
         imu_msg.angular_velocity.z = messages_struct_float[5]
-        # imu_msg.orientation.x = self.quaternion_msg.x
-        # imu_msg.orientation.y = self.quaternion_msg.y
-        # imu_msg.orientation.z = self.quaternion_msg.z
-        # imu_msg.orientation.w = self.quaternion_msg.w
+        imu_msg.orientation.x = self.quaternion_data[0]
+        imu_msg.orientation.y = self.quaternion_data[1]
+        imu_msg.orientation.z = self.quaternion_data[2]
+        imu_msg.orientation.w = self.quaternion_data[3]
         self.imu_data.publish(imu_msg)
 
     def handle_rc(self, message: bytes):
