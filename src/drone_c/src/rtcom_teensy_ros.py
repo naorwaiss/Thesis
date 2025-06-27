@@ -25,7 +25,6 @@ class UDPSocketClient(Node):
 
         # Define ROS 2 Publishers
         self.mag_pub = self.create_publisher(MagneticField, 'magnetometer_data', 10)
-        # self.quaternion_pub = self.create_publisher(Quaternion, 'quaternion_data', 10)
         self.euler_pub = self.create_publisher(EulerAngles, 'euler_angles_data', 10)
         self.imu_data = self.create_publisher(Imu, 'imu_data', 10)
         self.rc_pub = self.create_publisher(Int32MultiArray, 'rc_channel_data', 10)
