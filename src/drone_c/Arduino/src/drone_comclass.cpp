@@ -193,7 +193,7 @@ void Drone_com::convert_Measurment_to_byte() {
     }
     drone_header_byte[6] = static_cast<uint8_t>(_drone_data_header->drone_mode);
     drone_header_byte[7] = static_cast<uint8_t>(_drone_data_header->filter_mode);
-
+    drone_header_byte[8] = static_cast<uint8_t>(_drone_data_header->is_armed);
 }
 
 void Drone_com::emit_data() {

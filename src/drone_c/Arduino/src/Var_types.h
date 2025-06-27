@@ -221,6 +221,7 @@ typedef struct {
     char name[10];
     DroneMode drone_mode = DroneMode::MODE_RATE;
     DroneFilter filter_mode = DroneFilter::COMPCLASS;
+    bool is_armed = false;
 } Drone_Data_t;
 
 inline void getMAC(uint8_t* pMacAddress) {

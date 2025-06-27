@@ -84,7 +84,7 @@ class Drone_com {
     uint8_t motor_pwm_byte[sizeof(float) * 4];
     float* pid_const_Data = (float*)calloc(15, sizeof(float));
     uint8_t pid_consts_byte[sizeof(float) * 15];
-    uint8_t drone_header_byte[8];
+    uint8_t drone_header_byte[9];
     
 
     static void onConnection(RTComSession& session);

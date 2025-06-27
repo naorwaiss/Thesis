@@ -210,6 +210,7 @@ class DroneHeaderWidget(QWidget):
         self.drone_mode = None
         self.drone_filter = None
         self.drone_name = None
+        self.arm_state = None
 
         self.setWindowTitle("Drone Header")
         
@@ -236,13 +237,29 @@ class DroneHeaderWidget(QWidget):
         self.name_value = QLabel("Unknown")
         name_layout.addWidget(name_label)
         name_layout.addWidget(self.name_value)
+
+        # State layout
+        state_layout = QVBoxLayout()
+        state_label = QLabel("Arm State:")
+        self.state_value = QLabel("Unknown")
+        state_layout.addWidget(state_label)
+        state_layout.addWidget(self.state_value)
         
         # Add layouts to main layout in desired order
         main_layout.addLayout(mode_layout)
         main_layout.addLayout(filter_layout)
         main_layout.addLayout(name_layout)
+        main_layout.addLayout(state_layout)
         
         self.setLayout(main_layout)
+
+    def get_arm_state(self, arm_state)->str:
+        if arm_state == 0:
+            return "Disarmed"
+        elif arm_state == 1:
+            return "Armed"
+        else:
+            return "Unknown"
 
     def drone_header_callback(self, msg):
         self.drone_mac = msg.mac_adress
@@ -274,7 +291,7 @@ class DroneHeaderWidget(QWidget):
         self.mode_value.setText(str(self.drone_mode))
         self.filter_value.setText(str(self.drone_filter))
         self.name_value.setText(str(self.drone_name if self.drone_name else self.drone_mac))
-
+        self.state_value.setText(self.get_arm_state(self.arm_state))
 
 class DroneTunnerWindow(QWidget):
     def __init__(self, node):
