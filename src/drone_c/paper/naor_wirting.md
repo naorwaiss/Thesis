@@ -1,5 +1,7 @@
 # Research Topics to Study
 
+
+
 ## Reinforcement Learning with PID Control
 - **Adaptive Dynamic Programming**: Understanding how RL can be combined with PID controllers for adaptive control systems
 - **Online vs Offline Learning**: Exploring the differences between real-time learning and batch learning approaches

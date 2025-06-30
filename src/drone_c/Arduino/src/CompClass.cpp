@@ -14,14 +14,15 @@ void CompFilter::UpdateQ(Measurement_t* meas, float dt) {
     // InitialFiltering(meas);
 
     // Model based time propagation
+    // qDot1 = 0.5f * (-q.x * meas->gyro_LPF.x - q.y * meas->gyro_LPF.y - q.z * meas->gyro_LPF.z);
+    // qDot2 = 0.5f * (q.w * meas->gyro_LPF.x + q.y * meas->gyro_LPF.z - q.z * meas->gyro_LPF.y);
+    // qDot3 = 0.5f * (q.w * meas->gyro_LPF.y - q.x * meas->gyro_LPF.z + q.z * meas->gyro_LPF.x);
+    // qDot4 = 0.5f * (q.w * meas->gyro_LPF.z + q.x * meas->gyro_LPF.y - q.y * meas->gyro_LPF.x);
+
     qDot1 = 0.5f * (-q.x * meas->gyroRAD.x - q.y * meas->gyroRAD.y - q.z * meas->gyroRAD.z);
     qDot2 = 0.5f * (q.w * meas->gyroRAD.x + q.y * meas->gyroRAD.z - q.z * meas->gyroRAD.y);
     qDot3 = 0.5f * (q.w * meas->gyroRAD.y - q.x * meas->gyroRAD.z + q.z * meas->gyroRAD.x);
     qDot4 = 0.5f * (q.w * meas->gyroRAD.z + q.x * meas->gyroRAD.y - q.y * meas->gyroRAD.x);
-    // qDot1 = 0.5f * (-q.x * meas->gyro_HPF.x - q.y * meas->gyro_HPF.y - q.z * meas->gyro_HPF.z);
-    // qDot2 = 0.5f * (q.w * meas->gyro_HPF.x + q.y * meas->gyro_HPF.z - q.z * meas->gyro_HPF.y);
-    // qDot3 = 0.5f * (q.w * meas->gyro_HPF.y - q.x * meas->gyro_HPF.z + q.z * meas->gyro_HPF.x);
-    // qDot4 = 0.5f * (q.w * meas->gyro_HPF.z + q.x * meas->gyro_HPF.y - q.y * meas->gyro_HPF.x);
 
     float BETA = calculateDynamicBeta(*meas);
     // float BETA = DEFAULT_BETA;
@@ -65,71 +66,6 @@ void CompFilter::UpdateQ(Measurement_t* meas, float dt) {
         qDot2 -= BETA * s1;
         qDot3 -= BETA * s2;
         qDot4 -= BETA * s3;
-    }
-    // if(USE_MAG &&( meas->mag_LPF.x != 0.0 && meas->mag_LPF.y != 0.0 && meas->mag_LPF.z != 0.0) && (gyroNorm < HIGH_MOTION)){ // Try to check if it works better only when gyro norm is low
-    if (USE_MAG && (meas->mag.x != 0.0 && meas->mag.y != 0.0 && meas->mag.z != 0.0) && (accNorm < HIGH_MOTION)) {
-        // if(USE_MAG &&( meas->mag_LPF.x != 0.0 && meas->mag_LPF.y != 0.0 && meas->mag_LPF.z != 0.0)){
-
-        // Normalise magnetometer measurement
-        recipNorm = invSqrt(meas->mag.x * meas->mag.x + meas->mag.y * meas->mag.y + meas->mag.z * meas->mag.z);
-        meas->mag.x *= recipNorm;
-        meas->mag.y *= recipNorm;
-        meas->mag.z *= recipNorm;
-
-        _2qwmx = 2.0f * q.w * meas->mag.x;
-        _2qwmy = 2.0f * q.w * meas->mag.y;
-        _2qwmz = 2.0f * q.w * meas->mag.z;
-        _2qxmx = 2.0f * q.x * meas->mag.x;
-        _2q0 = 2.0f * q.w;
-        _2q1 = 2.0f * q.x;
-        _2q2 = 2.0f * q.y;
-        _2q3 = 2.0f * q.z;
-        _2q0q2 = 2.0f * q.w * q.y;
-        _2q0q1 = 2.0f * q.w * q.x;
-        _2q0q3 = 2.0f * q.w * q.z;
-        _2q2q3 = 2.0f * q.y * q.z;
-        q0q0 = q.w * q.w;
-        q0q1 = q.w * q.x;
-        q0q2 = q.w * q.y;
-        q0q3 = q.w * q.z;
-        q1q1 = q.x * q.x;
-        q1q2 = q.x * q.y;
-        q1q3 = q.x * q.z;
-        q2q2 = q.y * q.y;
-        q2q3 = q.y * q.z;
-        q3q3 = q.z * q.z;
-
-        // Reference direction of Earth's magnetic field
-        hx = meas->mag.x * q0q0 - _2qwmy * q.z + _2qwmz * q.y + meas->mag.x * q1q1 + _2qxmx * q.y + meas->mag.x * q2q2 - meas->mag.x * q3q3;
-        hy = _2qwmx * q.z + meas->mag.y * q0q0 - _2qwmz * q.x + _2q0 * meas->mag.y * q1q1 - meas->mag.y * q2q2 + meas->mag.y * q3q3 + _2qxmx * q.z;
-        _2bx = sqrtf(hx * hx + hy * hy);
-        _2bz = -_2qwmx * q.y + _2q0 * meas->mag.z * q1q1 + _2q0 * meas->mag.z * q2q2 + meas->mag.z * q3q3 + _2qxmx * q.y - meas->mag.z * q0q0;
-        _4bx = 2.0f * _2bx;
-        _4bz = 2.0f * _2bz;
-
-        // Gradient decent algorithm corrective step
-        s0 = -_2bz * q.y * (_2bx * (0.5f - q2q2 - q3q3) + _2bz * (q1q3 - q0q2) - meas->mag_LPF.z) + (-_2bx * q.z + _2bz * q.x) * (_2bx * (q1q2 - q0q3) + _2bz * (q0q1 + q2q3) - meas->mag_LPF.x);
-        s1 = -4.0f * q.x * (1 - 2.0f * q1q1 - 2.0f * q2q2 - meas->mag_LPF.z) + _2bz * q.z * (_2bx * (0.5f - q2q2 - q3q3) + _2bz * (q1q3 - q0q2) - meas->mag_LPF.z) + (_2bx * q.y + _2bz * q.x) * (_2bx * (q1q2 - q0q3) + _2bz * (q0q1 + q2q3) - meas->mag_LPF.x);
-        s2 = -4.0f * q.y * (1 - 2.0f * q1q1 - 2.0f * q2q2 - meas->mag_LPF.z) + (-_2bx * q.y + _2bz * q.x) * (_2bx * (0.5f - q2q2 - q3q3) + _2bz * (q1q3 - q0q2) - meas->mag_LPF.z) + (_2bx * q.z + _2bz * q.x) * (_2bx * (q1q2 - q0q3) + _2bz * (q0q1 + q2q3) - meas->mag_LPF.x);
-        s3 = (-_4bx * q.y * (2.0f * q1q2 - _2q0q3 - meas->mag.z) + _4bz * q.z * (2.0f * q1q3 - _2q0q2 - meas->mag.x) - _4bx * q.x * (2.0f * q2q3 - _2q0q1 - meas->mag.y)) + (-_4bx * q.z + _4bz * q.x) * (_4bx * (0.5f - q2q2 - q3q3) + _4bz * (q1q3 - q0q2) - meas->mag.x);
-        recipNorm = invSqrt(s0 * s0 + s1 * s1 + s2 * s2 + s3 * s3);  // normalise step magnitude
-        s0 *= recipNorm;
-        s1 *= recipNorm;
-        s2 *= recipNorm;
-        s3 *= recipNorm;
-
-        float magTrust = 0.3f;
-        // if (gyroNorm > HIGH_MOTION) {
-        //     magTrust = 0.0f; // Less influence during high motion
-        // } else if (gyroNorm < LOW_MOTION) {
-        //     magTrust = 0.3f; // More influence during low motion
-        // }
-
-        // Apply feedback step
-        qDot1 -= magTrust * BETA * s0;
-        qDot2 -= magTrust * BETA * s1;
-        qDot3 -= magTrust * BETA * s2;
-        qDot4 -= magTrust * BETA * s3;
     }
 
     // Integrate rate of change of quaternion to yield quaternion

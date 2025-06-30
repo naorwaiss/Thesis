@@ -252,12 +252,12 @@ inline uint8_t mac3[6] = {0x04, 0xE9, 0xE5, 0x17, 0xE3, 0x91};  // drone amit - 
 inline void getbot_param(PID_const_t& myDrone_PID, Drone_Data_t& myDrone) {
     getMAC(myDrone.mac);
     if (compareMac(myDrone.mac, mac0) || compareMac(myDrone.mac, mac1)) {
-        myDrone_PID.defaultRrollPID = {1.35f, 0.01f, 0.6f};
-        myDrone_PID.defaultRpitchPID = {1.35f, 0.01f, 0.6f};
+        myDrone_PID.defaultRrollPID = {0.5f, 0.0f, 0.2f};
+        myDrone_PID.defaultRpitchPID = {0.5f, 0.0f, 0.2f};
         myDrone_PID.defaultRyawPID = {2.0f, 0.0f, 0.05f};
         myDrone_PID.defaultImax_rate = {100.0f, 100.0f};
-        myDrone_PID.defaultSrollPID = {12.5f, 0.4f, 0.0f};
-        myDrone_PID.defaultSpitchPID = {12.5f, 0.4f, 0.0f};
+        myDrone_PID.defaultSrollPID = {0.5f, 0.4f, 0.0f};
+        myDrone_PID.defaultSpitchPID = {0.5f, 0.4f, 0.0f};
         myDrone_PID.defaultSyawPID = {4.0f, 0.0f, 0.0f};
         myDrone_PID.defaultImax_stab = {100.0f, 100.0f};
         return;

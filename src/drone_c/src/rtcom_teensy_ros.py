@@ -235,7 +235,7 @@ class UDPSocketClient(Node):
         drone_header_msg.mac_adress = mac_bytes
         drone_header_msg.drone_mode = struct.unpack('B', message[6:7])[0]
         drone_header_msg.drone_filter = struct.unpack('B', message[7:8])[0]
-        drone_header_msg.is_armed = struct.unpack('B', message[8:9])[0]
+        drone_header_msg.is_armed = bool(struct.unpack('B', message[8:9])[0])
         self.drone_header_pub.publish(drone_header_msg) 
         
 

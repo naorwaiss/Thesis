@@ -1,6 +1,12 @@
 #include "STD_Filter.h"
 
-STD_Filter::STD_Filter(Measurement_t* meas_data, float sample_hz) {
+STD_Filter::STD_Filter(Measurement_t* meas_data, float sample_hz) 
+    : gyro_x(sample_hz, GYRO_LPF_FREQ, 0.707f)
+    , gyro_y(sample_hz, GYRO_LPF_FREQ, 0.707f)
+    , gyro_z(sample_hz, GYRO_LPF_FREQ, 0.707f)
+    , acc_x(sample_hz, ACC_LPF_FREQ, 0.707f)
+    , acc_y(sample_hz, ACC_LPF_FREQ, 0.707f)
+    , acc_z(sample_hz, ACC_LPF_FREQ, 0.707f) {
     this->_meas_data = meas_data;
     this->_sample_hz = sample_hz;
 }
@@ -31,4 +37,16 @@ void STD_Filter::all_filter() {
     // acc_low_pass_filter();
     // gyro_low_pass_filter();
     gyro_high_pass_filter();
+    _meas_data->gyro_LPF.x = gyro_x.update(_meas_data->gyroDEG.x);
+    _meas_data->gyro_LPF.y = gyro_y.update(_meas_data->gyroDEG.y);
+    _meas_data->gyro_LPF.z = gyro_z.update(_meas_data->gyroDEG.z);
+    _meas_data->acc_LPF.x = acc_x.update(_meas_data->acc.x);
+    _meas_data->acc_LPF.y = acc_y.update(_meas_data->acc.y);
+    _meas_data->acc_LPF.z = acc_z.update(_meas_data->acc.z);
+
+
+
+
+
+
 }

@@ -80,7 +80,7 @@ elapsedMicros estimated_filter_timer;
 const unsigned long STAB_PERIOD = 1000000 / STAB_FREQUENCY;  // 300 Hz period in microseconds
 const unsigned long MOTOR_PERIOD = 1000000 / ESC_FREQUENCY;  // 1,000,000 us / frequency in Hz
 const unsigned long IMU_PERIOD = 1000000 / SAMPLE_RATE;
-const unsigned long SEND_DATA_PERIOD = 1000000 / 50;
+const unsigned long SEND_DATA_PERIOD = 1000000 / 50; // 50 Hz
 
 EKF ekf(&meas, 1 / STAB_FREQUENCY);
 Madgwick magwick_filter(&meas, &estimated_attitude, &q_est, STAB_FREQUENCY, 0.8);
@@ -128,12 +128,13 @@ void loop() {
     // Update ELRS data: Reading from the receiver and updating controller_data variable.
     update_controller();
     check_arming_state();
-    if (imu_timer >= IMU_PERIOD) {
+    if (imu_timer >= IMU_PERIOD) { /// rate loop
         actual_dt = (double)imu_timer / 1000000.0f;
         Update_Measurement();
         std_filter.all_filter();
 
         if (estimated_filter_timer >= STAB_PERIOD) {
+            //estimated the state even if the drone is not armed
             estimated_state_metude();
             estimated_filter_timer = 0;
         }
@@ -276,12 +277,12 @@ void IMU_init() {
 
     IMU.enableDefault();  // 1.66 kHz, 2g, 245 dps
     // These configurations are based on tables 44,45,47,48 in the datasheet https://www.pololu.com/file/0J1899/lsm6dso.pdf
-    IMU.writeReg(LSM6::CTRL2_G, 0b01110000);  // 0b1010 for ODR 833 Hz, 0b0000 for 250 dps range. No internal filter
-    IMU.writeReg(LSM6::CTRL4_C, 0b00000010);  // Set LPF1_SEL_G bit to 1
-    IMU.writeReg(LSM6::CTRL6_C, 0b00000110);  // Set gyroscope LPF1 bandwidth to ~96.6 Hz (closest to ODR/10)
+    IMU.writeReg(LSM6::CTRL2_G, 0b01110000);  
+    IMU.writeReg(LSM6::CTRL4_C, 0b00000010); // Enabaling the LPF for Gyro
+    IMU.writeReg(LSM6::CTRL6_C, 0b00001110);  // Gyro LPF cutoff frequency 25Hz
 
-    IMU.writeReg(LSM6::CTRL1_XL, 0b01110010);  // 0b1010 for ODR 833 Hz, 0b0000 for 2g range. No internal filter.
-    IMU.writeReg(LSM6::CTRL8_XL, 0b0000010);   // HPCF_XL[2:0] = 001 for ODR/10
+    IMU.writeReg(LSM6::CTRL1_XL, 0b01110000);  // Setting the ACC to 833Hz and 2g FS
+    IMU.writeReg(LSM6::CTRL8_XL, 0b01101000); // Enabaling LPF and cutoff at 18.5 Hz - ODR/45
 
     mag.enableDefault();
     mag.writeReg(LIS3MDL::CTRL_REG1, 0b11111010);  // 1 KHz, high performance mode
