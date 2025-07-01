@@ -34,8 +34,8 @@ void Drone_com::onConnection(RTComSession& session) {
             new_pid_const.defaultSrollPID = {pid_const_Data_arrive[9], pid_const_Data_arrive[10], pid_const_Data_arrive[11]};
             new_pid_const.defaultSpitchPID = {pid_const_Data_arrive[12], pid_const_Data_arrive[13], pid_const_Data_arrive[14]};
             new_pid_const.defaultSyawPID = {0, 0, 0};
-            new_pid_const.defaultImax_rate = {100, 100};
-            new_pid_const.defaultImax_stab = {100, 100};
+            new_pid_const.defaultImax_rate = {40, 40};
+            new_pid_const.defaultImax_stab = {40, 40};
             setPID_params(&new_pid_const);
         }
     });

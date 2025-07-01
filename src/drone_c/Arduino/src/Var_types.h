@@ -255,18 +255,18 @@ inline void getbot_param(PID_const_t& myDrone_PID, Drone_Data_t& myDrone) {
     if (compareMac(myDrone.mac, mac0) || compareMac(myDrone.mac, mac1)) {
         myDrone_PID.defaultRrollPID = {0.7f, 0.05f, 0.3f};
         myDrone_PID.defaultRpitchPID = {0.7f, 0.05f, 0.3f};
-        myDrone_PID.defaultRyawPID = {2.5f, 0.0f, 0.05f};
-        myDrone_PID.defaultImax_rate = {100.0f, 100.0f};
-        myDrone_PID.defaultSrollPID = {0.8f, 0.4f, 0.0f};
-        myDrone_PID.defaultSpitchPID = {0.8f, 0.4f, 0.0f};
+        myDrone_PID.defaultRyawPID = {1.2f, 0.0f, 0.05f};
+        myDrone_PID.defaultImax_rate = {40.0f, 40.0f};
+        myDrone_PID.defaultSrollPID = {11.8f, 0.1f, 0.0f};
+        myDrone_PID.defaultSpitchPID = {11.8f, 0.1f, 0.0f};
         myDrone_PID.defaultSyawPID = {4.0f, 0.0f, 0.0f};
-        myDrone_PID.defaultImax_stab = {100.0f, 100.0f};
+        myDrone_PID.defaultImax_stab = {25.0f, 25.0f};
         return;
     } else if (compareMac(myDrone.mac, mac2) || compareMac(myDrone.mac, mac3)) {
-        myDrone_PID.defaultRrollPID = {0.7f, 0.05f, 0.6f};
-        myDrone_PID.defaultRpitchPID = {0.7f, 0.05f, 0.6f};
-        myDrone_PID.defaultRyawPID = {1.5f, 0.02f, 0.1f};
-        myDrone_PID.defaultImax_rate = {100.0f, 100.0f};
+        myDrone_PID.defaultRrollPID = {0.7f, 0.05f, 0.3f};
+        myDrone_PID.defaultRpitchPID = {0.7f, 0.05f, 0.3f};
+        myDrone_PID.defaultRyawPID = {1.2f, 0.00f, 0.05f};
+        myDrone_PID.defaultImax_rate = {40.0f, 40.0f};
         myDrone_PID.defaultSrollPID = {0.1f, 0.0f, 0.0f};
         myDrone_PID.defaultSpitchPID = {0.1f, 0.0f, 0.0f};
         myDrone_PID.defaultSyawPID = {4.0f, 0.0f, 0.0f};

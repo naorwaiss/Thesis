@@ -78,13 +78,13 @@ elapsedMicros imu_timer;
 elapsedMicros send_data_timer;
 elapsedMicros estimated_filter_timer;
 
-const unsigned long STAB_PERIOD = 1000000 / STAB_FREQUENCY;  // 300 Hz period in microseconds
+const unsigned long STAB_PERIOD = 1000000 / STAB_FREQUENCY;  // 200 Hz period in microseconds
 const unsigned long MOTOR_PERIOD = 1000000 / ESC_FREQUENCY;  // 1,000,000 us / frequency in Hz
 const unsigned long IMU_PERIOD = 1000000 / SAMPLE_RATE;
 const unsigned long SEND_DATA_PERIOD = 1000000 / 50; // 50 Hz
 
 EKF ekf(&meas, 1 / SAMPLE_RATE);
-Madgwick magwick_filter(&meas, &estimated_attitude, &q_est, SAMPLE_RATE, 0.9);
+Madgwick magwick_filter(&meas, &estimated_attitude, &q_est, SAMPLE_RATE, 0.7);
 STD_Filter std_filter(&meas, SAMPLE_RATE);
 
 double t_PID_s = 0.0f;
@@ -146,6 +146,7 @@ void loop() {
                 t_PID_s = (double)stab_timer / 1000000.0f;
                 drone_data_header.drone_mode = DroneMode::MODE_STABILIZE;
                 mapping_controller();
+                Serial.println(t_PID_s, 8);
                 PID_stab_out = PID_stab(desired_attitude, estimated_attitude, t_PID_s);
                 PID_stab_out.PID_ret.pitch = -1 * PID_stab_out.PID_ret.pitch;
                 desired_rate = PID_stab_out.PID_ret;
@@ -183,13 +184,13 @@ void Update_Measurement() {
     meas.acc.x = (IMU.a.x * POL_ACC_SENS - meas.acc_bias.x) * G;
     meas.acc.y = (IMU.a.y * POL_ACC_SENS - meas.acc_bias.y) * G;
     meas.acc.z = (IMU.a.z * POL_ACC_SENS - meas.acc_bias.z) * G;
-    if (abs(meas.acc.x) < IMU_THRESHOLD) {
+    if (abs(meas.acc.x) < IMU_THRESHOLD*G) {
         meas.acc.x = 0;
     }
-    if (abs(meas.acc.y) < IMU_THRESHOLD) {
+    if (abs(meas.acc.y) < IMU_THRESHOLD*G) {
         meas.acc.y = 0;
     }
-    if (abs(meas.acc.z) < IMU_THRESHOLD) {
+    if (abs(meas.acc.z) < IMU_THRESHOLD*G) {
         meas.acc.z = 0;
     }
 
@@ -199,12 +200,6 @@ void Update_Measurement() {
     meas.gyroRAD.x = meas.gyroDEG.x * deg2rad;
     meas.gyroRAD.y = meas.gyroDEG.y * deg2rad;
     meas.gyroRAD.z = meas.gyroDEG.z * deg2rad;
-    // Serial.print(meas.acc.x);
-    // Serial.print("    ");
-    // Serial.print(meas.acc.y);
-    // Serial.print("    ");
-    // Serial.println(meas.acc.z);
-
 
     meas.mag.x = mag.m.x * POL_MAG_SENS - meas.mag_bias.x;
     meas.mag.y = mag.m.y * POL_MAG_SENS - meas.mag_bias.y;

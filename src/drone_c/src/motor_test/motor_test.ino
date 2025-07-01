@@ -10,7 +10,7 @@
 // #define MOTOR1_PIN 5
 
 #define PWM_RESOLUTION 12  // 12-bit resolution
-#define ESC_FREQUENCY 500  // 250Hz
+#define ESC_FREQUENCY 400  // 250Hz
 #define PWM_PERIOD 1000000 / ESC_FREQUENCY
 #define PWM_MAX ((1 << PWM_RESOLUTION) - 1)  // 4095 for 12-bit
 #define PWM_MIN (1000 * PWM_MAX) / (1000000 / ESC_FREQUENCY)

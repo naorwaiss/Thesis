@@ -229,6 +229,7 @@ class REPLAY_BUFFER(Node):
 def main(args=None):
     rclpy.init(args=args)
     node = REPLAY_BUFFER()
+    print(node.get_rate_data())
     thread = threading.Thread(target=node.main_loop)
     thread.start()
     try:
