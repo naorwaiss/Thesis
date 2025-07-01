@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 
 import sys
+import signal
 import rclpy
 from rclpy.node import Node
 from PyQt5.QtWidgets import (
     QApplication, QLabel, QWidget, QVBoxLayout,
-    QTableWidget, QTableWidgetItem, QHBoxLayout, QHeaderView, QPushButton
+    QTableWidget, QTableWidgetItem, QHBoxLayout, QHeaderView, QPushButton,
+    QMessageBox
 )
 from PyQt5.QtCore import QTimer, pyqtSignal, QObject
+from PyQt5.QtGui import QCloseEvent
 from drone_c.msg import PidConsts, DroneHeader
 from std_msgs.msg import String
 import struct
@@ -254,17 +257,17 @@ class DroneHeaderWidget(QWidget):
         self.setLayout(main_layout)
 
     def get_arm_state(self, arm_state)->str:
-        if arm_state == 0:
+        print(arm_state)
+        if arm_state == False:
             return "Disarmed"
-        elif arm_state == 1:
+        elif arm_state == True:
             return "Armed"
-        else:
-            return "Unknown"
 
     def drone_header_callback(self, msg):
         self.drone_mac = msg.mac_adress
         self.drone_mode = msg.drone_mode
         self.drone_filter = msg.drone_filter
+        self.arm_state = msg.is_armed
         
         # Get names from config if available
         try:
@@ -297,6 +300,7 @@ class DroneTunnerWindow(QWidget):
     def __init__(self, node):
         super().__init__()
         self.setWindowTitle("Drone Tuner GUI")
+        self.node = node  # Store node reference for cleanup
 
         # Initialize last_new_msg
         self.last_new_msg = None
@@ -352,6 +356,31 @@ class DroneTunnerWindow(QWidget):
 
         # Connect table cell changed signal
         self.table.cellChanged.connect(self.on_table_changed)
+
+    def closeEvent(self, event: QCloseEvent):
+        """
+        Override closeEvent to show confirmation dialog before closing via GUI
+        """
+        reply = QMessageBox.question(
+            self, 
+            'Exit Application', 
+            'Are you sure you want to exit the Drone Tuner?',
+            QMessageBox.Yes | QMessageBox.No,
+            QMessageBox.No
+        )
+        
+        if reply == QMessageBox.Yes:
+            event.accept()
+        else:
+            event.ignore()
+
+    def cleanup(self):
+        """
+        Cleanup method to properly close ROS node and shutdown
+        """
+        if hasattr(self, 'node'):
+            self.node.destroy_node()
+        rclpy.shutdown()
 
     def compere_data(self, msg) -> bool:
         """
@@ -440,7 +469,19 @@ class DroneTunnerWindow(QWidget):
             self.set_verification_status(False)
 
 
+def signal_handler(signum, frame):
+    """
+    Handle Ctrl+C signal to gracefully exit the application
+    """
+    print("\nCtrl+C detected. Shutting down gracefully...")
+    if 'app' in globals():
+        app.quit()
+    sys.exit(0)
+
 def main(args=None):
+    # Set up signal handler for Ctrl+C
+    signal.signal(signal.SIGINT, signal_handler)
+    
     rclpy.init(args=args)
     node = rclpy.create_node('drone_tunner_gui_node')
     app = QApplication(sys.argv)
@@ -454,8 +495,8 @@ def main(args=None):
     gui.show()
     exit_code = app.exec_()
 
-    node.destroy_node()
-    rclpy.shutdown()
+    # Cleanup
+    gui.cleanup()
     sys.exit(exit_code)
 
 

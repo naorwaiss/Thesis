@@ -17,9 +17,10 @@
 // Define the global PID_CONSTS variable
 
 // IMU Data Conversion
-#define POL_GYRO_SENS 17.5 / 1000.0f  // FS = 125
+#define POL_GYRO_SENS 8.75 / 1000.0f  // FS = 125
 #define POL_ACC_SENS 0.061 / 1000.0f  // FS = 2g, 0.061 mg/LSB
 #define POL_MAG_SENS 1 / 6842.0f
+#define G 9.81f
 
 #define crsfSerial Serial1  // Use Serial1 for the CRSF communication
 
@@ -82,8 +83,8 @@ const unsigned long MOTOR_PERIOD = 1000000 / ESC_FREQUENCY;  // 1,000,000 us / f
 const unsigned long IMU_PERIOD = 1000000 / SAMPLE_RATE;
 const unsigned long SEND_DATA_PERIOD = 1000000 / 50; // 50 Hz
 
-EKF ekf(&meas, 1 / STAB_FREQUENCY);
-Madgwick magwick_filter(&meas, &estimated_attitude, &q_est, STAB_FREQUENCY, 0.8);
+EKF ekf(&meas, 1 / SAMPLE_RATE);
+Madgwick magwick_filter(&meas, &estimated_attitude, &q_est, SAMPLE_RATE, 0.9);
 STD_Filter std_filter(&meas, SAMPLE_RATE);
 
 double t_PID_s = 0.0f;
@@ -132,12 +133,7 @@ void loop() {
         actual_dt = (double)imu_timer / 1000000.0f;
         Update_Measurement();
         std_filter.all_filter();
-
-        if (estimated_filter_timer >= STAB_PERIOD) {
-            //estimated the state even if the drone is not armed
-            estimated_state_metude();
-            estimated_filter_timer = 0;
-        }
+        estimated_state_metude();
 
         if (drone_data_header.is_armed) {
             // Get Actual rates:
@@ -150,7 +146,7 @@ void loop() {
                 t_PID_s = (double)stab_timer / 1000000.0f;
                 drone_data_header.drone_mode = DroneMode::MODE_STABILIZE;
                 mapping_controller();
-                PID_stab_out = PID_stab(desired_attitude, estimated_attitude, estimated_rate, t_PID_s);
+                PID_stab_out = PID_stab(desired_attitude, estimated_attitude, t_PID_s);
                 PID_stab_out.PID_ret.pitch = -1 * PID_stab_out.PID_ret.pitch;
                 desired_rate = PID_stab_out.PID_ret;
                 desired_rate.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_RATE, -MAX_RATE);
@@ -184,9 +180,9 @@ void Update_Measurement() {
     // Read IMU data
     IMU.read();
     mag.read();
-    meas.acc.x = IMU.a.x * POL_ACC_SENS - meas.acc_bias.x;
-    meas.acc.y = IMU.a.y * POL_ACC_SENS - meas.acc_bias.y;
-    meas.acc.z = IMU.a.z * POL_ACC_SENS - meas.acc_bias.z;
+    meas.acc.x = (IMU.a.x * POL_ACC_SENS - meas.acc_bias.x) * G;
+    meas.acc.y = (IMU.a.y * POL_ACC_SENS - meas.acc_bias.y) * G;
+    meas.acc.z = (IMU.a.z * POL_ACC_SENS - meas.acc_bias.z) * G;
     if (abs(meas.acc.x) < IMU_THRESHOLD) {
         meas.acc.x = 0;
     }
@@ -203,6 +199,12 @@ void Update_Measurement() {
     meas.gyroRAD.x = meas.gyroDEG.x * deg2rad;
     meas.gyroRAD.y = meas.gyroDEG.y * deg2rad;
     meas.gyroRAD.z = meas.gyroDEG.z * deg2rad;
+    // Serial.print(meas.acc.x);
+    // Serial.print("    ");
+    // Serial.print(meas.acc.y);
+    // Serial.print("    ");
+    // Serial.println(meas.acc.z);
+
 
     meas.mag.x = mag.m.x * POL_MAG_SENS - meas.mag_bias.x;
     meas.mag.y = mag.m.y * POL_MAG_SENS - meas.mag_bias.y;
@@ -277,16 +279,23 @@ void IMU_init() {
 
     IMU.enableDefault();  // 1.66 kHz, 2g, 245 dps
     // These configurations are based on tables 44,45,47,48 in the datasheet https://www.pololu.com/file/0J1899/lsm6dso.pdf
-    IMU.writeReg(LSM6::CTRL2_G, 0b01110000);  
-    IMU.writeReg(LSM6::CTRL4_C, 0b00000010); // Enabaling the LPF for Gyro
-    IMU.writeReg(LSM6::CTRL6_C, 0b00001110);  // Gyro LPF cutoff frequency 25Hz
+    // IMU.writeReg(LSM6::CTRL2_G, 0b01110000);  
+    // IMU.writeReg(LSM6::CTRL4_C, 0b00000010); // Enabaling the LPF for Gyro
+    // IMU.writeReg(LSM6::CTRL6_C, 0b00001110);  // Gyro LPF cutoff frequency 25Hz
 
-    IMU.writeReg(LSM6::CTRL1_XL, 0b01110000);  // Setting the ACC to 833Hz and 2g FS
-    IMU.writeReg(LSM6::CTRL8_XL, 0b01101000); // Enabaling LPF and cutoff at 18.5 Hz - ODR/45
+    // IMU.writeReg(LSM6::CTRL1_XL, 0b01110000);  // Setting the ACC to 833Hz and 2g FS
+    // IMU.writeReg(LSM6::CTRL8_XL, 0b01101000); // Enabaling LPF and cutoff at 18.5 Hz - ODR/45
 
-    mag.enableDefault();
-    mag.writeReg(LIS3MDL::CTRL_REG1, 0b11111010);  // 1 KHz, high performance mode
-    mag.writeReg(LIS3MDL::CTRL_REG2, 0x10);        // +- 4 gauss
+
+
+    // Setting the Gyro:
+    IMU.writeReg(LSM6::CTRL2_G, 0b01100000);  // ODR at 416 Hz, 250 dps.
+    IMU.writeReg(LSM6::CTRL4_C, 0b00000010); // Set LPF1_SEL_G bit to 1. This enables the LPF1 filter for the gyroscope.
+    IMU.writeReg(LSM6::CTRL6_C, 0b00001110); // This line sets the LPF1 bandwidth to 24.6 Hz if ODR=416 Hz, to 25 Hz if ODR=833 G=Hz.
+
+    IMU.writeReg(LSM6::CTRL1_XL, 0b01100000);  // ODR at 416 Hz, 2g FS, enabling LPF2.
+    IMU.writeReg(LSM6::CTRL8_XL, 0b01001000); // LPF2 bandwidth at ODR/20, will result in 20.8 Hz if ODR=416 Hz.
+
 }
 
 void controller_trheshold() {
@@ -306,13 +315,11 @@ void mapping_controller() {
     switch (drone_data_header.drone_mode)  // This switch statement is a placeholder for any specific conditions you might want to check.
     {
     case DroneMode::MODE_STABILIZE:
-        Serial.println("stablize");
         desired_attitude.roll = map(controller_data.roll, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_ANGLE, MAX_ANGLE);
         desired_attitude.pitch = map(controller_data.pitch, CONTROLLER_MIN, CONTROLLER_MAX, MAX_ANGLE, -MAX_ANGLE);
         desired_attitude.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_ANGLE, -MAX_ANGLE);  // cahnge here
         break;
     case DroneMode::MODE_RATE:
-        Serial.println("rate");
         desired_rate.roll = map(controller_data.roll, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_RATE, MAX_RATE);
         desired_rate.pitch = map(controller_data.pitch, CONTROLLER_MIN, CONTROLLER_MAX, -MAX_RATE, MAX_RATE);
         desired_rate.yaw = map(controller_data.yaw, CONTROLLER_MIN, CONTROLLER_MAX, MAX_RATE, -MAX_RATE);
@@ -369,13 +376,10 @@ void estimated_state_metude() {
     channel_estimated();
     switch (drone_data_header.filter_mode) {
         case DroneFilter::KALMAN:
-            Serial.println("ekf");
             return ekf.run_kalman(&estimated_attitude, &q_est);
         case DroneFilter::COMPCLASS:
-            Serial.println("compclass");
             return comclass_function();
         case DroneFilter::MADGWICK:
-            Serial.println("magwick");
             return magwick_filter.madgwick_operation();
         default:
             return ekf.run_kalman(&estimated_attitude, &q_est);

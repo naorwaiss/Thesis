@@ -41,4 +41,27 @@
     <gazebo reference="back_right_propeller_link"><material>Gazebo/Black</material></gazebo>
     <gazebo reference="back_left_propeller_link"><material>Gazebo/Black</material></gazebo>
 
+
+    <plugin name="motor_model" filename="gz-sim-multicopter-motor-model-system">
+  <motor>
+    <name>rotor_0</name>
+    <joint_name>rotor_0_joint</joint_name>
+    <link_name>rotor_0</link_name>
+    <turning_direction>ccw</turning_direction>
+    <rotor_velocity_constant>8.54858e-6</rotor_velocity_constant> <!-- thrust constant -->
+    <moment_constant>1.6e-2</moment_constant> <!-- drag torque -->
+    <motor_number>0</motor_number>
+  </motor>
+  <motor>
+    <name>rotor_1</name>
+    <joint_name>rotor_1_joint</joint_name>
+    <link_name>rotor_1</link_name>
+    <turning_direction>cw</turning_direction>
+    <rotor_velocity_constant>8.54858e-6</rotor_velocity_constant>
+    <moment_constant>1.6e-2</moment_constant>
+    <motor_number>1</motor_number>
+  </motor>
+  <!-- Add motors 2, 3... -->
+</plugin>
+
 </robot>

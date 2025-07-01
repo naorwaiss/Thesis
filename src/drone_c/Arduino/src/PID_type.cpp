@@ -55,37 +55,35 @@ void setPID_params(PID_const_t* pid_consts) {
     stab_params.Alpha_yaw = (1.0f / 2.0f * PI * cutoff_freq * DT + 1.0f);
 
 
-    Serial.print("rate_params.RollP: ");
-    Serial.println(rate_params.RollP);
-    Serial.print("rate_params.RollI: ");
-    Serial.println(rate_params.RollI);
-    Serial.print("rate_params.RollD: ");
-    Serial.println(rate_params.RollD);
-    Serial.print("rate_params.PitchP: ");
-    Serial.println(rate_params.PitchP);
-    Serial.print("rate_params.PitchI: ");
-    Serial.println(rate_params.PitchI);
-    Serial.print("rate_params.YawP: ");
-    Serial.println(rate_params.YawP);
-    Serial.print("stableize.rollp: ");
-    Serial.println(stab_params.RollP);
-    Serial.print("stableize.rolli: ");
-    Serial.println(stab_params.RollI);
-    Serial.print("stableize.rolld: ");
-    Serial.println(stab_params.RollD);
-    Serial.print("stableize.pitchp: ");
-    Serial.println(stab_params.PitchP);
-    Serial.print("stableize.pitchi: ");
-    Serial.println(stab_params.PitchI);
-    Serial.print("stableize.pitchd: ");
-    Serial.println(stab_params.PitchD);
-    Serial.print("stableize.yawp: ");
-    Serial.println(stab_params.YawP);
-    Serial.print("stableize.yawi: ");
-    Serial.println(stab_params.YawI);
-    Serial.print("stableize.yawd: ");
-    Serial.println(stab_params.YawD);
-    Serial.print("__________________________________________________________");
+    // Serial.print("rate_params.RollP: ");
+    // Serial.println(rate_params.RollP);
+    // Serial.print("rate_params.RollI: ");
+    // Serial.println(rate_params.RollI);
+    // Serial.print("rate_params.RollD: ");
+    // Serial.println(rate_params.RollD);
+    // Serial.print("rate_params.PitchP: ");
+    // Serial.println(rate_params.PitchP);
+    // Serial.print("rate_params.PitchI: ");
+    // Serial.println(rate_params.PitchI);
+    // Serial.print("rate_params.YawP: ");
+    // Serial.println(rate_params.YawP);
+    // Serial.print("rate_params.YawI: ");
+    // Serial.println(rate_params.YawI);
+    // Serial.print("rate_params.Yawd: ");
+    // Serial.println(rate_params.YawD);
+    // Serial.print("stableize.rollp: ");
+    // Serial.println(stab_params.RollP);
+    // Serial.print("stableize.rolli: ");
+    // Serial.println(stab_params.RollI);
+    // Serial.print("stableize.rolld: ");
+    // Serial.println(stab_params.RollD);
+    // Serial.print("stableize.pitchp: ");
+    // Serial.println(stab_params.PitchP);
+    // Serial.print("stableize.pitchi: ");
+    // Serial.println(stab_params.PitchI);
+    // Serial.print("stableize.pitchd: ");
+    // Serial.println(stab_params.PitchD);
+    // Serial.print("__________________________________________________________");
 }
 
 PID_out_t PID_rate(attitude_t des_rate, attitude_t actual_rate, float DT) {  // Actual rate will be in deg/s
@@ -123,7 +121,7 @@ PID_out_t PID_rate(attitude_t des_rate, attitude_t actual_rate, float DT) {  // 
 }
 
 // PID controller for stabilization
-PID_out_t PID_stab(attitude_t des_angle, attitude_t angle, attitude_t rate, float DT) {
+PID_out_t PID_stab(attitude_t des_angle, attitude_t angle, float DT) {
     // Calculate error
     angle_err = des_angle - angle;
 
@@ -141,12 +139,8 @@ PID_out_t PID_stab(attitude_t des_angle, attitude_t angle, attitude_t rate, floa
     stab_out.D_term.roll = stab_params.RollD * stab_params.Alpha_roll * (angle_err.roll - stab_out.prev_err.roll + stab_out.D_term.roll);
     stab_out.D_term.pitch = stab_params.PitchD * stab_params.Alpha_pitch * (angle_err.pitch - stab_out.prev_err.pitch + stab_out.D_term.pitch);
     stab_out.D_term.yaw = stab_params.YawD * stab_params.Alpha_yaw * (angle_err.yaw - stab_out.prev_err.yaw + stab_out.D_term.yaw);
-
-    // stab_out.D_term.roll = stab_params.RollD * (rate.roll - prev_rate.roll);
-    // stab_out.D_term.pitch = stab_params.PitchD * (rate.pitch - prev_rate.pitch);
-    // stab_out.D_term.yaw = stab_params.YawD * (rate.yaw - prev_rate.yaw);
-
     // Cap the I term
+
     stab_out.I_term.roll = constrain(stab_out.I_term.roll, -stab_params.Imax_roll, stab_params.Imax_roll);
     stab_out.I_term.pitch = constrain(stab_out.I_term.pitch, -stab_params.Imax_pitch, stab_params.Imax_pitch);
     stab_out.I_term.yaw = constrain(stab_out.I_term.yaw, -stab_params.Imax_yaw, stab_params.Imax_yaw);
@@ -157,7 +151,6 @@ PID_out_t PID_stab(attitude_t des_angle, attitude_t angle, attitude_t rate, floa
 
     // Return the output
     stab_out.PID_ret = stab_out.P_term + stab_out.I_term + stab_out.D_term;
-    prev_rate = rate;
 
     return stab_out;  // This output is the desired rate. now we can use the PID_rate function to get the motor input values
 }

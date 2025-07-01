@@ -67,42 +67,6 @@ attitude_t EKF::kalman3D(Vector3f gyro_sample, Vector3f euler_data) {
     // Make yaw component of Q higher to trust gyro more for yaw
 
     P = P + Q * (1.0f / SAMPLE_RATE);
-
-    // Measurement update
-    // Make yaw component of R higher to trust magnetometer less
-    
-    // float acc_magnitude = sqrt(pow(meas->acc_LPF.x,2) +pow(meas->acc_LPF.y,2) +pow(meas->acc_LPF.z,2));
-    // if (acc_magnitude > 1.5){
-    //     R *= acc_magnitude/1.5;
-    //     Serial.println("naor");
-    // } // If the accelerometer is larger than 1g 
-    // // else{
-    // //     Serial.println("amit");
-    // //     R *= 0.99;
-    // // }
-    
-    Serial.println("R_matrix");
-    for (size_t i = 0; i < 3; i++)
-    {
-        for (size_t j = 0; j < 3; j++)
-        {
-            Serial.print(R(i,j));
-            Serial.print(" ");
-        }
-        Serial.println();
-    }
-    Serial.println("***********************8");
-    Serial.println("Q_matrix");
-    for (size_t i = 0; i < 3; i++)
-    {
-        for (size_t j = 0; j < 3; j++)
-        {
-            Serial.print(Q(i,j));
-            Serial.print(" ");
-        }
-        Serial.println();
-    }
-
     Matrix3f S = P + R;
     Matrix3f K = P * S.inverse();
 
@@ -125,17 +89,25 @@ attitude_t EKF::kalman3D(Vector3f gyro_sample, Vector3f euler_data) {
 
     // Prepare return data
     attitude_t return_data;
-    return_data.roll = state(1) * (180.0f / PI);
-    return_data.pitch = state(0) * (180.0f / PI) * -1;
+    return_data.roll = state(0) * (180.0f / PI);
+    return_data.pitch = state(1) * (180.0f / PI) * -1;
     return_data.yaw = state(2) * (180.0f / PI);
 
     return return_data;
 }
 
 void EKF::run_kalman(attitude_t* return_euiler, quat_t* return_quart) {
+    // Detect vibrations and update motor state
+    detectVibration();
+    
+    // Pre-process the data
     pre_kalman_filter();
-    // pre_kalman();
-    *return_euiler = kalman3D(gyro_input, euler_data);
+    
+    // Run the Kalman filter
+    Vector3f gyro_vec(gyro_input.x(), gyro_input.y(), gyro_input.z());
+    *return_euiler = kalman3D(gyro_vec, euler_data);
+    
+    // Convert to quaternion
     *return_quart = get_quart(return_euiler);
 }
 
@@ -155,4 +127,45 @@ quat_t EKF::get_quart(attitude_t* euiler) {
     q.z = cr * cp * sy - sr * sp * cy;
 
     return q;
+}
+
+void EKF::updateMotorState(bool motors_on) {
+    motors_active = motors_on;
+    adaptNoiseParameters();
+}
+
+void EKF::detectVibration() {
+    // Calculate vibration level from accelerometer data
+    float acc_magnitude = sqrt(meas->acc.x * meas->acc.x + meas->acc.y * meas->acc.y + meas->acc.z * meas->acc.z);
+    float expected_gravity = 9.81f;
+    float vibration = abs(acc_magnitude - expected_gravity);
+    
+    // Low-pass filter the vibration level
+    motor_vibration_level = 0.9f * motor_vibration_level + 0.1f * vibration;
+    
+    // Update motor state based on vibration
+    bool detected_motors = motor_vibration_level > vibration_threshold;
+    if (detected_motors != motors_active) {
+        updateMotorState(detected_motors);
+    }
+}
+
+void EKF::adaptNoiseParameters() {
+    float q_multiplier = motors_active ? MOTOR_Q_MULTIPLIER : 1.0f;
+    float r_multiplier = motors_active ? MOTOR_R_MULTIPLIER : 1.0f;
+    
+    // Add additional vibration-based scaling
+    if (motors_active) {
+        float vibration_scale = 1.0f + (motor_vibration_level / vibration_threshold) * 2.0f;
+        r_multiplier *= vibration_scale;
+    }
+    // Update Q matrix (process noise)
+    Q = Matrix3f::Identity() * (Q_total * q_multiplier);
+    
+    // Update R matrix (measurement noise)
+    R = Matrix3f::Identity() * (R_total * r_multiplier);
+}
+
+float EKF::calculateVibrationLevel() {
+    return motor_vibration_level;
 }
