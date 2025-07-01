@@ -214,6 +214,8 @@ class DroneHeaderWidget(QWidget):
         self.drone_filter = None
         self.drone_name = None
         self.arm_state = None
+        self.voltage = None
+        self.current = None
 
         self.setWindowTitle("Drone Header")
         
@@ -268,7 +270,9 @@ class DroneHeaderWidget(QWidget):
         self.drone_mode = msg.drone_mode
         self.drone_filter = msg.drone_filter
         self.arm_state = msg.is_armed
-        
+        self.voltage = round(msg.voltage,1)
+        self.current = round(msg.current,1)
+
         # Get names from config if available
         try:
             if self.drone_config:
@@ -295,6 +299,11 @@ class DroneHeaderWidget(QWidget):
         self.filter_value.setText(str(self.drone_filter))
         self.name_value.setText(str(self.drone_name if self.drone_name else self.drone_mac))
         self.state_value.setText(self.get_arm_state(self.arm_state))
+        
+        # Update voltage and current in main window if available
+        if hasattr(self.parent(), 'voltage_value') and hasattr(self.parent(), 'current_value'):
+            self.parent().voltage_value.setText(f"{self.voltage}V")
+            self.parent().current_value.setText(f"{self.current}A")
 
 class DroneTunnerWindow(QWidget):
     def __init__(self, node):
@@ -341,6 +350,28 @@ class DroneTunnerWindow(QWidget):
         self.button = QPushButton("Flash New Pid")
         self.button.clicked.connect(self.on_button_clicked)
 
+        # Create voltage and current layout
+        voltage_current_layout = QVBoxLayout()
+        
+        # Voltage layout
+        voltage_layout = QHBoxLayout()
+        voltage_label = QLabel("Voltage:")
+        self.voltage_value = QLabel("Unknown")
+        voltage_layout.addWidget(voltage_label)
+        voltage_layout.addWidget(self.voltage_value)
+        
+        # Current layout
+        current_layout = QHBoxLayout()
+        current_label = QLabel("Current:")
+        self.current_value = QLabel("Unknown")
+        current_layout.addWidget(current_label)
+        current_layout.addWidget(self.current_value)
+        
+        # Add voltage and current to horizontal layout
+        voltage_current_layout.addLayout(voltage_layout)
+        voltage_current_layout.addLayout(current_layout)
+        voltage_current_layout.addStretch()  # Add stretch to push them to the left
+
         # Layout
         layout = QVBoxLayout()
         layout.addWidget(self.header)  # Add header at the top
@@ -348,6 +379,7 @@ class DroneTunnerWindow(QWidget):
         layout.addWidget(self.label)
         layout.addLayout(status_layout)
         layout.addWidget(self.button)
+        layout.addLayout(voltage_current_layout)  # Add voltage/current at the bottom
         self.setLayout(layout)
 
         # ROS Listener

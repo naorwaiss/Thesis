@@ -13,7 +13,7 @@
 #include "src/Madgwick.h"
 #include "src/STD_Filter.h"
 #include "src/drone_comclass.h"
-
+#include "src/Voltmeter.h"
 // Define the global PID_CONSTS variable
 
 // IMU Data Conversion
@@ -68,6 +68,7 @@ PID_out_t PID_stab_out;
 PID_out_t PID_rate_out;
 PID_const_t PID_CONSTS;
 Drone_Data_t drone_data_header;
+Voltmeter voltmeter(&drone_data_header, A3, A2, 30.75);
 Drone_com drone_com(&meas, &q_est, &desired_attitude, &motor_pwm, 
     &desired_rate, &estimated_attitude, &estimated_rate, &PID_stab_out, &PID_rate_out,
     &controller_data, &PID_CONSTS,&drone_data_header);
@@ -119,7 +120,7 @@ void setup() {
     crsf.begin(crsfSerial);
     getbot_param(PID_CONSTS, drone_data_header);
     setPID_params(&PID_CONSTS);
-    GyroMagCalibration();
+    // GyroMagCalibration();
     motors.Motors_init();
 }
 
@@ -134,6 +135,7 @@ void loop() {
         Update_Measurement();
         std_filter.all_filter();
         estimated_state_metude();
+        voltmeter.read_bat_data();
 
         if (drone_data_header.is_armed) {
             // Get Actual rates:

@@ -194,6 +194,9 @@ void Drone_com::convert_Measurment_to_byte() {
     drone_header_byte[6] = static_cast<uint8_t>(_drone_data_header->drone_mode);
     drone_header_byte[7] = static_cast<uint8_t>(_drone_data_header->filter_mode);
     drone_header_byte[8] = static_cast<uint8_t>(_drone_data_header->is_armed);
+    memcpy(&drone_header_byte[9], &_drone_data_header->voltage_reading, sizeof(float));
+    memcpy(&drone_header_byte[13], &_drone_data_header->current_reading, sizeof(float));
+    
 }
 
 void Drone_com::emit_data() {

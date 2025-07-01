@@ -223,6 +223,8 @@ typedef struct {
     DroneMode drone_mode = DroneMode::MODE_RATE;
     DroneFilter filter_mode = DroneFilter::COMPCLASS;
     bool is_armed = false;
+    float voltage_reading = 0.0f;
+    float current_reading = 0.0f;
 } Drone_Data_t;
 
 inline void getMAC(uint8_t* pMacAddress) {
