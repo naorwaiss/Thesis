@@ -17,16 +17,22 @@ class DroneMode(IntEnum):
     MODE_STABILIZE = 2
 
 
+class Take_data(IntEnum):
+    TAKE = 1
+    DONT_TAKE = 2
+
+
 class DataBuffer(Node):
     """Class responsible for data collection and buffer management"""
 
-    def __init__(self, buffer_time=5, wait_time=3, data_hz=100):
+    def __init__(self, buffer_time=5, wait_time=3, data_hz=50):
         super().__init__('data_buffer')
 
         # Configuration
         self.buffer_time = buffer_time
         self.wait_time = wait_time
         self.data_hz = data_hz
+        self.wait_flag = False
 
         # State tracking
         self.is_drone_armed = None
@@ -34,20 +40,15 @@ class DataBuffer(Node):
         self.buffer_delay_active = False
         self.last_buffer_full_time = None
 
+        # Buffer state tracking
+        self.rate_buffer_full = False
+        self.stab_buffer_full = False
+        self.last_rate_analysis_time = None
+        self.last_stab_analysis_time = None
+
         # Threading control
         self.wait_thread = None
         self.wait_thread_active = False
-        self.wait_thread_lock = threading.Lock()
-
-        # Initialize last values
-        self.last_desired_x = 0.0
-        self.last_desired_y = 0.0
-        self.last_desired_stab_x = 0.0
-        self.last_desired_stab_y = 0.0
-        self.last_actual_x = 0.0
-        self.last_actual_y = 0.0
-        self.last_euler_angles_roll = 0.0
-        self.last_euler_angles_pitch = 0.0
 
         # Subscribers
         self.create_subscription(Float32MultiArray, '/desire_rate', self.desired_rate_callback, 10)
@@ -56,20 +57,21 @@ class DataBuffer(Node):
         self.create_subscription(EulerAngles, '/euler_angles_data', self.euler_angles_callback, 10)
         self.create_subscription(DroneHeader, '/drone_header', self.drone_header_callback, 10)
 
-        # Buffers
-        self.buffer_desired_rate_x = deque(maxlen=buffer_time * data_hz)
-        self.buffer_desired_rate_y = deque(maxlen=buffer_time * data_hz)
-        self.buffer_actual_rate_x = deque(maxlen=buffer_time * data_hz)
-        self.buffer_actual_rate_y = deque(maxlen=buffer_time * data_hz)
-        self.buffer_euler_angles_roll = deque(maxlen=buffer_time * data_hz)
-        self.buffer_euler_angles_pitch = deque(maxlen=buffer_time * data_hz)
-        self.buffer_desired_stab_x = deque(maxlen=buffer_time * data_hz)
-        self.buffer_desired_stab_y = deque(maxlen=buffer_time * data_hz)
+        # Initialize callback data attributes
+        self.last_desired_x = None
+        self.last_desired_y = None
+        self.last_desired_stab_x = None
+        self.last_desired_stab_y = None
+        self.last_actual_x = None
+        self.last_actual_y = None
+        self.last_euler_angles_roll = None
+        self.last_euler_angles_pitch = None
 
+        # Buffers
 
     def desired_rate_callback(self, msg: Float32MultiArray):
-        self.last_desired_x = msg.data[0]
-        self.last_desired_y = msg.data[1]
+        self.last_desired_rate_x = msg.data[0]
+        self.last_desired_rate_y = msg.data[1]
 
     def desired_stab_callback(self, msg: Float32MultiArray):
         self.last_desired_stab_x = msg.data[0]
@@ -87,153 +89,71 @@ class DataBuffer(Node):
         self.is_drone_armed = msg.is_armed
         self.drone_mode = msg.drone_mode
 
-    def is_buffer_full_rate(self) -> bool:
-        """Check if any of the rate data buffers are full"""
-        return (len(self.buffer_desired_rate_x) >= self.buffer_desired_rate_x.maxlen or
-                len(self.buffer_desired_rate_y) >= self.buffer_desired_rate_y.maxlen or
-                len(self.buffer_actual_rate_x) >= self.buffer_actual_rate_x.maxlen or
-                len(self.buffer_actual_rate_y) >= self.buffer_actual_rate_y.maxlen)
 
-    def is_buffer_full_stab(self) -> bool:
-        """Check if any of the stabilize data buffers are full"""
-        return (len(self.buffer_desired_stab_x) >= self.buffer_desired_stab_x.maxlen or
-                len(self.buffer_desired_stab_y) >= self.buffer_desired_stab_y.maxlen or
-                len(self.buffer_euler_angles_roll) >= self.buffer_euler_angles_roll.maxlen or
-                len(self.buffer_euler_angles_pitch) >= self.buffer_euler_angles_pitch.maxlen)
+class make_buffer(DataBuffer):
+    def __init__(self, buffer_time=5, wait_time=3, data_hz=50):
+        super().__init__(buffer_time, wait_time, data_hz)
 
-    def free_all_buffers(self):
-        """Clear all buffers"""
-        self.buffer_desired_rate_x.clear()
-        self.buffer_desired_rate_y.clear()
-        self.buffer_actual_rate_x.clear()
-        self.buffer_actual_rate_y.clear()
-        self.buffer_euler_angles_roll.clear()
-        self.buffer_euler_angles_pitch.clear()
-        self.buffer_desired_stab_x.clear()
-        self.buffer_desired_stab_y.clear()
+        self.buffer_desired_rate_x = deque(maxlen=buffer_time * data_hz)
+        self.buffer_desired_rate_y = deque(maxlen=buffer_time * data_hz)
+        self.buffer_actual_rate_x = deque(maxlen=buffer_time * data_hz)
+        self.buffer_actual_rate_y = deque(maxlen=buffer_time * data_hz)
+        self.buffer_euler_angles_roll = deque(maxlen=buffer_time * data_hz)
+        self.buffer_euler_angles_pitch = deque(maxlen=buffer_time * data_hz)
+        self.buffer_desired_stab_x = deque(maxlen=buffer_time * data_hz)
+        self.buffer_desired_stab_y = deque(maxlen=buffer_time * data_hz)
 
-    def wait_thread_function(self):
-        """Thread function that handles the wait period"""
-        self.get_logger().info(f"Wait thread started - waiting {self.wait_time} seconds")
-        time.sleep(self.wait_time)
-
-        with self.wait_thread_lock:
-            self.wait_thread_active = False
-            self.free_all_buffers()
-            self.get_logger().info("Wait period complete, buffers cleared and ready for new data")
-
-    def start_wait_thread(self):
-        """Start the wait thread if not already running"""
-        with self.wait_thread_lock:
-            if not self.wait_thread_active:
-                self.wait_thread_active = True
-                self.wait_thread = threading.Thread(target=self.wait_thread_function, daemon=True)
-                self.wait_thread.start()
-                self.get_logger().info("Buffer full, starting wait thread")
-
-    def should_collect_data(self, is_buffer_full: bool) -> bool:
-        """
-        Determine if we should collect data based on buffer state and threading
-        Returns True if we should collect data, False if we should wait
-        """
-        if is_buffer_full:
-            # Buffer is full, start wait thread if not already running
-            self.start_wait_thread()
-            return False  # Don't collect data during wait
-        else:
-            # Check if wait thread is still active
-            with self.wait_thread_lock:
-                if self.wait_thread_active:
-                    return False  # Still waiting
-                else:
-                    return True   # Ready to collect data
+    def check_full_rate(self):
+        return
+    
+    def check_full_stab(self):
+        return
+        
 
     def case_rate(self):
-        """Handle rate control mode data collection"""
-        if self.should_collect_data(self.is_buffer_full_rate()):
-            self.buffer_desired_rate_x.append(self.last_desired_x)
-            self.buffer_desired_rate_y.append(self.last_desired_y)
-            self.buffer_actual_rate_x.append(self.last_actual_x)
-            self.buffer_actual_rate_y.append(self.last_actual_y)
+        print("case_rate")
+        self.buffer_desired_rate_x.append(self.last_desired_rate_x)
+        self.buffer_desired_rate_y.append(self.last_desired_rate_y)
+        self.buffer_actual_rate_x.append(self.last_actual_x)
+        self.buffer_actual_rate_x.append(self.last_actual_y)
 
-            # Check if buffer just became full
-            if self.is_buffer_full_rate() and not self.rate_buffer_full:
-                self.rate_buffer_full = True
-                self.last_rate_analysis_time = time.time()
+
 
     def case_stab(self):
-        """Handle stabilize mode data collection"""
-        if self.should_collect_data(self.is_buffer_full_stab() or self.is_buffer_full_rate()):
-            self.buffer_desired_stab_x.append(self.last_desired_stab_x)
-            self.buffer_desired_stab_y.append(self.last_desired_stab_y)
-            self.buffer_euler_angles_roll.append(self.last_euler_angles_roll)
-            self.buffer_euler_angles_pitch.append(self.last_euler_angles_pitch)
+        print("case stab")
+        self.buffer_desired_stab_x.append(self.last_desired_stab_x)
+        self.buffer_desired_stab_y.append(self.last_desired_stab_y)
+        self.buffer_euler_angles_pitch.append(self.last_euler_angles_pitch)
+        self.buffer_euler_angles_roll.append(self.last_euler_angles_roll)
 
-            # Check if buffer just became full
-            if self.is_buffer_full_stab() and not self.stab_buffer_full:
-                self.stab_buffer_full = True
-                self.last_stab_analysis_time = time.time()
 
-    def case_switcher(self) -> DroneMode:
+        
+
+        
+
+    def take_buffer_control(self):
+
+        return
+
+    def case_switcher(self):
         """Switch between different drone modes and handle data collection"""
-        if self.is_drone_armed:
-            match self.drone_mode:
-                case DroneMode.MODE_RATE:
-                    self.case_rate()
-                case DroneMode.MODE_STABILIZE:
-                    self.case_stab()
-            return self.drone_mode
+        match self.drone_mode:
+             case DroneMode.MODE_RATE:
+              self.case_rate()
+             case DroneMode.MODE_STABILIZE:
+              self.case_stab()
 
-    def get_rate_data(self):
-        """Get rate control data for analysis"""
-        return {
-            'desired_x': list(self.buffer_desired_rate_x),
-            'desired_y': list(self.buffer_desired_rate_y),
-            'actual_x': list(self.buffer_actual_rate_x),
-            'actual_y': list(self.buffer_actual_rate_y),
-            'is_full': self.rate_buffer_full,
-            'is_armed': self.is_drone_armed
-        }
-
-    def get_stab_data(self):
-        """Get stabilize control data for analysis"""
-        return {
-            'desired_x': list(self.buffer_desired_stab_x),
-            'desired_y': list(self.buffer_desired_stab_y),
-            'actual_roll': list(self.buffer_euler_angles_roll),
-            'actual_pitch': list(self.buffer_euler_angles_pitch),
-            'is_full': self.stab_buffer_full,
-            'is_armed': self.is_drone_armed
-        }
-
-
-class REPLAY_BUFFER(Node):
-
-    def __init__(self, buffer_time=5, wait_time=3, data_hz=100):
-        super().__init__('replay_buffer')
-
-        # Initialize the data buffer and analyzer
-        self.data_buffer = DataBuffer(buffer_time, wait_time, data_hz)
-
-    def main_loop(self):
-        drone_mode = self.data_buffer.case_switcher()
-        match drone_mode:
-            case DroneMode.MODE_RATE:
-                rate_data = self.data_buffer.get_rate_data()
-                print(rate_data)
-            case DroneMode.MODE_STABILIZE:
-                stab_data = self.data_buffer.get_stab_data()
-                print(stab_data)
-
+    def run(self):
+        while rclpy.ok():
+            self.case_switcher()
 
 def main(args=None):
     rclpy.init(args=args)
-    node = REPLAY_BUFFER()
-    print(node.get_rate_data())
-    thread = threading.Thread(target=node.main_loop)
+    buffer_manager = make_buffer()
+    thread = threading.Thread(target=buffer_manager.run)
     thread.start()
     try:
-        rclpy.spin(node)
+        rclpy.spin(buffer_manager)
     except KeyboardInterrupt:
         print("\nShutting down...")
     rclpy.shutdown()
