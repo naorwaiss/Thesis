@@ -38,7 +38,6 @@ class DataBuffer(Node):
         self.is_drone_armed = None
         self.drone_mode = None
         self.buffer_delay_active = False
-        self.last_buffer_full_time = None
 
         # Buffer state tracking
         self.rate_buffer_full = False
@@ -49,6 +48,7 @@ class DataBuffer(Node):
         # Threading control
         self.wait_thread = None
         self.wait_thread_active = False
+        self.data_take = Take_data.TAKE
 
         # Subscribers
         self.create_subscription(Float32MultiArray, '/desire_rate', self.desired_rate_callback, 10)
@@ -102,50 +102,102 @@ class make_buffer(DataBuffer):
         self.buffer_euler_angles_pitch = deque(maxlen=buffer_time * data_hz)
         self.buffer_desired_stab_x = deque(maxlen=buffer_time * data_hz)
         self.buffer_desired_stab_y = deque(maxlen=buffer_time * data_hz)
-
-    def check_full_rate(self):
-        return
-    
-    def check_full_stab(self):
-        return
         
+        # Timer thread management
+        self.timer_thread = None
+        self.timer_active = False
+
+    def clear_buffer_rate(self):
+        self.buffer_desired_rate_x.clear()
+        self.buffer_desired_rate_y.clear()
+        self.buffer_actual_rate_x.clear()
+        self.buffer_actual_rate_y.clear()
+    
+    def clear_buffer_stab(self):
+        self.buffer_desired_stab_x.clear()
+        self.buffer_desired_stab_y.clear()
+        self.buffer_euler_angles_pitch.clear()
+        self.buffer_euler_angles_roll.clear()
+
+    def check_full_rate(self) -> Take_data:
+        length = self.buffer_time * self.data_hz
+        if len(self.buffer_desired_rate_x) == length or len(self.buffer_desired_rate_y) == length or len(self.buffer_actual_rate_x) == length or len(self.buffer_actual_rate_y) == length:
+            self.clear_buffer_rate()
+            return Take_data.DONT_TAKE
+        else:
+            return Take_data.TAKE
+
+    def check_full_stab(self) -> Take_data:
+        length = self.buffer_time * self.data_hz
+        if len(self.buffer_desired_stab_x) == length or len(self.buffer_desired_stab_y) == length or len(self.buffer_euler_angles_roll) == length or len(self.buffer_euler_angles_pitch) == length:
+            self.clear_buffer_stab()
+            return Take_data.DONT_TAKE
+        else:
+            return Take_data.TAKE
 
     def case_rate(self):
-        print("case_rate")
         self.buffer_desired_rate_x.append(self.last_desired_rate_x)
         self.buffer_desired_rate_y.append(self.last_desired_rate_y)
         self.buffer_actual_rate_x.append(self.last_actual_x)
         self.buffer_actual_rate_x.append(self.last_actual_y)
 
-
-
     def case_stab(self):
-        print("case stab")
         self.buffer_desired_stab_x.append(self.last_desired_stab_x)
         self.buffer_desired_stab_y.append(self.last_desired_stab_y)
         self.buffer_euler_angles_pitch.append(self.last_euler_angles_pitch)
         self.buffer_euler_angles_roll.append(self.last_euler_angles_roll)
-
-
         
+    def time_buffer_control(self):
+        """Timer thread function that waits for buffer_time seconds then resets data_take"""
+        time.sleep(self.buffer_time)
+        if self.timer_active:  # Only execute if timer is still active
+            self.clear_buffer_rate()
+            self.clear_buffer_stab()
+            self.data_take = Take_data.TAKE
+            print("Timer finished - cleared the data and resumed data collection")
+            self.timer_active = False
+            self.timer_thread = None
 
-        
-
-    def take_buffer_control(self):
-
-        return
+    def start_timer(self):
+        """Start the timer thread if not already running"""
+        if not self.timer_active and self.timer_thread is None:
+            self.timer_active = True
+            self.timer_thread = threading.Thread(target=self.time_buffer_control, daemon=True)
+            self.timer_thread.start()
+            print(f"Started timer for {self.buffer_time} seconds")
 
     def case_switcher(self):
         """Switch between different drone modes and handle data collection"""
+
+        if self.data_take == Take_data.DONT_TAKE:
+            self.start_timer()
+            return
+
         match self.drone_mode:
-             case DroneMode.MODE_RATE:
-              self.case_rate()
-             case DroneMode.MODE_STABILIZE:
-              self.case_stab()
+            case DroneMode.MODE_RATE:
+                self.data_take = self.check_full_rate()
+                self.case_rate()
+            case DroneMode.MODE_STABILIZE:
+                self.data_take = self.check_full_stab()
+                self.case_rate()
+                self.case_stab()
 
     def run(self):
+        """Run the case_switcher at the specified frequency (data_hz)"""
+        rate = self.create_rate(self.data_hz)  # Create a rate object for 50 Hz
         while rclpy.ok():
             self.case_switcher()
+            rate.sleep()  # Sleep to maintain the specified frequency
+    
+    def cleanup(self):
+        """Clean up threads and resources"""
+        self.timer_active = False
+        if self.timer_thread and self.timer_thread.is_alive():
+            self.timer_thread.join(timeout=1.0)  # Wait up to 1 second for thread to finish
+            if self.timer_thread.is_alive():
+                print("Warning: Timer thread did not finish within timeout")
+        print("Cleanup completed")
+
 
 def main(args=None):
     rclpy.init(args=args)
@@ -156,7 +208,9 @@ def main(args=None):
         rclpy.spin(buffer_manager)
     except KeyboardInterrupt:
         print("\nShutting down...")
-    rclpy.shutdown()
+        buffer_manager.cleanup()
+    finally:
+        rclpy.shutdown()
 
 
 if __name__ == '__main__':

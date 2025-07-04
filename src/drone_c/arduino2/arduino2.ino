@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include "Wire.h"
-#include "src/Var_types.h"
 #include "src/CompClass.h"
 #include <LSM6.h>
 #include <LIS3MDL.h>
@@ -13,14 +12,13 @@
 #include "src/STD_Filter.h"
 #include "src/drone_comclass.h"
 #include "src/Voltmeter.h"
+#include "src/Var_types.h"
+#include "src/drone_identify.h"
 // Define the global PID_CONSTS variable
 
 // IMU Data Conversion
-#define POL_GYRO_SENS 17.5 / 1000.0f  // FS = 125 //new value not work 
+#define POL_GYRO_SENS 17.5 / 1000.0f  // FS = 125
 #define POL_ACC_SENS 0.122 / 1000.0f  // FS = 2g, 0.061 mg/LSB
-
-// #define POL_GYRO_SENS 8.75 / 1000.0f  // FS = 125
-// #define POL_ACC_SENS 0.061 / 1000.0f  // FS = 2g, 0.061 mg/LSB
 #define POL_MAG_SENS 1 / 6842.0f
 #define G 9.81f
 
@@ -256,35 +254,6 @@ void update_controller() {
     controller_data.aux4 = crsf.getChannel(8);
 }
 
-// void IMU_init() { // old 
-//     // Seting pins 24 and 25 to be used as I2C
-//     Wire.begin();
-//     Wire.setClock(420000);
-
-//     // Initialize IMU
-//     if (!IMU.init()) {
-//         Serial.println("Failed to detect and initialize IMU!");
-//         while (1);
-//     }
-//     if (!mag.init()) {
-//         Serial.println("Failed to detect and initialize Magnetometer!");
-//         while (1);
-//     }
-
-//     IMU.enableDefault();  // 1.66 kHz, 2g, 245 dps
-//     IMU.writeReg(LSM6::CTRL2_G, 0b01100000);  // ODR at 416 Hz, 500 dps.
-
-//     IMU.writeReg(LSM6::CTRL4_C, 0b00000010); // Set LPF1_SEL_G bit to 1. This enables the LPF1 filter for the gyroscope.
-//     IMU.writeReg(LSM6::CTRL6_C, 0b00001110); // This line sets the LPF1 bandwidth to 24.6 Hz if ODR=416 Hz, to 25 Hz if ODR=833 G=Hz.
-//     // IMU.writeReg(LSM6::CTRL1_XL, 0b01101000);  // ODR at 416 Hz, 2g FS, enabling LPF2.
-
-//     IMU.writeReg(LSM6::CTRL1_XL, 0b01110000);  // ODR at 416 Hz, 2g FS, enabling LPF2.
-//     IMU.writeReg(LSM6::CTRL8_XL, 0b01001000); // LPF2 bandwidth at ODR/20, will result in 20.8 Hz if ODR=416 Hz.
-
-// }
-
-
-
 void IMU_init() {
     // Seting pins 24 and 25 to be used as I2C
     Wire.begin();
@@ -301,6 +270,16 @@ void IMU_init() {
     }
 
     IMU.enableDefault();  // 1.66 kHz, 2g, 245 dps
+    // These configurations are based on tables 44,45,47,48 in the datasheet https://www.pololu.com/file/0J1899/lsm6dso.pdf
+    // IMU.writeReg(LSM6::CTRL2_G, 0b01110000);  
+    // IMU.writeReg(LSM6::CTRL4_C, 0b00000010); // Enabaling the LPF for Gyro
+    // IMU.writeReg(LSM6::CTRL6_C, 0b00001110);  // Gyro LPF cutoff frequency 25Hz
+
+    // IMU.writeReg(LSM6::CTRL1_XL, 0b01110000);  // Setting the ACC to 833Hz and 2g FS
+    // IMU.writeReg(LSM6::CTRL8_XL, 0b01101000); // Enabaling LPF and cutoff at 18.5 Hz - ODR/45
+
+
+
     // Setting the Gyro:
     IMU.writeReg(LSM6::CTRL2_G, 0b01100100);  // ODR at 416 Hz, 500 dps.
     IMU.writeReg(LSM6::CTRL4_C, 0b00000010); // Set LPF1_SEL_G bit to 1. This enables the LPF1 filter for the gyroscope.
@@ -310,7 +289,6 @@ void IMU_init() {
     IMU.writeReg(LSM6::CTRL8_XL, 0b01001000); // LPF2 bandwidth at ODR/20, will result in 20.8 Hz if ODR=416 Hz.
 
 }
-
 
 void controller_trheshold() {
     if ((controller_data.roll <= CONTROLL_THR_MAX) && (controller_data.roll >= CONTROLL_THR_MIN)) {
