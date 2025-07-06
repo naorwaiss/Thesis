@@ -147,9 +147,7 @@ float CompFilter::calculateDynamicBeta(Measurement_t meas) {
     // Compute the norm (magnitude) of the gyroscope vector
     accNorm = sqrtf(meas.acc.x * meas.acc.x +
                      meas.acc.y * meas.acc.y +
-                     meas.acc.z * meas.acc.z) *
-               deg2rad;
-    // Adapt Beta based on gyroscope norm
+                     meas.acc.z * meas.acc.z);    // Adapt Beta based on gyroscope norm
     if (accNorm < LOW_MOTION) {
         return HIGH_BETA;
     } else if (accNorm > HIGH_MOTION) {
