@@ -25,7 +25,7 @@ class Take_data(IntEnum):
 class DataBuffer(Node):
     """Class responsible for data collection and buffer management"""
 
-    def __init__(self, buffer_time=10, wait_time=3, data_hz=50):
+    def __init__(self, buffer_time=5, wait_time=3, data_hz=50):
         super().__init__('data_buffer')
 
         # Configuration
@@ -187,14 +187,17 @@ class make_buffer(DataBuffer):
             self.data_take = Take_data.TAKE
             return
 
-        match self.drone_mode:
-            case DroneMode.MODE_RATE:
-                self.get_rate_data()
-                self.data_take = self.check_full()
-            case DroneMode.MODE_STABILIZE:
-                self.get_stab_data()
-                self.get_rate_data()
-                self.data_take = self.check_full()
+        if self.is_drone_armed == True:
+            match self.drone_mode:
+                case DroneMode.MODE_RATE:
+                    self.get_rate_data()
+                    self.data_take = self.check_full()
+                case DroneMode.MODE_STABILIZE:
+                    self.get_stab_data()
+                    self.get_rate_data()
+                    self.data_take = self.check_full()
+        else:
+            self.cleanup()
 
     def run(self):
         """Run the case_switcher at the specified frequency (data_hz)"""
@@ -204,28 +207,32 @@ class make_buffer(DataBuffer):
             rate.sleep()  # Sleep to maintain the specified frequency
 
     def control_operation(self):
+        print(f"Starting control operation for mode: {self.drone_mode}")
+        print(f"Buffer sizes - Rate X: {len(self.buffer_desired_rate_x)}, Rate Y: {len(self.buffer_desired_rate_y)}")
+        print(f"Buffer sizes - Stab X: {len(self.buffer_desired_stab_x)}, Stab Y: {len(self.buffer_desired_stab_y)}")
+        
         match self.drone_mode:
             case DroneMode.MODE_RATE:
-                self.control_analyzer_rate_X.analyze_step_response(
+                print("Analyzing rate mode data...")
+                self.control_analyzer_rate_X.secend_response_Data(
                     self.buffer_desired_rate_x, self.buffer_actual_rate_x, "rate_x")
-                self.control_analyzer_rate_Y.analyze_step_response(
+                self.control_analyzer_rate_Y.secend_response_Data(
                     self.buffer_desired_rate_y, self.buffer_actual_rate_y, "rate_y")
             case DroneMode.MODE_STABILIZE:
-                self.control_analyzer_stab_X.analyze_step_response(
+                print("Analyzing stabilize mode data...")
+                self.control_analyzer_stab_X.secend_response_Data(
                     self.buffer_desired_stab_x, self.buffer_euler_angles_roll, "stab_x")
-                self.control_analyzer_stab_Y.analyze_step_response(
+                self.control_analyzer_stab_Y.secend_response_Data(
                     self.buffer_desired_stab_y, self.buffer_euler_angles_pitch, "stab_y")
-                self.control_analyzer_rate_X.analyze_step_response(
+                self.control_analyzer_rate_X.secend_response_Data(
                     self.buffer_desired_rate_x, self.buffer_actual_rate_x, "rate_stab_x")
-                self.control_analyzer_rate_Y.analyze_step_response(
+                self.control_analyzer_rate_Y.secend_response_Data(
                     self.buffer_desired_rate_y, self.buffer_actual_rate_y, "rate_stab_y")
 
     def cleanup(self):
         """Cleanup method for proper shutdown"""
-        print("Cleaning up buffers...")
         self.clear_buffer_rate()
         self.clear_buffer_stab()
-        print("Cleanup complete.")
 
 
 def main(args=None):
