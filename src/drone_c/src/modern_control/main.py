@@ -10,6 +10,7 @@ import threading
 import numpy as np
 from scipy.optimize import curve_fit
 from src.control import ControlAnalyzer
+from src.TD3 import *
 
 
 class DroneMode(IntEnum):
