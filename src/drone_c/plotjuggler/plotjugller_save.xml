@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <root>
- <tabbed_widget name="Main Window" parent="main_window">
+ <tabbed_widget parent="main_window" name="Main Window">
   <Tab tab_name="tab1" containers="1">
    <Container>
-    <DockSplitter count="2" sizes="0.5;0.5" orientation="-">
+    <DockSplitter sizes="0.5;0.5" count="2" orientation="-">
      <DockArea name="...">
-      <plot mode="TimeSeries" style="Lines" flip_x="false" flip_y="false">
-       <range right="140.147826" bottom="-12.646938" top="6.883790" left="135.158983"/>
+      <plot style="Lines" mode="TimeSeries" flip_y="false" flip_x="false">
+       <range bottom="-0.055923" left="2.857863" top="0.037638" right="7.858021"/>
        <limitY/>
-       <curve name="/desire_stab/data[0]" color="#c9241a"/>
-       <curve name="/euler_angles_data/pitch" color="#1ac938"/>
+       <curve color="#c9241a" name="/desire_stab/data[0]"/>
+       <curve color="#1ac938" name="/euler_angles_data/pitch"/>
       </plot>
      </DockArea>
      <DockArea name="...">
-      <plot mode="TimeSeries" style="Lines" flip_x="false" flip_y="false">
-       <range right="140.147826" bottom="-3.046741" top="1.487185" left="135.158983"/>
+      <plot style="Lines" mode="TimeSeries" flip_y="false" flip_x="false">
+       <range bottom="-0.075534" left="2.857863" top="0.117430" right="7.858021"/>
        <limitY/>
-       <curve name="/desire_stab/data[1]" color="#0e2eff"/>
-       <curve name="/euler_angles_data/roll" color="#ff7f0e"/>
+       <curve color="#0e2eff" name="/desire_stab/data[1]"/>
+       <curve color="#ff7f0e" name="/euler_angles_data/roll"/>
       </plot>
      </DockArea>
     </DockSplitter>
@@ -25,29 +25,29 @@
   </Tab>
   <Tab tab_name="tab2" containers="1">
    <Container>
-    <DockSplitter count="3" sizes="0.332879;0.334243;0.332879" orientation="-">
+    <DockSplitter sizes="0.333712;0.332577;0.333712" count="3" orientation="-">
      <DockArea name="...">
-      <plot mode="TimeSeries" style="Lines" flip_x="false" flip_y="false">
-       <range right="140.147889" bottom="-2.124435" top="0.051815" left="135.159213"/>
+      <plot style="Lines" mode="TimeSeries" flip_y="false" flip_x="false">
+       <range bottom="-0.100000" left="2.858255" top="0.100000" right="7.858263"/>
        <limitY/>
-       <curve name="/desire_rate/data[0]" color="#f14cc1"/>
-       <curve name="/estimated_rate/data[0]" color="#1f77b4"/>
+       <curve color="#f14cc1" name="/desire_rate/data[0]"/>
+       <curve color="#1f77b4" name="/estimated_rate/data[0]"/>
       </plot>
      </DockArea>
      <DockArea name="...">
-      <plot mode="TimeSeries" style="Lines" flip_x="false" flip_y="false">
-       <range right="140.147889" bottom="-0.225021" top="0.005488" left="135.159213"/>
+      <plot style="Lines" mode="TimeSeries" flip_y="false" flip_x="false">
+       <range bottom="-0.100000" left="2.858255" top="0.100000" right="7.858263"/>
        <limitY/>
-       <curve name="/estimated_rate/data[2]" color="#1ac938"/>
-       <curve name="/desire_rate/data[2]" color="#ff7f0e"/>
+       <curve color="#1ac938" name="/estimated_rate/data[2]"/>
+       <curve color="#ff7f0e" name="/desire_rate/data[2]"/>
       </plot>
      </DockArea>
      <DockArea name="...">
-      <plot mode="TimeSeries" style="Lines" flip_x="false" flip_y="false">
-       <range right="140.147889" bottom="0.620519" top="10.228768" left="135.159213"/>
+      <plot style="Lines" mode="TimeSeries" flip_y="false" flip_x="false">
+       <range bottom="-0.100000" left="2.858255" top="0.100000" right="7.858263"/>
        <limitY/>
-       <curve name="/desire_rate/data[1]" color="#9467bd"/>
-       <curve name="/estimated_rate/data[1]" color="#d62728"/>
+       <curve color="#9467bd" name="/desire_rate/data[1]"/>
+       <curve color="#d62728" name="/estimated_rate/data[1]"/>
       </plot>
      </DockArea>
     </DockSplitter>
@@ -55,15 +55,15 @@
   </Tab>
   <Tab tab_name="tab3" containers="1">
    <Container>
-    <DockSplitter count="1" sizes="1" orientation="-">
+    <DockSplitter sizes="1" count="1" orientation="-">
      <DockArea name="...">
-      <plot mode="TimeSeries" style="Lines" flip_x="false" flip_y="false">
-       <range right="140.148617" bottom="2349.225000" top="2549.775000" left="135.159785"/>
+      <plot style="Lines" mode="TimeSeries" flip_y="false" flip_x="false">
+       <range bottom="-0.100000" left="2.859497" top="0.100000" right="7.858943"/>
        <limitY/>
-       <curve name="/motor_pwm/back_left" color="#17becf"/>
-       <curve name="/motor_pwm/back_right" color="#bcbd22"/>
-       <curve name="/motor_pwm/front_left" color="#1f77b4"/>
-       <curve name="/motor_pwm/front_right" color="#d62728"/>
+       <curve color="#17becf" name="/motor_pwm/back_left"/>
+       <curve color="#bcbd22" name="/motor_pwm/back_right"/>
+       <curve color="#1f77b4" name="/motor_pwm/front_left"/>
+       <curve color="#d62728" name="/motor_pwm/front_right"/>
       </plot>
      </DockArea>
     </DockSplitter>
@@ -71,13 +71,13 @@
   </Tab>
   <Tab tab_name="tab2" containers="1">
    <Container>
-    <DockSplitter count="1" sizes="1" orientation="-">
+    <DockSplitter sizes="1" count="1" orientation="-">
      <DockArea name="...">
-      <plot mode="TimeSeries" style="Lines" flip_x="false" flip_y="false">
-       <range right="140.147390" bottom="-81.941311" top="66.473568" left="135.158719"/>
+      <plot style="Lines" mode="TimeSeries" flip_y="false" flip_x="false">
+       <range bottom="-0.072059" left="2.857555" top="0.070024" right="7.856931"/>
        <limitY/>
-       <curve name="/imu_data/angular_velocity/x" color="#1f77b4"/>
-       <curve name="/imu_data/angular_velocity/y" color="#d62728"/>
+       <curve color="#1f77b4" name="/imu_data/angular_velocity/x"/>
+       <curve color="#d62728" name="/imu_data/angular_velocity/y"/>
       </plot>
      </DockArea>
     </DockSplitter>
@@ -90,7 +90,7 @@
  <!-- - - - - - - - - - - - - - - -->
  <Plugins>
   <plugin ID="DataLoad CSV">
-   <parameters time_axis="" delimiter="0"/>
+   <parameters delimiter="0" time_axis=""/>
   </plugin>
   <plugin ID="DataLoad MCAP"/>
   <plugin ID="DataLoad ROS2 bags">
@@ -108,7 +108,7 @@
    <max_array_size value="100"/>
    <boolean_strings_to_number value="true"/>
    <remove_suffix_from_strings value="true"/>
-   <selected_topics value="/PID_rate;/PID_stab;/desire_rate;/desire_stab;/estimated_rate;/euler_angles_data;/imu_filter;/magnetometer_data;/motor_pwm;/parameter_events;/quaternion_data;/rc_channel_data;/rosout;/imu_data"/>
+   <selected_topics value="/PID_rate;/PID_stab;/desire_rate;/desire_stab;/estimated_rate;/euler_angles_data;/imu_data;/imu_filter;/magnetometer_data;/motor_pwm;/parameter_events;/rc_channel_data;/rosout;/drone_header;/pid_loaded;/pid_to_flash"/>
   </plugin>
   <plugin ID="UDP Server"/>
   <plugin ID="WebSocket Server"/>

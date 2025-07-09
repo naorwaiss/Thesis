@@ -3,7 +3,6 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import numpy as np
-from collections import deque
 import copy
 
 
@@ -11,61 +10,43 @@ def convert_deque_to_torch(deque_data, device='cuda'):
 
     # Convert deque to list first
     data_list = list(deque_data)
-    
-    # Check if deque is empty
     if not data_list:
         raise ValueError("Cannot convert empty deque to tensor")
-    
-    # Convert to numpy array first
-    numpy_array = np.array(data_list)
-    
-    # Convert numpy array to PyTorch tensor
-    tensor = torch.from_numpy(numpy_array).float()
-    
-    # Move tensor to specified device
+    tensor = torch.from_numpy(np.array(data_list)).float()
     tensor = tensor.to(device)
-    
+
     return tensor
+
+
+def convert_yaml_to_tensor(yaml_data, device='cuda'):
+    data_list = yaml_data['data']
+    length = yaml_data['length']
+    tensor = torch.from_numpy(np.array(data_list)).float()
+    tensor = tensor.to(device)
+    return tensor, length
 
 
 class Actor_signal(nn.Module):
 
-    
     def __init__(self, state_dim=2, action_dim=3):
         super(Actor_signal, self).__init__()
-        
-        # First hidden layer: Maps state to 256-dimensional space
-        # Input: state_dim (2) -> Output: 256
         self.fc1 = nn.Linear(state_dim, 256)
-        
-        # Second hidden layer: Maps 256 to 256 dimensions
-        # This allows the network to learn complex non-linear relationships
         self.fc2 = nn.Linear(256, 256)
-        
-        # Output layer: Maps 256 to action_dim (3)
-        # No activation function here to allow continuous action values
         self.fc3 = nn.Linear(256, action_dim)
-        
-    def forward(self, x):
 
-        # Apply ReLU activation after first layer
+    def forward(self, x):
         x = torch.relu(self.fc1(x))
-        
-        # Apply ReLU activation after second layer
         x = torch.relu(self.fc2(x))
-        
-        # Final layer: no activation for continuous action space
         x = self.fc3(x)
-        
+
         return x
 
 
 class Critic(nn.Module):
 
-    
     def __init__(self, state_dim, action_dim):
         super().__init__()
-        
+
         self.q1 = nn.Sequential(
             nn.Linear(state_dim + action_dim, 400),  # Concatenated state-action input
             nn.ReLU(),                               # ReLU activation
@@ -73,7 +54,7 @@ class Critic(nn.Module):
             nn.ReLU(),                               # ReLU activation
             nn.Linear(300, 1)                        # Output: single Q-value
         )
-        
+
         self.q2 = nn.Sequential(
             nn.Linear(state_dim + action_dim, 400),  # Same input dimension
             nn.ReLU(),                               # Same activation
@@ -84,8 +65,6 @@ class Critic(nn.Module):
 
     def forward(self, state, action):
         xu = torch.cat([state, action], 1)
-        
-        # Return Q-values from both networks
         return self.q1(xu), self.q2(xu)
 
     def Q1(self, state, action):
@@ -106,7 +85,7 @@ class TD3:
         # Instead of converting deque to tensor once, keep buffers as ReplayBuffer objects
         self.buffer_actual = buffer_actual  # Should be ReplayBuffer instance
         self.buffer_desired = buffer_desired  # Same here or merged, depends on your logic
-        
+
         self.total_it = 0
         self.max_action = 10.0  # Adjust if needed
 
@@ -155,4 +134,6 @@ class TD3:
                 target_param.data.copy_(tau * param.data + (1 - tau) * target_param.data)
 
             for param, target_param in zip(self.actor.parameters(), self.actor_target.parameters()):
-                target_param.data.copy_(tau * param.data + (1 - tau) * target_param.data) 
+                target_param.data.copy_(tau * param.data + (1 - tau) * target_param.data)
+
+

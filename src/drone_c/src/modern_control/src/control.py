@@ -184,3 +184,4 @@ class ControlAnalyzer:
         self.return_data_second = self.fit_second_order_system(
             self.return_data_step['response_data'], self.return_data_step['time_data'], self.return_data_step['final_value'], name)
         print(f"name: {name}, K: {self.return_data_second['K']}, zeta: {self.return_data_second['zeta']}, omega_n: {self.return_data_second['omega_n']}, omega_d: {self.return_data_second['omega_d'] if self.return_data_second['zeta'] < 1 else None}, rise_time_theory: {self.return_data_second['rise_time_theory']}, settling_time_theory: {self.return_data_second['settling_time_theory']}, overshoot_theory: {self.return_data_second['overshoot_theory']}, system_type: {'Underdamped' if self.return_data_second['zeta'] < 1 else 'Critically Damped' if self.return_data_second['zeta'] == 1 else 'Overdamped'}")
+

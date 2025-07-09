@@ -11,6 +11,7 @@ import numpy as np
 from scipy.optimize import curve_fit
 from src.control import ControlAnalyzer
 from src.TD3 import *
+import yaml
 
 
 class DroneMode(IntEnum):
@@ -23,10 +24,56 @@ class Take_data(IntEnum):
     DONT_TAKE = 2
 
 
+class yaml_flash():
+    def __init__(self, file_path):
+        self.file_path = file_path
+        self.data = self.load_data()
+
+    def load_data(self):
+        try:
+            with open(self.file_path, 'r') as file:
+                return yaml.safe_load(file)
+        except FileNotFoundError:
+            # Create directory if it doesn't exist
+            import os
+            os.makedirs(os.path.dirname(self.file_path), exist_ok=True)
+            # Return empty dict if file doesn't exist
+            return {}
+        except Exception as e:
+            print(f"Error loading YAML file: {e}")
+            return {}
+    
+    def clear_file(self):
+        try:
+            with open(self.file_path, 'w') as file:
+                file.truncate(0)
+        except Exception as e:
+            print(f"Error clearing file: {e}")
+
+    def write_data(self, name, data, length):
+        try:
+            # Create directory if it doesn't exist
+            import os
+            os.makedirs(os.path.dirname(self.file_path), exist_ok=True)
+            
+            # Create a dictionary with the data
+            yaml_data = {
+                name: {
+                    'data': data,
+                    'length': length
+                }
+            }
+            
+            with open(self.file_path, 'a') as file:
+                yaml.dump(yaml_data, file, default_flow_style=False)
+        except Exception as e:
+            print(f"Error writing data: {e}")
+
+            
 class DataBuffer(Node):
     """Class responsible for data collection and buffer management"""
 
-    def __init__(self, buffer_time=5, wait_time=3, data_hz=50):
+    def __init__(self, buffer_time=7, wait_time=3, data_hz=50):
         super().__init__('data_buffer')
 
         # Configuration
@@ -98,7 +145,7 @@ class make_buffer(DataBuffer):
         # Extract parameters for local use
         buffer_time = kwargs.get('buffer_time', 5)
         data_hz = kwargs.get('data_hz', 50)
-
+        self.yaml_flash = yaml_flash("config/data.yaml")
         self.buffer_desired_rate_x = deque(maxlen=buffer_time * data_hz)
         self.buffer_desired_rate_y = deque(maxlen=buffer_time * data_hz)
         self.buffer_actual_rate_x = deque(maxlen=buffer_time * data_hz)
@@ -181,6 +228,11 @@ class make_buffer(DataBuffer):
     def case_switcher(self):
         """Switch between different drone modes and handle data collection"""
         if self.data_take == Take_data.DONT_TAKE:
+            match self.drone_mode:
+                case DroneMode.MODE_RATE:
+                    self.yaml_flash_rate()
+                case DroneMode.MODE_STABILIZE:
+                    self.yaml_flash_stab()
             control_operation_thread = threading.Thread(target=self.control_operation)
             control_operation_thread.start()
             self.start_timer()
@@ -198,6 +250,7 @@ class make_buffer(DataBuffer):
                     self.get_rate_data()
                     self.data_take = self.check_full()
         else:
+            print("cleanup the buffer the drone dont armed")
             self.cleanup()
 
     def run(self):
@@ -209,8 +262,6 @@ class make_buffer(DataBuffer):
 
     def control_operation(self):
         print(f"Starting control operation for mode: {self.drone_mode}")
-        print(f"Buffer sizes - Rate X: {len(self.buffer_desired_rate_x)}, Rate Y: {len(self.buffer_desired_rate_y)}")
-        print(f"Buffer sizes - Stab X: {len(self.buffer_desired_stab_x)}, Stab Y: {len(self.buffer_desired_stab_y)}")
         
         match self.drone_mode:
             case DroneMode.MODE_RATE:
@@ -234,6 +285,21 @@ class make_buffer(DataBuffer):
         """Cleanup method for proper shutdown"""
         self.clear_buffer_rate()
         self.clear_buffer_stab()
+    
+    def yaml_flash_rate(self):
+        # Convert deque objects to lists for YAML serialization
+        rate_x_data = list(self.buffer_desired_rate_x)
+        rate_y_data = list(self.buffer_desired_rate_y)
+        self.yaml_flash.write_data("rate_x", rate_x_data, len(self.buffer_desired_rate_x))
+        self.yaml_flash.write_data("rate_y", rate_y_data, len(self.buffer_desired_rate_y))
+    
+    def yaml_flash_stab(self):
+        self.yaml_flash_rate()
+        # Convert deque objects to lists for YAML serialization
+        stab_x_data = list(self.buffer_desired_stab_x)
+        stab_y_data = list(self.buffer_desired_stab_y)
+        self.yaml_flash.write_data("stab_x", stab_x_data, len(self.buffer_desired_stab_x))
+        self.yaml_flash.write_data("stab_y", stab_y_data, len(self.buffer_desired_stab_y))
 
 
 def main(args=None):

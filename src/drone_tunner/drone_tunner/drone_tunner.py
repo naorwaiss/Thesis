@@ -259,7 +259,6 @@ class DroneHeaderWidget(QWidget):
         self.setLayout(main_layout)
 
     def get_arm_state(self, arm_state)->str:
-        print(arm_state)
         if arm_state == False:
             return "Disarmed"
         elif arm_state == True:
