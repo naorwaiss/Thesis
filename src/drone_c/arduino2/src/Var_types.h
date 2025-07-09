@@ -12,11 +12,26 @@
 static const float SAMPLE_RATE = 416.0f;
 static const float DT = 1.0f / SAMPLE_RATE;
 
-// Frequencies to be used with the RATE_DO_EXECUTE_HZ macro. Do NOT use an arbitrary number.
+const unsigned long STAB_PERIOD = 1000000 / STAB_FREQUENCY;  // 200 Hz period in microseconds
+const unsigned long MOTOR_PERIOD = 1000000 / ESC_FREQUENCY;  // 1,000,000 us / frequency in Hz
+const unsigned long IMU_PERIOD = 1000000 / SAMPLE_RATE;
+const unsigned long SEND_DATA_PERIOD = 1000000 / 50;  // 50 Hz
 
-#ifndef PI
-#define PI 3.14159265358979323846f
-#endif
+
+#define ELRSSerial Serial1  // Use Serial1 for the CRSF communication
+#define MOTOR1_PIN 2        // front right
+#define MOTOR2_PIN 3        // back right
+#define MOTOR3_PIN 4        // back left
+#define MOTOR4_PIN 5        // fron left
+#define MAX_ANGLE 10.0f
+#define MAX_RATE 200.0f
+#define CONTROLLER_MIN 988
+#define CONTROLLER_MAX 2012
+#define CONTROLL_THR_MAX 1520
+#define CONTROLL_THR_MIN 1480
+
+
+// #define PI 3.14159265358979323846f
 #define deg2rad PI / 180.0f
 #define rad2deg 180.0f / PI
 

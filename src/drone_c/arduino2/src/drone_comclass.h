@@ -26,11 +26,10 @@
 
 class Drone_com {
    public:
-    Drone_com(Measurement_t* meas, quat_t* q_est, attitude_t* desired_attitude, motor_t* motor_pwm, attitude_t* desired_rate, attitude_t* estimated_attitude, attitude_t* estimated_rate, PID_out_t* PID_stab_out, PID_out_t* PID_rate_out, Controller_s* controller_data, PID_const_t* pid_load, Drone_Data_t* drone_data_header);
+    Drone_com(Measurement_t* meas, quat_t* q_est, attitude_t* desired_attitude, motor_t* motor_pwm, attitude_t* desired_rate, attitude_t* estimated_attitude, attitude_t* estimated_rate, PID_out_t* PID_stab_out, PID_out_t* PID_rate_out, Controller_s* controller_data, drone_tune_t* drone_tune, Drone_Data_t* drone_data_header);
     void init_com();
     void convert_Measurment_to_byte();
     void emit_data();
-    void emit_pid_consts_feedback();
     void send_data();
 
 
@@ -52,7 +51,7 @@ class Drone_com {
     static PID_out_t* _PID_stab_out;
     static PID_out_t* _PID_rate_out;
     static Controller_s* _controller_data;
-    static PID_const_t* _pid_load;
+    static drone_tune_t* _drone_tune;
     static Drone_Data_t* _drone_data_header;
 
     float* imu_data_raw = (float*)calloc(6, sizeof(float));

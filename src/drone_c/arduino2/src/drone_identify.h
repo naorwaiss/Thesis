@@ -10,9 +10,9 @@ enum class DroneMode {
 
 enum class DroneFilter {
     COMPCLASS = 1,
-    MADGWICK = 2,
-    KALMAN = 3,
+    KALMAN = 2,
 };
+
 
 
 typedef struct {
@@ -27,6 +27,18 @@ typedef struct {
     std::array<float, 3> defaultSyawPID;
     std::array<float, 2> defaultImax_stab;
 } PID_const_t;
+
+typedef struct {
+    float std_beta = 0.0f;
+    float high_beta = 0.0f;
+    float low_beta = 0.0f;
+} magwick_data_t;
+
+
+typedef struct {
+    PID_const_t pid_const;
+    magwick_data_t filter_data;
+} drone_tune_t;
 
 typedef struct {
     uint8_t mac[6];
@@ -59,13 +71,12 @@ inline bool compareMac(uint8_t mac1[6], uint8_t mac2[6]) {
 }
 
 inline uint8_t mac0[6] = {0x04, 0xE9, 0xE5, 0x18, 0xEE, 0x80};  // drone naor
-inline uint8_t mac1[6] = {0x04, 0xE9, 0xE5, 0x18, 0xEE, 0xFC};  // drone naor
-inline uint8_t mac2[6] = {0x04, 0xE9, 0xE5, 0x19, 0x2B, 0x2D};  // drone amit - > pid not set yet
+inline uint8_t mac2[6] = {0x04, 0xE9, 0xE5, 0x19, 0x2B, 0x2D};  // drone amit 
 inline uint8_t mac3[6] = {0x04, 0xE9, 0xE5, 0x17, 0xE3, 0x91};  // drone amit - > pid not set yet
 
 inline void getbot_param(PID_const_t& myDrone_PID, Drone_Data_t& myDrone) {
     getMAC(myDrone.mac);
-    if (compareMac(myDrone.mac, mac0) || compareMac(myDrone.mac, mac1)) {
+    if (compareMac(myDrone.mac, mac0) || compareMac(myDrone.mac, mac2)) {
         myDrone_PID.defaultRrollPID = {0.7f, 0.05f, 0.3f};
         myDrone_PID.defaultRpitchPID = {0.7f, 0.05f, 0.3f};
         myDrone_PID.defaultRyawPID = {1.2f, 0.0f, 0.05f};
@@ -83,7 +94,7 @@ inline void getbot_param(PID_const_t& myDrone_PID, Drone_Data_t& myDrone) {
         myDrone_PID.defaultSrollPID = {0.1f, 0.0f, 0.0f};
         myDrone_PID.defaultSpitchPID = {0.1f, 0.0f, 0.0f};
         myDrone_PID.defaultSyawPID = {4.0f, 0.0f, 0.0f};
-        myDrone_PID.defaultImax_stab = {100.0f, 100.0f};
+        myDrone_PID.defaultImax_stab = {25.0f, 25.0f};
         return;
     } else {
         while (1) {
@@ -93,8 +104,5 @@ inline void getbot_param(PID_const_t& myDrone_PID, Drone_Data_t& myDrone) {
         }
     }
 }
-
-
-
 
 #endif

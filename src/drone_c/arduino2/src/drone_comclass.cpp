@@ -13,7 +13,7 @@ attitude_t* Drone_com::_estimated_rate = nullptr;
 PID_out_t* Drone_com::_PID_stab_out = nullptr;
 PID_out_t* Drone_com::_PID_rate_out = nullptr;
 Controller_s* Drone_com::_controller_data = nullptr;
-PID_const_t* Drone_com::_pid_load = nullptr;
+drone_tune_t* Drone_com::_drone_tune = nullptr;
 Drone_Data_t* Drone_com::_drone_data_header = nullptr;
 
 void Drone_com::onConnection(RTComSession& session) {
@@ -44,7 +44,7 @@ void Drone_com::onConnection(RTComSession& session) {
 Drone_com::Drone_com(Measurement_t* meas, quat_t* q_est, attitude_t* desired_attitude, motor_t* motor_pwm,
                      attitude_t* desired_rate, attitude_t* estimated_attitude, attitude_t* estimated_rate,
                      PID_out_t* PID_stab_out, PID_out_t* PID_rate_out, Controller_s* controller_data,
-                     PID_const_t* pid_load, Drone_Data_t* drone_data_header)
+                     drone_tune_t* drone_tune, Drone_Data_t* drone_data_header)
     : rtcomSocket(SOCKET_ADDRESS, SOCKET_CONFIG)  // Initialize rtcomSocket with both address and config
 {
     _meas = meas;
@@ -57,7 +57,7 @@ Drone_com::Drone_com(Measurement_t* meas, quat_t* q_est, attitude_t* desired_att
     _PID_stab_out = PID_stab_out;
     _PID_rate_out = PID_rate_out;
     _controller_data = controller_data;
-    _pid_load = pid_load;  // Store the pointer instead of making a copy
+    _drone_tune = drone_tune;  // Store the pointer instead of making a copy
     _drone_data_header = drone_data_header;
 }
 
@@ -170,21 +170,21 @@ void Drone_com::convert_Measurment_to_byte() {
     rc_ch_data[7] = _controller_data->aux4;
     memcpy(rc_byte, rc_ch_data, sizeof(rc_byte));
 
-    pid_const_Data[0] = _pid_load->defaultRpitchPID[0];
-    pid_const_Data[1] = _pid_load->defaultRpitchPID[1];
-    pid_const_Data[2] = _pid_load->defaultRpitchPID[2];
-    pid_const_Data[3] = _pid_load->defaultRrollPID[0];
-    pid_const_Data[4] = _pid_load->defaultRrollPID[1];
-    pid_const_Data[5] = _pid_load->defaultRrollPID[2];
-    pid_const_Data[6] = _pid_load->defaultSpitchPID[0];
-    pid_const_Data[7] = _pid_load->defaultSpitchPID[1];
-    pid_const_Data[8] = _pid_load->defaultSpitchPID[2];
-    pid_const_Data[9] = _pid_load->defaultSrollPID[0];
-    pid_const_Data[10] = _pid_load->defaultSrollPID[1];
-    pid_const_Data[11] = _pid_load->defaultSrollPID[2];
-    pid_const_Data[12] = _pid_load->defaultRyawPID[0];
-    pid_const_Data[13] = _pid_load->defaultRyawPID[1];
-    pid_const_Data[14] = _pid_load->defaultRyawPID[2];
+    pid_const_Data[0] = _drone_tune->pid_const.defaultRpitchPID[0];
+    pid_const_Data[1] = _drone_tune->pid_const.defaultRpitchPID[1];
+    pid_const_Data[2] = _drone_tune->pid_const.defaultRpitchPID[2];
+    pid_const_Data[3] = _drone_tune->pid_const.defaultRrollPID[0];
+    pid_const_Data[4] = _drone_tune->pid_const.defaultRrollPID[1];
+    pid_const_Data[5] = _drone_tune->pid_const.defaultRrollPID[2];
+    pid_const_Data[6] = _drone_tune->pid_const.defaultSpitchPID[0];
+    pid_const_Data[7] = _drone_tune->pid_const.defaultSpitchPID[1];
+    pid_const_Data[8] = _drone_tune->pid_const.defaultSpitchPID[2];
+    pid_const_Data[9] = _drone_tune->pid_const.defaultSrollPID[0];
+    pid_const_Data[10] = _drone_tune->pid_const.defaultSrollPID[1];
+    pid_const_Data[11] = _drone_tune->pid_const.defaultSrollPID[2];
+    pid_const_Data[12] = _drone_tune->pid_const.defaultRyawPID[0];
+    pid_const_Data[13] = _drone_tune->pid_const.defaultRyawPID[1];
+    pid_const_Data[14] = _drone_tune->pid_const.defaultRyawPID[2];
     memcpy(pid_consts_byte, pid_const_Data, sizeof(pid_consts_byte));
 
     for (size_t i = 0; i < 6; i++)

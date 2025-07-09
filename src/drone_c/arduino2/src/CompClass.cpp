@@ -2,37 +2,27 @@
 #include "CompClass.h"
 #include "Var_types.h"
 
-void CompFilter::UpdateQ(Measurement_t* meas, float dt) {
+void CompFilter::UpdateQ(vec3_t* gyro, vec3_t* acc, float dt) {
     float recipNorm;
     float s0, s1, s2, s3;
     float qDot1, qDot2, qDot3, qDot4;
     float _2qw, _2qx, _2qy, _2qz, _4qw, _4qx, _4qy, _8qx, _8qy, qwqw, qxqx, qyqy, qzqz;
-    float _2qwmx, _2qwmy, _2qwmz, _2qxmx, _2q0, _2q1, _2q2, _2q3, _2q0q2, _2q2q3, q0q0, q0q1, q0q2, q0q3, q1q1, q1q2, q1q3, q2q2, q2q3, q3q3, _2q0q1, _2q0q3;
-    float hx, hy, _2bx, _2bz, _4bx, _4bz;
-
-    // Initial Filtering - Not a must nut it helps.
-    // InitialFiltering(meas);
 
     // Model based time propagation
-    // qDot1 = 0.5f * (-q.x * meas->gyro_LPF.x - q.y * meas->gyro_LPF.y - q.z * meas->gyro_LPF.z);
-    // qDot2 = 0.5f * (q.w * meas->gyro_LPF.x + q.y * meas->gyro_LPF.z - q.z * meas->gyro_LPF.y);
-    // qDot3 = 0.5f * (q.w * meas->gyro_LPF.y - q.x * meas->gyro_LPF.z + q.z * meas->gyro_LPF.x);
-    // qDot4 = 0.5f * (q.w * meas->gyro_LPF.z + q.x * meas->gyro_LPF.y - q.y * meas->gyro_LPF.x);
+    qDot1 = 0.5f * (-q.x * gyro->x - q.y * gyro->y - q.z * gyro->z);
+    qDot2 = 0.5f * (q.w * gyro->x + q.y * gyro->z - q.z * gyro->y);
+    qDot3 = 0.5f * (q.w * gyro->y - q.x * gyro->z + q.z * gyro->x);
+    qDot4 = 0.5f * (q.w * gyro->z + q.x * gyro->y - q.y * gyro->x);
 
-    qDot1 = 0.5f * (-q.x * meas->gyroRAD.x - q.y * meas->gyroRAD.y - q.z * meas->gyroRAD.z);
-    qDot2 = 0.5f * (q.w * meas->gyroRAD.x + q.y * meas->gyroRAD.z - q.z * meas->gyroRAD.y);
-    qDot3 = 0.5f * (q.w * meas->gyroRAD.y - q.x * meas->gyroRAD.z + q.z * meas->gyroRAD.x);
-    qDot4 = 0.5f * (q.w * meas->gyroRAD.z + q.x * meas->gyroRAD.y - q.y * meas->gyroRAD.x);
-
-    float BETA = calculateDynamicBeta(*meas);
+    float BETA = calculateDynamicBeta(*acc);
     // float BETA = DEFAULT_BETA;
 
-    if (!(meas->acc.x == 0.0 && meas->acc.y == 0.0 && meas->acc.z == 0.0)) {
+    if (!(acc->x == 0.0 && acc->y == 0.0 && acc->z == 0.0)) {
         // Normalise accelerometer measurement
-        recipNorm = invSqrt(meas->acc.x * meas->acc.x + meas->acc.y * meas->acc.y + meas->acc.z * meas->acc.z);
-        meas->acc.x *= recipNorm;
-        meas->acc.y *= recipNorm;
-        meas->acc.z *= recipNorm;
+        recipNorm = invSqrt(acc->x * acc->x + acc->y * acc->y + acc->z * acc->z);
+        acc->x *= recipNorm;
+        acc->y *= recipNorm;
+        acc->z *= recipNorm;
 
         // Auxiliary variables to avoid repeated arithmetic
         _2qw = 2.0f * q.w;
@@ -50,10 +40,10 @@ void CompFilter::UpdateQ(Measurement_t* meas, float dt) {
         qzqz = q.z * q.z;
 
         // Gradient decent algorithm corrective step
-        s0 = _4qw * qyqy + _2qy * meas->acc.x + _4qw * qxqx - _2qx * meas->acc.y;
-        s1 = _4qx * qzqz - _2qz * meas->acc.x + 4.0f * qwqw * q.x - _2qw * meas->acc.y - _4qx + _8qx * qxqx + _8qx * qyqy + _4qx * meas->acc.z;
-        s2 = 4.0f * qwqw * q.y + _2qw * meas->acc.x + _4qy * qzqz - _2qz * meas->acc.y - _4qy + _8qy * qxqx + _8qy * qyqy + _4qy * meas->acc.z;
-        s3 = 4.0f * qxqx * q.z - _2qx * meas->acc.x + 4.0f * qyqy * q.z - _2qy * meas->acc.y;
+        s0 = _4qw * qyqy + _2qy * acc->x + _4qw * qxqx - _2qx * acc->y;
+        s1 = _4qx * qzqz - _2qz * acc->x + 4.0f * qwqw * q.x - _2qw * acc->y - _4qx + _8qx * qxqx + _8qx * qyqy + _4qx * acc->z;
+        s2 = 4.0f * qwqw * q.y + _2qw * acc->x + _4qy * qzqz - _2qz * acc->y - _4qy + _8qy * qxqx + _8qy * qyqy + _4qy * acc->z;
+        s3 = 4.0f * qxqx * q.z - _2qx * acc->x + 4.0f * qyqy * q.z - _2qy * acc->y;
 
         recipNorm = invSqrt(s0 * s0 + s1 * s1 + s2 * s2 + s3 * s3);  // normalise step magnitude
         s0 *= recipNorm;
@@ -107,7 +97,7 @@ void CompFilter::GetEulerRPYrad(attitude_s* rpy, float initial_heading) {
     rpy->roll = atan2f(gy, gz);
 }
 
-void CompFilter::GetEulerRPYdeg(attitude_s* rpy, float initial_heading) {
+void CompFilter::GetEulerRPYdeg(attitude_s* rpy) {
     float gx = gravX;
     float gy = gravY;
     float gz = gravZ;
@@ -126,9 +116,11 @@ void CompFilter::GetEulerRPYdeg(attitude_s* rpy, float initial_heading) {
 float CompFilter::invSqrt(float x) {
     float halfx = 0.5f * x;
     float y = x;
-    long i = *(long*)&y;
+    long i;
+    static_assert(sizeof(float) == sizeof(long), "float and long must be the same size");
+    memcpy(&i, &y, sizeof(float));
     i = 0x5f3759df - (i >> 1);
-    y = *(float*)&i;
+    memcpy(&y, &i, sizeof(float));
     y = y * (1.5f - (halfx * y * y));
     return y;
 }
@@ -143,18 +135,27 @@ void CompFilter::estimatedGravityDir(float* gx, float* gy, float* gz) {
     *gz = q.w * q.w - q.x * q.x - q.y * q.y + q.z * q.z;
 }
 
-float CompFilter::calculateDynamicBeta(Measurement_t meas) {
-    // Compute the norm (magnitude) of the gyroscope vector
-    accNorm = sqrtf(meas.acc.x * meas.acc.x +
-                     meas.acc.y * meas.acc.y +
-                     meas.acc.z * meas.acc.z);
-    // Adapt Beta based on gyroscope norm
+float CompFilter::calculateDynamicBeta(vec3_t acc) {
+    // Compute the norm (magnitude) of the accelerometer vector
+    accNorm = sqrtf(acc.x * acc.x + acc.y * acc.y + acc.z * acc.z);
+    // Adapt Beta based on accelerometer norm
     if (accNorm < LOW_MOTION) {
-        return HIGH_BETA;
+        // System is likely stable or slow-moving, increase Beta for more correction
+        // Serial.println("Low Motion");
+        return _High_Beta;
     } else if (accNorm > HIGH_MOTION) {
-        return LOW_BETA;
+        // System is moving fast, reduce Beta to rely more on gyroscope
+        // Serial.println("High Motion");
+        return _Low_Beta;
     } else {
-        return DEFAULT_BETA;
+        // Default case, normal correction
+        // Serial.println("Default Motion");
+        return _Default_Beta;
     }
 }
 
+void CompFilter::set_new_beta(magwick_data_t* new_data) {
+    _High_Beta = new_data->high_beta;
+    _Low_Beta = new_data->low_beta;
+    _Default_Beta = new_data->std_beta;
+}
