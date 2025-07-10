@@ -88,9 +88,9 @@ void Drone_com::convert_Measurment_to_byte() {
     imu_data_raw[0] = _meas->acc.x;
     imu_data_raw[1] = _meas->acc.y;
     imu_data_raw[2] = _meas->acc.z;
-    imu_data_raw[3] = _meas->gyroDEG.x;
-    imu_data_raw[4] = _meas->gyroDEG.y;
-    imu_data_raw[5] = _meas->gyroDEG.z;
+    imu_data_raw[3] = _meas->gyroRAD.x;
+    imu_data_raw[4] = _meas->gyroRAD.y;
+    imu_data_raw[5] = _meas->gyroRAD.z;
     memcpy(imu_byte_raw, imu_data_raw, sizeof(imu_byte_raw));
 
     mag_data[0] = _meas->mag.x;
