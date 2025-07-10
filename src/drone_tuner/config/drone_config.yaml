@@ -1,0 +1,7 @@
+drone_filter:
+  compclass: 1
+  kalman: 2
+
+drone_mode:
+  acro: 1
+  stablize: 2
