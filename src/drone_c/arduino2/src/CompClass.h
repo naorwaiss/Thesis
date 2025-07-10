@@ -8,7 +8,8 @@
 
 // Motion thresholds and filter parameters
 #define LOW_MOTION 0.15f * 9.81    // Slightly lower than 0.2f
-#define HIGH_MOTION 1.0f * 9.81   // Lower than 1.5f to activate high correction sooner
+#define HIGH_MOTION 1.5f * 9.81   // Lower than 1.5f to activate high correction sooner
+
 
 
 
@@ -21,6 +22,8 @@ class CompFilter {
         float drift = 0.0;
         float driftRate = 0.005;
         float gravX , gravY, gravZ; // Unit vector in the direction of the estimated gravity
+        Beta filter_beta = Beta::Std_factor;
+
 
 
         void UpdateQ(vec3_t* gyro, vec3_t* acc, float dt);
@@ -34,9 +37,9 @@ class CompFilter {
         void set_beta(magwick_data_t* new_data);
 
         private:
-            float _High_Beta = 0.9f;
-            float _Low_Beta = 0.6f;
-            float _Default_Beta = 0.7f;
+            float _High_Beta;
+            float _Low_Beta;
+            float _Default_Beta;
 };
 
 #endif

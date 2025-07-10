@@ -21,13 +21,12 @@ class IMU_Func{
         int ACC_LPF_EN;    // Accelerometer Low Pass Filter Enable
         float GYRO_SENS;   // Gyro Sensitivity
         float ACC_SENS;    // Accelerometer Sensitivity
-        const float G = 9.80665; // Gravity constant in m/s^2
         const float IMU_THRESHOLD = 0.05;
 
         
 
     public:
-        IMU_Func(Measurement_t* meas, int ODR = 416, int G_FS = 250, int A_FS = 2, int G_LPF_FREQ = 12, int A_LPF_FREQ = 45, bool EN_LPF = true);
+        IMU_Func(Measurement_t* meas, int ODR = 416, int G_FS = 250, int A_FS = 2, int G_LPF_FREQ = 25, int A_LPF_FREQ = 20, bool EN_LPF = true);
         void init_IMU();
         void Read_IMU();
         void Initial_Calibration();

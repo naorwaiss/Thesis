@@ -13,6 +13,13 @@ enum class DroneFilter {
     KALMAN = 2,
 };
 
+enum class Beta {
+    // Those values define how much we rely on the accelerometer
+    Std_factor = 1,
+    Rely_more = 2,
+    Rely_less = 3,
+};
+
 
 
 typedef struct {
@@ -85,9 +92,9 @@ inline void getbot_param(drone_tune_t& myDrone_tune, Drone_Data_t& myDrone) {
         myDrone_tune.pid_const.defaultSpitchPID = {11.8f, 0.1f, 0.0f};
         myDrone_tune.pid_const.defaultSyawPID = {4.0f, 0.0f, 0.0f};
         myDrone_tune.pid_const.defaultImax_stab = {25.0f, 25.0f};
-        myDrone_tune.filter_data.std_beta = 0.7f;
-        myDrone_tune.filter_data.high_beta = 0.9f;
-        myDrone_tune.filter_data.low_beta = 0.6f;
+        myDrone_tune.filter_data.std_beta = 0.1f;
+        myDrone_tune.filter_data.high_beta = 0.2f;
+        myDrone_tune.filter_data.low_beta = 0.05f;
         return;
     } else if (compareMac(myDrone.mac, mac2) || compareMac(myDrone.mac, mac3)) {
         myDrone_tune.pid_const.defaultRrollPID = {0.7f, 0.05f, 0.3f};
@@ -98,9 +105,9 @@ inline void getbot_param(drone_tune_t& myDrone_tune, Drone_Data_t& myDrone) {
         myDrone_tune.pid_const.defaultSpitchPID = {0.1f, 0.0f, 0.0f};
         myDrone_tune.pid_const.defaultSyawPID = {4.0f, 0.0f, 0.0f};
         myDrone_tune.pid_const.defaultImax_stab = {25.0f, 25.0f};
-        myDrone_tune.filter_data.std_beta = 0.7f;
-        myDrone_tune.filter_data.high_beta = 0.9f;
-        myDrone_tune.filter_data.low_beta = 0.6f;
+        myDrone_tune.filter_data.std_beta = 0.1f;
+        myDrone_tune.filter_data.high_beta = 0.2f;
+        myDrone_tune.filter_data.low_beta = 0.05f;
         return;
     } else {
         while (1) {

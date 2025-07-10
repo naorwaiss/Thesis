@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include "CompClass.h"
-#include "Var_types.h"
 
 CompFilter::CompFilter(magwick_data_t* filter_data) {
     _High_Beta = filter_data->high_beta;
@@ -9,7 +8,6 @@ CompFilter::CompFilter(magwick_data_t* filter_data) {
 }
 
 void CompFilter::UpdateQ(vec3_t* gyro, vec3_t* acc, float dt) {
-    Serial.print(_High_Beta); Serial.print(" "); Serial.print(_Low_Beta); Serial.print(" "); Serial.println(_Default_Beta);
     float recipNorm;
     float s0, s1, s2, s3;
     float qDot1, qDot2, qDot3, qDot4;
@@ -144,19 +142,30 @@ void CompFilter::estimatedGravityDir(float* gx, float* gy, float* gz) {
 
 float CompFilter::calculateDynamicBeta(vec3_t acc) {
     // Compute the norm (magnitude) of the accelerometer vector
-    accNorm = sqrtf(acc.x * acc.x + acc.y * acc.y + acc.z * acc.z);
+    accNorm = abs(sqrtf(acc.x * acc.x + acc.y * acc.y + acc.z * acc.z)/G-1) ;
     // Adapt Beta based on accelerometer norm
-    if (accNorm < LOW_MOTION) {
+    if (accNorm < 0.25) {
+        Serial.println("Rely_more");
+
         // System is likely stable or slow-moving, increase Beta for more correction
-        // Serial.println("Low Motion");
-        return _High_Beta;
-    } else if (accNorm > HIGH_MOTION) {
-        // System is moving fast, reduce Beta to rely more on gyroscope
-        // Serial.println("High Motion");
-        return _Low_Beta;
+        filter_beta = Beta::Rely_more;
+
+    } else if (accNorm > 0.5) {
+        Serial.println("Rely_less");
+        filter_beta = Beta::Rely_less;
+
     } else {
-        // Default case, normal correction
-        // Serial.println("Default Motion");
+        Serial.println("amit");
+        filter_beta = Beta::Std_factor;
+    }
+
+    switch (filter_beta)
+    {
+    case Beta::Rely_more:
+        return _High_Beta;
+    case Beta::Rely_less:
+        return _Low_Beta;
+    case Beta::Std_factor:
         return _Default_Beta;
     }
 }
