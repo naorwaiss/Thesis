@@ -26,11 +26,11 @@ def generate_launch_description():
         output='screen'
     )
 
-    drone_tunner_node = Node(
+    drone_tuner_node = Node(
         #a qt applicatino base ros2 that allow tuning the drone parameters
-        package='drone_tunner',
-        executable='drone_tunner',
-        name='drone_tunner',
+        package='drone_tuner',
+        executable='drone_tuner',
+        name='drone_tuner',
         output='screen'
     )
 
@@ -47,6 +47,6 @@ def generate_launch_description():
     return LaunchDescription([
         plotjuggler_arg,
         rtcom_node,
-        drone_tunner_node,
+        drone_tuner_node,
         plotjuggler_node
     ])
