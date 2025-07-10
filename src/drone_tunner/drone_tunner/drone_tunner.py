@@ -11,7 +11,7 @@ from PyQt5.QtWidgets import (
 )
 from PyQt5.QtCore import QTimer, pyqtSignal, QObject
 from PyQt5.QtGui import QCloseEvent
-from drone_c.msg import PidConsts, DroneHeader
+from drone_c.msg import PidConsts, DroneHeader,Filter
 from std_msgs.msg import String
 import struct
 
@@ -174,22 +174,41 @@ class DroneConfigYaml:
 
 class ROS2Listener(QObject):
     message_received = pyqtSignal(object)  # Signal to emit the received message
+    filter_received = pyqtSignal(object)   # Signal to emit the received filter message
 
     def __init__(self, node):
         super().__init__()
-        self.last_new_msg = None
+        self.pid_old_msg = None
+        self.filter_old_msg = None
         self.node = node
-        self.subscription = self.node.create_subscription(
+        
+        # PID subscription and publisher
+        self.pid_subscription = self.node.create_subscription(
             PidConsts,
             'pid_loaded',
-            self.listener_callback,
+            self.pid_callback,
             10
         )
-        self.pid_to_flash_pub = self.node.create_publisher(PidConsts, 'pid_to_flash', 10)
+        self.pid_publisher = self.node.create_publisher(PidConsts, 'pid_to_flash', 10)
+        
+        # Filter subscription and publisher
+        self.filter_subscription = self.node.create_subscription(
+            Filter,
+            'current_magwick_return_data',
+            self.filter_callback,
+            10
+        )
+        self.filter_publisher = self.node.create_publisher(Filter, 'filter_to_flash', 10)
 
-    def listener_callback(self, msg):
+    def pid_callback(self, msg):
         # Emit the entire message object
         self.message_received.emit(msg)
+        
+    def filter_callback(self, msg):
+        # Emit the entire filter message object
+        self.filter_received.emit(msg)
+
+
 
 
 class DroneHeaderWidget(QWidget):
@@ -304,14 +323,15 @@ class DroneHeaderWidget(QWidget):
             self.parent().voltage_value.setText(f"{self.voltage}V")
             self.parent().current_value.setText(f"{self.current}A")
 
-class DroneTunnerWindow(QWidget):
+class Tunner(QWidget):
     def __init__(self, node):
         super().__init__()
         self.setWindowTitle("Drone Tuner GUI")
         self.node = node  # Store node reference for cleanup
 
-        # Initialize last_new_msg
-        self.last_new_msg = None
+        # Initialize pid_old_msg
+        self.pid_old_msg = None
+        self.filter_old_data = None
         self.values_updated = False
 
         # Create header widget
@@ -335,6 +355,18 @@ class DroneTunnerWindow(QWidget):
         ])
         self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.table.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        
+        # Beta Table for filter values
+        self.beta_table = QTableWidget(3, 1)  # 3 rows, 1 column
+        self.beta_table.setHorizontalHeaderLabels(["Value"])
+        self.beta_table.setVerticalHeaderLabels([
+            "std_beta",
+            "low_beta",
+            "high_beta",
+        ])
+        self.beta_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.beta_table.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        
         self.verification_status = QLabel()
         self.verification_status.setFixedSize(20, 20)
         self.verification_status.setStyleSheet("background-color: gray; border-radius: 10px;")
@@ -345,9 +377,12 @@ class DroneTunnerWindow(QWidget):
         status_layout.addWidget(QLabel("Status:"))
         status_layout.addStretch()
 
-        # Create button
-        self.button = QPushButton("Flash New Pid")
-        self.button.clicked.connect(self.on_button_clicked)
+        # Create buttons
+        self.pid_button = QPushButton("Flash New Pid")
+        self.pid_button.clicked.connect(self.on_pid_button_clicked)
+        
+        self.filter_button = QPushButton("Flash New Filter")
+        self.filter_button.clicked.connect(self.on_filter_button_clicked)
 
         # Create voltage and current layout
         voltage_current_layout = QVBoxLayout()
@@ -371,22 +406,30 @@ class DroneTunnerWindow(QWidget):
         voltage_current_layout.addLayout(current_layout)
         voltage_current_layout.addStretch()  # Add stretch to push them to the left
 
+        # Create horizontal layout for buttons
+        button_layout = QHBoxLayout()
+        button_layout.addWidget(self.pid_button)
+        button_layout.addWidget(self.filter_button)
+
         # Layout
         layout = QVBoxLayout()
         layout.addWidget(self.header)  # Add header at the top
         layout.addWidget(self.table)
+        layout.addWidget(self.beta_table)  # Add beta table
         layout.addWidget(self.label)
         layout.addLayout(status_layout)
-        layout.addWidget(self.button)
+        layout.addLayout(button_layout)  # Add both buttons
         layout.addLayout(voltage_current_layout)  # Add voltage/current at the bottom
         self.setLayout(layout)
 
         # ROS Listener
         self.listener = ROS2Listener(node)
         self.listener.message_received.connect(self.update_label_ros)
+        self.listener.filter_received.connect(self.update_filter_ros)
 
         # Connect table cell changed signal
         self.table.cellChanged.connect(self.on_table_changed)
+        self.beta_table.cellChanged.connect(self.on_table_changed)
 
     def closeEvent(self, event: QCloseEvent):
         """
@@ -406,19 +449,19 @@ class DroneTunnerWindow(QWidget):
             event.ignore()
 
     def cleanup(self):
-        """
-        Cleanup method to properly close ROS node and shutdown
-        """
         if hasattr(self, 'node'):
             self.node.destroy_node()
         rclpy.shutdown()
 
-    def compere_data(self, msg) -> bool:
-        """
-        Returns True if the data is different from the last message, False if it's the same
-        """
-        if self.last_new_msg is None or self.last_new_msg != msg:
-            self.last_new_msg = msg
+    def compere_pid_data(self, msg) -> bool:
+        if self.pid_old_msg is None or self.pid_old_msg != msg:
+            self.pid_old_msg = msg
+            return True
+        return False
+
+    def compere_filter_data(self, msg) -> bool:
+        if self.filter_old_data is None or self.filter_old_data != msg:
+            self.filter_old_data = msg
             return True
         return False
 
@@ -445,7 +488,7 @@ class DroneTunnerWindow(QWidget):
         self.verification_timer.start(3000)  # 3000 ms = 3 seconds
 
     def update_label_ros(self, msg):
-        if not self.compere_data(msg):
+        if not self.compere_pid_data(msg):
             return
         try:
             # Update rate_roll
@@ -479,25 +522,74 @@ class DroneTunnerWindow(QWidget):
             self.set_verification_status(False)
             raise ValueError(f"Invalid value in row {row}. Please enter valid numbers.")
 
-    def on_button_clicked(self):
+    def get_beta_values(self):
         try:
-            self.label.setText("Button was clicked!")
+            beta_values = []
+            for row in range(self.beta_table.rowCount()):
+                item = self.beta_table.item(row, 0)
+                if item is not None:
+                    beta_values.append(float(item.text()))
+                else:
+                    beta_values.append(0.0)  # Default value if cell is empty
+            return beta_values
+        except ValueError as e:
+            print(f"Error converting beta value to float: {e}")
+            self.set_verification_status(False)
+            raise ValueError(f"Invalid beta value. Please enter valid numbers.")
+
+    def on_pid_button_clicked(self):
+        try:
+            self.label.setText("pid was flash!")
             retrun_rate_roll = self.get_row_values(0)
             retrun_rate_pitch = self.get_row_values(1)
             retrun_stablize_pitch = self.get_row_values(2)
             retrun_stablize_roll = self.get_row_values(3)
             retrun_rate_yaw = self.get_row_values(4)
+            
             msg = PidConsts()
             msg.rate_roll = retrun_rate_roll
             msg.rate_pitch = retrun_rate_pitch
             msg.stablize_pitch = retrun_stablize_pitch
-            msg.stablize_roll = retrun_stablize_roll
-            msg.rate_yaw = retrun_rate_yaw
-            self.listener.pid_to_flash_pub.publish(msg)
+ 
+
             self.set_verification_status(True)
         except ValueError as e:
             self.label.setText(f"Error: {str(e)}")
             self.set_verification_status(False)
+
+    def on_filter_button_clicked(self):
+        try:
+            # Get beta values
+            beta_values = self.get_beta_values()
+            
+            # Create and publish filter message
+            filter_msg = Filter()
+            filter_msg.std_beta = beta_values[0]
+            filter_msg.low_beta = beta_values[1]
+            filter_msg.high_beta = beta_values[2]
+            self.listener.filter_publisher.publish(filter_msg)
+            
+            self.label.setText("Filter values updated!")
+            self.set_verification_status(True)
+        except ValueError as e:
+            self.label.setText(f"Error: {str(e)}")
+            self.set_verification_status(False)
+
+    def update_filter_ros(self, msg):
+        if not self.compere_filter_data(msg):
+            return
+        try:
+            # Update beta table with new values
+            self.beta_table.setItem(0, 0, QTableWidgetItem(str(msg.std_beta)))
+            self.beta_table.setItem(1, 0, QTableWidgetItem(str(msg.low_beta)))
+            self.beta_table.setItem(2, 0, QTableWidgetItem(str(msg.high_beta)))
+            
+            self.label.setText("Filter values updated!")
+            self.set_verification_status(True)
+        except Exception as e:
+            print(f"Error updating filter values: {e}")
+            self.set_verification_status(False)
+        
 
 
 def signal_handler(signum, frame):
@@ -516,14 +608,18 @@ def main(args=None):
     rclpy.init(args=args)
     node = rclpy.create_node('drone_tunner_gui_node')
     app = QApplication(sys.argv)
-    gui = DroneTunnerWindow(node)
+    
+    # Create the combined GUI window
+    gui = Tunner(node)
 
     # Timer to call ROS spin once
     timer = QTimer()
     timer.timeout.connect(lambda: rclpy.spin_once(node, timeout_sec=0.01))
     timer.start(10)
 
+    # Show the window
     gui.show()
+    
     exit_code = app.exec_()
 
     # Cleanup

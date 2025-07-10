@@ -2,7 +2,14 @@
 #include "CompClass.h"
 #include "Var_types.h"
 
+CompFilter::CompFilter(magwick_data_t* filter_data) {
+    _High_Beta = filter_data->high_beta;
+    _Low_Beta = filter_data->low_beta;
+    _Default_Beta = filter_data->std_beta;
+}
+
 void CompFilter::UpdateQ(vec3_t* gyro, vec3_t* acc, float dt) {
+    Serial.print(_High_Beta); Serial.print(" "); Serial.print(_Low_Beta); Serial.print(" "); Serial.println(_Default_Beta);
     float recipNorm;
     float s0, s1, s2, s3;
     float qDot1, qDot2, qDot3, qDot4;
@@ -154,7 +161,7 @@ float CompFilter::calculateDynamicBeta(vec3_t acc) {
     }
 }
 
-void CompFilter::set_new_beta(magwick_data_t* new_data) {
+void CompFilter::set_beta(magwick_data_t* new_data) {
     _High_Beta = new_data->high_beta;
     _Low_Beta = new_data->low_beta;
     _Default_Beta = new_data->std_beta;

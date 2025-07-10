@@ -5,8 +5,7 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Imu, MagneticField
 from std_msgs.msg import Float32MultiArray, Int32MultiArray
-from geometry_msgs.msg import Quaternion
-from drone_c.msg import Pid, Motors, EulerAngles, ImuFilter, PidConsts , DroneHeader
+from drone_c.msg import Pid, Motors, EulerAngles, ImuFilter, PidConsts, DroneHeader, Filter
 from rtcom import *
 import time
 import math
@@ -35,13 +34,19 @@ class UDPSocketClient(Node):
         self.PID_stab_pub_modifide = self.create_publisher(Pid, 'PID_stab', 10)
         self.PID_rate_pub_modifide = self.create_publisher(Pid, 'PID_rate', 10)
         self.Imu_Filter_Pub = self.create_publisher(ImuFilter, 'imu_filter', 10)
-        self.Pid_consts_pub = self.create_publisher(PidConsts, 'pid_loaded', 10)
         self.drone_header_pub = self.create_publisher(DroneHeader, 'drone_header', 10)
-        # Create subscription for pid_to_flash with callback
+        self.Pid_consts_pub = self.create_publisher(PidConsts, 'pid_loaded', 10)
+        self.current_magwick_return_data = self.create_publisher(Filter, 'current_magwick_return_data', 10)
         self.pid_to_flash_sub = self.create_subscription(
             PidConsts,
             'pid_to_flash',
             self.pid_to_flash_callback,
+            10
+        )
+        self.filter_to_flash_sub = self.create_subscription(
+            Filter,
+            'filter_to_flash',
+            self.filter_to_flash_callback,
             10
         )
 
@@ -60,7 +65,7 @@ class UDPSocketClient(Node):
         self.client.on('l', self.handle_pid_rate)
         self.client.on('m', self.handle_pid_consts)
         self.client.on('n', self.handle_drone_header)
-
+        self.client.on('o', self.magwick_const_flash_colback)
 
     def handle_magnetometer(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
@@ -217,7 +222,7 @@ class UDPSocketClient(Node):
         except Exception as e:
             self.get_logger().error(f"Failed to send PID constants: {e}")
             return
-            
+
     def send_pid_consts(self, msg: PidConsts):
         data = []
         data.extend(msg.rate_pitch)
@@ -228,7 +233,7 @@ class UDPSocketClient(Node):
         packed_data = struct.pack('f' * len(data), *data)
         data_bytes = list(packed_data)
         self.client.emit_typed(data_bytes, 'z')
-    
+
     def handle_drone_header(self, message: bytes):
         drone_header_msg = DroneHeader()
         mac_bytes = struct.unpack('6B', message[:6])
@@ -238,8 +243,34 @@ class UDPSocketClient(Node):
         drone_header_msg.is_armed = bool(struct.unpack('B', message[8:9])[0])
         drone_header_msg.voltage = struct.unpack('f', message[9:13])[0]
         drone_header_msg.current = struct.unpack('f', message[13:17])[0]
-        self.drone_header_pub.publish(drone_header_msg) 
-        
+        self.drone_header_pub.publish(drone_header_msg)
+
+    def magwick_const_flash_colback(self, message: bytes):
+        messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
+        magwick_const_flash_msg = Filter()
+        magwick_const_flash_msg.std_beta = round(messages_struct_float[0], 2)
+        magwick_const_flash_msg.high_beta = round(messages_struct_float[1], 2)
+        magwick_const_flash_msg.low_beta = round(messages_struct_float[2], 2)
+        self.current_magwick_return_data.publish(magwick_const_flash_msg)
+
+    def filter_to_flash_callback(self, msg: Filter):
+        try:
+            self.send_filter_consts(msg)
+        except Exception as e:
+            self.get_logger().error(f"Failed to send filter constants: {e}")
+            return
+
+    def send_filter_consts(self, msg: Filter):
+        data = []
+        data.append(msg.std_beta)
+        data.append(msg.high_beta)
+        data.append(msg.low_beta)
+        print(data)
+        packed_data = struct.pack('f' * len(data), *data)
+        data_bytes = list(packed_data)
+        print(data_bytes)
+        self.client.emit_typed(data_bytes, 'y')
+
 
 def main(args=None):
     rclpy.init(args=args)

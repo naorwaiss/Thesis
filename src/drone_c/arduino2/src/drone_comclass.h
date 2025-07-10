@@ -5,6 +5,9 @@
 #include "Var_types.h"
 #include <Arduino.h>
 #include "PID_type.h"
+#include "CompClass.h"
+
+
 
 #define MAG 'a'
 #define P_IMU_RAW 'b'
@@ -20,13 +23,16 @@
 #define PID_rate_prase 'l'
 #define PID_CONSTS_DATA 'm'
 #define DRONE_SIGNATURE 'n'
+#define MAGWICK_DATA 'o'
+
+#define FILTER_CONSTS_RETURN 'y'
 #define PID_CONSTS_RETURN 'z'
 
 
 
 class Drone_com {
    public:
-    Drone_com(Measurement_t* meas, quat_t* q_est, attitude_t* desired_attitude, motor_t* motor_pwm, attitude_t* desired_rate, attitude_t* estimated_attitude, attitude_t* estimated_rate, PID_out_t* PID_stab_out, PID_out_t* PID_rate_out, Controller_s* controller_data, drone_tune_t* drone_tune, Drone_Data_t* drone_data_header);
+    Drone_com(Measurement_t* meas, quat_t* q_est, attitude_t* desired_attitude, motor_t* motor_pwm, attitude_t* desired_rate, attitude_t* estimated_attitude, attitude_t* estimated_rate, PID_out_t* PID_stab_out, PID_out_t* PID_rate_out, Controller_s* controller_data, drone_tune_t* drone_tune, Drone_Data_t* drone_data_header ,CompFilter* comfilter);
     void init_com();
     void convert_Measurment_to_byte();
     void emit_data();
@@ -53,7 +59,8 @@ class Drone_com {
     static Controller_s* _controller_data;
     static drone_tune_t* _drone_tune;
     static Drone_Data_t* _drone_data_header;
-
+    static CompFilter* _comfilter;
+    
     float* imu_data_raw = (float*)calloc(6, sizeof(float));
     uint8_t imu_byte_raw[sizeof(float) * 6];
     float* imu_data_filter = (float*)calloc(12, sizeof(float));
@@ -84,7 +91,9 @@ class Drone_com {
     float* pid_const_Data = (float*)calloc(15, sizeof(float));
     uint8_t pid_consts_byte[sizeof(float) * 15];
     uint8_t drone_header_byte[9+2*sizeof(float)];
-    
+    float* magwick_data = (float*)calloc(3, sizeof(float));
+    uint8_t magwick_data_byte[sizeof(float) * 3];
+
 
     static void onConnection(RTComSession& session);
 };

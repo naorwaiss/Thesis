@@ -15,6 +15,7 @@ PID_out_t* Drone_com::_PID_rate_out = nullptr;
 Controller_s* Drone_com::_controller_data = nullptr;
 drone_tune_t* Drone_com::_drone_tune = nullptr;
 Drone_Data_t* Drone_com::_drone_data_header = nullptr;
+CompFilter* Drone_com::_comfilter = nullptr;
 
 void Drone_com::onConnection(RTComSession& session) {
     Serial.printf("Session created with %s\r\n", session.address.toString());
@@ -39,12 +40,28 @@ void Drone_com::onConnection(RTComSession& session) {
             setPID_params(&new_pid_const);
         }
     });
+    session.on(FILTER_CONSTS_RETURN, [](const uint8_t* bytes, size_t size) {
+        if (socketSession == nullptr || size != sizeof(float) * 3) {
+            Serial.print("problem at the pid arraive");
+        } else {
+            float* filter_const_Data_arrive = (float*)calloc(3, sizeof(float));
+            memcpy(filter_const_Data_arrive, bytes, sizeof(float) * 3);
+            magwick_data_t new_magwick_data;
+            new_magwick_data.std_beta = filter_const_Data_arrive[0];
+            new_magwick_data.high_beta = filter_const_Data_arrive[1];
+            new_magwick_data.low_beta = filter_const_Data_arrive[2];
+            if (_comfilter != nullptr) {
+                _comfilter->set_beta(&new_magwick_data);
+            }
+
+        }
+    });
 }
 
 Drone_com::Drone_com(Measurement_t* meas, quat_t* q_est, attitude_t* desired_attitude, motor_t* motor_pwm,
                      attitude_t* desired_rate, attitude_t* estimated_attitude, attitude_t* estimated_rate,
                      PID_out_t* PID_stab_out, PID_out_t* PID_rate_out, Controller_s* controller_data,
-                     drone_tune_t* drone_tune, Drone_Data_t* drone_data_header)
+                     drone_tune_t* drone_tune, Drone_Data_t* drone_data_header, CompFilter* comfilter)
     : rtcomSocket(SOCKET_ADDRESS, SOCKET_CONFIG)  // Initialize rtcomSocket with both address and config
 {
     _meas = meas;
@@ -59,6 +76,7 @@ Drone_com::Drone_com(Measurement_t* meas, quat_t* q_est, attitude_t* desired_att
     _controller_data = controller_data;
     _drone_tune = drone_tune;  // Store the pointer instead of making a copy
     _drone_data_header = drone_data_header;
+    _comfilter = comfilter;
 }
 
 void Drone_com::init_com() {
@@ -187,8 +205,7 @@ void Drone_com::convert_Measurment_to_byte() {
     pid_const_Data[14] = _drone_tune->pid_const.defaultRyawPID[2];
     memcpy(pid_consts_byte, pid_const_Data, sizeof(pid_consts_byte));
 
-    for (size_t i = 0; i < 6; i++)
-    {
+    for (size_t i = 0; i < 6; i++) {
         drone_header_byte[i] = _drone_data_header->mac[i];
     }
     drone_header_byte[6] = static_cast<uint8_t>(_drone_data_header->drone_mode);
@@ -196,7 +213,11 @@ void Drone_com::convert_Measurment_to_byte() {
     drone_header_byte[8] = static_cast<uint8_t>(_drone_data_header->is_armed);
     memcpy(&drone_header_byte[9], &_drone_data_header->voltage_reading, sizeof(float));
     memcpy(&drone_header_byte[13], &_drone_data_header->current_reading, sizeof(float));
-    
+
+    magwick_data[0] = _drone_tune->filter_data.std_beta;
+    magwick_data[1] = _drone_tune->filter_data.high_beta;
+    magwick_data[2] = _drone_tune->filter_data.low_beta;
+    memcpy(magwick_data_byte, magwick_data, sizeof(magwick_data_byte));
 }
 
 void Drone_com::emit_data() {
@@ -214,6 +235,7 @@ void Drone_com::emit_data() {
     socketSession->emitTyped(motor_pwm_byte, sizeof(motor_pwm_byte), MOTOR_DATA_CONST);
     socketSession->emitTyped(pid_consts_byte, sizeof(pid_consts_byte), PID_CONSTS_DATA);
     socketSession->emitTyped(drone_header_byte, sizeof(drone_header_byte), DRONE_SIGNATURE);
+    socketSession->emitTyped(magwick_data_byte, sizeof(magwick_data_byte), MAGWICK_DATA);
 }
 
 void Drone_com::send_data() {

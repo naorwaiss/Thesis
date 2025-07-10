@@ -25,7 +25,8 @@ Motors motors(MOTOR1_PIN, MOTOR2_PIN, MOTOR3_PIN, MOTOR4_PIN);
 
 Measurement_t meas;
 IMU_Func imu(&meas, SAMPLE_RATE);
-CompFilter comp_filter(false);  // True for enabling the magnetometer
+drone_tune_t drone_tune;
+CompFilter comp_filter(&drone_tune.filter_data); 
 quat_t q_est;
 attitude_t desired_attitude;
 motor_t motor_pwm;
@@ -34,12 +35,11 @@ attitude_t estimated_attitude;
 attitude_t estimated_rate;
 PID_out_t PID_stab_out;
 PID_out_t PID_rate_out;
-drone_tune_t drone_tune;
 Drone_Data_t drone_data_header;
 Voltmeter voltmeter(&drone_data_header, A3, A2, 30.75);
 Drone_com drone_com(&meas, &q_est, &desired_attitude, &motor_pwm,
                     &desired_rate, &estimated_attitude, &estimated_rate, &PID_stab_out, &PID_rate_out,
-                    &controller_data, &drone_tune, &drone_data_header);
+                    &controller_data, &drone_tune, &drone_data_header, &comp_filter);
 
 elapsedMicros motor_timer;
 elapsedMicros stab_timer;
@@ -73,8 +73,9 @@ void setup() {
         }
     }
     ELRS.begin(ELRSSerial);
-    getbot_param(drone_tune.pid_const, drone_data_header);
+    getbot_param(drone_tune, drone_data_header);
     setPID_params(&drone_tune.pid_const);
+    comp_filter.set_beta(&drone_tune.filter_data);
     imu.Initial_Calibration();
     motors.Motors_init();
 }

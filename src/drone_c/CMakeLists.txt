@@ -27,6 +27,7 @@ set(msg_files
   "msg/ImuFilter.msg"
   "msg/PidConsts.msg"
   "msg/DroneHeader.msg"
+  "msg/Filter.msg"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
