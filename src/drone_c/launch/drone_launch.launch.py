@@ -41,7 +41,7 @@ def generate_launch_description():
         name='plotjuggler',
         arguments=['--layout', config_file],
         output='screen',
-        condition=IfCondition(LaunchConfiguration('plotjuggler'))
+        condition=IfCondition(LaunchConfiguration('plot'))
     )
 
     return LaunchDescription([

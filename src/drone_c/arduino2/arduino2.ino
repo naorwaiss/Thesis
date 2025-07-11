@@ -76,7 +76,7 @@ void setup() {
     getbot_param(drone_tune, drone_data_header);
     setPID_params(&drone_tune.pid_const);
     comp_filter.set_beta(&drone_tune.filter_data);
-    imu.Initial_Calibration();
+    // imu.Initial_Calibration();
     motors.Motors_init();
 }
 

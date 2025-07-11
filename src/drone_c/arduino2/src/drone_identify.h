@@ -92,8 +92,8 @@ inline void getbot_param(drone_tune_t& myDrone_tune, Drone_Data_t& myDrone) {
         myDrone_tune.pid_const.defaultSpitchPID = {11.8f, 0.1f, 0.0f};
         myDrone_tune.pid_const.defaultSyawPID = {4.0f, 0.0f, 0.0f};
         myDrone_tune.pid_const.defaultImax_stab = {25.0f, 25.0f};
-        myDrone_tune.filter_data.std_beta = 0.1f;
-        myDrone_tune.filter_data.high_beta = 0.2f;
+        myDrone_tune.filter_data.std_beta = 0.08f;
+        myDrone_tune.filter_data.high_beta = 0.12f;
         myDrone_tune.filter_data.low_beta = 0.05f;
         return;
     } else if (compareMac(myDrone.mac, mac2) || compareMac(myDrone.mac, mac3)) {

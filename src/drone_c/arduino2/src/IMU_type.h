@@ -22,6 +22,10 @@ class IMU_Func{
         float GYRO_SENS;   // Gyro Sensitivity
         float ACC_SENS;    // Accelerometer Sensitivity
         const float IMU_THRESHOLD = 0.05;
+        // vec3_t Gyro_bias = {0.0051,-0.0014,-0.0116};
+        vec3_t Acc_bias = {-0.078,+0.0,0.0};
+        vec3_t Gyro_bias = {0.0,0.0,0.0};
+
 
         
 

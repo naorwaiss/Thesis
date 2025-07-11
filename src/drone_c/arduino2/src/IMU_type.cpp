@@ -131,16 +131,19 @@ void IMU_Func::init_IMU() {
 
 void IMU_Func::Read_IMU() {
     _IMU.read();
-    _meas->acc.x = _IMU.a.x * ACC_SENS * G - _meas->acc_bias.x;
-    _meas->acc.y = _IMU.a.y * ACC_SENS * G - _meas->acc_bias.y;
+    // _meas->acc.x = _IMU.a.x * ACC_SENS * G - Acc_bias.x*G - _meas->acc_bias.x;
+    // _meas->acc.y = _IMU.a.y * ACC_SENS * G - Acc_bias.y*G - _meas->acc_bias.y;
+    _meas->acc.x = _IMU.a.x * ACC_SENS * G - _meas->acc_bias.x- Acc_bias.x*G;
+    _meas->acc.y = _IMU.a.y * ACC_SENS * G - _meas->acc_bias.y- Acc_bias.y*G;
+
     _meas->acc.z = _IMU.a.z * ACC_SENS * G;
     if (abs(_meas->acc.x) < IMU_THRESHOLD) { _meas->acc.x = 0;}
     if (abs(_meas->acc.y) < IMU_THRESHOLD) { _meas->acc.y = 0;}
     // if (abs(_meas->acc.z) < IMU_THRESHOLD) { _meas->acc.z = 0;}
 
-    _meas->gyroDEG.x = _IMU.g.x * GYRO_SENS - _meas->gyro_bias.x;
-    _meas->gyroDEG.y = _IMU.g.y * GYRO_SENS - _meas->gyro_bias.y;
-    _meas->gyroDEG.z = _IMU.g.z * GYRO_SENS - _meas->gyro_bias.z;
+    _meas->gyroDEG.x = _IMU.g.x * GYRO_SENS - Gyro_bias.x*rad2deg - _meas->gyro_bias.x;
+    _meas->gyroDEG.y = _IMU.g.y * GYRO_SENS - Gyro_bias.y*rad2deg - _meas->gyro_bias.y;
+    _meas->gyroDEG.z = _IMU.g.z * GYRO_SENS - Gyro_bias.z*rad2deg - _meas->gyro_bias.z;
     _meas->gyroRAD.x = _meas->gyroDEG.x * deg2rad;
     _meas->gyroRAD.y = _meas->gyroDEG.y * deg2rad;
     _meas->gyroRAD.z = _meas->gyroDEG.z * deg2rad;
