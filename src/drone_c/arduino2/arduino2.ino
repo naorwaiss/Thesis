@@ -36,7 +36,9 @@ attitude_t estimated_rate;
 PID_out_t PID_stab_out;
 PID_out_t PID_rate_out;
 Drone_Data_t drone_data_header;
-Voltmeter voltmeter(&drone_data_header, A3, A2, 30.75);
+// Voltmeter voltmeter(&drone_data_header, A3, A2, 69.441, 45.66, 0.0); //0.3
+Voltmeter voltmeter(&drone_data_header, A3, A2); //0.3
+
 Drone_com drone_com(&meas, &q_est, &desired_attitude, &motor_pwm,
                     &desired_rate, &estimated_attitude, &estimated_rate, &PID_stab_out, &PID_rate_out,
                     &controller_data, &drone_tune, &drone_data_header, &comp_filter);
@@ -64,7 +66,10 @@ float actual_dt = 0.0f;
 void setup() {
     Serial.begin(115200);
     drone_com.init_com();
-    imu.init_IMU();
+    getbot_param(drone_tune, drone_data_header);
+    imu.init_IMU(drone_data_header.acc_offset);
+    voltmeter.init_voltmeter();
+
 
     ELRSSerial.begin(CRSF_BAUDRATE, SERIAL_8N1);
     if (!ELRSSerial) {
@@ -73,7 +78,6 @@ void setup() {
         }
     }
     ELRS.begin(ELRSSerial);
-    getbot_param(drone_tune, drone_data_header);
     setPID_params(&drone_tune.pid_const);
     comp_filter.set_beta(&drone_tune.filter_data);
     // imu.Initial_Calibration();

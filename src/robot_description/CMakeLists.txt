@@ -8,23 +8,25 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(urdf REQUIRED)
+find_package(gazebo_ros REQUIRED)
+find_package(gazebo_plugins REQUIRED)
 
-# install(
-#   DIRECTORY urdf launch rviz meshes
-#   DESTINATION share/${PROJECT_NAME}
-# )
+# Install worlds
+install(
+  DIRECTORY worlds
+  DESTINATION share/${PROJECT_NAME}
+)
 
-# install(
-#   DIRECTORY urdf launch rviz meshes
-#   DESTINATION share/${PROJECT_NAME}
-# )
-
+# Install launch and config files
 install(
   DIRECTORY launch config
   DESTINATION share/${PROJECT_NAME}
 )
 
-
-
+# Install URDF and mesh files
+install(
+  DIRECTORY urdf meshes
+  DESTINATION share/${PROJECT_NAME}
+)
 
 ament_package()

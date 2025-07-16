@@ -28,6 +28,7 @@ set(msg_files
   "msg/PidConsts.msg"
   "msg/DroneHeader.msg"
   "msg/Filter.msg"
+  "msg/AltitudeLidar.msg"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}

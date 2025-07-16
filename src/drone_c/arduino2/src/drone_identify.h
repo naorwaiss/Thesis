@@ -20,8 +20,6 @@ enum class Beta {
     Rely_less = 3,
 };
 
-
-
 typedef struct {
     std::array<float, 3> defaultRrollPID;  // DO NOT GO OVER Kd=0.9 !!!! Drone will kill someone!!!
     std::array<float, 3> defaultRpitchPID;
@@ -41,7 +39,6 @@ typedef struct {
     float low_beta = 0.0f;
 } magwick_data_t;
 
-
 typedef struct {
     PID_const_t pid_const;
     magwick_data_t filter_data;
@@ -55,6 +52,8 @@ typedef struct {
     bool is_armed = false;
     float voltage_reading = 0.0f;
     float current_reading = 0.0f;
+    vec3_t acc_offset = {0.0f, 0.0f, 0.0f};
+    vec3_t voltage_current_factors = {0.0f, 0.0f, 0.0f};
 } Drone_Data_t;
 
 inline void getMAC(uint8_t* pMacAddress) {
@@ -78,12 +77,11 @@ inline bool compareMac(uint8_t mac1[6], uint8_t mac2[6]) {
 }
 
 inline uint8_t mac0[6] = {0x04, 0xE9, 0xE5, 0x18, 0xEE, 0x80};  // drone naor
-inline uint8_t mac2[6] = {0x04, 0xE9, 0xE5, 0x19, 0x2B, 0x2D};  // drone amit 
-inline uint8_t mac3[6] = {0x04, 0xE9, 0xE5, 0x17, 0xE3, 0x91};  // drone amit - > pid not set yet
+inline uint8_t mac2[6] = {0x04, 0xE9, 0xE5, 0x19, 0x2B, 0x2D};  // drone amit
 
 inline void getbot_param(drone_tune_t& myDrone_tune, Drone_Data_t& myDrone) {
     getMAC(myDrone.mac);
-    if (compareMac(myDrone.mac, mac0) || compareMac(myDrone.mac, mac2)) {
+    if (compareMac(myDrone.mac, mac0)) {
         myDrone_tune.pid_const.defaultRrollPID = {0.7f, 0.05f, 0.3f};
         myDrone_tune.pid_const.defaultRpitchPID = {0.7f, 0.05f, 0.3f};
         myDrone_tune.pid_const.defaultRyawPID = {1.2f, 0.0f, 0.05f};
@@ -95,19 +93,24 @@ inline void getbot_param(drone_tune_t& myDrone_tune, Drone_Data_t& myDrone) {
         myDrone_tune.filter_data.std_beta = 0.08f;
         myDrone_tune.filter_data.high_beta = 0.12f;
         myDrone_tune.filter_data.low_beta = 0.05f;
+        myDrone.acc_offset = {-0.073f, -0.002f, 0.0f};
+        myDrone.voltage_current_factors = {122.2295, 64.3, 0.41};
         return;
-    } else if (compareMac(myDrone.mac, mac2) || compareMac(myDrone.mac, mac3)) {
+    } else if (compareMac(myDrone.mac, mac2)) {
         myDrone_tune.pid_const.defaultRrollPID = {0.7f, 0.05f, 0.3f};
         myDrone_tune.pid_const.defaultRpitchPID = {0.7f, 0.05f, 0.3f};
-        myDrone_tune.pid_const.defaultRyawPID = {1.2f, 0.00f, 0.05f};
+        myDrone_tune.pid_const.defaultRyawPID = {1.2f, 0.0f, 0.05f};
         myDrone_tune.pid_const.defaultImax_rate = {40.0f, 40.0f};
-        myDrone_tune.pid_const.defaultSrollPID = {0.1f, 0.0f, 0.0f};
-        myDrone_tune.pid_const.defaultSpitchPID = {0.1f, 0.0f, 0.0f};
+        myDrone_tune.pid_const.defaultSrollPID = {11.8f, 0.1f, 0.0f};
+        myDrone_tune.pid_const.defaultSpitchPID = {11.8f, 0.1f, 0.0f};
         myDrone_tune.pid_const.defaultSyawPID = {4.0f, 0.0f, 0.0f};
         myDrone_tune.pid_const.defaultImax_stab = {25.0f, 25.0f};
-        myDrone_tune.filter_data.std_beta = 0.1f;
-        myDrone_tune.filter_data.high_beta = 0.2f;
+        myDrone_tune.filter_data.std_beta = 0.08f;
+        myDrone_tune.filter_data.high_beta = 0.12f;
         myDrone_tune.filter_data.low_beta = 0.05f;
+        myDrone.acc_offset = {-0.07f, 0.02f, 0.0f};
+        myDrone.voltage_current_factors = {69.441, 45.66, 0.0};
+
         return;
     } else {
         while (1) {

@@ -5,7 +5,7 @@ controller_manager:
     update_rate: 100  # Hz
 
     propeller_controllers:
-      type: effort_controllers/JointGroupEffortController
+      type: velocity_controllers/JointGroupVelocityController
 
     imu_broadcaster:
       type: imu_sensor_broadcaster/IMUSensorBroadcaster
@@ -22,17 +22,13 @@ propeller_controllers:
       - base_back_left_propeller_joint
 
     command_interfaces:
-      - effort
+      - velocity
 
     state_interfaces:
-      - position
       - velocity
       - effort
 
-
 imu_broadcaster:
   ros__parameters:
-
     sensor_name: imu_sensor
-
-    frame_id: imu_link
+    frame_id: base_link

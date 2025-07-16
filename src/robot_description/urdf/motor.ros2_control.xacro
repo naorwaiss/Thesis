@@ -10,7 +10,7 @@
 
             <!-- Front Right Propeller -->
             <joint name="base_front_right_propeller_joint">
-                <command_interface name="effort">
+                <command_interface name="velocity">
                     <param name="min">-1000</param>
                     <param name="max">1000</param>
                 </command_interface>
@@ -21,7 +21,7 @@
 
             <!-- Front Left Propeller -->
             <joint name="base_front_left_propeller_joint">
-                <command_interface name="effort">
+                <command_interface name="velocity">
                     <param name="min">-1000</param>
                     <param name="max">1000</param>
                 </command_interface>
@@ -32,7 +32,7 @@
 
             <!-- Back Right Propeller -->
             <joint name="base_back_right_propeller_joint">
-                <command_interface name="effort">
+                <command_interface name="velocity">
                     <param name="min">-1000</param>
                     <param name="max">1000</param>
                 </command_interface>
@@ -43,7 +43,7 @@
 
             <!-- Back Left Propeller -->
             <joint name="base_back_left_propeller_joint">
-                <command_interface name="effort">
+                <command_interface name="velocity">
                     <param name="min">-1000</param>
                     <param name="max">1000</param>
                 </command_interface>

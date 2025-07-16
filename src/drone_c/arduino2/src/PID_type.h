@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include "Var_types.h"
+#include "drone_identify.h"
 
 
 void setPID_params(PID_const_t* pid_consts);

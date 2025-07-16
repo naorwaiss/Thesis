@@ -2,15 +2,51 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="drone">
 
     <!-- Gazebo Control Plugin -->
-
     <gazebo>
-        <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
-            <parameters>$(find robot_controller)/config/robot_controllers.yaml</parameters>
-            <!-- <controlPeriod>0.01</controlPeriod>
-            <robot_param_node>robot_state_publisher</robot_param_node> -->
+        <plugin filename="gz-sim-multicopter-control-system" name="ignition::gazebo::systems::MulticopterVelocityControl">
+            <robotNamespace>sim_drone</robotNamespace>
+            <commandSubTopic>cmd_vel</commandSubTopic>
+            <enableSubTopic>enable</enableSubTopic>
+            <comLinkName>base_link</comLinkName>
+            <velocityGain>6 6 10</velocityGain>
+            <attitudeGain>4 4 2</attitudeGain>
+            <angularRateGain>0.7 0.7 0.7</angularRateGain>
+            <maximumLinearAcceleration>1 1 2</maximumLinearAcceleration>
+            <maximumLinearVelocity>5 5 5</maximumLinearVelocity>
+            <maximumAngularVelocity>3 3 3</maximumAngularVelocity>
+            <linearVelocityNoiseMean>0 0 0</linearVelocityNoiseMean>
+            <linearVelocityNoiseStdDev>0.1105 0.1261 0.0947</linearVelocityNoiseStdDev>
+            <angularVelocityNoiseMean>0 0 0</angularVelocityNoiseMean>
+            <angularVelocityNoiseStdDev>0.004 0.004 0.004</angularVelocityNoiseStdDev>
+
+            <rotorConfiguration>
+                <rotor>
+                    <jointName>base_front_right_propeller_joint</jointName>
+                    <forceConstant>1.269e-05</forceConstant>
+                    <momentConstant>1.6754e-2</momentConstant>
+                    <direction>1</direction>
+                </rotor>
+                <rotor>
+                    <jointName>base_front_left_propeller_joint</jointName>
+                    <forceConstant>1.269e-05</forceConstant>
+                    <momentConstant>1.6754e-2</momentConstant>
+                    <direction>-1</direction>
+                </rotor>
+                <rotor>
+                    <jointName>base_back_right_propeller_joint</jointName>
+                    <forceConstant>1.269e-05</forceConstant>
+                    <momentConstant>1.6754e-2</momentConstant>
+                    <direction>1</direction>
+                </rotor>
+                <rotor>
+                    <jointName>base_back_left_propeller_joint</jointName>
+                    <forceConstant>1.269e-05</forceConstant>
+                    <momentConstant>1.6754e-2</momentConstant>
+                    <direction>-1</direction>
+                </rotor>
+            </rotorConfiguration>
         </plugin>
     </gazebo>
-
 
     
     <gazebo reference="imu_link">
@@ -40,28 +76,5 @@
     <gazebo reference="front_left_propeller_link"><material>Gazebo/Black</material></gazebo>
     <gazebo reference="back_right_propeller_link"><material>Gazebo/Black</material></gazebo>
     <gazebo reference="back_left_propeller_link"><material>Gazebo/Black</material></gazebo>
-
-
-    <plugin name="motor_model" filename="gz-sim-multicopter-motor-model-system">
-  <motor>
-    <name>rotor_0</name>
-    <joint_name>rotor_0_joint</joint_name>
-    <link_name>rotor_0</link_name>
-    <turning_direction>ccw</turning_direction>
-    <rotor_velocity_constant>8.54858e-6</rotor_velocity_constant> <!-- thrust constant -->
-    <moment_constant>1.6e-2</moment_constant> <!-- drag torque -->
-    <motor_number>0</motor_number>
-  </motor>
-  <motor>
-    <name>rotor_1</name>
-    <joint_name>rotor_1_joint</joint_name>
-    <link_name>rotor_1</link_name>
-    <turning_direction>cw</turning_direction>
-    <rotor_velocity_constant>8.54858e-6</rotor_velocity_constant>
-    <moment_constant>1.6e-2</moment_constant>
-    <motor_number>1</motor_number>
-  </motor>
-  <!-- Add motors 2, 3... -->
-</plugin>
 
 </robot>

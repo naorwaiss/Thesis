@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include <string>
 #include <array>
-#include "drone_identify.h"
+// #include "drone_identify.h"
 // #define ESC_FREQUENCY 500  // Frequency of the ESCs
 const float G = 9.80665; // Gravity constant in m/s^2
 #define ESC_FREQUENCY 400

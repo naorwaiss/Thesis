@@ -5,7 +5,7 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Imu, MagneticField
 from std_msgs.msg import Float32MultiArray, Int32MultiArray
-from drone_c.msg import Pid, Motors, EulerAngles, ImuFilter, PidConsts, DroneHeader, Filter
+from drone_c.msg import Pid, Motors, EulerAngles, ImuFilter, PidConsts, DroneHeader, Filter,AltitudeLidar
 from rtcom import *
 import time
 import math
@@ -37,6 +37,7 @@ class UDPSocketClient(Node):
         self.drone_header_pub = self.create_publisher(DroneHeader, 'drone_header', 10)
         self.Pid_consts_pub = self.create_publisher(PidConsts, 'pid_loaded', 10)
         self.current_magwick_return_data = self.create_publisher(Filter, 'current_magwick_return_data', 10)
+        self.altitude_lidar_pub = self.create_publisher(AltitudeLidar, 'attitude_lidar', 10)
         self.pid_to_flash_sub = self.create_subscription(
             PidConsts,
             'pid_to_flash',
@@ -66,7 +67,7 @@ class UDPSocketClient(Node):
         self.client.on('m', self.handle_pid_consts)
         self.client.on('n', self.handle_drone_header)
         self.client.on('o', self.magwick_const_flash_colback)
-
+        self.client.on('p', self.handle_altitude_lidar)
     def handle_magnetometer(self, message: bytes):
         messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
         mag_msg = MagneticField()
@@ -270,6 +271,13 @@ class UDPSocketClient(Node):
         data_bytes = list(packed_data)
         print(data_bytes)
         self.client.emit_typed(data_bytes, 'y')
+    
+    def handle_altitude_lidar(self, message: bytes):
+        messages_struct_float = struct.unpack("f" * (len(message) // FLOAT_SIZE), message)
+        altitude_lidar_msg = AltitudeLidar()
+        altitude_lidar_msg.distance = round(messages_struct_float[0],  2)
+        altitude_lidar_msg.distance_des = round(messages_struct_float[1], 2)
+        self.altitude_lidar_pub.publish(altitude_lidar_msg)
 
 
 def main(args=None):

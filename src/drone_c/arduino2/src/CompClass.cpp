@@ -145,17 +145,14 @@ float CompFilter::calculateDynamicBeta(vec3_t acc) {
     accNorm = abs(sqrtf(acc.x * acc.x + acc.y * acc.y + acc.z * acc.z)/G-1) ;
     // Adapt Beta based on accelerometer norm
     if (accNorm < 0.25) {
-        Serial.println("Rely_more");
 
         // System is likely stable or slow-moving, increase Beta for more correction
         filter_beta = Beta::Rely_more;
 
     } else if (accNorm > 0.5) {
-        Serial.println("Rely_less");
         filter_beta = Beta::Rely_less;
 
     } else {
-        Serial.println("amit");
         filter_beta = Beta::Std_factor;
     }
 

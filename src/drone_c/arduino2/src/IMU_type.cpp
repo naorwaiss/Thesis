@@ -101,9 +101,10 @@ IMU_Func::IMU_Func(Measurement_t* meas, int ODR, int G_FS, int A_FS, int G_LPF_F
             }
 }
 
-void IMU_Func::init_IMU() {
+void IMU_Func::init_IMU(vec3_t init_bias) {
     // Your implementation here
     // For example:
+    _Acc_bias = init_bias;
     Wire.begin();
     
     // Initialize IMU
@@ -127,14 +128,18 @@ void IMU_Func::init_IMU() {
     if (ACC_LPF_EN != 0b00000000) {
         _IMU.writeReg(LSM6::CTRL8_XL, ACC_LPF_REG);
     }
+
+    Serial.println( _Acc_bias.x);
+
+
 }
 
 void IMU_Func::Read_IMU() {
     _IMU.read();
-    // _meas->acc.x = _IMU.a.x * ACC_SENS * G - Acc_bias.x*G - _meas->acc_bias.x;
-    // _meas->acc.y = _IMU.a.y * ACC_SENS * G - Acc_bias.y*G - _meas->acc_bias.y;
-    _meas->acc.x = _IMU.a.x * ACC_SENS * G - _meas->acc_bias.x- Acc_bias.x*G;
-    _meas->acc.y = _IMU.a.y * ACC_SENS * G - _meas->acc_bias.y- Acc_bias.y*G;
+    // _meas->acc.x = _IMU.a.x * ACC_SENS * G - _Acc_bias.x*G - _meas->acc_bias.x;
+    // _meas->acc.y = _IMU.a.y * ACC_SENS * G - _Acc_bias.y*G - _meas->acc_bias.y;
+    _meas->acc.x = _IMU.a.x * ACC_SENS * G - _meas->acc_bias.x- _Acc_bias.x*G;
+    _meas->acc.y = _IMU.a.y * ACC_SENS * G - _meas->acc_bias.y- _Acc_bias.y*G;
 
     _meas->acc.z = _IMU.a.z * ACC_SENS * G;
     if (abs(_meas->acc.x) < IMU_THRESHOLD) { _meas->acc.x = 0;}
@@ -147,6 +152,7 @@ void IMU_Func::Read_IMU() {
     _meas->gyroRAD.x = _meas->gyroDEG.x * deg2rad;
     _meas->gyroRAD.y = _meas->gyroDEG.y * deg2rad;
     _meas->gyroRAD.z = _meas->gyroDEG.z * deg2rad;
+
 
 }
 
@@ -174,3 +180,5 @@ void IMU_Func::Initial_Calibration(){
     delay(2000);
 
 }
+
+
