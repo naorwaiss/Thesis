@@ -15,6 +15,16 @@
   <depend>urdf</depend>
   <depend>xacro</depend>
 
+  <!-- ROS2 Control dependencies -->
+  <depend>controller_manager</depend>
+  <depend>ros2_control</depend>
+  <depend>ros2_controllers</depend>
+  <depend>velocity_controllers</depend>
+  <depend>joint_state_broadcaster</depend>
+  <depend>imu_sensor_broadcaster</depend>
+  <depend>gz_ros2_control</depend>
+  <depend>robot_state_publisher</depend>
+
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 

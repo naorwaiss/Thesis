@@ -11,7 +11,7 @@
     <link name="base_link">
         <visual>
             <geometry>
-                <mesh filename="file://robot_description/meshes/WholeDrone.STL" scale="0.008 0.008 0.008"/>
+                <mesh filename="package://robot_description/meshes/WholeDrone.STL" scale="0.008 0.008 0.008"/>
             </geometry>
             <origin xyz="0.56 -0.8275 -0.425" rpy="${pi/2} 0 ${pi}" />
             <material name="white" />
@@ -36,7 +36,7 @@
         <link name="${prefix}_propeller_link">
             <visual>
                 <geometry>
-                    <mesh filename="file://robot_description/meshes/PropellerForRos.STL" scale="0.008 0.008 0.008"/>
+                    <mesh filename="package://robot_description/meshes/PropellerForRos.STL" scale="0.008 0.008 0.008"/>
                 </geometry>
                 <origin xyz="-0.269 0.3874 -0.2" rpy="${pi/2} 0 0" />
                 <material name="black" />
@@ -96,32 +96,6 @@
         <dynamics damping="0.01" friction="0.01"/>
     </joint>
 
-    <!-- IMU Link -->
-    <link name="imu_link">
-        <visual>
-            <geometry>
-                <box size="0.02 0.02 0.02"/>
-            </geometry>
-            <material name="blue"/>
-        </visual>
-        <collision>
-            <geometry>
-                <box size="0.02 0.02 0.02"/>
-            </geometry>
-        </collision>
-        <inertial>
-            <mass value="0.01"/>
-            <inertia ixx="0.0001" ixy="0" ixz="0" 
-                    iyy="0.0001" iyz="0" 
-                    izz="0.0001"/>
-        </inertial>
-    </link>
-
-    <!-- IMU Joint -->
-    <joint name="imu_joint" type="fixed">
-        <parent link="base_link"/>
-        <child link="imu_link"/>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-    </joint>
+  
 
 </robot>

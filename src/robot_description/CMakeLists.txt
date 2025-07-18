@@ -11,13 +11,7 @@ find_package(urdf REQUIRED)
 find_package(gazebo_ros REQUIRED)
 find_package(gazebo_plugins REQUIRED)
 
-# Install worlds
-install(
-  DIRECTORY worlds
-  DESTINATION share/${PROJECT_NAME}
-)
-
-# Install launch and config files
+# Install worlds# Install launch and config files
 install(
   DIRECTORY launch config
   DESTINATION share/${PROJECT_NAME}

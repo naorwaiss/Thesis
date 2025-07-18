@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot
+  name="swing_drone">
+  
+  <link
+    name="base_link ">
+    <inertial>
+      <origin
+        xyz="-9.81636642918719E-08 0.0306931155314605 6.86147954927806E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.489642795099214" />
+      <inertia
+        ixx="0.00550730711851782"
+        ixy="1.75918722866926E-09"
+        ixz="8.00407972816657E-09"
+        iyy="0.0106757497435687"
+        iyz="4.08917538783145E-08"
+        izz="0.00550715316059604" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="3.14159 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="3.14159 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link
+    name="fr_link">
+    <inertial>
+      <origin
+        xyz="5.72722553709436E-08 0.00838518201458534 -0.169743642048481"
+        rpy="0 0 0" />
+      <mass
+        value="0.0712984135491828" />
+      <inertia
+        ixx="1.25109623769764E-05"
+        ixy="-5.80866736119285E-11"
+        ixz="3.10377556603639E-11"
+        iyy="1.96234830559855E-05"
+        iyz="7.47360228967648E-12"
+        izz="1.31602072697672E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/fr_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/fr_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0.025"
+      rpy="1.5708 0 2.3562" />
+    <parent
+      link="base_link " />
+    <child
+      link="fr_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="A_prop_link">
+    <inertial>
+      <origin
+        xyz="8.7159E-06 8.1377E-06 0.0069037"
+        rpy="0 0 0" />
+      <mass
+        value="0.0030458" />
+      <inertia
+        ixx="1.0159E-06"
+        ixy="7.1666E-10"
+        ixz="-4.0698E-11"
+        iyy="1.017E-06"
+        iyz="-9.5763E-12"
+        izz="1.9885E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/A_prop_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96863 0.015686 0.015686 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/A_prop_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="A_prop_joint"
+    type="continuous">
+    <origin
+      xyz="-0.075 0.032789 -0.18136"
+      rpy="-1.5708 0.28363 0" />
+    <parent
+      link="fr_link" />
+    <child
+      link="A_prop_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="B_prop_link">
+    <inertial>
+      <origin
+        xyz="-2.9519E-06 6.6171E-06 0.0069036"
+        rpy="0 0 0" />
+      <mass
+        value="0.0030461" />
+      <inertia
+        ixx="1.017E-06"
+        ixy="5.094E-10"
+        ixz="1.8144E-11"
+        iyy="1.0165E-06"
+        iyz="-2.7503E-11"
+        izz="1.989E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/B_prop_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96863 0.015686 0.015686 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/B_prop_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="B_prop_joint"
+    type="continuous">
+    <origin
+      xyz="0.075 0.032789 -0.18136"
+      rpy="-1.5708 -0.94937 0" />
+    <parent
+      link="fr_link" />
+    <child
+      link="B_prop_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="br_link">
+    <inertial>
+      <origin
+        xyz="5.6967214640888E-08 0.00838518216887453 -0.169743641529002"
+        rpy="0 0 0" />
+      <mass
+        value="0.0712984116406711" />
+      <inertia
+        ixx="1.25109622044214E-05"
+        ixy="-5.80830005690429E-11"
+        ixz="3.10080125884296E-11"
+        iyy="1.96234829027007E-05"
+        iyz="7.49851524519673E-12"
+        izz="1.31602072915751E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/br_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/br_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="br_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0.025"
+      rpy="1.5707963267949 0 0.785398163397444" />
+    <parent
+      link="base_link " />
+    <child
+      link="br_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="C_prop_link">
+    <inertial>
+      <origin
+        xyz="8.88376431135152E-06 8.24094770135453E-06 0.00690354838979317"
+        rpy="0 0 0" />
+      <mass
+        value="0.00304576429500371" />
+      <inertia
+        ixx="1.01583923908105E-06"
+        ixy="7.00300034386576E-10"
+        ixz="-4.34623235247216E-11"
+        iyy="1.01697553805106E-06"
+        iyz="-1.15132452923579E-11"
+        izz="1.98837107356726E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/C_prop_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.968627450980392 0.0156862745098039 0.0156862745098039 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/C_prop_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="C_prop_joint"
+    type="continuous">
+    <origin
+      xyz="-0.075 0.032789 -0.18136"
+      rpy="1.5708 1.2519 3.1416" />
+    <parent
+      link="br_link" />
+    <child
+      link="C_prop_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="D_prop_link">
+    <inertial>
+      <origin
+        xyz="6.88758994921157E-06 -4.88396768444366E-07 0.0069035097240563"
+        rpy="0 0 0" />
+      <mass
+        value="0.0030460170283791" />
+      <inertia
+        ixx="1.01631129628996E-06"
+        ixy="-5.81174683431385E-11"
+        ixz="-3.79613417410503E-11"
+        iyy="1.01740859082528E-06"
+        iyz="3.60534564402912E-12"
+        izz="1.98927726106095E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/D_prop_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.968627450980392 0.0156862745098039 0.0156862745098039 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/D_prop_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="D_prop_joint"
+    type="continuous">
+    <origin
+      xyz="0.075 0.032789 -0.18136"
+      rpy="1.5708 0.2674 -3.1416" />
+    <parent
+      link="br_link" />
+    <child
+      link="D_prop_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="bl_link">
+    <inertial>
+      <origin
+        xyz="5.57576253618631E-08 0.00838518201458557 -0.169743641788305"
+        rpy="0 0 0" />
+      <mass
+        value="0.0712984135491827" />
+      <inertia
+        ixx="1.25109623769764E-05"
+        ixy="-5.80805135568167E-11"
+        ixz="3.10377556599404E-11"
+        iyy="1.96234830559855E-05"
+        iyz="7.50888677807041E-12"
+        izz="1.31602072697672E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/bl_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/bl_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0.025"
+      rpy="1.5707963267949 0 -0.785398163397454" />
+    <parent
+      link="base_link " />
+    <child
+      link="bl_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="E_prop_link">
+    <inertial>
+      <origin
+        xyz="2.7313275353727E-06 3.86682184189135E-07 0.00690385853098646"
+        rpy="0 0 0" />
+      <mass
+        value="0.00304648811584682" />
+      <inertia
+        ixx="1.01692766677989E-06"
+        ixy="-8.25590073897304E-12"
+        ixz="-2.9913999900015E-11"
+        iyy="1.01745813006253E-06"
+        iyz="1.47433389309506E-12"
+        izz="1.98993970966869E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/E_prop_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.968627450980392 0.0156862745098039 0.0156862745098039 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/E_prop_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="E_prop_joint"
+    type="continuous">
+    <origin
+      xyz="-0.075 0.032789 -0.18136"
+      rpy="1.5708 -0.4532 -3.1416" />
+    <parent
+      link="bl_link" />
+    <child
+      link="E_prop_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="F_prop_link">
+    <inertial>
+      <origin
+        xyz="-2.66120848305129E-06 6.72137493892833E-06 0.00690341554333757"
+        rpy="0 0 0" />
+      <mass
+        value="0.00304581013536126" />
+      <inertia
+        ixx="1.01706667134054E-06"
+        ixy="5.04989341627317E-10"
+        ixz="1.90640171727212E-11"
+        iyy="1.01648666014435E-06"
+        iyz="-2.22329153080792E-11"
+        izz="1.9891136648677E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/F_prop_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.968627450980392 0.0156862745098039 0.0156862745098039 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/F_prop_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="F_prop_joint"
+    type="continuous">
+    <origin
+      xyz="0.075 0.032789 -0.18136"
+      rpy="-1.5708 0.44248 0" />
+    <parent
+      link="bl_link" />
+    <child
+      link="F_prop_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="fl_link">
+    <inertial>
+      <origin
+        xyz="5.77245295304477E-08 0.00838518205590654 -0.169743641875677"
+        rpy="0 0 0" />
+      <mass
+        value="0.0712984129705644" />
+      <inertia
+        ixx="1.25109623234441E-05"
+        ixy="-5.80860805952669E-11"
+        ixz="3.10312650412831E-11"
+        iyy="1.96234829906507E-05"
+        iyz="7.48087300370571E-12"
+        izz="1.31602072594632E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/fl_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/fl_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fl_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0.025"
+      rpy="1.5707963267949 0 -2.35619449019234" />
+    <parent
+      link="base_link " />
+    <child
+      link="fl_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="G_prop_link">
+    <inertial>
+      <origin
+        xyz="3.62789022101406E-06 7.93861775136295E-06 0.00690342839194055"
+        rpy="0 0 0" />
+      <mass
+        value="0.00304542470661797" />
+      <inertia
+        ixx="1.01591118865216E-06"
+        ixy="7.11420493756258E-10"
+        ixz="-2.70428480861302E-11"
+        iyy="1.01623051835766E-06"
+        iyz="-1.42050794040357E-11"
+        izz="1.98769911974202E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/G_prop_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.968627450980392 0.0156862745098039 0.0156862745098039 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/G_prop_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="G_prop_joint"
+    type="continuous">
+    <origin
+      xyz="-0.075 0.032789 -0.18136"
+      rpy="-1.5708 0.26204 0" />
+    <parent
+      link="fl_link" />
+    <child
+      link="G_prop_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="H_prop_link">
+    <inertial>
+      <origin
+        xyz="-2.20600356380662E-06 4.87187253123134E-06 0.00690356262000323"
+        rpy="0 0 0" />
+      <mass
+        value="0.00304597813849953" />
+      <inertia
+        ixx="1.01676909541948E-06"
+        ixy="3.896174971715E-10"
+        ixz="1.6241830169863E-11"
+        iyy="1.01642948192595E-06"
+        iyz="-2.50490797824747E-11"
+        izz="1.98875407345364E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/H_prop_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.968627450980392 0.0156862745098039 0.0156862745098039 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://swing_drone/meshes/H_prop_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="H_prop_joint"
+    type="continuous">
+    <origin
+      xyz="0.075 0.032789 -0.18136"
+      rpy="1.5708 0.93504 -3.1416" />
+    <parent
+      link="fl_link" />
+    <child
+      link="H_prop_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+</robot>

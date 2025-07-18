@@ -7,9 +7,6 @@ controller_manager:
     propeller_controllers:
       type: velocity_controllers/JointGroupVelocityController
 
-    imu_broadcaster:
-      type: imu_sensor_broadcaster/IMUSensorBroadcaster
-
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
@@ -25,10 +22,6 @@ propeller_controllers:
       - velocity
 
     state_interfaces:
+      - position
       - velocity
       - effort
-
-imu_broadcaster:
-  ros__parameters:
-    sensor_name: imu_sensor
-    frame_id: base_link
