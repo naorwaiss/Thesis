@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<robot
-  name="swing_drone">
-  
+<?xml version="1.0"?>
+<robot name="swing_drone" xmlns:xacro="http://www.ros.org/wiki/xacro">
+ 
+
   <link
-    name="base_link ">
+    name="base_link">
     <inertial>
       <origin
         xyz="-9.81636642918719E-08 0.0306931155314605 6.86147954927806E-06"
@@ -43,6 +43,47 @@
     </collision>
   </link>
 
+  <link 
+    name="imu_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.001"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <box
+          size="0.01 0.01 0.01" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <box
+          size="0.01 0.01 0.01" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="imu_joint"
+    type="fixed">
+    <parent
+      link="base_link" />
+    <child
+      link="imu_link" />
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
   <link
     name="fr_link">
     <inertial>
@@ -65,7 +106,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/fr_link.STL" />
+          filename="package://swing_drone/meshes/arm.STL" />
       </geometry>
       <material
         name="">
@@ -79,7 +120,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/fr_link.STL" />
+          filename="package://swing_drone/meshes/arm.STL" />
       </geometry>
     </collision>
   </link>
@@ -90,7 +131,7 @@
       xyz="0 0 0.025"
       rpy="1.5708 0 2.3562" />
     <parent
-      link="base_link " />
+      link="base_link" />
     <child
       link="fr_link" />
     <axis
@@ -118,7 +159,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/A_prop_link.STL" />
+          filename="package://swing_drone/meshes/CCW_prop.STL" />
       </geometry>
       <material
         name="">
@@ -132,7 +173,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/A_prop_link.STL" />
+          filename="package://swing_drone/meshes/CCW_prop.STL" />
       </geometry>
     </collision>
   </link>
@@ -171,7 +212,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/B_prop_link.STL" />
+          filename="package://swing_drone/meshes/CW_prop.STL" />
       </geometry>
       <material
         name="">
@@ -185,7 +226,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/B_prop_link.STL" />
+          filename="package://swing_drone/meshes/CW_prop.STL" />
       </geometry>
     </collision>
   </link>
@@ -224,7 +265,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/br_link.STL" />
+          filename="package://swing_drone/meshes/arm.STL" />
       </geometry>
       <material
         name="">
@@ -238,7 +279,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/br_link.STL" />
+          filename="package://swing_drone/meshes/arm.STL" />
       </geometry>
     </collision>
   </link>
@@ -249,7 +290,7 @@
       xyz="0 0 0.025"
       rpy="1.5707963267949 0 0.785398163397444" />
     <parent
-      link="base_link " />
+      link="base_link" />
     <child
       link="br_link" />
     <axis
@@ -277,7 +318,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/C_prop_link.STL" />
+          filename="package://swing_drone/meshes/CCW_prop.STL" />
       </geometry>
       <material
         name="">
@@ -291,7 +332,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/C_prop_link.STL" />
+          filename="package://swing_drone/meshes/CCW_prop.STL" />
       </geometry>
     </collision>
   </link>
@@ -330,7 +371,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/D_prop_link.STL" />
+          filename="package://swing_drone/meshes/CW_prop.STL" />
       </geometry>
       <material
         name="">
@@ -344,7 +385,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/D_prop_link.STL" />
+          filename="package://swing_drone/meshes/CW_prop.STL" />
       </geometry>
     </collision>
   </link>
@@ -383,7 +424,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/bl_link.STL" />
+          filename="package://swing_drone/meshes/arm.STL" />
       </geometry>
       <material
         name="">
@@ -397,7 +438,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/bl_link.STL" />
+          filename="package://swing_drone/meshes/arm.STL" />
       </geometry>
     </collision>
   </link>
@@ -408,7 +449,7 @@
       xyz="0 0 0.025"
       rpy="1.5707963267949 0 -0.785398163397454" />
     <parent
-      link="base_link " />
+      link="base_link" />
     <child
       link="bl_link" />
     <axis
@@ -436,7 +477,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/E_prop_link.STL" />
+          filename="package://swing_drone/meshes/CCW_prop.STL" />
       </geometry>
       <material
         name="">
@@ -450,7 +491,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/E_prop_link.STL" />
+          filename="package://swing_drone/meshes/CCW_prop.STL" />
       </geometry>
     </collision>
   </link>
@@ -489,7 +530,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/F_prop_link.STL" />
+          filename="package://swing_drone/meshes/CW_prop.STL" />
       </geometry>
       <material
         name="">
@@ -503,7 +544,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/F_prop_link.STL" />
+          filename="package://swing_drone/meshes/CW_prop.STL" />
       </geometry>
     </collision>
   </link>
@@ -542,7 +583,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/fl_link.STL" />
+          filename="package://swing_drone/meshes/arm.STL" />
       </geometry>
       <material
         name="">
@@ -556,7 +597,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/fl_link.STL" />
+          filename="package://swing_drone/meshes/arm.STL" />
       </geometry>
     </collision>
   </link>
@@ -567,7 +608,7 @@
       xyz="0 0 0.025"
       rpy="1.5707963267949 0 -2.35619449019234" />
     <parent
-      link="base_link " />
+      link="base_link" />
     <child
       link="fl_link" />
     <axis
@@ -595,7 +636,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/G_prop_link.STL" />
+          filename="package://swing_drone/meshes/CCW_prop.STL" />
       </geometry>
       <material
         name="">
@@ -609,7 +650,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/G_prop_link.STL" />
+          filename="package://swing_drone/meshes/CCW_prop.STL" />
       </geometry>
     </collision>
   </link>
@@ -648,7 +689,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/H_prop_link.STL" />
+          filename="package://swing_drone/meshes/CW_prop.STL" />
       </geometry>
       <material
         name="">
@@ -662,7 +703,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/H_prop_link.STL" />
+          filename="package://swing_drone/meshes/CW_prop.STL" />
       </geometry>
     </collision>
   </link>
@@ -679,4 +720,6 @@
     <axis
       xyz="0 0 1" />
   </joint>
+
+
 </robot>

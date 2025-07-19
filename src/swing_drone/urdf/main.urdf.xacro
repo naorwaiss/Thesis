@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="swing_drone">
+    <xacro:include filename="$(find swing_drone)/urdf/robot_description.urdf.xacro"/>
+    <xacro:include filename="$(find swing_drone)/urdf/robot_gazebo.urdf.xacro"/>
+    <xacro:include filename="$(find swing_drone)/urdf/robot_control.urdf.xacro"/>
+</robot>

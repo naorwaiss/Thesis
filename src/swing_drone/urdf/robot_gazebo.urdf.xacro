@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="swing_drone">
+
+    <gazebo>
+        <plugin name='ignition::gazebo::systems::Physics' filename='ignition-gazebo-physics-system'/>
+        <plugin name='ignition::gazebo::systems::UserCommands' filename='ignition-gazebo-user-commands-system'/>
+        <plugin name='ignition::gazebo::systems::SceneBroadcaster' filename='ignition-gazebo-scene-broadcaster-system'/>
+        <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors"/>
+    </gazebo>
+
+  <gazebo reference="base_link">
+    <material>Gazebo/Blue</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>true</selfCollide>
+    
+  </gazebo>
+
+  <gazebo reference="imu_link">
+    <material>Gazebo/Green</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <gazebo reference="fr_link">
+    <material>Gazebo/Grey</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="br_link">
+    <material>Gazebo/Grey</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="fl_link">
+    <material>Gazebo/Grey</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="bl_link">
+    <material>Gazebo/Grey</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="A_prop_link">
+    <material>Gazebo/Red</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <gazebo reference="B_prop_link">
+    <material>Gazebo/Grey</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <gazebo reference="C_prop_link">
+    <material>Gazebo/Grey</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <gazebo reference="D_prop_link">
+    <material>Gazebo/Grey</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <gazebo reference="E_prop_link">
+    <material>Gazebo/Grey</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <gazebo reference="F_prop_link">
+    <material>Gazebo/Grey</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <gazebo reference="G_prop_link">
+    <material>Gazebo/Grey</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <gazebo reference="H_prop_link">
+    <material>Gazebo/Red</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+
+</robot>

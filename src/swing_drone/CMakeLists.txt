@@ -24,14 +24,8 @@ if(BUILD_TESTING)
 endif()
 
 install(
-  DIRECTORY urdf meshes
+  DIRECTORY urdf meshes launch rviz2 worlds
   DESTINATION share/${PROJECT_NAME}
 )
-
-install(
-  DIRECTORY launch
-  DESTINATION share/${PROJECT_NAME}
-)
-
 
 ament_package()

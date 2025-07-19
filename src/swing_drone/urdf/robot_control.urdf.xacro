@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="swing_drone_control" params="name">
+
+        <ros2_control name="swing_drone_control" type="system">
+            <hardware>
+                <plugin>ign_ros2_control/IgnitionSystem</plugin>
+            </hardware>
+
+            <joint name="A_prop_joint">
+                <command_interface name="effort"></command_interface>
+                <state_interface name="effort"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="B_prop_joint">
+                <command_interface name="effort"></command_interface>
+                <state_interface name="effort"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="C_prop_joint">
+                <command_interface name="effort"></command_interface>
+                <state_interface name="effort"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="D_prop_joint">
+                <command_interface name="effort"></command_interface>
+                <state_interface name="effort"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="E_prop_joint">
+                <command_interface name="effort"></command_interface>
+                <state_interface name="effort"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="F_prop_joint">
+                <command_interface name="effort"></command_interface>
+                <state_interface name="effort"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="G_prop_joint">
+                <command_interface name="effort"></command_interface>
+                <state_interface name="effort"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="H_prop_joint">
+                <command_interface name="effort"></command_interface>
+                <state_interface name="effort"/>
+                <state_interface name="velocity"/>
+            </joint>
+        </ros2_control>
+
+        <gazebo>
+            <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+                <robot_param_node>robot_state_publisher</robot_param_node>
+                <!-- <parameters>$(find swing_drone)/config/my_controllers.yaml</parameters> -->
+            </plugin>
+        </gazebo>
+
+    </xacro:macro>
+
+</robot>

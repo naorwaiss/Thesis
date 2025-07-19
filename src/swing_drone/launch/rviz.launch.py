@@ -4,6 +4,7 @@ from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
+import xacro
 
 
 def generate_launch_description():
@@ -14,11 +15,11 @@ def generate_launch_description():
     pkg_share = FindPackageShare(package=package_name).find(package_name)
     
     # Path to the URDF file
-    urdf_file = os.path.join(pkg_share, 'urdf', 'urdf_asem_swing_drone.urdf')
+    urdf_file = os.path.join(pkg_share, 'urdf', 'main.urdf.xacro')
     
-    # Read the URDF file content
-    with open(urdf_file, 'r') as file:
-        robot_description = file.read()
+    # Process the URDF file with xacro
+    robot_description_doc = xacro.process_file(urdf_file)
+    robot_description = robot_description_doc.toxml()
     
     # Declare launch arguments
     use_sim_time_arg = DeclareLaunchArgument(
