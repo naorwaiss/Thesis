@@ -49,6 +49,18 @@ def generate_launch_description():
         'empty.sdf'
     )
     
+    gazebo = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(
+                get_package_share_directory("ros_gz_sim"),
+                'launch'
+            ),  '/gz_sim.launch.py']
+        ),
+        launch_arguments=[
+            ('gz_args', [' -r -v 4 ', sdf_file_path])
+        ]
+    )
+    
     gz_spawn_entity = Node(package='ros_gz_sim',
                            executable='create',
                            arguments=['-topic', 'robot_description',
@@ -66,24 +78,9 @@ def generate_launch_description():
         package='ros_gz_bridge',
         executable='parameter_bridge',
         arguments=[
-            # '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock]',
+            "/clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock",
         ],
         output='screen'
-    )
-
-
-
-
-    gazebo = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([
-            os.path.join(
-                get_package_share_directory("ros_gz_sim"),
-                'launch'
-            ),  '/gz_sim.launch.py']
-        ),
-        launch_arguments=[
-            ('gz_args', ['-r -v 4 ', sdf_file_path])
-        ]
     )
 
     return LaunchDescription([
