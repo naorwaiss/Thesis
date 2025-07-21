@@ -65,12 +65,7 @@ def generate_launch_description():
                            executable='create',
                            arguments=['-topic', 'robot_description',
                                       '-name', 'swing_drone',
-                                      '-x', '0.0',
-                                      '-y', '0.0',
-                                      '-z', '1.0',
-                                      '-R', '0.0',
-                                      '-P', '0.0',
-                                      '-Y', '0.0'],
+                                      '-z', '0.5'],
                            output='screen'
     )
     
@@ -79,6 +74,7 @@ def generate_launch_description():
         executable='parameter_bridge',
         arguments=[
             "/clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock",
+
         ],
         output='screen'
     )
