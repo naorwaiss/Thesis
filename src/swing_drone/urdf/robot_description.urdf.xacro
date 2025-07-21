@@ -48,7 +48,7 @@
         rpy="3.14159 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/base_link.STL" />
+          filename="package://swing_drone/meshes/base_link_new.STL" />
       </geometry>
     </collision>
   </link>
@@ -121,7 +121,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/arm.STL" />
+          filename="package://swing_drone/meshes/low_face_arm.STL" />
       </geometry>
     </collision>
   </link>
@@ -280,7 +280,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/arm.STL" />
+          filename="package://swing_drone/meshes/low_face_arm.STL" />
       </geometry>
     </collision>
   </link>
@@ -439,7 +439,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/arm.STL" />
+          filename="package://swing_drone/meshes/low_face_arm.STL" />
       </geometry>
     </collision>
   </link>
@@ -598,7 +598,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://swing_drone/meshes/arm.STL" />
+          filename="package://swing_drone/meshes/low_face_arm.STL" />
       </geometry>
     </collision>
   </link>
