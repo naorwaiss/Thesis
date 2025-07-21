@@ -3,7 +3,6 @@
  
   <!-- Dummy map link as root to avoid KDL parser warning -->
   <link name="map">
-    <!-- No inertia for dummy root link -->
   </link>
 
   <!-- Fixed joint connecting map to base_link -->
@@ -70,15 +69,6 @@
           size="0.01 0.01 0.01" />
       </geometry>
     </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <box
-          size="0.01 0.01 0.01" />
-      </geometry>
-    </collision>
   </link>
 
   <joint
@@ -89,10 +79,10 @@
     <child
       link="imu_link" />
     <origin
-      xyz="0 0 0"
+      xyz="0 0 0.01"
       rpy="0 0 0" />
     <axis
-      xyz="0 0 1" />
+      xyz="0 0 0" />
   </joint>
 
   <link

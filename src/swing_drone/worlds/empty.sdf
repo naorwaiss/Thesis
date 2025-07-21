@@ -1,26 +1,86 @@
-
 <?xml version="1.0" ?>
+<!--
+  Try inserting a model:
 
-<sdf version="1.8">
-  <world name="collision_test">
-    <physics name='1ms' type='ignored'>
+ign service -s /world/empty/create \
+--reqtype ignition.msgs.EntityFactory \
+--reptype ignition.msgs.Boolean \
+--timeout 300 \
+--req 'sdf: '\
+'"<?xml version=\"1.0\" ?>'\
+'<sdf version=\"1.6\">'\
+'<model name=\"spawned_model\">'\
+'<link name=\"link\">'\
+'<visual name=\"visual\">'\
+'<geometry><sphere><radius>1.0</radius></sphere></geometry>'\
+'</visual>'\
+'<collision name=\"visual\">'\
+'<geometry><sphere><radius>1.0</radius></sphere></geometry>'\
+'</collision>'\
+'</link>'\
+'</model>'\
+'</sdf>" '\
+'pose: {position: {z: 10}} '\
+'name: "new_name" '\
+'allow_renaming: true'
+
+  Then try deleting it:
+
+ign service -s /world/empty/remove \
+--reqtype ignition.msgs.Entity \
+--reptype ignition.msgs.Boolean \
+--timeout 300 \
+--req 'name: "new_name" type: MODEL'
+
+  Try inserting a light:
+
+ign service -s /world/empty/create --reqtype ignition.msgs.EntityFactory --reptype ignition.msgs.Boolean --timeout 300 --req 'sdf: '\
+'"<?xml version=\"1.0\" ?>'\
+'<sdf version=\"1.6\">'\
+'<light name=\"spawned_light\" type=\"directional\">'\
+'<pose>0 0 10 0.1 1.0 0</pose>'\
+'</light>'\
+'</sdf>"'
+
+  Then try deleting it:
+
+ign service -s /world/empty/remove \
+--reqtype ignition.msgs.Entity \
+--reptype ignition.msgs.Boolean \
+--timeout 300 \
+--req 'name: "spawned_light" type: LIGHT'
+
+  Insert a light using a message and allow_renaming:
+
+ign service -s /world/empty/create \
+--reqtype ignition.msgs.EntityFactory \
+--reptype ignition.msgs.Boolean \
+--timeout 300 \
+--req 'allow_renaming: true, light: {name: "spawned_light", type: 2, diffuse: {r: 1}}'
+
+-->
+<sdf version="1.6">
+  <world name="empty">
+    <physics name="1ms" type="ignored">
       <max_step_size>0.001</max_step_size>
-      <real_time_factor>1</real_time_factor>
-      <real_time_update_rate>1000</real_time_update_rate>
+      <real_time_factor>1.0</real_time_factor>
     </physics>
-    <plugin name='ignition::gazebo::systems::Physics' filename='ignition-gazebo-physics-system'/>
-    <plugin name='ignition::gazebo::systems::UserCommands' filename='ignition-gazebo-user-commands-system'/>
-    <plugin name='ignition::gazebo::systems::SceneBroadcaster' filename='ignition-gazebo-scene-broadcaster-system'/>
-    <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors">
-      <render_engine>ogre2</render_engine>
+    <plugin
+      filename="ignition-gazebo-physics-system"
+      name="gz::sim::systems::Physics">
     </plugin>
-    
-    <plugin filename="libignition-gazebo-contact-system.so" name="ignition::gazebo::systems::Contact">
+    <plugin
+      filename="ignition-gazebo-user-commands-system"
+      name="gz::sim::systems::UserCommands">
     </plugin>
-    <scene>
-      <ambient>1.0 1.0 1.0</ambient>
-      <background>0.8 0.8 0.8</background>
-    </scene>
+    <plugin
+      filename="ignition-gazebo-scene-broadcaster-system"
+      name="gz::sim::systems::SceneBroadcaster">
+    </plugin>
+    <plugin
+      filename="ignition-gazebo-contact-system"
+      name="gz::sim::systems::Contact">
+    </plugin>
 
     <light type="directional" name="sun">
       <cast_shadows>true</cast_shadows>
@@ -55,36 +115,11 @@
             </plane>
           </geometry>
           <material>
-            <ambient>0.94 0.90 0.81 1</ambient>
-            <diffuse>0.94 0.90 0.81 1</diffuse>
-            <specular>1 1 1 0</specular>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.8 0.8 0.8 1</specular>
           </material>
         </visual>
-      </link>
-    </model>
-
-    <!-- A camera sensor that looks straight down on the map. -->
-    <model name="sky_cam">
-      <static>true</static>
-      <link name="camera_link">
-        <pose>0 0 10 1.57 1.57 0</pose>
-        <sensor name="sky_cam" type="camera">
-          <camera>
-            <horizontal_fov>1.047</horizontal_fov>
-            <image>
-              <width>1024</width>
-              <height>768</height>
-            </image>
-            <clip>
-              <near>0.1</near>
-              <far>100</far>
-            </clip>
-          </camera>
-          <always_on>1</always_on>
-          <update_rate>1</update_rate>
-          <visualize>true</visualize>
-          <topic>sky_cam</topic>
-        </sensor>
       </link>
     </model>
 

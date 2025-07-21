@@ -65,12 +65,7 @@
             </joint>
         </ros2_control>
 
-        <gazebo>
-            <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
-                <robot_param_node>robot_state_publisher</robot_param_node>
-                <parameters>$(find swing_drone)/config/drone_controller.yaml</parameters>
-            </plugin>
-        </gazebo>
+
 
     </xacro:macro>
 

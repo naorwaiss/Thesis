@@ -46,7 +46,7 @@ def generate_launch_description():
     sdf_file_path = os.path.join(
         get_package_share_directory('swing_drone'),
         'worlds',
-        'worlds.sdf'
+        'empty.sdf'
     )
     
     gz_spawn_entity = Node(package='ros_gz_sim',

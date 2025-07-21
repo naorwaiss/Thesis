@@ -8,7 +8,7 @@ from launch.actions import TimerAction
 
 
 def generate_launch_description():
-    
+
     robot_description = ParameterValue(
         Command([
             'xacro ',
@@ -16,49 +16,37 @@ def generate_launch_description():
         ]),
         value_type=str
     )
-    
-    robot_state_publisher = Node(
-        package="robot_state_publisher",
-        executable="robot_state_publisher",
-        name='robot_state_publisher',
-        output='screen',
-        parameters=[{'robot_description': robot_description,
-                     "use_sim_time": True}]
-    )
-    
+
     controller_manager = Node(
         package="controller_manager",
         executable="ros2_control_node",
         parameters=[{'robot_description': robot_description},
-                   os.path.join(get_package_share_directory("swing_drone"), 
-                               "config", 
-                               "drone_controller.yaml"),
-                   {"use_sim_time": True}],
+                    os.path.join(get_package_share_directory("swing_drone"),
+                                 "config",
+                                 "drone_controller.yaml"),
+                    {"use_sim_time": False}],
         output="screen",
     )
-    
+
     joint_state_broadcaster_spawner = Node(
         package="controller_manager",
         executable="spawner",
         arguments=['joint_state_broadcaster',
                    '--controller-manager',
                    '/controller_manager'
-        ]
+                   ]
     )
-    
+
     propellors_spawner = Node(
         package="controller_manager",
         executable="spawner",
         arguments=['propellors',
                    '--controller-manager',
                    '/controller_manager'
-        ]
+                   ]
     )
 
-
-
     return LaunchDescription([
-        robot_state_publisher,
         controller_manager,
         TimerAction(period=2.0, actions=[joint_state_broadcaster_spawner]),
         TimerAction(period=4.0, actions=[propellors_spawner]),
