@@ -8,5 +8,45 @@
         </plugin>
     </gazebo>
 
+    <gazebo reference="base_link">
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <self_collide>1</self_collide>
+        <kp value="100000.0" />
+        <kd value="1.0" />
+    </gazebo>
+
+    <gazebo reference="fr_link  ">
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <self_collide>1</self_collide>
+        <kp value="100000.0" />
+        <kd value="1.0" />
+    </gazebo>
+
+    <gazebo reference="fl_link">
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <self_collide>1</self_collide>
+        <kp value="100000.0" />
+        <kd value="1.0" />
+    </gazebo>
+
+    <gazebo reference="br_link">
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <self_collide>1</self_collide>
+        <kp value="100000.0" />
+        <kd value="1.0" />
+    </gazebo>
+
+    <gazebo reference="bl_link">
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <self_collide>1</self_collide>
+        <kp value="100000.0" />
+        <kd value="1.0" />
+    </gazebo>
+    
  
 </robot>

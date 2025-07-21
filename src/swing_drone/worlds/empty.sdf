@@ -64,6 +64,7 @@ ign service -s /world/empty/create \
     <physics name="1ms" type="ignored">
       <max_step_size>0.001</max_step_size>
       <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
     </physics>
     <plugin
       filename="ignition-gazebo-physics-system"
