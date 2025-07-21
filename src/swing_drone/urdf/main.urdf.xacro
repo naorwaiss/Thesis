@@ -3,4 +3,7 @@
     <xacro:include filename="$(find swing_drone)/urdf/robot_description.urdf.xacro"/>
     <xacro:include filename="$(find swing_drone)/urdf/robot_gazebo.urdf.xacro"/>
     <xacro:include filename="$(find swing_drone)/urdf/robot_control.urdf.xacro"/>
+    
+    <!-- Call the control macro to instantiate ros2_control -->
+    <xacro:swing_drone_control name="drone_controler"/>
 </robot>

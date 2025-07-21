@@ -1,6 +1,17 @@
 <?xml version="1.0"?>
 <robot name="swing_drone" xmlns:xacro="http://www.ros.org/wiki/xacro">
  
+  <!-- Dummy map link as root to avoid KDL parser warning -->
+  <link name="map">
+    <!-- No inertia for dummy root link -->
+  </link>
+
+  <!-- Fixed joint connecting map to base_link -->
+  <joint name="map_to_base" type="fixed">
+    <parent link="map"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
 
   <link
     name="base_link">

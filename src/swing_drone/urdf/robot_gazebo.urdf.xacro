@@ -2,6 +2,13 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="swing_drone">
 
     <gazebo>
+        <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+              <robot_param_node>robot_state_publisher</robot_param_node>
+              <parameters>$(find swing_drone)/config/drone_controller.yaml</parameters>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
         <plugin name='ignition::gazebo::systems::Physics' filename='ignition-gazebo-physics-system'/>
         <plugin name='ignition::gazebo::systems::UserCommands' filename='ignition-gazebo-user-commands-system'/>
         <plugin name='ignition::gazebo::systems::SceneBroadcaster' filename='ignition-gazebo-scene-broadcaster-system'/>
@@ -24,7 +31,7 @@
     <mu2>0.1</mu2>
     <kp>1000000.0</kp>
     <kd>1.0</kd>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="fr_link">

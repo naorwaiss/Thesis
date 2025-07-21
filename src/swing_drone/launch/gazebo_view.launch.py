@@ -20,10 +20,7 @@ def generate_launch_description():
                                       description='Absolute path to robot urdf file'
     )
     
-    world_arg = DeclareLaunchArgument(name='world',
-                                      default_value='empty.sdf',
-                                      description='World file to load in Gazebo'
-    )
+   
     
     gazebo_resource_path = SetEnvironmentVariable(name='GZ_SIM_RESOURCE_PATH',
                                                   value=[
@@ -46,14 +43,22 @@ def generate_launch_description():
                                               'use_sim_time': True}]
     )
 
-
+    sdf_file_path = os.path.join(
+        get_package_share_directory('swing_drone'),
+        'worlds',
+        'worlds.sdf'
+    )
+    
     gz_spawn_entity = Node(package='ros_gz_sim',
                            executable='create',
                            arguments=['-topic', 'robot_description',
                                       '-name', 'swing_drone',
                                       '-x', '0.0',
-                                      '-y', '0.0', 
-                                      '-z', '1.0'],
+                                      '-y', '0.0',
+                                      '-z', '1.0',
+                                      '-R', '0.0',
+                                      '-P', '0.0',
+                                      '-Y', '0.0'],
                            output='screen'
     )
     
@@ -62,10 +67,12 @@ def generate_launch_description():
         executable='parameter_bridge',
         arguments=[
             '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock]',
-
         ],
         output='screen'
     )
+
+
+
 
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
@@ -75,16 +82,15 @@ def generate_launch_description():
             ),  '/gz_sim.launch.py']
         ),
         launch_arguments=[
-            ('gz_args', ['-r -v 4 ', LaunchConfiguration('world')])
+            ('gz_args', ['-r -v 4 ', sdf_file_path])
         ]
     )
 
     return LaunchDescription([
+        gz_ros2_bridge,
         model_arg,
-        world_arg,
         gazebo_resource_path,
         robot_state_publisher,
         gazebo,
         gz_spawn_entity,
-        gz_ros2_bridge,
     ])
