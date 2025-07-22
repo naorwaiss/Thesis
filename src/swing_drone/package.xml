@@ -8,7 +8,20 @@
   <license>Apache-2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
-
+  
+  <!-- Add Python dependencies -->
+  <depend>rclpy</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>tf_transformations</depend>
+  
+  <!-- Add C++ dependencies for Ignition Gazebo plugin -->
+  <depend>rclcpp</depend>
+  <depend>ros_gz_sim</depend>
+  <depend>libignition-gazebo6-dev</depend>
+  <depend>libignition-plugin-dev</depend>
+  <depend>libignition-common4-dev</depend>
+  
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 

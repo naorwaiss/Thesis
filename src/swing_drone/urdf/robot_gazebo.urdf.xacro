@@ -52,6 +52,82 @@
         <kd value="1.0" />
         <dampingFactor>0.001</dampingFactor>
     </gazebo>
+
+
+    <gazebo reference="imu_link">
+    <sensor name="imu_sensor" type="imu">
+      <ignition_frame_id>imu_link</ignition_frame_id>
+      <plugin filename="ignition-gazebo-imu-system" name="ignition::gazebo::systems::Imu">
+      </plugin>
+
+      <topic>imu</topic>
+      <always_on>true</always_on>
+      <update_rate>400</update_rate>
+      <visualize>true</visualize>
+      <imu>
+        <angular_velocity>
+          <x>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>2e-4</stddev>
+              <bias_mean>0.0000075</bias_mean>
+              <bias_stddev>0.0000008</bias_stddev>
+            </noise>
+          </x>
+          <y>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>2e-4</stddev>
+              <bias_mean>0.0000075</bias_mean>
+              <bias_stddev>0.0000008</bias_stddev>
+            </noise>
+          </y>
+          <z>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>2e-4</stddev>
+              <bias_mean>0.0000075</bias_mean>
+              <bias_stddev>0.0000008</bias_stddev>
+            </noise>
+          </z>
+        </angular_velocity>
+        <linear_acceleration>
+          <x>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>1.7e-2</stddev>
+              <bias_mean>0.1</bias_mean>
+              <bias_stddev>0.001</bias_stddev>
+            </noise>
+          </x>
+          <y>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>1.7e-2</stddev>
+              <bias_mean>0.1</bias_mean>
+              <bias_stddev>0.001</bias_stddev>
+            </noise>
+          </y>
+          <z>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>1.7e-2</stddev>
+              <bias_mean>0.1</bias_mean>
+              <bias_stddev>0.001</bias_stddev>
+            </noise>
+          </z>
+        </linear_acceleration>
+      </imu>
+    </sensor>
+  </gazebo>
+
+<gazebo>
+  <plugin name="joint_wrench_plugin" filename="libjoint_wrench_plugin.so">
+    <joint_name>A_prop_joint</joint_name>
+    <topic_name>/Drone/A_prop_joint/wrench</topic_name>
+  </plugin>
+</gazebo>
+
     
  
 </robot>
