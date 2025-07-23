@@ -46,14 +46,9 @@ def generate_launch_description():
                    ]
     )
 
-    imu_to_euler = Node(
-        package="swing_drone",
-        executable="imu_to_euler",
-    )
 
     return LaunchDescription([
         controller_manager,
         TimerAction(period=2.0, actions=[joint_state_broadcaster_spawner]),
         TimerAction(period=4.0, actions=[propellors_spawner]),
-        imu_to_euler
     ])

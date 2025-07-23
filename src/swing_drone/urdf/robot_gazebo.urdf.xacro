@@ -1,10 +1,111 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="swing_drone">
+<!-- Gazebo-specific configurations for swing_drone -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+    <!-- Removed the ign_ros2_control plugin to avoid conflict with PX4 MAVLink control -->
+    <!--
     <gazebo>
         <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
               <robot_param_node>robot_state_publisher</robot_param_node>
               <parameters>$(find swing_drone)/config/drone_controller.yaml</parameters>
+        </plugin>
+    </gazebo>
+    -->
+
+    <!-- Lift and Drag plugins for each propeller -->
+    <gazebo>
+        <plugin filename="libignition-gazebo-lift-drag-system.so" name="ignition::gazebo::systems::LiftDrag">
+            <link_name>A_prop_link</link_name>
+            <air_density>1.2041</air_density>
+            <center_pressure>0 0 0</center_pressure>
+            <direction>0 0 1</direction>
+            <upward>0 1 0</upward>
+            <area>0.0083</area>
+            <coefficient>1.3</coefficient>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin filename="libignition-gazebo-lift-drag-system.so" name="ignition::gazebo::systems::LiftDrag">
+            <link_name>B_prop_link</link_name>
+            <air_density>1.2041</air_density>
+            <center_pressure>0 0 0</center_pressure>
+            <direction>0 0 1</direction>
+            <upward>0 1 0</upward>
+            <area>0.0083</area>
+            <coefficient>1.3</coefficient>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin filename="libignition-gazebo-lift-drag-system.so" name="ignition::gazebo::systems::LiftDrag">
+            <link_name>C_prop_link</link_name>
+            <air_density>1.2041</air_density>
+            <center_pressure>0 0 0</center_pressure>
+            <direction>0 0 1</direction>
+            <upward>0 1 0</upward>
+            <area>0.0083</area>
+            <coefficient>1.3</coefficient>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin filename="libignition-gazebo-lift-drag-system.so" name="ignition::gazebo::systems::LiftDrag">
+            <link_name>D_prop_link</link_name>
+            <air_density>1.2041</air_density>
+            <center_pressure>0 0 0</center_pressure>
+            <direction>0 0 1</direction>
+            <upward>0 1 0</upward>
+            <area>0.0083</area>
+            <coefficient>1.3</coefficient>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin filename="libignition-gazebo-lift-drag-system.so" name="ignition::gazebo::systems::LiftDrag">
+            <link_name>E_prop_link</link_name>
+            <air_density>1.2041</air_density>
+            <center_pressure>0 0 0</center_pressure>
+            <direction>0 0 1</direction>
+            <upward>0 1 0</upward>
+            <area>0.0083</area>
+            <coefficient>1.3</coefficient>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin filename="libignition-gazebo-lift-drag-system.so" name="ignition::gazebo::systems::LiftDrag">
+            <link_name>F_prop_link</link_name>
+            <air_density>1.2041</air_density>
+            <center_pressure>0 0 0</center_pressure>
+            <direction>0 0 1</direction>
+            <upward>0 1 0</upward>
+            <area>0.0083</area>
+            <coefficient>1.3</coefficient>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin filename="libignition-gazebo-lift-drag-system.so" name="ignition::gazebo::systems::LiftDrag">
+            <link_name>G_prop_link</link_name>
+            <air_density>1.2041</air_density>
+            <center_pressure>0 0 0</center_pressure>
+            <direction>0 0 1</direction>
+            <upward>0 1 0</upward>
+            <area>0.0083</area>
+            <coefficient>1.3</coefficient>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin filename="libignition-gazebo-lift-drag-system.so" name="ignition::gazebo::systems::LiftDrag">
+            <link_name>H_prop_link</link_name>
+            <air_density>1.2041</air_density>
+            <center_pressure>0 0 0</center_pressure>
+            <direction>0 0 1</direction>
+            <upward>0 1 0</upward>
+            <area>0.0083</area>
+            <coefficient>1.3</coefficient>
         </plugin>
     </gazebo>
 
@@ -17,7 +118,7 @@
         <dampingFactor>0.001</dampingFactor>
     </gazebo>
 
-    <gazebo reference="fr_link  ">
+    <gazebo reference="fr_link">
         <mu1>1.0</mu1>
         <mu2>1.0</mu2>
         <self_collide>1</self_collide>
@@ -121,13 +222,4 @@
     </sensor>
   </gazebo>
 
-<gazebo>
-  <plugin name="joint_wrench_plugin" filename="libjoint_wrench_plugin.so">
-    <joint_name>A_prop_joint</joint_name>
-    <topic_name>/Drone/A_prop_joint/wrench</topic_name>
-  </plugin>
-</gazebo>
-
-    
- 
 </robot>

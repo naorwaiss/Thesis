@@ -8,7 +8,7 @@ controller_manager:
       type: joint_state_broadcaster/JointStateBroadcaster
 
     propellors:
-      type: effort_controllers/JointGroupEffortController
+      type: velocity_controllers/JointGroupVelocityController
 
 propellors:
   ros__parameters:
@@ -22,7 +22,7 @@ propellors:
       - G_prop_joint
       - H_prop_joint
     command_interfaces:
-      - effort
+      - velocity
     state_interfaces:
       - position
       - velocity
