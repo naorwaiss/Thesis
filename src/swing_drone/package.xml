@@ -14,10 +14,13 @@
   <depend>geometry_msgs</depend>
   <depend>sensor_msgs</depend>
   <depend>tf_transformations</depend>
+  <depend>ros_gz_interfaces</depend>
   
   <!-- Add C++ dependencies for Ignition Gazebo plugin -->
   <depend>rclcpp</depend>
   <depend>ros_gz_sim</depend>
+  <!-- Add Gazebo Garden simulation plugins for MulticopterMotorModel -->
+  <depend>gz-sim</depend>
   
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

@@ -73,8 +73,9 @@ def generate_launch_description():
         package='ros_gz_bridge',
         executable='parameter_bridge',
         arguments=[
-            "/clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock",
-            "/imu@sensor_msgs/msg/Imu[ignition.msgs.IMU",
+            "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
+            "/imu@sensor_msgs/msg/Imu[gz.msgs.IMU",
+            "/swing_drone/command/motor_speed@ros_gz_interfaces/msg/Float32Array[gz.msgs.Float_V"
         ],
         output='screen'
     )
@@ -82,19 +83,12 @@ def generate_launch_description():
         package="swing_drone",
         executable="quart_euilr.py",
     )
-
-    fix_motor_dir = Node(
-        package="swing_drone",
-        executable="fix_motor_dir.py",
-    )
-
     return LaunchDescription([
+        imu_to_euler,
         gz_ros2_bridge,
         model_arg,
         gazebo_resource_path,
         robot_state_publisher,
         gazebo,
         gz_spawn_entity,
-        imu_to_euler,
-        fix_motor_dir,
     ])

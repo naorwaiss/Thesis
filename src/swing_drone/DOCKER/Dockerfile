@@ -1,11 +1,11 @@
-FROM osrf/ros:humble-desktop
+FROM osrf/ros:jazzy-desktop
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG=C.UTF-8
 ENV LC_ALL=C.UTF-8
 
-# --- Step 1: Install base tools without triggering ros2 repo error
-RUN sed -i '/ros2/d' /etc/apt/sources.list.d/*.list || true && \
+# --- Step 1: Clean up existing ROS sources and install base tools
+RUN rm -f /etc/apt/sources.list.d/ros2.list && \
     apt-get update && apt-get install -y \
     curl \
     wget \
@@ -13,12 +13,32 @@ RUN sed -i '/ros2/d' /etc/apt/sources.list.d/*.list || true && \
     lsb-release \
     software-properties-common
 
-# --- Step 2: Re-add ROS 2 repo with valid key (skip expired key issue)
-RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key | gpg --dearmor -o /usr/share/keyrings/ros-archive-keyring.gpg && \
-    echo "deb [signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2.list
-
+# --- Step 2: Since we're using jazzy base image, ROS is already configured
+# Just update and upgrade the system
 RUN apt-get update
 RUN apt-get upgrade -y
+
+
+# --- Install gazebo harmonic 
+
+RUN apt-get update
+RUN apt-get install -y curl lsb-release gnupg
+
+RUN curl https://packages.osrfoundation.org/gazebo.gpg --output /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
+RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
+RUN apt-get update
+RUN apt-get install -y gz-harmonic
+
+# Setup ROS environment for all shell sessions
+RUN echo "source /opt/ros/jazzy/setup.bash" >> /root/.bashrc
+
+RUN apt install -y ros-jazzy-ros-gz-sim ros-jazzy-ros-gz-bridge ros-jazzy-gz-sim-vendor
+RUN apt update
+RUN apt install -y ros-jazzy-xacro
+RUN apt install -y ros-jazzy-tf-transformations
+
+
+
 
 
 

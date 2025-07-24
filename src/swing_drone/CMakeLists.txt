@@ -29,7 +29,6 @@ endif()
 # Install Python scripts
 install(PROGRAMS
   script/quart_euilr.py
-  script/fix_motor_dir.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

@@ -2,113 +2,14 @@
 <!-- Gazebo-specific configurations for swing_drone -->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <!-- Removed the ign_ros2_control plugin to avoid conflict with PX4 MAVLink control -->
   
-    <gazebo>
+    <!-- <gazebo>
         <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
               <robot_param_node>robot_state_publisher</robot_param_node>
               <parameters>$(find swing_drone)/config/drone_controller.yaml</parameters>
         </plugin>
-    </gazebo>
+    </gazebo> -->
   
-
-    <!-- Lift and Drag plugins for each propeller -->
-    <gazebo>
-        <plugin filename="libignition-gazebo-lift-drag-system.so" name="ignition::gazebo::systems::LiftDrag">
-            <link_name>A_prop_link</link_name>
-            <air_density>1.2041</air_density>
-            <center_pressure>0 0 0</center_pressure>
-            <direction>0 0 1</direction>
-            <upward>0 1 0</upward>
-            <area>0.0083</area>
-            <coefficient>1.3</coefficient>
-        </plugin>
-    </gazebo>
-
-    <gazebo>
-        <plugin filename="libignition-gazebo-lift-drag-system.so" name="ignition::gazebo::systems::LiftDrag">
-            <link_name>B_prop_link</link_name>
-            <air_density>1.2041</air_density>
-            <center_pressure>0 0 0</center_pressure>
-            <direction>0 0 1</direction>
-            <upward>0 1 0</upward>
-            <area>0.0083</area>
-            <coefficient>1.3</coefficient>
-        </plugin>
-    </gazebo>
-
-    <gazebo>
-        <plugin filename="libignition-gazebo-lift-drag-system.so" name="ignition::gazebo::systems::LiftDrag">
-            <link_name>C_prop_link</link_name>
-            <air_density>1.2041</air_density>
-            <center_pressure>0 0 0</center_pressure>
-            <direction>0 0 1</direction>
-            <upward>0 1 0</upward>
-            <area>0.0083</area>
-            <coefficient>1.3</coefficient>
-        </plugin>
-    </gazebo>
-
-    <gazebo>
-        <plugin filename="libignition-gazebo-lift-drag-system.so" name="ignition::gazebo::systems::LiftDrag">
-            <link_name>D_prop_link</link_name>
-            <air_density>1.2041</air_density>
-            <center_pressure>0 0 0</center_pressure>
-            <direction>0 0 1</direction>
-            <upward>0 1 0</upward>
-            <area>0.0083</area>
-            <coefficient>1.3</coefficient>
-        </plugin>
-    </gazebo>
-
-    <gazebo>
-        <plugin filename="libignition-gazebo-lift-drag-system.so" name="ignition::gazebo::systems::LiftDrag">
-            <link_name>E_prop_link</link_name>
-            <air_density>1.2041</air_density>
-            <center_pressure>0 0 0</center_pressure>
-            <direction>0 0 1</direction>
-            <upward>0 1 0</upward>
-            <area>0.0083</area>
-            <coefficient>1.3</coefficient>
-        </plugin>
-    </gazebo>
-
-    <gazebo>
-        <plugin filename="libignition-gazebo-lift-drag-system.so" name="ignition::gazebo::systems::LiftDrag">
-            <link_name>F_prop_link</link_name>
-            <air_density>1.2041</air_density>
-            <center_pressure>0 0 0</center_pressure>
-            <direction>0 0 1</direction>
-            <upward>0 1 0</upward>
-            <area>0.0083</area>
-            <coefficient>1.3</coefficient>
-        </plugin>
-    </gazebo>
-
-    <gazebo>
-        <plugin filename="libignition-gazebo-lift-drag-system.so" name="ignition::gazebo::systems::LiftDrag">
-            <link_name>G_prop_link</link_name>
-            <air_density>1.2041</air_density>
-            <center_pressure>0 0 0</center_pressure>
-            <direction>0 0 1</direction>
-            <upward>0 1 0</upward>
-            <area>0.0083</area>
-            <coefficient>1.3</coefficient>
-        </plugin>
-    </gazebo>
-
-    <gazebo>
-        <plugin filename="libignition-gazebo-lift-drag-system.so" name="ignition::gazebo::systems::LiftDrag">
-            <link_name>H_prop_link</link_name>
-            <air_density>1.2041</air_density>
-            <center_pressure>0 0 0</center_pressure>
-            <direction>0 0 1</direction>
-            <upward>0 1 0</upward>
-            <area>0.0083</area>
-            <coefficient>1.3</coefficient>
-        </plugin>
-    </gazebo>
-
     <gazebo reference="base_link">
         <mu1>1.0</mu1>
         <mu2>1.0</mu2>
@@ -157,8 +58,8 @@
 
     <gazebo reference="imu_link">
     <sensor name="imu_sensor" type="imu">
-      <ignition_frame_id>imu_link</ignition_frame_id>
-      <plugin filename="ignition-gazebo-imu-system" name="ignition::gazebo::systems::Imu">
+      <gz_frame_id>imu_link</gz_frame_id>
+      <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu">
       </plugin>
 
       <topic>imu</topic>
@@ -221,5 +122,191 @@
       </imu>
     </sensor>
   </gazebo>
+
+  <gazebo>
+      <plugin
+        filename="gz-sim-multicopter-motor-model-system"
+        name="gz::sim::systems::MulticopterMotorModel">
+        <robotNamespace>swing_drone</robotNamespace>
+        <jointName>A_prop_joint</jointName>
+        <linkName>A_prop_link</linkName>
+        <turningDirection>ccw</turningDirection>
+        <timeConstantUp>0.0125</timeConstantUp>
+        <timeConstantDown>0.025</timeConstantDown>
+        <maxRotVelocity>800.0</maxRotVelocity>
+        <motorConstant>8.54858e-06</motorConstant>
+        <momentConstant>0.016</momentConstant>
+        <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
+        <actuator_number>0</actuator_number>
+        <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+        <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+        <motorSpeedPubTopic>motor_speed/0</motorSpeedPubTopic>
+        <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+        <motorType>velocity</motorType>
+      </plugin>
+  </gazebo>
+
+  <gazebo>
+      <plugin
+        filename="gz-sim-multicopter-motor-model-system"
+        name="gz::sim::systems::MulticopterMotorModel">
+        <robotNamespace>swing_drone</robotNamespace>
+        <jointName>B_prop_joint</jointName>
+        <linkName>B_prop_link</linkName>
+        <turningDirection>cw</turningDirection>
+        <timeConstantUp>0.0125</timeConstantUp>
+        <timeConstantDown>0.025</timeConstantDown>
+        <maxRotVelocity>800.0</maxRotVelocity>
+        <motorConstant>8.54858e-06</motorConstant>
+        <momentConstant>0.016</momentConstant>
+        <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
+        <actuator_number>1</actuator_number>
+        <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+        <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+        <motorSpeedPubTopic>motor_speed/1</motorSpeedPubTopic>
+        <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+        <motorType>velocity</motorType>
+      </plugin>
+  </gazebo>
+
+  <gazebo>
+      <plugin
+        filename="gz-sim-multicopter-motor-model-system"
+        name="gz::sim::systems::MulticopterMotorModel">
+        <robotNamespace>swing_drone</robotNamespace>
+        <jointName>C_prop_joint</jointName>
+        <linkName>C_prop_link</linkName>
+        <turningDirection>ccw</turningDirection>
+        <timeConstantUp>0.0125</timeConstantUp>
+        <timeConstantDown>0.025</timeConstantDown>
+        <maxRotVelocity>800.0</maxRotVelocity>
+        <motorConstant>8.54858e-06</motorConstant>
+        <momentConstant>0.016</momentConstant>
+        <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
+        <actuator_number>2</actuator_number>
+        <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+        <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+        <motorSpeedPubTopic>motor_speed/2</motorSpeedPubTopic>
+        <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+        <motorType>velocity</motorType>
+      </plugin>
+  </gazebo>
+
+  <gazebo>
+      <plugin
+        filename="gz-sim-multicopter-motor-model-system"
+        name="gz::sim::systems::MulticopterMotorModel">
+        <robotNamespace>swing_drone</robotNamespace>
+        <jointName>D_prop_joint</jointName>
+        <linkName>D_prop_link</linkName>
+        <turningDirection>cw</turningDirection>
+        <timeConstantUp>0.0125</timeConstantUp>
+        <timeConstantDown>0.025</timeConstantDown>
+        <maxRotVelocity>800.0</maxRotVelocity>
+        <motorConstant>8.54858e-06</motorConstant>
+        <momentConstant>0.016</momentConstant>
+        <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
+        <actuator_number>3</actuator_number>
+        <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+        <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+        <motorSpeedPubTopic>motor_speed/3</motorSpeedPubTopic>
+        <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+        <motorType>velocity</motorType>
+      </plugin>
+  </gazebo>
+
+  <gazebo>
+      <plugin
+        filename="gz-sim-multicopter-motor-model-system"
+        name="gz::sim::systems::MulticopterMotorModel">
+        <robotNamespace>swing_drone</robotNamespace>
+        <jointName>E_prop_joint</jointName>
+        <linkName>E_prop_link</linkName>
+        <turningDirection>ccw</turningDirection>
+        <timeConstantUp>0.0125</timeConstantUp>
+        <timeConstantDown>0.025</timeConstantDown>
+        <maxRotVelocity>800.0</maxRotVelocity>
+        <motorConstant>8.54858e-06</motorConstant>
+        <momentConstant>0.016</momentConstant>
+        <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
+        <actuator_number>4</actuator_number>
+        <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+        <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+        <motorSpeedPubTopic>motor_speed/4</motorSpeedPubTopic>
+        <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+        <motorType>velocity</motorType>
+      </plugin>
+  </gazebo>
+
+  <gazebo>
+      <plugin
+        filename="gz-sim-multicopter-motor-model-system"
+        name="gz::sim::systems::MulticopterMotorModel">
+        <robotNamespace>swing_drone</robotNamespace>
+        <jointName>F_prop_joint</jointName>
+        <linkName>F_prop_link</linkName>
+        <turningDirection>cw</turningDirection>
+        <timeConstantUp>0.0125</timeConstantUp>
+        <timeConstantDown>0.025</timeConstantDown>
+        <maxRotVelocity>800.0</maxRotVelocity>
+        <motorConstant>8.54858e-06</motorConstant>
+        <momentConstant>0.016</momentConstant>
+        <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
+        <actuator_number>5</actuator_number>
+        <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+        <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+        <motorSpeedPubTopic>motor_speed/5</motorSpeedPubTopic>
+        <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+        <motorType>velocity</motorType>
+      </plugin>
+  </gazebo>
+
+  <gazebo>
+      <plugin
+        filename="gz-sim-multicopter-motor-model-system"
+        name="gz::sim::systems::MulticopterMotorModel">
+        <robotNamespace>swing_drone</robotNamespace>
+        <jointName>G_prop_joint</jointName>
+        <linkName>G_prop_link</linkName>
+        <turningDirection>ccw</turningDirection>
+        <timeConstantUp>0.0125</timeConstantUp>
+        <timeConstantDown>0.025</timeConstantDown>
+        <maxRotVelocity>800.0</maxRotVelocity>
+        <motorConstant>8.54858e-06</motorConstant>
+        <momentConstant>0.016</momentConstant>
+        <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
+        <actuator_number>6</actuator_number>
+        <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+        <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+        <motorSpeedPubTopic>motor_speed/6</motorSpeedPubTopic>
+        <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+        <motorType>velocity</motorType>
+      </plugin>
+  </gazebo>
+
+  <gazebo>
+      <plugin
+        filename="gz-sim-multicopter-motor-model-system"
+        name="gz::sim::systems::MulticopterMotorModel">
+        <robotNamespace>swing_drone</robotNamespace>
+        <jointName>H_prop_joint</jointName>
+        <linkName>H_prop_link</linkName>
+        <turningDirection>cw</turningDirection>
+        <timeConstantUp>0.0125</timeConstantUp>
+        <timeConstantDown>0.025</timeConstantDown>
+        <maxRotVelocity>800.0</maxRotVelocity>
+        <motorConstant>8.54858e-06</motorConstant>
+        <momentConstant>0.016</momentConstant>
+        <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
+        <actuator_number>7</actuator_number>
+        <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+        <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+        <motorSpeedPubTopic>motor_speed/7</motorSpeedPubTopic>
+        <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+        <motorType>velocity</motorType>
+      </plugin>
+  </gazebo>
+
+
 
 </robot>

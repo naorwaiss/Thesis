@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
 import sys
+import numpy as np
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Float64MultiArray
+from std_msgs.msg import Float32Array
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, 
                              QWidget, QSlider, QSpinBox, QLabel, QPushButton, QGroupBox)
 from PyQt5.QtCore import Qt, QTimer
@@ -14,14 +15,14 @@ class MotorControlNode(Node):
     def __init__(self):
         super().__init__('motor_control_gui')
         self.publisher_ = self.create_publisher(
-            Float64MultiArray,
-            '/drone/motor_speed',
+            Float32Array,
+            '/swing_drone/command/motor_speed',
             10
         )
         
     def publish_motor_speeds(self, speeds):
-        msg = Float64MultiArray()
-        msg.data = speeds
+        msg = Float32Array()
+        msg.data = [np.float32(speed) for speed in speeds]
         self.publisher_.publish(msg)
         self.get_logger().info(f'Published motor speeds: {speeds}')
 
@@ -48,7 +49,7 @@ class MotorControlGUI(QMainWindow):
         # Motor controls storage
         self.motor_sliders = []
         self.motor_spinboxes = []
-        self.motor_speeds = [0.0] * 8
+        self.motor_speeds = [np.float32(0.0)] * 8
         
         self.init_ui()
         
@@ -141,7 +142,7 @@ class MotorControlGUI(QMainWindow):
         return layout
         
     def update_motor_from_slider(self, motor_index, value):
-        self.motor_speeds[motor_index] = float(value)
+        self.motor_speeds[motor_index] = np.float32(value)
         # Update corresponding spinbox without triggering its signal
         self.motor_spinboxes[motor_index].blockSignals(True)
         self.motor_spinboxes[motor_index].setValue(value)
@@ -154,7 +155,7 @@ class MotorControlGUI(QMainWindow):
         self.publish_speeds()
         
     def update_motor_from_spinbox(self, motor_index, value):
-        self.motor_speeds[motor_index] = float(value)
+        self.motor_speeds[motor_index] = np.float32(value)
         # Update corresponding slider without triggering its signal
         self.motor_sliders[motor_index].blockSignals(True)
         self.motor_sliders[motor_index].setValue(value)
@@ -173,7 +174,7 @@ class MotorControlGUI(QMainWindow):
         
     def stop_all_motors(self):
         for i in range(8):
-            self.motor_speeds[i] = 0.0
+            self.motor_speeds[i] = np.float32(0.0)
             self.motor_sliders[i].setValue(0)
             self.motor_spinboxes[i].setValue(0)
         self.publish_speeds()
@@ -184,11 +185,12 @@ class MotorControlGUI(QMainWindow):
         
     def test_pattern(self):
         # Alternate pattern for testing
-        test_speeds = [200, -200, 200, -200, 200, -200, 200, -200]
+        test_speeds = [np.float32(200), np.float32(-200), np.float32(200), np.float32(-200), 
+                      np.float32(200), np.float32(-200), np.float32(200), np.float32(-200)]
         for i in range(8):
             self.motor_speeds[i] = test_speeds[i]
-            self.motor_sliders[i].setValue(test_speeds[i])
-            self.motor_spinboxes[i].setValue(test_speeds[i])
+            self.motor_sliders[i].setValue(int(test_speeds[i]))
+            self.motor_spinboxes[i].setValue(int(test_speeds[i]))
         self.publish_speeds()
         self.status_label.setText("Status: Test pattern applied")
         

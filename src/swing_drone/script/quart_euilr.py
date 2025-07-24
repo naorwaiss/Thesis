@@ -23,7 +23,7 @@ class ImuToEulerNode(Node):
         # Publisher for Euler angles
         self.publisher_ = self.create_publisher(
             Vector3,
-            '/drone/euler_angles',
+            '/swing_drone/euler_angles',
             10
         )
 
