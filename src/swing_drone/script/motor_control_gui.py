@@ -4,7 +4,7 @@ import sys
 import numpy as np
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Float32Array
+from actuator_msgs.msg import Actuators
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, 
                              QWidget, QSlider, QSpinBox, QLabel, QPushButton, QGroupBox)
 from PyQt5.QtCore import Qt, QTimer
@@ -15,14 +15,14 @@ class MotorControlNode(Node):
     def __init__(self):
         super().__init__('motor_control_gui')
         self.publisher_ = self.create_publisher(
-            Float32Array,
-            '/swing_drone/command/motor_speed',
+            Actuators,
+            '/swing_drone/gazebo/command/motor_speed',
             10
         )
         
     def publish_motor_speeds(self, speeds):
-        msg = Float32Array()
-        msg.data = [np.float32(speed) for speed in speeds]
+        msg = Actuators()
+        msg.velocity = [float(speed) for speed in speeds]
         self.publisher_.publish(msg)
         self.get_logger().info(f'Published motor speeds: {speeds}')
 
@@ -43,8 +43,8 @@ class MotorControlGUI(QMainWindow):
         self.ros_timer.start(10)  # 100Hz
         
         # Motor speed limits
-        self.min_speed = -10000
-        self.max_speed = 10000
+        self.min_speed = -1000
+        self.max_speed = 1000
         
         # Motor controls storage
         self.motor_sliders = []

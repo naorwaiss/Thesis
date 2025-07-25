@@ -75,7 +75,7 @@ def generate_launch_description():
         arguments=[
             "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
             "/imu@sensor_msgs/msg/Imu[gz.msgs.IMU",
-            "/swing_drone/gazebo/command/motor_speed@ros_gz_interfaces/msg/Float32Array]gz.msgs.Float_V"
+            "/swing_drone/gazebo/command/motor_speed@actuator_msgs/msg/Actuators]gz.msgs.Actuators"
         ],
         output='screen'
     )
