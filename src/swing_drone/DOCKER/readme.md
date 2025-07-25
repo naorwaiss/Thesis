@@ -13,7 +13,7 @@ docker run -it \
   -v /home/naor/Desktop/naor/study/Thesis/src/swing_drone:/ros_ws/src/swing_drone \
   -e DISPLAY=$DISPLAY \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
-  ros2-jazzy /bin/bash
+  ros2-jazzy-naor /bin/bash
 
 
 
