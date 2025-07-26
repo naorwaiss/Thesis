@@ -12,16 +12,29 @@ find_package(geometry_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(Eigen3 REQUIRED)
 
 # Include directories
 include_directories(include)
+include_directories(${EIGEN3_INCLUDE_DIR})
 
-# Add executable for flight controller
+# Create a library for the micros timing functions
+add_library(micros_lib src/micros_lib.cpp)
+
+# Create a library for the data grabber
+add_library(data_graber_lib src/ros2_data_graber.cpp)
+target_link_libraries(data_graber_lib
+  rclcpp::rclcpp
+  ${geometry_msgs_TARGETS}
+  ${sensor_msgs_TARGETS}
+  ${std_msgs_TARGETS}
+)
+
+# Add executable for flight controller with all dependencies
 add_executable(flight_controller src/flight_controller_main.cpp)
-
-# Add executable for imu graber with ROS2 dependencies
-add_executable(imu_graber src/ros2_data_graber.cpp)
-target_link_libraries(imu_graber
+target_link_libraries(flight_controller
+  micros_lib
+  data_graber_lib
   rclcpp::rclcpp
   ${geometry_msgs_TARGETS}
   ${sensor_msgs_TARGETS}
@@ -36,7 +49,8 @@ install(DIRECTORY include/
 # Install executables
 install(TARGETS
   flight_controller
-  imu_graber
+  micros_lib
+  data_graber_lib
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)

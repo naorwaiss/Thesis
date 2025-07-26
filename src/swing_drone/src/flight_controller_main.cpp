@@ -1,65 +1,101 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include "rclcpp/rclcpp.hpp"
+#include "swing_drone/Var_type.hpp"
+#include "swing_drone/ros2_data_graber.hpp"
+#include "swing_drone/micros_lib.hpp"
 
-// Global variables
+// Global variables - Arduino style
 bool system_initialized = false;
 int counter = 0;
 const int LOOP_FREQUENCY_HZ = 50; // Set desired loop frequency here
 const auto LOOP_PERIOD_MICROS = std::chrono::microseconds(1000000 / LOOP_FREQUENCY_HZ);
 
-// Function similar to Arduino's micros()
-unsigned long micros() {
-    auto now = std::chrono::high_resolution_clock::now();
-    auto duration = now.time_since_epoch();
-    return std::chrono::duration_cast<std::chrono::microseconds>(duration).count();
-}
+// Global sensor data - automatically updated by ROS2
+imu_data imu_data_read; 
+euler_angles euler_angles_read;
 
-// Arduino-like init function
-void init() {
-    std::cout << "Flight Controller Initializing..." << std::endl;
+// ROS2 node for data collection (runs in background)
+std::shared_ptr<data_graber_ros> imu_data_graber;
+std::thread ros2_thread;
+
+elapsed_timer loop_timer(LOOP_FREQUENCY_HZ);
+
+// Arduino-like setup function (replaces init)
+void setup() {
+    std::cout << "Flight Controller Setup..." << std::endl;
     
     // Initialize your flight controller here
     counter = 0;
     system_initialized = true;
     
-    std::cout << "Flight Controller Initialized!" << std::endl;
-    std::cout << "Running at " << LOOP_FREQUENCY_HZ << " Hz" << std::endl;
+    std::cout << "Flight Controller Setup Complete!" << std::endl;
+    std::cout << "Running main loop at " << LOOP_FREQUENCY_HZ << " Hz" << std::endl;
 }
 
 // Arduino-like loop function
 void loop() {
     if (!system_initialized) return;
     
-    static auto last_loop_time = std::chrono::high_resolution_clock::now();
-    
-    // Main flight controller logic here
     counter++;
     
-    std::cout << "Flight Controller Loop #" << counter << " at " << micros() << " microseconds" << std::endl;
+    // Your flight controller logic here
+    // The imu_data_read and euler_angles_read are automatically updated by ROS2 callbacks
     
-    // Add your flight control logic here
-    // This runs continuously like Arduino loop()
-    
-    // Precise timing control - maintain specific Hz
-    auto current_time = std::chrono::high_resolution_clock::now();
-    auto elapsed = current_time - last_loop_time;
-    
-    if (elapsed < LOOP_PERIOD_MICROS) {
-        std::this_thread::sleep_for(LOOP_PERIOD_MICROS - elapsed);
+    // Example: Print sensor data every 50 loops (1 second at 50Hz)
+    if (loop_timer.has_elapsed()) {
+        std::cout << "Loop #" << counter << " - IMU Accel: [" 
+                  << imu_data_read.accel.x() << ", " 
+                  << imu_data_read.accel.y() << ", " 
+                  << imu_data_read.accel.z() << "] "
+                  << "Euler: [" << euler_angles_read.roll << ", " 
+                  << euler_angles_read.pitch << ", " 
+                  << euler_angles_read.yaw << "]" << std::endl;
+        
+        // Reset timer only AFTER printing
+        loop_timer.reset();
     }
-    
-    last_loop_time = std::chrono::high_resolution_clock::now();
 }
 
-int main() {
-    // Call init once
-    init();
+int main(int argc, char** argv) {
+    // Initialize ROS2 (hidden from Arduino-like code)
+    rclcpp::init(argc, argv);
     
-    // Run loop continuously
-    while (true) {
+    // Create ROS2 data grabber node
+    imu_data_graber = std::make_shared<data_graber_ros>(&imu_data_read, &euler_angles_read);
+    
+    // Start ROS2 in background thread (like Arduino's background processes)
+    ros2_thread = std::thread([]() {
+        try {
+            rclcpp::spin(imu_data_graber);
+        } catch (const std::exception& e) {
+            std::cerr << "ROS2 spin error: " << e.what() << std::endl;
+        }
+    });
+    
+    // Arduino-like setup
+    setup();
+    
+    // Arduino-like main loop
+    while (rclcpp::ok()) {
         loop();
     }
     
+    // Cleanup - properly shutdown ROS2 first
+    std::cout << "Shutting down flight controller..." << std::endl;
+    
+    // Reset the shared pointer to trigger proper destruction
+    imu_data_graber.reset();
+    
+    // Shutdown ROS2
+    rclcpp::shutdown();
+    
+    // Wait for ROS2 thread to finish
+    if (ros2_thread.joinable()) {
+        ros2_thread.join();
+    }
+    
+    std::cout << "Flight controller shutdown complete." << std::endl;
     return 0;
 }
