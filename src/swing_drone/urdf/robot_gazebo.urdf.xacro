@@ -2,14 +2,14 @@
 <!-- Gazebo-specific configurations for swing_drone -->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  
-    <!-- <gazebo>
-        <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+
+      <!-- <gazebo>
+          <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
               <robot_param_node>robot_state_publisher</robot_param_node>
-              <parameters>$(find swing_drone)/config/drone_controller.yaml</parameters>
-        </plugin>
-    </gazebo> -->
-  
+              <parameters>$(find swing_drone)/config/drone_encoder_controller.yaml</parameters>
+          </plugin>
+      </gazebo> -->
+
     <gazebo reference="base_link">
         <mu1>1.0</mu1>
         <mu2>1.0</mu2>
@@ -133,7 +133,7 @@
         <turningDirection>ccw</turningDirection>
         <timeConstantUp>0.0125</timeConstantUp>
         <timeConstantDown>0.025</timeConstantDown>
-        <maxRotVelocity>800.0</maxRotVelocity>
+        <maxRotVelocity>1200.0</maxRotVelocity>
         <motorConstant>8.54858e-06</motorConstant>
         <momentConstant>0.016</momentConstant>
         <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
@@ -156,7 +156,7 @@
         <turningDirection>cw</turningDirection>
         <timeConstantUp>0.0125</timeConstantUp>
         <timeConstantDown>0.025</timeConstantDown>
-        <maxRotVelocity>800.0</maxRotVelocity>
+        <maxRotVelocity>1200.0</maxRotVelocity>
         <motorConstant>8.54858e-06</motorConstant>
         <momentConstant>0.016</momentConstant>
         <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
@@ -179,7 +179,7 @@
         <turningDirection>ccw</turningDirection>
         <timeConstantUp>0.0125</timeConstantUp>
         <timeConstantDown>0.025</timeConstantDown>
-        <maxRotVelocity>800.0</maxRotVelocity>
+        <maxRotVelocity>1200.0</maxRotVelocity>
         <motorConstant>8.54858e-06</motorConstant>
         <momentConstant>0.016</momentConstant>
         <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
@@ -202,7 +202,7 @@
         <turningDirection>cw</turningDirection>
         <timeConstantUp>0.0125</timeConstantUp>
         <timeConstantDown>0.025</timeConstantDown>
-        <maxRotVelocity>800.0</maxRotVelocity>
+        <maxRotVelocity>1200.0</maxRotVelocity>
         <motorConstant>8.54858e-06</motorConstant>
         <momentConstant>0.016</momentConstant>
         <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
@@ -225,7 +225,7 @@
         <turningDirection>ccw</turningDirection>
         <timeConstantUp>0.0125</timeConstantUp>
         <timeConstantDown>0.025</timeConstantDown>
-        <maxRotVelocity>800.0</maxRotVelocity>
+        <maxRotVelocity>1200.0</maxRotVelocity>
         <motorConstant>8.54858e-06</motorConstant>
         <momentConstant>0.016</momentConstant>
         <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
@@ -248,7 +248,7 @@
         <turningDirection>cw</turningDirection>
         <timeConstantUp>0.0125</timeConstantUp>
         <timeConstantDown>0.025</timeConstantDown>
-        <maxRotVelocity>800.0</maxRotVelocity>
+        <maxRotVelocity>1200.0</maxRotVelocity>
         <motorConstant>8.54858e-06</motorConstant>
         <momentConstant>0.016</momentConstant>
         <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
@@ -271,7 +271,7 @@
         <turningDirection>ccw</turningDirection>
         <timeConstantUp>0.0125</timeConstantUp>
         <timeConstantDown>0.025</timeConstantDown>
-        <maxRotVelocity>800.0</maxRotVelocity>
+        <maxRotVelocity>1200.0</maxRotVelocity>
         <motorConstant>8.54858e-06</motorConstant>
         <momentConstant>0.016</momentConstant>
         <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
@@ -294,7 +294,7 @@
         <turningDirection>cw</turningDirection>
         <timeConstantUp>0.0125</timeConstantUp>
         <timeConstantDown>0.025</timeConstantDown>
-        <maxRotVelocity>800.0</maxRotVelocity>
+        <maxRotVelocity>1200.0</maxRotVelocity>
         <motorConstant>8.54858e-06</motorConstant>
         <momentConstant>0.016</momentConstant>
         <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
@@ -307,6 +307,11 @@
       </plugin>
   </gazebo>
 
-
+  <!-- Joint Controller Plugin -->
+  <gazebo>
+      <plugin filename="libjoint_controller_plugin.so" name="swing_drone::JointControllerPlugin">
+          <robotNamespace>swing_drone</robotNamespace>
+      </plugin>
+  </gazebo>
 
 </robot>

@@ -23,8 +23,8 @@ def generate_launch_description():
         parameters=[{'robot_description': robot_description},
                     os.path.join(get_package_share_directory("swing_drone"),
                                  "config",
-                                 "drone_controller.yaml"),
-                    {"use_sim_time": False}],
+                                 "drone_encoder_controller.yaml"),
+                    {"use_sim_time": True}],
         output="screen",
     )
 
@@ -37,18 +37,17 @@ def generate_launch_description():
                    ]
     )
 
-    propellors_spawner = Node(
+    encoder_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=['propellors',
+        arguments=['encoders',
                    '--controller-manager',
                    '/controller_manager'
                    ]
     )
 
-
     return LaunchDescription([
         controller_manager,
-        TimerAction(period=2.0, actions=[joint_state_broadcaster_spawner]),
-        TimerAction(period=4.0, actions=[propellors_spawner]),
+        TimerAction(period=5.0, actions=[joint_state_broadcaster_spawner]),
+        TimerAction(period=7.0, actions=[encoder_spawner]),
     ])

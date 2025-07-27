@@ -18,6 +18,25 @@ RUN rm -f /etc/apt/sources.list.d/ros2.list && \
 RUN apt-get update
 RUN apt-get upgrade -y
 
+# --- Install graphics and GUI dependencies
+RUN apt-get install -y \
+    mesa-utils \
+    libgl1-mesa-glx \
+    libgl1-mesa-dri \
+    libglu1-mesa \
+    libxrender1 \
+    libxext6 \
+    libxss1 \
+    libgconf-2-4 \
+    libxtst6 \
+    libgtk-3-0 \
+    libasound2 \
+    python3-pyqt5 \
+    python3-pyqt5.qtwidgets \
+    python3-pyqt5.qtcore \
+    python3-pyqt5.qtgui \
+    qt5-default \
+    x11-apps
 
 # --- Install gazebo harmonic 
 
@@ -37,6 +56,7 @@ RUN apt update
 RUN apt install -y ros-jazzy-xacro
 RUN apt install -y ros-jazzy-tf-transformations
 
+RUN apt update && apt install -y ros-jazzy-controller-manager ros-jazzy-ros2-control ros-jazzy-ros2-controllers ros-jazzy-joint-state-broadcaster ros-jazzy-effort-controllers
 
 
 # --- Entrypoint for GUI

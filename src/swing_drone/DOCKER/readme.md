@@ -21,3 +21,6 @@ docker run -it \
 
 
 ros2 topic pub /swing_drone/gazebo/command/motor_speed actuator_msgs/msg/Actuators "{velocity: [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]}"
+
+
+ros2 topic pub /swing_drone/gazebo/command/motor_speed actuator_msgs/msg/Actuators "{velocity: [700.0, 700.0, 700.0, 700.0, 700.0, 700.0, 700.0, 700.0]}"

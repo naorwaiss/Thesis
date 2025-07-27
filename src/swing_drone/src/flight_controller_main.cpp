@@ -8,7 +8,6 @@
 
 // Global variables - Arduino style
 bool system_initialized = false;
-int counter = 0;
 const int LOOP_FREQUENCY_HZ = 50; // Set desired loop frequency here
 const auto LOOP_PERIOD_MICROS = std::chrono::microseconds(1000000 / LOOP_FREQUENCY_HZ);
 
@@ -27,7 +26,6 @@ void setup() {
     std::cout << "Flight Controller Setup..." << std::endl;
     
     // Initialize your flight controller here
-    counter = 0;
     system_initialized = true;
     
     std::cout << "Flight Controller Setup Complete!" << std::endl;
@@ -38,17 +36,17 @@ void setup() {
 void loop() {
     if (!system_initialized) return;
     
-    counter++;
     
-    // Your flight controller logic here
-    // The imu_data_read and euler_angles_read are automatically updated by ROS2 callbacks
     
-    // Example: Print sensor data every 50 loops (1 second at 50Hz)
     if (loop_timer.has_elapsed()) {
-        std::cout << "Loop #" << counter << " - IMU Accel: [" 
+        std::cout << " - IMU Accel: [" 
                   << imu_data_read.accel.x() << ", " 
                   << imu_data_read.accel.y() << ", " 
                   << imu_data_read.accel.z() << "] "
+                  << " - IMU Gyro: [" << imu_data_read.gyro.x() << ", " 
+                  << imu_data_read.gyro.x() << ", " 
+                  << imu_data_read.gyro.y() << ", " 
+                  << imu_data_read.gyro.z() << "] "
                   << "Euler: [" << euler_angles_read.roll << ", " 
                   << euler_angles_read.pitch << ", " 
                   << euler_angles_read.yaw << "]" << std::endl;
@@ -74,10 +72,8 @@ int main(int argc, char** argv) {
         }
     });
     
-    // Arduino-like setup
     setup();
-    
-    // Arduino-like main loop
+
     while (rclcpp::ok()) {
         loop();
     }

@@ -16,6 +16,12 @@ struct euler_angles{
 };
 
 
+enum class drone_mod{
+    backstepping = 0,
+    rate_mode = 1,
+};
+
+
 
 
 #endif

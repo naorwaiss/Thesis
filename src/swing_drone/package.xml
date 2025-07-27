@@ -19,8 +19,16 @@
   <!-- Add C++ dependencies for Ignition Gazebo plugin -->
   <depend>rclcpp</depend>
   <depend>ros_gz_sim</depend>
+  <depend>std_msgs</depend>
+  
   <!-- Add Gazebo Garden simulation plugins for MulticopterMotorModel -->
   <depend>gz-sim</depend>
+  
+  <!-- Additional Gazebo dependencies for joint controller plugin -->
+  <build_depend>gz-sim8</build_depend>
+  <build_depend>gz-plugin2</build_depend>
+  <build_depend>gz-transport13</build_depend>
+  <build_depend>gz-msgs10</build_depend>
   
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
