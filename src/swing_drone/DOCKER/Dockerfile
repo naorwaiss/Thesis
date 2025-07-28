@@ -59,6 +59,8 @@ RUN apt install -y ros-jazzy-tf-transformations
 RUN apt update && apt install -y ros-jazzy-controller-manager ros-jazzy-ros2-control ros-jazzy-ros2-controllers ros-jazzy-joint-state-broadcaster ros-jazzy-effort-controllers
 
 
+
+
 # --- Entrypoint for GUI
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh

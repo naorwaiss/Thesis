@@ -15,10 +15,39 @@ find_package(std_msgs REQUIRED)
 find_package(Eigen3 REQUIRED)
 
 # Find Gazebo packages for the plugin
-find_package(gz-sim8 REQUIRED)
-find_package(gz-plugin2 REQUIRED)
-find_package(gz-transport13 REQUIRED)
-find_package(gz-msgs10 REQUIRED)
+if(NOT DEFINED DISTRO)
+  set(DISTRO "humble")
+endif()
+
+if(${DISTRO} STREQUAL "jazzy")
+  message(STATUS "jazzy on")
+  find_package(gz-sim8 REQUIRED)
+  find_package(gz-plugin2 REQUIRED)
+  find_package(gz-transport13 REQUIRED)
+  find_package(gz-msgs10 REQUIRED)
+
+  # Create the joint controller plugin
+  add_library(joint_controller_plugin SHARED src/joint_controller_plugin.cpp)
+  target_link_libraries(joint_controller_plugin
+    rclcpp::rclcpp
+    ${sensor_msgs_TARGETS}
+    ${std_msgs_TARGETS}
+    gz-sim8::gz-sim8
+    gz-plugin2::gz-plugin2
+    gz-transport13::gz-transport13
+    gz-msgs10::gz-msgs10
+  )
+
+  # Install the Gazebo plugin in the lib directory
+  install(TARGETS
+    joint_controller_plugin
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin
+  )
+
+else()
+  message(STATUS "humble on")
+endif()
 
 # Include directories
 include_directories(include)
@@ -34,18 +63,6 @@ target_link_libraries(data_graber_lib
   ${geometry_msgs_TARGETS}
   ${sensor_msgs_TARGETS}
   ${std_msgs_TARGETS}
-)
-
-# Create the joint controller plugin
-add_library(joint_controller_plugin SHARED src/joint_controller_plugin.cpp)
-target_link_libraries(joint_controller_plugin
-  rclcpp::rclcpp
-  ${sensor_msgs_TARGETS}
-  ${std_msgs_TARGETS}
-  gz-sim8::gz-sim8
-  gz-plugin2::gz-plugin2
-  gz-transport13::gz-transport13
-  gz-msgs10::gz-msgs10
 )
 
 # Add executable for flight controller with all dependencies
@@ -71,13 +88,6 @@ install(TARGETS
   data_graber_lib
   DESTINATION lib/${PROJECT_NAME})
 
-# Install the Gazebo plugin in the lib directory
-install(TARGETS
-  joint_controller_plugin
-  LIBRARY DESTINATION lib
-  RUNTIME DESTINATION bin
-)
-
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   set(ament_cmake_copyright_FOUND TRUE)
@@ -89,7 +99,6 @@ endif()
 install(PROGRAMS
   script/quart_euilr.py
   script/joint_controller_test.py
-  script/test_joint_movement.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

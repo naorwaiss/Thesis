@@ -9,8 +9,11 @@
 
 class simple_rate_mode{
     public:
-        simple_rate_mode(imu_data* imu_read, euler_angles* euler_angles_read);
+        simple_rate_mode(imu_data* imu_read);
         ~simple_rate_mode();
+        void rate_mode_control();
+        void pid_control();
+        void motor_mixing();
 
     private:
         imu_data _imu_read;

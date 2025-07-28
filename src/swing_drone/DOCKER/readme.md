@@ -24,3 +24,6 @@ ros2 topic pub /swing_drone/gazebo/command/motor_speed actuator_msgs/msg/Actuato
 
 
 ros2 topic pub /swing_drone/gazebo/command/motor_speed actuator_msgs/msg/Actuators "{velocity: [700.0, 700.0, 700.0, 700.0, 700.0, 700.0, 700.0, 700.0]}"
+
+
+ros2 topic pub /joint_control std_msgs/msg/Bool "data: false"  false-> fix true -> free
