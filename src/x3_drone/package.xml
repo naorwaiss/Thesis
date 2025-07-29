@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>x3_drone</name>
+  <version>0.0.0</version>
+  <description>X3 drone simulation package with SDF model and Gazebo integration</description>
+  <maintainer email="naorw@post.bgu.ac.il">naor</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- Core ROS2 dependencies -->
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>tf2</depend>
+  <depend>tf2_ros</depend>
+  <depend>tf2_geometry_msgs</depend>
+
+  <!-- Gazebo dependencies for newer versions -->
+  <depend>ros_gz_sim</depend>
+  <depend>ros_gz_bridge</depend>
+
+  <!-- Robot description -->
+  <depend>robot_state_publisher</depend>
+  <depend>xacro</depend>
+
+  <!-- Additional message types -->
+  <depend>actuator_msgs</depend>
+  <depend>rosgraph_msgs</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
