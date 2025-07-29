@@ -21,7 +21,7 @@ find_package(Eigen3 REQUIRED)
 # Include directories
 include_directories(include)
 
-add_executable(flight_controller src/flight_controller_main.cpp src/ros2_data_graber.cpp src/micros_lib.cpp)
+add_executable(flight_controller src/flight_controller_main.cpp src/ros2_data_graber.cpp src/micros_lib.cpp src/pub.cpp src/rate_mode.cpp)
 ament_target_dependencies(flight_controller rclcpp std_msgs sensor_msgs geometry_msgs tf2 tf2_ros tf2_geometry_msgs)
 target_link_libraries(flight_controller Eigen3::Eigen)
 

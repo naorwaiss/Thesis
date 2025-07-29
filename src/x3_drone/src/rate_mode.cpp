@@ -1,0 +1,63 @@
+#include "x3_drone/rate_mode.hpp"
+
+
+rate_mode::rate_mode(imu_data* imu_data_ptr, euler_angles* euler_angles_ptr, joy_data* joy_data_ptr , float DT_hz)
+{
+    _imu_data = imu_data_ptr;
+    _euler_angles = euler_angles_ptr;
+    _joy_data = joy_data_ptr;
+    _DT_SEC = 1.0f / DT_hz;
+}
+
+rate_mode::~rate_mode()
+{
+    // Destructor implementation - nothing special needed for cleanup
+}
+
+
+void rate_mode::angle_constrain() { 
+    _des_rate.roll = map_range(_joy_data->roll, -1.0f, 1.0f, _angle_limit.roll[0], _angle_limit.roll[1]);
+    _des_rate.pitch = map_range(_joy_data->pitch, -1.0f, 1.0f, _angle_limit.pitch[0], _angle_limit.pitch[1]);
+    _des_rate.yaw = map_range(_joy_data->yaw, -1.0f, 1.0f, _angle_limit.yaw[0], _angle_limit.yaw[1]);
+
+}
+
+void rate_mode::PID_operation() {  // Actual rate will be in deg/s
+
+    // Calculate error
+    PID_rate.error = _des_rate - _actual_rate;  // Probably the best for the Proportional term?
+
+    // Calculate P term:
+    PID_rate.P_term.roll = _pid_const.rate_roll[0] * PID_rate.error.roll;
+    PID_rate.P_term.pitch = _pid_const.rate_pitch[0] * PID_rate.error.pitch;
+    PID_rate.P_term.yaw = _pid_const.rate_yaw[0] * PID_rate.error.yaw;
+
+    // Calculate I term:
+    PID_rate.I_term.roll = PID_rate.prev_Iterm.roll + (_pid_const.rate_roll[1] / 2) * (PID_rate.error.roll + PID_rate.prev_err.roll) * _DT_SEC;
+    PID_rate.I_term.pitch = PID_rate.prev_Iterm.pitch + (_pid_const.rate_pitch[1] / 2) * (PID_rate.error.pitch + PID_rate.prev_err.pitch) * _DT_SEC;
+    PID_rate.I_term.yaw = PID_rate.prev_Iterm.yaw + (_pid_const.rate_yaw[1] / 2) * (PID_rate.error.yaw + PID_rate.prev_err.yaw) * _DT_SEC;
+
+    // Apply HPF to the derivative term
+    PID_rate.D_term.roll = _pid_const.rate_roll[2] * _pid_const.rate_roll[3] * (PID_rate.error.roll - PID_rate.prev_err.roll + PID_rate.D_term.roll);
+    PID_rate.D_term.pitch = _pid_const.rate_pitch[2] * _pid_const.rate_pitch[3] * (PID_rate.error.pitch - PID_rate.prev_err.pitch + PID_rate.D_term.pitch);
+    PID_rate.D_term.yaw = _pid_const.rate_yaw[2] * _pid_const.rate_yaw[3] * (PID_rate.error.yaw - PID_rate.prev_err.yaw + PID_rate.D_term.yaw);
+
+    // Cap the I term
+    PID_rate.I_term.roll = constrain(PID_rate.I_term.roll, -_pid_const.rate_roll[4], _pid_const.rate_roll[4]);
+    PID_rate.I_term.pitch = constrain(PID_rate.I_term.pitch, -_pid_const.rate_pitch[4], _pid_const.rate_pitch[4]);
+    PID_rate.I_term.yaw = constrain(PID_rate.I_term.yaw, -_pid_const.rate_yaw[4], _pid_const.rate_yaw[4]);
+
+    // Time propagation for relevant variables:
+    PID_rate.prev_err = PID_rate.error;
+    PID_rate.prev_Iterm = PID_rate.I_term;
+
+    // Return the output
+    PID_rate.PID_ret = PID_rate.P_term + PID_rate.I_term + PID_rate.D_term;
+}
+
+void rate_mode::run_rate_mode() {
+    angle_constrain();
+    PID_operation();
+}
+
+

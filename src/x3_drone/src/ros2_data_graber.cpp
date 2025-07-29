@@ -45,31 +45,21 @@ data_graber_ros::~data_graber_ros()
 
 void data_graber_ros::imu_topic_callback(const sensor_msgs::msg::Imu::SharedPtr msg)
 {
-    // Extract linear acceleration (using Eigen vector access)
     _imu_data->accel(0) = msg->linear_acceleration.x;
     _imu_data->accel(1) = msg->linear_acceleration.y;
     _imu_data->accel(2) = msg->linear_acceleration.z;
-
-    // Extract angular velocity (using Eigen vector access)
     _imu_data->gyro(0) = msg->angular_velocity.x;
     _imu_data->gyro(1) = msg->angular_velocity.y;
     _imu_data->gyro(2) = msg->angular_velocity.z;
-
     imu_last_time_ = this->now().seconds();
-    // printf("IMU data: %f, %f, %f, %f, %f, %f\n",
-    //        _imu_data->accel(0), _imu_data->accel(1), _imu_data->accel(2),
-    //        _imu_data->gyro(0), _imu_data->gyro(1), _imu_data->gyro(2));
 
 }
 void data_graber_ros::euiler_topic_collback(const geometry_msgs::msg::Vector3::SharedPtr msg)
 {
-    // Extract roll, pitch, yaw from Vector3 (x=roll, y=pitch, z=yaw)
     _euler_angles_data->roll = msg->x;
     _euler_angles_data->pitch = msg->y;
     _euler_angles_data->yaw = msg->z;
 
-    //  printf("Euler data: %f, %f, %f\n",
-    //        _euler_angles_data->roll, _euler_angles_data->pitch, _euler_angles_data->yaw);
     euler_last_time_ = this->now().seconds();
 }
 

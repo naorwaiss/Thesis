@@ -5,19 +5,25 @@
 #include "x3_drone/Var_type.hpp"
 #include "x3_drone/ros2_data_graber.hpp"
 #include "x3_drone/micros_lib.hpp"
+#include "x3_drone/pub.hpp"
+#include "x3_drone/rate_mode.hpp"
+
+
 // Global variables - Arduino style
 bool system_initialized = false;
-const int LOOP_FREQUENCY_HZ = 50;  // Set desired loop frequency here
+const int LOOP_FREQUENCY_HZ = 100;  // Set desired loop frequency here
 const auto LOOP_PERIOD_MICROS = std::chrono::microseconds(1000000 / LOOP_FREQUENCY_HZ);
 
 // Global sensor data - automatically updated by ROS2
 imu_data imu_data_read;
 euler_angles euler_angles_read;
 joy_data joy_data_read;
+rate_mode rate_instance(&imu_data_read, &euler_angles_read, &joy_data_read, LOOP_FREQUENCY_HZ);
 
 
-// ROS2 node for data collection (runs in background)
+// ROS2 nodes
 std::shared_ptr<data_graber_ros> data_graber;
+std::shared_ptr<pub> pub_data;
 std::thread ros2_thread;
 
 elapsed_timer loop_timer(LOOP_FREQUENCY_HZ);
@@ -37,12 +43,11 @@ void loop() {
 
     if (loop_timer.has_elapsed()) {
         printf("Rate mode\n");
+        // pub_data->publish();
+        rate_instance.run_rate_mode();
         loop_timer.reset();
 
     }
-    // else{
-    //     printf("Waiting for data...\n");
-    // }
 }
 
 
@@ -56,10 +61,16 @@ int main(int argc, char** argv) {
     // Create ROS2 data grabber node
     data_graber = std::make_shared<data_graber_ros>(&imu_data_read, &euler_angles_read, &joy_data_read);
 
+    // Create publisher node
+    pub_data = std::make_shared<pub>();
+
     // Start ROS2 in background thread (like Arduino's background processes)
     ros2_thread = std::thread([]() {
         try {
-            rclcpp::spin(data_graber);
+            // Create multi-threaded executor for both nodes
+            rclcpp::executors::MultiThreadedExecutor executor;
+            executor.add_node(data_graber);
+            executor.spin();
         } catch (const std::exception& e) {
             std::cerr << "ROS2 spin error: " << e.what() << std::endl;
         }
@@ -76,6 +87,7 @@ int main(int argc, char** argv) {
 
     // Reset the shared pointer to trigger proper destruction
     data_graber.reset();
+    pub_data.reset(); // Also reset the pub_data pointer
 
     // Shutdown ROS2
     rclcpp::shutdown();
@@ -88,3 +100,4 @@ int main(int argc, char** argv) {
     std::cout << "Flight controller shutdown complete." << std::endl;
     return 0;
 }
+
