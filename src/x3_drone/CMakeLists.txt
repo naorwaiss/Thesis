@@ -16,30 +16,39 @@ find_package(tf2_ros REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 find_package(ros_gz_sim REQUIRED)
 find_package(ros_gz_bridge REQUIRED)
+find_package(Eigen3 REQUIRED)
 
-# Install launch files
-install(DIRECTORY launch/
-  DESTINATION share/${PROJECT_NAME}/launch/
+# Include directories
+include_directories(include)
+
+add_executable(flight_controller src/flight_controller_main.cpp src/ros2_data_graber.cpp src/micros_lib.cpp)
+ament_target_dependencies(flight_controller rclcpp std_msgs sensor_msgs geometry_msgs tf2 tf2_ros tf2_geometry_msgs)
+target_link_libraries(flight_controller Eigen3::Eigen)
+
+# Install targets
+install(TARGETS
+  flight_controller
+  DESTINATION lib/${PROJECT_NAME}
 )
 
-# Install model files (SDF, meshes, materials, etc.)
-install(DIRECTORY meshes/
-  DESTINATION share/${PROJECT_NAME}/meshes/
+
+install(
+  DIRECTORY meshes launch worlds script
+  DESTINATION share/${PROJECT_NAME}
 )
 
-install(DIRECTORY materials/
-  DESTINATION share/${PROJECT_NAME}/materials/
-)
-
-install(DIRECTORY worlds/
-  DESTINATION share/${PROJECT_NAME}/worlds/
-)
 
 install(FILES
   model.sdf
   model.config
   DESTINATION share/${PROJECT_NAME}/
 )
+
+install(PROGRAMS
+  script/quart_euilr.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 
 # Install any additional directories
 install(DIRECTORY thumbnails/

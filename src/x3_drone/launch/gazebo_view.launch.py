@@ -80,7 +80,7 @@ def generate_launch_description():
             "/world/empty/model/x3_drone/link/base_link/sensor/imu_sensor/imu@sensor_msgs/msg/Imu[gz.msgs.IMU",
             "/world/empty/model/x3_drone/link/base_link/sensor/air_pressure/air_pressure@sensor_msgs/msg/FluidPressure[gz.msgs.FluidPressure",
             "/world/empty/model/x3_drone/link/base_link/sensor/magnetometer/magnetometer@sensor_msgs/msg/MagneticField[gz.msgs.Magnetometer",
-            # "/x3_drone/gazebo/command/motor_speed@actuator_msgs/msg/Actuators]gz.msgs.Actuators"
+            "/x3_drone/gazebo/command/motor_speed@actuator_msgs/msg/Actuators]gz.msgs.Actuators",
         ],
         remappings=[
             ('/world/empty/model/x3_drone/link/base_link/sensor/imu_sensor/imu', '/imu'),
@@ -89,8 +89,21 @@ def generate_launch_description():
         ],
         output='screen'
     )
+
+    euiler_node = Node(
+        package='x3_drone',
+        executable='quart_euilr.py',
+        output='screen'
+    )
+    joy_node = Node(
+        package='joy',
+        executable='joy_node',
+        output='screen'
+    )
     
     return LaunchDescription([
+        euiler_node,
+        joy_node,
         model_arg,
         world_arg,
         gazebo_resource_path,

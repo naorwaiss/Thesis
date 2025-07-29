@@ -1,3 +1,5 @@
+
+
 cmake_minimum_required(VERSION 3.8)
 project(swing_drone)
 
@@ -98,7 +100,6 @@ endif()
 # Install Python scripts
 install(PROGRAMS
   script/quart_euilr.py
-  script/joint_controller_test.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

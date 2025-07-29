@@ -142,7 +142,7 @@
 
             <sensor name="imu_sensor" type="imu">
                 <always_on>1</always_on>
-                <update_rate>250</update_rate>
+                <update_rate>450</update_rate>
                 <imu>
                     <enable_orientation>1</enable_orientation>
                     <angular_velocity>
@@ -592,7 +592,7 @@
     <plugin
         filename="gz-sim-multicopter-motor-model-system"
         name="gz::sim::systems::MulticopterMotorModel">
-        <robotNamespace>X3</robotNamespace>
+        <robotNamespace>x3_drone</robotNamespace>
         <jointName>rotor_0_joint</jointName>
         <linkName>rotor_0</linkName>
         <turningDirection>ccw</turningDirection>
@@ -612,7 +612,7 @@
       <plugin
         filename="gz-sim-multicopter-motor-model-system"
         name="gz::sim::systems::MulticopterMotorModel">
-        <robotNamespace>X3</robotNamespace>
+        <robotNamespace>x3_drone</robotNamespace>
         <jointName>rotor_1_joint</jointName>
         <linkName>rotor_1</linkName>
         <turningDirection>ccw</turningDirection>
@@ -632,7 +632,7 @@
       <plugin
         filename="gz-sim-multicopter-motor-model-system"
         name="gz::sim::systems::MulticopterMotorModel">
-        <robotNamespace>X3</robotNamespace>
+        <robotNamespace>x3_drone</robotNamespace>
         <jointName>rotor_2_joint</jointName>
         <linkName>rotor_2</linkName>
         <turningDirection>cw</turningDirection>
@@ -652,7 +652,7 @@
       <plugin
         filename="gz-sim-multicopter-motor-model-system"
         name="gz::sim::systems::MulticopterMotorModel">
-        <robotNamespace>X3</robotNamespace>
+        <robotNamespace>x3_drone</robotNamespace>
         <jointName>rotor_3_joint</jointName>
         <linkName>rotor_3</linkName>
         <turningDirection>cw</turningDirection>
