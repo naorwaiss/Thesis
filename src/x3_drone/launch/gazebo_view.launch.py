@@ -103,7 +103,7 @@ def generate_launch_description():
     
     return LaunchDescription([
         euiler_node,
-        joy_node,
+        # joy_node,
         model_arg,
         world_arg,
         gazebo_resource_path,

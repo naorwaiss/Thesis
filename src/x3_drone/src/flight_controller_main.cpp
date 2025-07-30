@@ -18,13 +18,14 @@ const auto LOOP_PERIOD_MICROS = std::chrono::microseconds(1000000 / LOOP_FREQUEN
 imu_data imu_data_read;
 euler_angles euler_angles_read;
 joy_data joy_data_read;
-rate_mode rate_instance(&imu_data_read, &euler_angles_read, &joy_data_read, LOOP_FREQUENCY_HZ);
-
 
 // ROS2 nodes
 std::shared_ptr<data_graber_ros> data_graber;
 std::shared_ptr<pub> pub_data;
 std::thread ros2_thread;
+
+// Rate mode instance (will be initialized after pub_data is created)
+std::unique_ptr<rate_mode> rate_instance;
 
 elapsed_timer loop_timer(LOOP_FREQUENCY_HZ);
 
@@ -42,14 +43,12 @@ void loop() {
     // if (!system_initialized) return;
 
     if (loop_timer.has_elapsed()) {
-        printf("Rate mode\n");
         // pub_data->publish();
-        rate_instance.run_rate_mode();
+        rate_instance->run_rate_mode();
         loop_timer.reset();
 
     }
 }
-
 
 
 
@@ -60,9 +59,8 @@ int main(int argc, char** argv) {
 
     // Create ROS2 data grabber node
     data_graber = std::make_shared<data_graber_ros>(&imu_data_read, &euler_angles_read, &joy_data_read);
-
-    // Create publisher node
     pub_data = std::make_shared<pub>();
+    rate_instance = std::make_unique<rate_mode>(pub_data.get(), &imu_data_read, &euler_angles_read, &joy_data_read, LOOP_FREQUENCY_HZ);
 
     // Start ROS2 in background thread (like Arduino's background processes)
     ros2_thread = std::thread([]() {
@@ -70,6 +68,7 @@ int main(int argc, char** argv) {
             // Create multi-threaded executor for both nodes
             rclcpp::executors::MultiThreadedExecutor executor;
             executor.add_node(data_graber);
+            executor.add_node(pub_data);
             executor.spin();
         } catch (const std::exception& e) {
             std::cerr << "ROS2 spin error: " << e.what() << std::endl;
@@ -86,6 +85,7 @@ int main(int argc, char** argv) {
     std::cout << "Shutting down flight controller..." << std::endl;
 
     // Reset the shared pointer to trigger proper destruction
+    rate_instance.reset();
     data_graber.reset();
     pub_data.reset(); // Also reset the pub_data pointer
 

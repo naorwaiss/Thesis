@@ -74,11 +74,6 @@ void data_graber_ros::joy_topic_callback(const sensor_msgs::msg::Joy::SharedPtr 
     _joy_data->mode = msg->axes[5];
     _joy_data->aux_3 = msg->axes[6];
     _joy_data->aux_4 = msg->axes[7];
-
-    printf("Joy data: %f, %f, %f, %f, %d, %d, %d, %d\n",
-           _joy_data->roll, _joy_data->pitch, _joy_data->yaw, _joy_data->thrust,
-           _joy_data->aux_1_arm, _joy_data->mode, _joy_data->aux_3, _joy_data->aux_4);
-
     joy_last_time_ = this->now().seconds();
 }
 

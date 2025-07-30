@@ -17,13 +17,30 @@ find_package(tf2_geometry_msgs REQUIRED)
 find_package(ros_gz_sim REQUIRED)
 find_package(ros_gz_bridge REQUIRED)
 find_package(Eigen3 REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+find_package(actuator_msgs REQUIRED)
 
 # Include directories
 include_directories(include)
 
 add_executable(flight_controller src/flight_controller_main.cpp src/ros2_data_graber.cpp src/micros_lib.cpp src/pub.cpp src/rate_mode.cpp)
-ament_target_dependencies(flight_controller rclcpp std_msgs sensor_msgs geometry_msgs tf2 tf2_ros tf2_geometry_msgs)
+ament_target_dependencies(flight_controller rclcpp std_msgs sensor_msgs geometry_msgs tf2 tf2_ros tf2_geometry_msgs actuator_msgs)
 target_link_libraries(flight_controller Eigen3::Eigen)
+
+# Generate interfaces
+set(msg_files
+  "msg/EulerAngles.msg"
+  "msg/Pid.msg"
+)
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+  ${msg_files}
+  DEPENDENCIES std_msgs
+)
+
+# Make sure the executable depends on the generated messages
+rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME} "rosidl_typesupport_cpp")
+target_link_libraries(flight_controller "${cpp_typesupport_target}")
 
 # Install targets
 install(TARGETS

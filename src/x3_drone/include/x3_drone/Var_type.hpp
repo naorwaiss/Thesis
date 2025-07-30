@@ -10,6 +10,9 @@
 #define PI 3.14159265358979323846
 #define rad2deg 180.0f / PI
 #define deg2rad PI / 180.0f
+#define MIN_PWM 0
+#define MAX_PWM 1000
+
 
 struct imu_data {
     Eigen::Vector3d accel;
@@ -58,23 +61,18 @@ enum class drone_mod {
 };
 
 struct pid_const {
-    std::array<float, 5> rate_roll = {0.1f, 0.0f, 0.0f, 0.95f, 10.0f};   // P, I, D, D_filter, I_limit
-    std::array<float, 5> rate_pitch = {0.1f, 0.0f, 0.0f, 0.95f, 10.0f};  // P, I, D, D_filter, I_limit
-    std::array<float, 5> rate_yaw = {0.1f, 0.0f, 0.0f, 0.95f, 10.0f};    // P, I, D, D_filter, I_limit
+    std::array<float, 5> rate_roll = {0.1f, 0.0f, 0.0f, 0.95f, 100.0f};   // P, I, D, D_filter, I_limit
+    std::array<float, 5> rate_pitch = {0.1f, 0.0f, 0.0f, 0.95f, 100.0f};  // P, I, D, D_filter, I_limit
+    std::array<float, 5> rate_yaw = {0.1f, 0.0f, 0.0f, 0.95f, 100.0f};    // P, I, D, D_filter, I_limit
 };
 
-struct angle_limit {
-    std::array<float, 2> roll = {30.0f, -30.0f};
-    std::array<float, 2> pitch = {30.0f, -30.0f};
-    std::array<float, 2> yaw = {30.0f, -30.0f};
-};
 
 struct PID_out_t {
     euler_angles error = {0.0, 0.0, 0.0};
     euler_angles P_term;
     euler_angles I_term;
     euler_angles D_term;
-    euler_angles PID_ret = {0.0, 0.0, 0.0};
+    euler_angles PID_return;
     euler_angles prev_err = {0.0, 0.0, 0.0};
     euler_angles prev_errHPF = {0.0, 0.0, 0.0};
     euler_angles prev_errLPF = {0.0, 0.0, 0.0};
