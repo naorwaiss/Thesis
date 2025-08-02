@@ -12,16 +12,8 @@ data_graber_ros::data_graber_ros(
     _euler_angles_data = euler_angles_ptr;
     _arm_data = arm_data_ptr;
     _joy_data = joy_data_ptr;
-    // Initialize the data structures with default values
-    // _imu_data->accel = Eigen::Vector3d::Zero();
-    // _imu_data->gyro = Eigen::Vector3d::Zero();
-    // _euler_angles_data->roll = 0.0f;
-    // _euler_angles_data->pitch = 0.0f;
-    // _euler_angles_data->yaw = 0.0f;
-    // _arm_data->encoder_position = Eigen::Vector4d::Zero();
-    // _arm_data->encoder_velocity = Eigen::Vector4d::Zero();
 
-    // Create subscription for IMU data
+    
     imu_subscription_ = this->create_subscription<sensor_msgs::msg::Imu>(
         "/imu", 10,
         std::bind(&data_graber_ros::imu_topic_callback, this, std::placeholders::_1)
@@ -98,20 +90,17 @@ void data_graber_ros::arm_topic_callback(const sensor_msgs::msg::JointState::Sha
 
 void data_graber_ros::joy_topic_callback(const sensor_msgs::msg::Joy::SharedPtr msg)
 {
-    _joy_data->roll = msg->axes[0];
     _joy_data->pitch = msg->axes[1];
-    _joy_data->yaw = msg->axes[2];
-    _joy_data->thrust = msg->axes[3];
-    _joy_data->aux_1 = msg->axes[4];
-    _joy_data->aux_2 = msg->axes[5];
+    _joy_data->roll = msg->axes[0];
+    _joy_data->yaw = msg->axes[3];
+    _joy_data->thrust = msg->axes[2];
+    _joy_data->aux_1_arm = msg->axes[4];
+    _joy_data->mode = msg->axes[5];
     _joy_data->aux_3 = msg->axes[6];
     _joy_data->aux_4 = msg->axes[7];
-
-    printf("Joy data: %f, %f, %f, %f, %f, %f, %f, %f\n",
-           _joy_data->roll, _joy_data->pitch, _joy_data->yaw, _joy_data->thrust,
-           _joy_data->aux_1, _joy_data->aux_2, _joy_data->aux_3, _joy_data->aux_4);
-
     joy_last_time_ = this->now().seconds();
+
+    printf("joy_data->roll: %f, joy_data->pitch: %f, joy_data->yaw: %f, joy_data->thrust: %f, joy_data->aux_1_arm: %d, joy_data->mode: %d, joy_data->aux_3: %d, joy_data->aux_4: %d\n", _joy_data->roll, _joy_data->pitch, _joy_data->yaw, _joy_data->thrust, _joy_data->aux_1_arm, _joy_data->mode, _joy_data->aux_3, _joy_data->aux_4);
 }
 
 bool data_graber_ros::data_arrived_validatiom() {

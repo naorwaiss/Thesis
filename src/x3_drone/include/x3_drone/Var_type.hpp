@@ -61,9 +61,9 @@ enum class drone_mod {
 };
 
 struct pid_const {
-    std::array<float, 5> rate_roll = {0.1f, 0.0f, 0.0f, 0.95f, 100.0f};   // P, I, D, D_filter, I_limit
-    std::array<float, 5> rate_pitch = {0.1f, 0.0f, 0.0f, 0.95f, 100.0f};  // P, I, D, D_filter, I_limit
-    std::array<float, 5> rate_yaw = {0.1f, 0.0f, 0.0f, 0.95f, 100.0f};    // P, I, D, D_filter, I_limit
+    std::array<float, 5> rate_roll = {0.4f, 0.0f, 0.0f, 0.95f, 100.0f};   // P, I, D, D_filter, I_limit
+    std::array<float, 5> rate_pitch = {0.4f, 0.0f, 0.0f, 0.95f, 100.0f};  // P, I, D, D_filter, I_limit
+    std::array<float, 5> rate_yaw = {0.8f, 0.0f, 0.0f, 0.95f, 100.0f};    // P, I, D, D_filter, I_limit
 };
 
 

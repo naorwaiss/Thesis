@@ -78,8 +78,8 @@ namespace swing_drone
                 "joint_control", 10,
                 [this](const std_msgs::msg::Bool::SharedPtr msg) {
                     joints_free_ = msg->data;
-                    // RCLCPP_INFO(ros_node_->get_logger(), 
-                    //     "Joint control changed: %s", joints_free_ ? "FREE" : "FIXED");
+                    RCLCPP_INFO(ros_node_->get_logger(), 
+                        "Joint control changed: %s", joints_free_ ? "FREE" : "FIXED");
                 });
             
             // Store model entity
@@ -101,21 +101,21 @@ namespace swing_drone
                     ecm.CreateComponent(joint_entity, gz::sim::components::JointVelocity());
                     ecm.CreateComponent(joint_entity, gz::sim::components::JointForce());
                     
-                    // RCLCPP_INFO(ros_node_->get_logger(), 
-                    //     "Found joint: %s", joint_name.c_str());
+                    RCLCPP_INFO(ros_node_->get_logger(), 
+                        "Found joint: %s", joint_name.c_str());
                 }
                 else
                 {
-                    // RCLCPP_WARN(ros_node_->get_logger(), 
-                    //     "Could not find joint: %s", joint_name.c_str());
+                    RCLCPP_WARN(ros_node_->get_logger(), 
+                        "Could not find joint: %s", joint_name.c_str());
                 }
             }
             
             last_publish_time_ = std::chrono::steady_clock::now();
             
-            // RCLCPP_INFO(ros_node_->get_logger(), 
-            //     "Joint Controller Plugin initialized with %zu joints", 
-            //     joint_entities_.size());
+            RCLCPP_INFO(ros_node_->get_logger(), 
+                "Joint Controller Plugin initialized with %zu joints", 
+                joint_entities_.size());
         }
         
         void PreUpdate(const gz::sim::UpdateInfo &info,
@@ -126,11 +126,11 @@ namespace swing_drone
             // Log state change for all joints when the mode changes
             if (last_joints_state_ != joints_free_)
             {
-                // for (const auto& [joint_name, joint_entity] : joint_entities_)
-                // {
-                //     RCLCPP_INFO(ros_node_->get_logger(), 
-                //         "Joint %s mode: %s", joint_name.c_str(), joints_free_ ? "FREE" : "FIXED");
-                // }
+                for (const auto& [joint_name, joint_entity] : joint_entities_)
+                {
+                    RCLCPP_INFO(ros_node_->get_logger(), 
+                        "Joint %s mode: %s", joint_name.c_str(), joints_free_ ? "FREE" : "FIXED");
+                }
                 last_joints_state_ = joints_free_;
             }
             

@@ -60,18 +60,16 @@ void rate_mode::PID_operation() {  // Actual rate will be in deg/s
 
 
 void rate_mode::Motor_Mix() {
-    _Motor_struct.front_left = _throttle_modifier - PID_rate.PID_return.roll - PID_rate.PID_return.pitch - PID_rate.PID_return.yaw;
-    _Motor_struct.front_right = _throttle_modifier - PID_rate.PID_return.roll + PID_rate.PID_return.pitch + PID_rate.PID_return.yaw;
-    _Motor_struct.rear_left = _throttle_modifier + PID_rate.PID_return.roll + PID_rate.PID_return.pitch - PID_rate.PID_return.yaw;
-    _Motor_struct.rear_right = _throttle_modifier + PID_rate.PID_return.roll - PID_rate.PID_return.pitch + PID_rate.PID_return.yaw;
+    _Motor_struct.front_right = _throttle_modifier - PID_rate.PID_return.roll - PID_rate.PID_return.pitch + PID_rate.PID_return.yaw;
+    _Motor_struct.front_left = _throttle_modifier + PID_rate.PID_return.roll - PID_rate.PID_return.pitch - PID_rate.PID_return.yaw;
+    _Motor_struct.rear_left = _throttle_modifier + PID_rate.PID_return.roll + PID_rate.PID_return.pitch + PID_rate.PID_return.yaw;
+    _Motor_struct.rear_right = _throttle_modifier - PID_rate.PID_return.roll + PID_rate.PID_return.pitch - PID_rate.PID_return.yaw;
  
     // Constrain the values to be between 0 and 1000
     _Motor_struct.front_left = constrain(_Motor_struct.front_left, MIN_PWM, MAX_PWM);
     _Motor_struct.front_right = constrain(_Motor_struct.front_right, MIN_PWM, MAX_PWM);
     _Motor_struct.rear_left = constrain(_Motor_struct.rear_left, MIN_PWM, MAX_PWM);
     _Motor_struct.rear_right = constrain(_Motor_struct.rear_right, MIN_PWM, MAX_PWM);
-
-
     _pub_ptr->publish_motor_data(_Motor_struct);
 
 }
@@ -82,5 +80,9 @@ void rate_mode::run_rate_mode() {
     PID_operation();
     Motor_Mix();
 }
+
+
+
+
 
 

@@ -6,6 +6,7 @@
 
 class rate_mode {
     public:
+        // consarvative rate mode for 8 motor drone - type 
         rate_mode(pub* pub_ptr, imu_data* imu_data_ptr, euler_angles* euler_angles_ptr, joy_data* joy_data_ptr, float DT_hz);
         ~rate_mode();
         void PID_operation();

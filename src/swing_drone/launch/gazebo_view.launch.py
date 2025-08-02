@@ -81,7 +81,7 @@ def generate_launch_description():
     )
     imu_to_euler = Node(
         package="swing_drone",
-        executable="quart_euilr",
+        executable="quart_euler.py",
     )
     return LaunchDescription([
         imu_to_euler,

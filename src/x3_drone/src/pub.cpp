@@ -46,9 +46,9 @@ void pub::pid_value_publish(PID_out_t pid_out){
 void pub::publish_motor_data(motor_data motor_data){
     auto msg = actuator_msgs::msg::Actuators();
     msg.velocity.resize(4);
-    msg.velocity[0] = motor_data.front_left;
-    msg.velocity[1] = motor_data.front_right;
-    msg.velocity[2] = motor_data.rear_left;
+    msg.velocity[0] = motor_data.front_right;
+    msg.velocity[1] = motor_data.rear_left;
+    msg.velocity[2] = motor_data.front_left;
     msg.velocity[3] = motor_data.rear_right;
     
     motor_publisher_->publish(msg);
